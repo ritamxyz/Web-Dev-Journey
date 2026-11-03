@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Engineering Internship Application 2026–2027</title>
+</head>
+<body>
+
+    <h1>SOFTWARE ENGINEERING INTERNSHIP APPLICATION</h1>
+    <p><b>Role:</b> Technology &amp; Software Engineering Intern (Summer / Winter Cohort)<br><i>Fields marked with an asterisk (<b>*</b>) are strictly mandatory.</i></p>
+    <hr>
+
+    <form action="#" method="POST" enctype="multipart/form-data">
+
+        <!-- 1. PERSONAL INFORMATION -->
+        <fieldset>
+            <legend><b>1. Personal &amp; Contact Details</b></legend>
+            <br>
+            <label for="first_name">First Name <b>*</b>:</label><br>
+            <input type="text" id="first_name" name="first_name" placeholder="e.g., Sonu" required size="35"><br><br>
+
+            <label for="last_name">Last Name <b>*</b>:</label><br>
+            <input type="text" id="last_name" name="last_name" placeholder="e.g., Kumar" required size="35"><br><br>
+
+            <label for="email">Primary Email Address <b>*</b>:</label><br>
+            <input type="email" id="email" name="email" placeholder="name@example.com" required size="45"><br><br>
+
+            <label for="phone">Contact Number (with country code) <b>*</b>:</label><br>
+            <input type="tel" id="phone" name="phone" placeholder="+91 9876543210" pattern="[\+]?[0-9]{10,13}" required><br><br>
+
+            <label for="location">Current City &amp; State <b>*</b>:</label><br>
+            <input type="text" id="location" name="location" placeholder="e.g., Kolkata, West Bengal" required size="45"><br>
+        </fieldset>
+        <br>
+
+        <!-- 2. PROFESSIONAL LINKS -->
+        <fieldset>
+            <legend><b>2. Online Profiles &amp; Repositories</b></legend>
+            <br>
+            <label for="github_url">GitHub Profile URL <b>*</b>:</label><br>
+            <input type="url" id="github_url" name="github_url" placeholder="https://github.com/your-handle" required size="50"><br><br>
+
+            <label for="linkedin_url">LinkedIn Profile URL <b>*</b>:</label><br>
+            <input type="url" id="linkedin_url" name="linkedin_url" placeholder="https://linkedin.com/in/your-handle" required size="50"><br><br>
+
+            <label for="portfolio_url">Personal Portfolio / Website URL:</label><br>
+            <input type="url" id="portfolio_url" name="portfolio_url" placeholder="https://yourname.dev" size="50"><br><br>
+
+            <label for="coding_profile">Coding Platform Profile (LeetCode / Codeforces / HackerRank):</label><br>
+            <input type="url" id="coding_profile" name="coding_profile" placeholder="https://leetcode.com/u/your-handle" size="50"><br>
+        </fieldset>
+        <br>
+
+        <!-- 3. ACADEMIC BACKGROUND -->
+        <fieldset>
+            <legend><b>3. Academic Background</b></legend>
+            <br>
+            <label for="college_name">College / University Name <b>*</b>:</label><br>
+            <input type="text" id="college_name" name="college_name" required size="50"><br><br>
+
+            <label for="degree">Degree &amp; Major <b>*</b>:</label><br>
+            <select id="degree" name="degree" required>
+                <option value="">-- Select Degree Program --</option>
+                <option value="btech_cse">B.Tech / B.E. in Computer Science &amp; Engineering</option>
+                <option value="btech_it">B.Tech / B.E. in Information Technology</option>
+                <option value="btech_ece">B.Tech / B.E. in Electronics &amp; Communication</option>
+                <option value="bca">Bachelor of Computer Applications (BCA)</option>
+                <option value="mca">Master of Computer Applications (MCA)</option>
+                <option value="mtech">M.Tech / M.E. in Computer Science</option>
+                <option value="other">Other Related Technical Degree</option>
+            </select><br><br>
+
+            <label for="graduation_year">Expected Graduation Year <b>*</b>:</label><br>
+            <select id="graduation_year" name="graduation_year" required>
+                <option value="">-- Select Year --</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+            </select><br><br>
+
+            <label for="cgpa">Current Cumulative CGPA / Percentage <b>*</b>:</label><br>
+            <input type="number" id="cgpa" name="cgpa" min="0" max="10" step="0.01" placeholder="e.g., 8.85" required><br>
+        </fieldset>
+        <br>
+
+        <!-- 4. TECHNICAL EXPERTISE -->
+        <fieldset>
+            <legend><b>4. Technical Competencies</b></legend>
+            <br>
+            <label><b>Primary Programming Languages (Select all that apply) *:</b></label><br>
+            <input type="checkbox" id="lang_cpp" name="languages" value="cpp">
+            <label for="lang_cpp">C / C++</label><br>
+            <input type="checkbox" id="lang_js" name="languages" value="javascript">
+            <label for="lang_js">JavaScript / TypeScript</label><br>
+            <input type="checkbox" id="lang_py" name="languages" value="python">
+            <label for="lang_py">Python</label><br>
+            <input type="checkbox" id="lang_java" name="languages" value="java">
+            <label for="lang_java">Java</label><br>
+            <input type="checkbox" id="lang_go" name="languages" value="golang">
+            <label for="lang_go">Go</label><br><br>
+
+            <label><b>Web &amp; Cloud Frameworks / Tools:</b></label><br>
+            <input type="checkbox" id="fw_react" name="frameworks" value="react">
+            <label for="fw_react">React.js / Next.js</label><br>
+            <input type="checkbox" id="fw_node" name="frameworks" value="node">
+            <label for="fw_node">Node.js / Express.js</label><br>
+            <input type="checkbox" id="fw_db" name="frameworks" value="sql_nosql">
+            <label for="fw_db">SQL / MongoDB / PostgreSQL</label><br>
+            <input type="checkbox" id="fw_git" name="frameworks" value="git">
+            <label for="fw_git">Git &amp; GitHub Version Control</label><br>
+            <input type="checkbox" id="fw_docker" name="frameworks" value="docker">
+            <label for="fw_docker">Docker / Basic DevOps</label><br><br>
+
+            <label for="dsa_level">Self-Assessed Data Structures &amp; Algorithms Proficiency (1 = Beginner, 5 = Expert) <b>*</b>:</label><br>
+            <input type="range" id="dsa_level" name="dsa_level" min="1" max="5" step="1" value="3" list="markers" required>
+            <datalist id="markers">
+                <option value="1" label="1"></option>
+                <option value="2" label="2"></option>
+                <option value="3" label="3"></option>
+                <option value="4" label="4"></option>
+                <option value="5" label="5"></option>
+            </datalist><br>
+        </fieldset>
+        <br>
+
+        <!-- 5. INTERNSHIP LOGISTICS & AVAILABILITY -->
+        <fieldset>
+            <legend><b>5. Internship Track &amp; Availability</b></legend>
+            <br>
+            <label for="track">Preferred Internship Domain <b>*</b>:</label><br>
+            <select id="track" name="track" required>
+                <option value="">-- Choose Track --</option>
+                <option value="frontend">Frontend Engineering</option>
+                <option value="backend">Backend &amp; API Engineering</option>
+                <option value="fullstack">Full-Stack Development</option>
+                <option value="data_eng">Data Engineering / Machine Learning</option>
+                <option value="devops">DevOps &amp; Cloud Infrastructure</option>
+            </select><br><br>
+
+            <label>Work Mode Preference <b>*</b>:</label><br>
+            <input type="radio" id="mode_remote" name="work_mode" value="remote" required>
+            <label for="mode_remote">Remote</label>
+            <input type="radio" id="mode_hybrid" name="work_mode" value="hybrid">
+            <label for="mode_hybrid">Hybrid</label>
+            <input type="radio" id="mode_onsite" name="work_mode" value="onsite">
+            <label for="mode_onsite">On-site</label><br><br>
+
+            <label for="start_date">Earliest Available Start Date <b>*</b>:</label><br>
+            <input type="date" id="start_date" name="start_date" required><br><br>
+
+            <label for="duration">Preferred Internship Duration <b>*</b>:</label><br>
+            <select id="duration" name="duration" required>
+                <option value="">-- Choose Duration --</option>
+                <option value="2_months">2 Months (Summer Break)</option>
+                <option value="3_months">3 Months</option>
+                <option value="6_months">6 Months (Full Semester Internship)</option>
+            </select><br><br>
+
+            <label for="weekly_hours">Hours Available to Commit Per Week <b>*</b>:</label><br>
+            <input type="number" id="weekly_hours" name="weekly_hours" min="15" max="45" placeholder="e.g., 40" required><br>
+        </fieldset>
+        <br>
+
+        <!-- 6. EXPERIENCE & PROJECT HIGHLIGHT -->
+        <fieldset>
+            <legend><b>6. Project Experience &amp; Impact</b></legend>
+            <br>
+            <label for="best_project">Describe your most technically challenging project and your specific contribution <b>*</b>:</label><br>
+            <textarea id="best_project" name="best_project" rows="5" cols="60" placeholder="Highlight the problem statement, technologies used, architecture decisions, and the end outcome..." required></textarea><br><br>
+
+            <label for="project_repo">Project Code Repository Link (GitHub / GitLab):</label><br>
+            <input type="url" id="project_repo" name="project_repo" placeholder="https://github.com/your-handle/project-name" size="50"><br><br>
+
+            <label for="why_us">Why are you interested in joining our engineering team? <b>*</b>:</label><br>
+            <textarea id="why_us" name="why_us" rows="4" cols="60" placeholder="Tell us what excites you about our products, tech stack, or engineering culture..." required></textarea><br>
+        </fieldset>
+        <br>
+
+        <!-- 7. FILE ATTACHMENTS -->
+        <fieldset>
+            <legend><b>7. Resume &amp; Supporting Documents</b></legend>
+            <br>
+            <label for="resume">Updated Resume / CV (PDF format only, max 2MB) <b>*</b>:</label><br>
+            <input type="file" id="resume" name="resume" accept=".pdf" required><br><br>
+
+            <label for="transcript">College Grade Card / Unofficial Transcript (PDF, optional):</label><br>
+            <input type="file" id="transcript" name="transcript" accept=".pdf"><br>
+        </fieldset>
+        <br>
+
+        <!-- 8. DECLARATION & SUBMISSION -->
+        <fieldset>
+            <legend><b>8. Acknowledgement &amp; Submission</b></legend>
+            <br>
+            <input type="checkbox" id="work_auth" name="work_auth" required>
+            <label for="work_auth">I confirm that I am legally authorized to work in this country for the full duration of the internship. <b>*</b></label><br><br>
+
+            <input type="checkbox" id="accuracy" name="accuracy" required>
+            <label for="accuracy">I certify that all statements made in this application are authentic and accurate. <b>*</b></label><br><br>
+
+            <input type="submit" value="Submit Internship Application">
+            <input type="reset" value="Clear All Fields">
+        </fieldset>
+
+    </form>
+
+    <hr>
+    <p><i>Engineering Recruiting &bull; Global Talent Acquisition &bull; Equal Opportunity Employer</i></p>
+
+</body>
+</html>

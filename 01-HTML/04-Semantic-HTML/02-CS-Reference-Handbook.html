@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Core: Data Structures & Algorithms Reference</title>
+</head>
+<body>
+    <header>
+        <h1>ALGORITHMS &amp; COMPLEXITY KNOWLEDGE BASE</h1>
+        <p><b>A Comprehensive Technical Guide for Computer Science Undergraduates</b></p>
+        <nav>
+            <ol>
+                <li><a href="#asymptotic">Asymptotic Notations</a></li>
+                <li><a href="#matrix">Algorithmic Complexity Table</a></li>
+                <li><a href="#binary-search">Implementation: Binary Search</a></li>
+                <li><a href="#quiz">Self-Assessment Quiz</a></li>
+            </ol>
+        </nav>
+    </header>
+    <hr>
+    <main>
+        <!-- ASYMPTOTIC NOTATION OVERVIEW -->
+        <section id="asymptotic">
+            <h2>1. Asymptotic Notations</h2>
+            <p>Asymptotic analysis defines the mathematical bounds of an algorithm's runtime relative to input growth rate <var>n</var>.</p>
+            <ul>
+                <li><b>Big-O (&Omicron;):</b> Tight asymptotic <i>upper bound</i>. Represents the worst-case ceiling: <var>f(n)</var> &le; <var>c &middot; g(n)</var>.</li>
+                <li><b>Big-Omega (&Omega;):</b> Asymptotic <i>lower bound</i>. Represents guaranteed best-case execution: <var>f(n)</var> &ge; <var>c &middot; g(n)</var>.</li>
+                <li><b>Big-Theta (&Theta;):</b> Asymptotically <i>tight bound</i> where upper and lower growth match.</li>
+            </ul>
+        </section>
+        <hr>
+
+        <!-- COMPLEXITY COMPARISON TABLE -->
+        <section id="matrix">
+            <h2>2. Comparative Complexity Matrix</h2>
+            <table border="1" cellspacing="0" cellpadding="7" width="100%">
+                <caption><b>Standard Searching &amp; Sorting Efficiencies</b></caption>
+                <thead>
+                    <tr align="center">
+                        <th rowspan="2">Algorithm</th>
+                        <th colspan="3">Time Complexity</th>
+                        <th rowspan="2">Auxiliary Space Complexity</th>
+                        <th rowspan="2">Stability</th>
+                    </tr>
+                    <tr align="center">
+                        <th>Best Case</th>
+                        <th>Average Case</th>
+                        <th>Worst Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align="center">
+                        <td align="left"><b>Binary Search</b></td>
+                        <td>&Theta;(1)</td>
+                        <td>&Theta;(log <var>n</var>)</td>
+                        <td>&Omicron;(log <var>n</var>)</td>
+                        <td>&Omicron;(1)</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr align="center">
+                        <td align="left"><b>Merge Sort</b></td>
+                        <td>&Omega;(<var>n</var> log <var>n</var>)</td>
+                        <td>&Theta;(<var>n</var> log <var>n</var>)</td>
+                        <td>&Omicron;(<var>n</var> log <var>n</var>)</td>
+                        <td>&Omicron;(<var>n</var>)</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr align="center">
+                        <td align="left"><b>Quick Sort (Lomuto)</b></td>
+                        <td>&Omega;(<var>n</var> log <var>n</var>)</td>
+                        <td>&Theta;(<var>n</var> log <var>n</var>)</td>
+                        <td>&Omicron;(<var>n</var><sup>2</sup>)</td>
+                        <td>&Omicron;(log <var>n</var>) stack</td>
+                        <td>No</td>
+                    </tr>
+                    <tr align="center">
+                        <td align="left"><b>Heap Sort</b></td>
+                        <td>&Omega;(<var>n</var> log <var>n</var>)</td>
+                        <td>&Theta;(<var>n</var> log <var>n</var>)</td>
+                        <td>&Omicron;(<var>n</var> log <var>n</var>)</td>
+                        <td>&Omicron;(1)</td>
+                        <td>No</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <hr>
+
+        <!-- CODE IMPLEMENTATION SECTION -->
+        <section id="binary-search">
+            <h2>3. Canonical Implementation: Binary Search (C++)</h2>
+            <article>
+                <p>Prerequisite: The underlying container must be indexed randomly and sorted in ascending order.</p>
+                <pre><code>int binarySearch(const int arr[], int low, int high, int key) {
+    while (low &lt;= high) {
+        int mid = low + (high - low) / 2; // Avoids integer overflow
+        if (arr[mid] == key)
+            return mid; // Target index discovered
+        else if (arr[mid] &lt; key)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return -1; // Target not present
+}</code></pre>
+                <p>Press <kbd>Ctrl</kbd> + <kbd>C</kbd> in your terminal to terminate continuous benchmarking scripts.</p>
+            </article>
+        </section>
+        <hr>
+
+        <!-- SELF-ASSESSMENT TEST FORM -->
+        <section id="quiz">
+            <h2>4. Algorithmic Knowledge Quiz</h2>
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend><b>Quick Concept Check</b></legend>
+                    <p><b>Q1: What is the worst-case time complexity of standard QuickSort with a deterministic first-element pivot?</b></p>
+                    <input type="radio" id="q1_a" name="q1" value="nlogn" required>
+                    <label for="q1_a">&Omicron;(<var>n</var> log <var>n</var>)</label><br>
+                    <input type="radio" id="q1_b" name="q1" value="n2">
+                    <label for="q1_b">&Omicron;(<var>n</var><sup>2</sup>)</label><br>
+                    <input type="radio" id="q1_c" name="q1" value="n">
+                    <label for="q1_c">&Omicron;(<var>n</var>)</label><br><br>
+
+                    <p><b>Q2: What is the minimum number of comparisons needed to find the maximum element in an unsorted array of size 16?</b></p>
+                    <label for="q2_ans">Enter integer answer:</label>
+                    <input type="number" id="q2_ans" name="q2_ans" min="1" max="100" placeholder="e.g., 15" required><br><br>
+
+                    <label for="feedback_note">Questions or doubts regarding these bounds?</label><br>
+                    <textarea id="feedback_note" name="feedback_note" rows="3" cols="45"></textarea><br><br>
+
+                    <input type="submit" value="Submit Answers">
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <hr>
+    <footer>
+        <p>Curated by Department of Computer Science &bull; Published under Academic Open Commons &bull; <a href="#">Back to Top</a></p>
+    </footer>
+</body>
+</html>

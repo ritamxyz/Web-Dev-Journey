@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Learning Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <h1>🎓 LearnHub</h1>
+        <hr>
+        <h2>Student Learning Dashboard</h2>
+        <p><strong>Welcome back, Ritam! 👋</strong></p>
+        <p>Your academic workspace for courses, assignments, resources, progress, and upcoming deadlines.</p>
+        <p><strong>Semester:</strong> 3</p>
+        <p><strong>Academic Year:</strong> 2026-27</p>
+        <p><strong>Department:</strong> Computer Science and Engineering</p>
+        <figure>
+            <img src="../Attachments/learnhub.png"
+                alt="Student using the LearnHub academic learning dashboard on a laptop" width="90%">
+            <figcaption>LearnHub — your academic workspace for learning and progress tracking.</figcaption>
+        </figure>
+    </header>
+    <hr>
+    <main>
+        <section class="academic-overview">
+            <h2>📊 Academic Overview</h2>
+            <p>Your current academic dashboard contains 6 active courses.</p>
+            <table border="2" cellspacing="2px" cellpadding="10px">
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Code</th>
+                        <th>Credits</th>
+                        <th>Faculty</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data Structures and Algorithms</td>
+                        <td>CSE-203</td>
+                        <td>4</td>
+                        <td>Dr. Neha Sharma</td>
+                        <td>🟢 Active</td>
+                    </tr>
+                    <tr>
+                        <td>Database Management Systems</td>
+                        <td>CSE-205</td>
+                        <td>4</td>
+                        <td>Prof. Daniel Roy</td>
+                        <td>🟢 Active</td>
+                    </tr>
+                    <tr>
+                        <td>Operating Systems</td>
+                        <td>CSE-207</td>
+                        <td>4</td>
+                        <td>Dr. Arjun Mehta</td>
+                        <td>🟢 Active</td>
+                    </tr>
+                    <tr>
+                        <td>Computer Networks</td>
+                        <td>CSE-209</td>
+                        <td>3</td>
+                        <td>Prof. Kavita Sen</td>
+                        <td>🟢 Active</td>
+                    </tr>
+                    <tr>
+                        <td>Engineering Mathematics III</td>
+                        <td>MAT-301</td>
+                        <td>4</td>
+                        <td>Dr. Ananya Bose</td>
+                        <td>🟢 Active</td>
+                    </tr>
+                    <tr>
+                        <td>Technical Communication</td>
+                        <td>HUM-203</td>
+                        <td>2</td>
+                        <td>Prof. Rahul Sen</td>
+                        <td>🟢 Active</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5"><strong>Total registered credits: 21</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        <hr>
+        <section class="Course-progress">
+            <h2>📚 Course Progress</h2>
+            <h3>🗂️ <u>Data Structures and Algorithms</u></h3>
+            <p><strong>Course Code:</strong> CSE-203</p>
+            <p><strong>Instructor:</strong> Dr. Neha Sharma</p>
+            <p><strong>Current Topic:</strong> Binary Search Trees</p>
+            <p><strong>Overall Course Progress:</strong></p>
+            <progress value="68" max="100" min="0">68%</progress><br>
+            <span>68% Complete</span>
+            <h3>Course Completion</h3>
+            <p>Display the current course completion as a measurement:</p>
+            <meter value="68" max="100" min="0" id="c-comptn">68%</meter>
+            <label for="c-comptn">68%</label>
+            <p><strong>Completed topics:</strong></p>
+            <ul>
+                <li>Complexity Analysis</li>
+                <li>Arrays</li>
+                <li>Linked Lists</li>
+                <li>Stacks</li>
+                <li>Queues</li>
+                <li>Trees</li>
+                <li>Binary Trees</li>
+                <li>Binary Search Trees</li>
+            </ul>
+            <p><strong>Remaining topics:</strong></p>
+            <ul>
+                <li>Heaps</li>
+                <li>Priority Queues</li>
+                <li>Searching Algorithms</li>
+                <li>Sorting Algorithms</li>
+                <li>Greedy Algorithms</li>
+                <li>Dynamic Programming</li>
+            </ul>
+            <h3>🗄️ <u>Database Management Systems</u></h3>
+            <p><strong>Course Code:</strong> CSE-205</p>
+            <p><strong>Instructor:</strong> Prof. Daniel Roy</p>
+            <p><strong>Current Topic:</strong> SQL Joins</p>
+            <p><strong>Overall Course Progress:</strong></p>
+            <progress max="100" min="0" value="54">54%</progress><br>
+            <span>54% Complete</span>
+            <p><strong>Completed topics:</strong></p>
+            <ul>
+                <li>Relational databases</li>
+                <li>Tables and relationships</li>
+                <li>Primary keys</li>
+                <li>Foreign keys</li>
+                <li>Basic SQL</li>
+                <li>Filtering</li>
+                <li>Sorting</li>
+                <li>Aggregate functions</li>
+            </ul>
+            <h3>🐧 <u>Operating Systems</u></h3>
+            <p><strong>Course Code:</strong> CSE-207</p>
+            <p><strong>Instructor:</strong> Dr. Arjun Mehta</p>
+            <p><strong>Current Topic:</strong> Process Scheduling</p>
+            <p><strong>Overall Course Progress:</strong></p>
+            <progress value="42" max="100" min="0">42%</progress><br>
+            <span>42% Complete</span>
+            <h3>📡 <u>Computer Networks</u></h3>
+            <p><strong>Course Code:</strong> CSE-209</p>
+            <p><strong>Instructor:</strong> Prof. Kavita Sen</p>
+            <p><strong>Current Topic:</strong> HTTP and Application Layer</p>
+            <p><strong>Overall Course Progress:</strong></p>
+            <progress value="61" max="100" min="0">61%</progress><br>
+            <span>61% Complete</span>
+        </section>
+        <hr>
+        <section class="stats">
+            <h2>📈 Learning Statistics</h2>
+            <p>Your current learning statistics:</p>
+            <p><strong>Study sessions completed:</strong> 42</p>
+            <p><strong>Assignments completed:</strong> 18</p>
+            <p><strong>Assignments pending:</strong> 4</p>
+            <p><strong>Practice problems solved:</strong> 137</p>
+            <p><strong>Current weekly study target:</strong> <time>12 hours</time></p>
+            <p><strong>Hours completed this week:</strong> <time>8.5 hours</time></p>
+        </section>
+        <hr>
+        <section class="weekly-goal">
+            <h2>🎯 Weekly Goal</h2>
+            <p>Your target for this week is 12 hours of focused study.</p>
+            <p><strong>Current progress:</strong></p>
+            <div>
+                <progress value="8.5" max="12" id="completed">8.5</progress><br>
+                <label for="completed">8.5 hours completed</label><br>
+                <progress value="3.5" max="12" id="remain">3.5</progress><br>
+                <label for="remain">3.5 hours remaining</label>
+            </div>
+            <p>🟢 Weekly Target</p>
+        </section>
+        <hr>
+        <section class="assignments">
+            <h2>📝 Upcoming Assignments</h2>
+            <table border="2px" cellspacing="5px" cellpadding="10px">
+                <thead>
+                    <tr>
+                        <th>Assignment</th>
+                        <th>Course</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Binary Search Tree Implementation</td>
+                        <td>CSE-203</td>
+                        <td>August 21, 2026</td>
+                        <td>🔴 Pending</td>
+                    </tr>
+                    <tr>
+                        <td>SQL Query Practice Set</td>
+                        <td>CSE-205</td>
+                        <td>August 23, 2026</td>
+                        <td>🟡 In Progress</td>
+                    </tr>
+                    <tr>
+                        <td>CPU Scheduling Worksheet</td>
+                        <td>CSE-207</td>
+                        <td>August 25, 2026</td>
+                        <td>🔴 Pending</td>
+                    </tr>
+                    <tr>
+                        <td>HTTP Analysis Report</td>
+                        <td>CSE-209</td>
+                        <td>August 27, 2026</td>
+                        <td>🟢 Submitted</td>
+                    </tr>
+                    <tr>
+                        <td>Mathematical Modeling Exercise</td>
+                        <td>MAT-301</td>
+                        <td>August 29, 2026</td>
+                        <td>🔴 Pending</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <hr>
+        <section class="next-deadline">
+            <h2>⏰ Next Deadline</h2>
+            <h3>Binary Search Tree Implementation</h3>
+            <p><strong>Course:</strong> Data Structures and Algorithms</p>
+            <p><strong>Assignment:</strong> Implement insertion, searching, and traversal operations for a Binary Search
+                Tree.</p>
+            <p><strong>Due:</strong><time> August 21, 2026 at 11:59 PM</time></p>
+            <p><strong>Submission:</strong> Online Learning Portal</p>
+            <p><strong>Status:</strong> Pending</p>
+        </section>
+        <hr>
+        <section class="study">
+            <h2>🧠 Today's Recommended Study</h2>
+            <h3><u>Data Structures and Algorithms</u></h3>
+            <p>Review:</p>
+            <ul>
+                <li>Binary Search Trees</li>
+                <li>Tree traversal</li>
+                <li>In-order traversal</li>
+                <li>Pre-order traversal</li>
+                <li>Post-order traversal</li>
+            </ul>
+            <h3><u>Practice Problem</u></h3>
+            <p>Given the following values:</p>
+            <pre>50, 30, 70, 20, 40, 60, 80</pre>
+            <p>Construct a Binary Search Tree and determine:</p>
+            <p><strong>In-order traversal</strong></p>
+            <p><strong>Pre-order traversal</strong></p>
+            <p><strong>Post-order traversal</strong></p>
+        </section>
+        <hr>
+        <section class="math-note">
+            <h2>🧮 Mathematical Note</h2>
+            <p>The current mathematics module is covering exponential and logarithmic functions.</p>
+            <p><strong>One of the basic relationships being studied is:</strong></p>
+            <pre>log<sub>2</sub>(8) = 3</pre>
+            <p><strong>Another example:</strong></p>
+            <pre>2<sup>3</sup> = 8</pre>
+            <p><strong>The course also introduces mathematical notation such as:</strong></p>
+            <pre>X<sup>2</sup> +  Y<sup>2</sup> =  Z<sup>2</sup></pre>
+            <p><strong>and scientific notation such as:</strong></p>
+            <pre>6.02 x 10<sup>23</sup></pre>
+        </section>
+        <hr>
+        <section class="chem-ref">
+            <h2>🧪 Chemistry Reference</h2>
+            <p>Although Computer Science is your primary department, the general science resource contains examples
+                involving molecular formulas.</p>
+            <p>Examples:</p>
+            <pre><strong>H<sub>2</sub>O</strong></pre>
+            <pre><strong>CO<sub>2</sub></strong></pre>
+            <pre><strong>CH<sub>4</sub></strong></pre>
+            <p>These examples are included in the interdisciplinary learning resource.</p>
+        </section>
+        <hr>
+        <section class="terminology">
+            <h2>📖 Academic Terminology</h2>
+            <dl>
+                <dt><strong><abbr title="Computer Science and Engineering">CSE</abbr></strong></dt>
+                <dd>Computer Science and Engineering</dd><br>
+
+                <dt><strong><abbr title="Database Management System">DBMS</abbr></strong></dt>
+                <dd>Database Management System</dd><br>
+
+                <dt><strong><abbr title="Operating System">OS</abbr></strong></dt>
+                <dd>Operating System</dd><br>
+
+                <dt><strong><abbr title="Hypertext Transfer Protocol">HTTP</abbr></strong></dt>
+                <dd>Hypertext Transfer Protocol</dd><br>
+
+                <dt><strong><abbr title="Structured Query Language">SQL</abbr></strong></dt>
+                <dd>Structured Query Language</dd><br>
+
+                <dt><strong><abbr title="Application Programming Interface">API</abbr></strong></dt>
+                <dd>Application Programming Interface</dd><br>
+
+                <dt><strong><abbr title="Grade Point Average">GPA</abbr></strong></dt>
+                <dd>Grade Point Average</dd><br>
+            </dl>
+        </section>
+        <hr>
+        <section class="updates">
+            <h2>📢 Academic Policy Update</h2>
+            <p>The university has updated its assignment submission policy.</p>
+            <p><strong>Previous submission window:</strong> <del>7 days after assignment publication</del></p>
+            <p><strong>New submission window:</strong> <ins>5 days after assignment publication</ins></p>
+            <p>The updated policy applies to assignments published from <strong><time>August 18, 2026</time></strong>
+                onward.</p>
+            <p><strong>Note:</strong> Previously submitted assignments are not affected by this change.</p>
+        </section>
+        <hr>
+        <section class="imp-info">
+            <h2>📌 Important Academic Information</h2>
+            <p>Students must submit assignments through the official LearnHub portal.</p>
+            <p>Assignments submitted through personal email, messaging applications, or physical copies will not be
+                considered valid submissions unless the instructor has specifically authorized an alternative submission
+                method.</p>
+        </section>
+        <hr>
+        <section class="storage-usage">
+            <h2>💾 Storage Usage</h2>
+            <p>Your LearnHub account currently contains:</p>
+            <meter id="storage" value="3.4" min="0" max="5">3.4 GB</meter>
+            <label for="storage"><strong>3.4 GB of 5 GB</strong></label>
+            <p>This includes:</p>
+            <ul>
+                <li>Lecture notes</li>
+                <li>Assignment submissions</li>
+                <li>Project files</li>
+                <li>Course resources</li>
+                <li>Downloaded materials</li>
+            </ul>
+            <p><strong>Storage Usage</strong></p>
+            <p>Represent the current storage usage as a measurement within its known range.</p>
+        </section>
+        <hr>
+        <section class="sem-perdormance">
+            <h2>🏆 Current Semester Performance</h2>
+            <p><strong>Current GPA:</strong></p>
+            <meter value="8.2" max="10">8.2</meter>
+            <span>8.2/10</span>
+            <p><strong>Previous Semester GPA:</strong></p>
+            <meter value="7.8" max="10">7.8</meter>
+            <span>7.8/10</span>
+            <p><strong>Improvement:</strong> +0.4</p>
+            <p><strong>Class attendance:</strong></p>
+            <meter value="91" max="100">91%</meter>
+            <span>91%</span>
+            <p><strong>Assignment completion:</strong></p>
+            <meter value="82" max="100">82%</meter>
+            <span>82%</span>
+            <p><strong>Practice completion:</strong></p>
+            <meter value="76" max="100">76%</meter>
+            <span>76</span>
+        </section>
+        <hr>
+        <section class="notifications">
+            <h2>🔔 Notifications</h2>
+            <h3>🔴 Assignment Deadline</h3>
+            <p>Your <strong>CSE-203 Binary Search Tree Implementation</strong> assignment is due on <time>August 21,
+                    2026</time>.</p>
+            <h3>🟡 Course Update</h3>
+            <p>A new lecture on <strong>SQL Joins</strong> has been uploaded to CSE-205.</p>
+            <h3>🟢 Assignment Evaluated</h3>
+            <p>Your <strong>HTTP Analysis Report</strong> has been evaluated.</p>
+            <meter value="18" min="0" max="20">18 / 20</meter>
+            <span>Score: 18 / 20</span>
+            <h3>🔵 System Maintenance</h3>
+            <p>LearnHub will undergo scheduled maintenance on <strong><time>August 24, 2026</time></strong> from
+                <strong>2:00 AM to 4:00 AM IST</strong>.
+            </p>
+        </section>
+        <hr>
+        <section class="academic-calendar">
+            <h2>📅 Academic Calendar</h2>
+            <table border="2px" cellspacing="5px" cellpadding="10px">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>August 18, 2026</td>
+                        <td>Semester classes continue</td>
+                    </tr>
+                    <tr>
+                        <td>August 21, 2026</td>
+                        <td>CSE-203 assignment deadline</td>
+                    </tr>
+                    <tr>
+                        <td>August 25, 2026</td>
+                        <td>CSE-207 worksheet deadline</td>
+                    </tr>
+                    <tr>
+                        <td>September 2, 2026</td>
+                        <td>Mid-semester examination schedule published</td>
+                    </tr>
+                    <tr>
+                        <td>September 14, 2026</td>
+                        <td>Mid-semester examinations begin</td>
+                    </tr>
+                    <tr>
+                        <td>September 25, 2026</td>
+                        <td>Mid-semester examinations end</td>
+                    </tr>
+                    <tr>
+                        <td>October 5, 2026</td>
+                        <td>Project evaluation begins</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <hr>
+        <section class="learning-resources">
+            <h2>🥞 Learning Resources</h2>
+            <h3><u>Data Structures</u></h3>
+            <ul>
+                <li>Course lecture notes</li>
+                <li>Binary Search Tree reference</li>
+                <li>Algorithm complexity guide</li>
+                <li>Practice problem collection</li>
+            </ul>
+            <h3><u>Web Development</u></h3>
+            <ul>
+                <li>HTML reference</li>
+                <li>CSS reference</li>
+                <li>JavaScript fundamentals</li>
+                <li>HTTP fundamentals</li>
+            </ul>
+            <h3><u>Database Systems</u></h3>
+            <ul>
+                <li>SQL reference</li>
+                <li>Database normalization guide</li>
+                <li>Relational database exercises</li>
+            </ul>
+            <figure>
+                <img src="../Attachments/binary-tree.png"
+                    alt="Binary search tree diagram showing root node and left and right subtrees" width="75%">
+                <figcaption>Binary Search Tree — an example of a non-linear data structure.</figcaption>
+            </figure>
+        </section>
+        <hr>
+        <section class="profile">
+            <h2>🧑‍💻 Student Profile</h2>
+            <p><strong>Name:</strong> Ritam Das</p>
+            <p><strong>Program:</strong> B.Tech in Computer Science and Engineering</p>
+            <p><strong>Semester:</strong> 3</p>
+            <p><strong>Student ID:</strong> LH26CSE104</p>
+            <p><strong>Academic Year:</strong> 2026-27</p>
+            <p><strong>Learning Goal:</strong></p>
+            <p>Build strong foundations in programming, data structures, web development, and computer science
+                fundamentals.</p>
+        </section>
+        <hr>
+        <section class="support">
+            <h2>📬 Academic Support</h2>
+            <p>For questions related to courses, assignments, or technical problems with LearnHub:</p>
+            <p>LearnHub Academic Support</p>
+            <p><strong>Email:</strong><a href="mailto:support@learnhub.example">support@learnhub.example</a></p>
+            <p><strong>Phone:</strong><a href="tel:+91-90000-12345">+91-90000-12345</a></p>
+            <p><strong>Office Hours:</strong> Monday-Friday, 9:00 AM-5:00 PM IST</p>
+        </section>
+        <hr>
+        <section class="additional-information">
+            <h2>ℹ️ Additional Information</h2>
+            <p><strong>Last dashboard update:</strong> <time datetime="2026-08-18T08:30:00+05:30">August 18, 2026 at
+                    8:30 AM IST</time></p>
+            <p><strong>Platform version:</strong> LearnHub 4.2</p>
+            <p><strong>Academic session:</strong> <time datetime="2026">2026</time>-<time datetime="2027">27</time></p>
+        </section>
+    </main>
+    <hr>
+    <footer>
+        <h2>📜 Footer</h2>
+        <p><strong>LearnHub — Student Learning Platform</strong></p>
+        <p>Learning. Practicing. Building. Growing. 🚀</p>
+        <p>&copy; 2026 LearnHub Academic Systems</p>
+        <small><strong>Privacy Policy</strong></small><br>
+        <small><strong>Terms of Use</strong></small><br>
+        <small><strong>Academic Support</strong></small>
+    </footer>
+</body>
+
+</html>

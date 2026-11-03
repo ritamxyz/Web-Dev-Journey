@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Project Feedback Form</title>
+</head>
+<body>
+    <h1>PROJECT EVALUATION &amp; FEEDBACK FORM</h1>
+    <p>A quick, concise review form covering the HTML tasks completed so far.</p>
+    <hr>
+
+    <form action="#" method="POST">
+
+        <!-- REVIEWER INFO -->
+        <fieldset>
+            <legend><b>1. Reviewer Information</b></legend>
+            <br>
+            <label for="reviewer_name">Name:</label><br>
+            <input type="text" id="reviewer_name" name="reviewer_name" placeholder="Your name or handle" required size="30"><br><br>
+
+            <label for="reviewer_role">Reviewing As:</label><br>
+            <select id="reviewer_role" name="reviewer_role" required>
+                <option value="">-- Select Role --</option>
+                <option value="self">Self-Review</option>
+                <option value="peer">Peer / Batchmate</option>
+                <option value="mentor">Mentor / Instructor</option>
+            </select>
+        </fieldset>
+        <br>
+
+        <!-- MODULE SELECTION & RATINGS -->
+        <fieldset>
+            <legend><b>2. Project Assessment</b></legend>
+            <br>
+            <label for="module">Select Work to Review <b>*</b>:</label><br>
+            <select id="module" name="module" required>
+                <option value="">-- Choose Completed Work --</option>
+                <option value="all">Entire Collection (All Exercises)</option>
+                <option value="mcu">MCU Avengers Dossier</option>
+                <option value="fruits">Fruit Nutrition Guide</option>
+                <option value="resume">Single-Page Resume</option>
+                <option value="math">Algebra &amp; Log Formula Reference</option>
+                <option value="weather">Kolkata Weather Card</option>
+                <option value="tables">Data Tables (Class Routine, Invoice, Scorecard)</option>
+                <option value="search">Multi-Engine Search Portal</option>
+                <option value="forms">Admission &amp; Internship Forms</option>
+            </select><br><br>
+
+            <label>Overall Quality Rating <b>*</b>:</label><br>
+            <input type="radio" id="rate5" name="rating" value="5" required>
+            <label for="rate5">5 - Excellent</label>&nbsp;&nbsp;
+            <input type="radio" id="rate4" name="rating" value="4">
+            <label for="rate4">4 - Good</label>&nbsp;&nbsp;
+            <input type="radio" id="rate3" name="rating" value="3">
+            <label for="rate3">3 - Satisfactory</label>&nbsp;&nbsp;
+            <input type="radio" id="rate2" name="rating" value="2">
+            <label for="rate2">2 - Needs Revision</label><br><br>
+
+            <label>Strongest Aspects Demonstrated:</label><br>
+            <input type="checkbox" id="skill_syntax" name="skills" value="syntax">
+            <label for="skill_syntax">Clean &amp; valid HTML syntax</label><br>
+            <input type="checkbox" id="skill_tables" name="skills" value="tables">
+            <label for="skill_tables">Advanced table logic (rowspan / colspan)</label><br>
+            <input type="checkbox" id="skill_forms" name="skills" value="forms">
+            <label for="skill_forms">Form input types &amp; attribute validation</label><br>
+            <input type="checkbox" id="skill_flow" name="skills" value="flow">
+            <label for="skill_flow">Content layout &amp; readability</label>
+        </fieldset>
+        <br>
+
+        <!-- REMARKS & SUBMIT -->
+        <fieldset>
+            <legend><b>3. Feedback &amp; Next Steps</b></legend>
+            <br>
+            <label for="comments">Specific Suggestions / What to Learn Next:</label><br>
+            <textarea id="comments" name="comments" rows="3" cols="45" placeholder="E.g., introduce CSS stylesheets, semantic layout tags (header, nav, main, footer)..."></textarea><br><br>
+
+            <input type="submit" value="Submit Feedback">
+            <input type="reset" value="Clear">
+        </fieldset>
+
+    </form>
+    <hr>
+    <p><i>Concise feedback form for tracking foundational web development milestones.</i></p>
+</body>
+</html>
