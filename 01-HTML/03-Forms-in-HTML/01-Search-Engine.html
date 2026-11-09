@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Engine Search Hub</title>
+</head>
+<body>
+    <h1>MULTI-ENGINE SEARCH PORTAL</h1>
+    <p>Select any search engine below, enter your query, and press search to open results directly in a new tab.</p>
+    <hr>
+
+    <!-- CATEGORY 1: GENERAL KNOWLEDGE & MEDIA -->
+    <h2>1. General Knowledge, Web &amp; Media</h2>
+    <table border="1" cellspacing="0" cellpadding="8" width="90%">
+        <tr>
+            <th width="20%">Platform</th>
+            <th width="80%">Search Form</th>
+        </tr>
+        <tr>
+            <td><b>Google</b></td>
+            <td>
+                <form action="https://www.google.com/search" method="GET" target="_blank">
+                    <input type="text" name="q" placeholder="Search Google..." size="45" required>
+                    <input type="submit" value="Search Google">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><b>YouTube</b></td>
+            <td>
+                <form action="https://www.youtube.com/results" method="GET" target="_blank">
+                    <input type="text" name="search_query" placeholder="Search videos on YouTube..." size="45" required>
+                    <input type="submit" value="Search YouTube">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Quora</b></td>
+            <td>
+                <form action="https://www.quora.com/search" method="GET" target="_blank">
+                    <input type="text" name="q" placeholder="Search questions on Quora..." size="45" required>
+                    <input type="submit" value="Search Quora">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Wikipedia</b></td>
+            <td>
+                <form action="https://en.wikipedia.org/wiki/Special:Search" method="GET" target="_blank">
+                    <input type="text" name="search" placeholder="Search Wikipedia articles..." size="45" required>
+                    <input type="submit" value="Search Wikipedia">
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+
+    <!-- CATEGORY 2: E-COMMERCE & SHOPPING -->
+    <h2>2. E-Commerce &amp; Shopping</h2>
+    <table border="1" cellspacing="0" cellpadding="8" width="90%">
+        <tr>
+            <th width="20%">Platform</th>
+            <th width="80%">Search Form</th>
+        </tr>
+        <tr>
+            <td><b>Flipkart</b></td>
+            <td>
+                <form action="https://www.flipkart.com/search" method="GET" target="_blank">
+                    <input type="text" name="q" placeholder="Search products on Flipkart..." size="45" required>
+                    <input type="submit" value="Search Flipkart">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Amazon India</b></td>
+            <td>
+                <form action="https://www.amazon.in/s" method="GET" target="_blank">
+                    <input type="text" name="k" placeholder="Search items on Amazon..." size="45" required>
+                    <input type="submit" value="Search Amazon">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><b>eBay</b></td>
+            <td>
+                <form action="https://www.ebay.com/sch/i.html" method="GET" target="_blank">
+                    <input type="text" name="_nkw" placeholder="Search deals on eBay..." size="45" required>
+                    <input type="submit" value="Search eBay">
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+
+    <!-- CATEGORY 3: PROGRAMMING & DEVELOPER TOOLS -->
+    <h2>3. Developer, Code &amp; Documentation</h2>
+    <table border="1" cellspacing="0" cellpadding="8" width="90%">
+        <tr>
+            <th width="20%">Platform</th>
+            <th width="80%">Search Form</th>
+        </tr>
+        <tr>
+            <td><b>GitHub</b></td>
+            <td>
+                <form action="https://github.com/search" method="GET" target="_blank">
+                    <input type="text" name="q" placeholder="Search repositories, code, topics..." size="45" required>
+                    <input type="submit" value="Search GitHub">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Stack Overflow</b></td>
+            <td>
+                <form action="https://stackoverflow.com/search" method="GET" target="_blank">
+                    <input type="text" name="q" placeholder="Search coding errors &amp; solutions..." size="45" required>
+                    <input type="submit" value="Search Stack Overflow">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><b>MDN Web Docs</b></td>
+            <td>
+                <form action="https://developer.mozilla.org/en-US/search" method="GET" target="_blank">
+                    <input type="text" name="q" placeholder="Search HTML, CSS, JavaScript APIs..." size="45" required>
+                    <input type="submit" value="Search MDN">
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <hr>
+    <p><i>Pure HTML portal utilizing native HTTP GET redirection. All queries open securely in a separate tab.</i></p>
+</body>
+</html>

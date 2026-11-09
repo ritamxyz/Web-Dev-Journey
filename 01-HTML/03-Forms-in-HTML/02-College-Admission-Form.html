@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Admission Registration Form 2026–2027</title>
+</head>
+<body>
+
+    <h1>COLLEGE ADMISSION REGISTRATION FORM (SESSION 2026–2027)</h1>
+    <p>Please fill out all mandatory fields marked with an asterisk (<b>*</b>) carefully before submitting your application.</p>
+    <hr>
+
+    <form action="#" method="POST" enctype="multipart/form-data">
+
+        <!-- 1. PERSONAL INFORMATION -->
+        <fieldset>
+            <legend><b>1. Personal Details</b></legend>
+            <br>
+            <label for="fullname">Full Name (as per 10th certificate) <b>*</b>:</label><br>
+            <input type="text" id="fullname" name="fullname" placeholder="e.g., Sonu Kumar" required size="40"><br><br>
+
+            <label for="dob">Date of Birth <b>*</b>:</label><br>
+            <input type="date" id="dob" name="dob" required><br><br>
+
+            <label>Gender <b>*</b>:</label><br>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label><br><br>
+
+            <label for="category">Social Category <b>*</b>:</label><br>
+            <select id="category" name="category" required>
+                <option value="">-- Select Category --</option>
+                <option value="general">General (Open)</option>
+                <option value="ews">General - EWS</option>
+                <option value="obc">OBC - Non Creamy Layer</option>
+                <option value="sc">Scheduled Caste (SC)</option>
+                <option value="st">Scheduled Tribe (ST)</option>
+            </select><br><br>
+
+            <label for="bloodgroup">Blood Group:</label><br>
+            <select id="bloodgroup" name="bloodgroup">
+                <option value="">-- Select Blood Group --</option>
+                <option value="a_pos">A+</option>
+                <option value="a_neg">A-</option>
+                <option value="b_pos">B+</option>
+                <option value="b_neg">B-</option>
+                <option value="o_pos">O+</option>
+                <option value="o_neg">O-</option>
+                <option value="ab_pos">AB+</option>
+                <option value="ab_neg">AB-</option>
+            </select><br><br>
+
+            <label for="fathername">Father's / Guardian's Name <b>*</b>:</label><br>
+            <input type="text" id="fathername" name="fathername" required size="40"><br><br>
+
+            <label for="mothername">Mother's Name <b>*</b>:</label><br>
+            <input type="text" id="mothername" name="mothername" required size="40"><br>
+        </fieldset>
+        <br>
+
+        <!-- 2. CONTACT INFORMATION -->
+        <fieldset>
+            <legend><b>2. Contact &amp; Residential Information</b></legend>
+            <br>
+            <label for="email">Candidate Email Address <b>*</b>:</label><br>
+            <input type="email" id="email" name="email" placeholder="student@example.com" required size="40"><br><br>
+
+            <label for="phone">Mobile Number <b>*</b>:</label><br>
+            <input type="tel" id="phone" name="phone" placeholder="10-digit number" pattern="[0-9]{10}" required><br><br>
+
+            <label for="altphone">Alternate Contact Number:</label><br>
+            <input type="tel" id="altphone" name="altphone" placeholder="Guardian's contact number"><br><br>
+
+            <label for="address">Permanent Address <b>*</b>:</label><br>
+            <textarea id="address" name="address" rows="4" cols="45" placeholder="House no, Street, Landmark..." required></textarea><br><br>
+
+            <label for="city">City / Town <b>*</b>:</label><br>
+            <input type="text" id="city" name="city" required><br><br>
+
+            <label for="state">State <b>*</b>:</label><br>
+            <input type="text" id="state" name="state" required><br><br>
+
+            <label for="pincode">PIN Code <b>*</b>:</label><br>
+            <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" placeholder="6-digit PIN" required><br>
+        </fieldset>
+        <br>
+
+        <!-- 3. ACADEMIC PROGRAM SELECTION -->
+        <fieldset>
+            <legend><b>3. Course Application &amp; Entrance Details</b></legend>
+            <br>
+            <label for="program">Program Applying For <b>*</b>:</label><br>
+            <select id="program" name="program" required>
+                <option value="">-- Choose Branch --</option>
+                <option value="btech_cse">B.Tech - Computer Science &amp; Engineering</option>
+                <option value="btech_it">B.Tech - Information Technology</option>
+                <option value="btech_ece">B.Tech - Electronics &amp; Communication</option>
+                <option value="btech_ee">B.Tech - Electrical Engineering</option>
+                <option value="btech_me">B.Tech - Mechanical Engineering</option>
+                <option value="btech_ce">B.Tech - Civil Engineering</option>
+            </select><br><br>
+
+            <label for="entrance_exam">Entrance Exam Appeared For:</label><br>
+            <select id="entrance_exam" name="entrance_exam">
+                <option value="">-- Select Exam --</option>
+                <option value="wbjee">WBJEE 2026</option>
+                <option value="jee_main">JEE (Main) 2026</option>
+                <option value="both">Both WBJEE &amp; JEE (Main)</option>
+            </select><br><br>
+
+            <label for="roll_no">Entrance Exam Roll No. / Application No.:</label><br>
+            <input type="text" id="roll_no" name="roll_no"><br><br>
+
+            <label for="rank">General Rank / Score:</label><br>
+            <input type="text" id="rank" name="rank" placeholder="e.g., GMR / CRL Rank"><br><br>
+
+            <label for="class10_marks">10th Standard Aggregate Percentage <b>*</b>:</label><br>
+            <input type="number" id="class10_marks" name="class10_marks" step="0.01" min="0" max="100" placeholder="e.g., 85.50" required><br><br>
+
+            <label for="class12_marks">12th Standard Aggregate Percentage <b>*</b>:</label><br>
+            <input type="number" id="class12_marks" name="class12_marks" step="0.01" min="0" max="100" placeholder="e.g., 78.20" required><br>
+        </fieldset>
+        <br>
+
+        <!-- 4. DOCUMENT UPLOADS -->
+        <fieldset>
+            <legend><b>4. Document Verification Uploads</b></legend>
+            <br>
+            <label for="photo">Passport-Sized Photograph (JPG/PNG, max 200KB) <b>*</b>:</label><br>
+            <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
+
+            <label for="signature">Candidate Signature (JPG/PNG, max 100KB) <b>*</b>:</label><br>
+            <input type="file" id="signature" name="signature" accept="image/*" required><br><br>
+
+            <label for="marksheet12">12th Marksheet (PDF only, max 2MB) <b>*</b>:</label><br>
+            <input type="file" id="marksheet12" name="marksheet12" accept=".pdf" required><br><br>
+
+            <label for="rankcard">Entrance Rank Card (PDF only, max 2MB):</label><br>
+            <input type="file" id="rankcard" name="rankcard" accept=".pdf"><br>
+        </fieldset>
+        <br>
+
+        <!-- 5. DECLARATION & SUBMISSION -->
+        <fieldset>
+            <legend><b>5. Candidate Undertaking</b></legend>
+            <br>
+            <input type="checkbox" id="declaration" name="declaration" required>
+            <label for="declaration">
+                I hereby declare that all the information furnished above is true, complete, and correct to the best of my knowledge. I understand that any false statement or omission will result in immediate cancellation of my admission.
+            </label>
+            <br><br>
+            <input type="submit" value="Submit Application">
+            <input type="reset" value="Reset Form">
+        </fieldset>
+
+    </form>
+
+    <br>
+    <hr>
+    <p><i>Admissions Office &bull; Academic Year 2026–2027 &bull; Helpdesk: admissions@college.edu.in</i></p>
+
+</body>
+</html>
