@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-HTML Curriculum &amp; Mini-Projects Showcase | Web-Dev-Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      /* Dark Theme Tokens (Default) */
+      --bg: #0b0f19;
+      --bg-surface: #111827;
+      --bg-card: rgba(17, 24, 39, 0.72);
+      --bg-card-hover: rgba(30, 41, 59, 0.85);
+      --bg-pill: rgba(56, 189, 248, 0.12);
+      --border: rgba(148, 163, 184, 0.12);
+      --border-hover: rgba(56, 189, 248, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.22);
+      --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --glow-bg-1: rgba(56, 189, 248, 0.08);
+      --glow-bg-2: rgba(129, 140, 248, 0.08);
+    }
+
+    [data-theme="light"] {
+      /* Light Theme Tokens */
+      --bg: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --bg-card-hover: #ffffff;
+      --bg-pill: rgba(14, 165, 233, 0.1);
+      --border: rgba(148, 163, 184, 0.22);
+      --border-hover: rgba(14, 165, 233, 0.5);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
+      --accent: #0284c7;
+      --accent-glow: rgba(14, 165, 233, 0.18);
+      --accent-gradient: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
+      --shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.08);
+      --glow-bg-1: rgba(14, 165, 233, 0.06);
+      --glow-bg-2: rgba(99, 102, 241, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding: 2.5rem 1.25rem 5rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      background-image:
+        radial-gradient(circle at 10% 8%, var(--glow-bg-1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 45%, var(--glow-bg-2) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    section {
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Top Utility Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding: 0.75rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-icon {
+      font-size: 1.15rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .theme-toggle {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.25s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: rotate(15deg);
+    }
+
+    .pdf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(239, 68, 68, 0.12);
+      color: #ef4444;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      transition: all 0.25s ease;
+    }
+
+    .pdf-link:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--bg-pill);
+      color: var(--accent);
+      padding: 0.35rem 0.95rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    h1 span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 680px;
+      margin: 0 auto 2rem;
+    }
+
+    /* Search & Filter Input */
+    .search-box {
+      max-width: 580px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1.25rem 0.85rem 3rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: var(--text-dim);
+    }
+
+    /* Section Headers */
+    .section-headline {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.25rem;
+      padding: 0 0.5rem;
+    }
+
+    .section-headline h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .slider-arrows {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .arrow-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    .arrow-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* Slideable Carousel Container */
+    .carousel-wrapper {
+      position: relative;
+      margin-bottom: 3.5rem;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 0.5rem 0.5rem 1.25rem 0.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .carousel-track::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 9999px;
+    }
+
+    /* Mini-Project Featured Showcase Cards */
+    .project-card {
+      flex: 0 0 380px;
+      scroll-snap-align: start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 640px) {
+      .project-card {
+        flex: 0 0 88vw;
+      }
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      background: var(--bg-card-hover);
+    }
+
+    .project-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+
+    .badge-health {
+      background: rgba(16, 185, 129, 0.12);
+      color: #10b981;
+    }
+
+    .badge-fest {
+      background: rgba(245, 158, 11, 0.12);
+      color: #f59e0b;
+    }
+
+    .badge-conf {
+      background: rgba(99, 102, 241, 0.12);
+      color: #6366f1;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .project-explain {
+      font-size: 0.885rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text-dim);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+
+    .launch-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .launch-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    /* Standard Module Slide Cards */
+    .curriculum-card {
+      flex: 0 0 290px;
+      scroll-snap-align: start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.15rem 1.25rem;
+      text-decoration: none;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(12px);
+      position: relative;
+    }
+
+    .curriculum-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      background: var(--bg-card-hover);
+      box-shadow: var(--shadow);
+    }
+
+    .curriculum-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .item-icon {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .item-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+    }
+
+    .curriculum-card:hover .item-name {
+      color: var(--accent);
+    }
+
+    .item-desc {
+      font-size: 0.785rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .curriculum-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+
+    .item-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+
+    .item-arrow {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      transition: all 0.2s ease;
+    }
+
+    .curriculum-card:hover .item-arrow {
+      color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    /* Empty state */
+    .no-results {
+      text-align: center;
+      padding: 3.5rem 1rem;
+      color: var(--text-muted);
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Top Utility Bar -->
+    <nav class="nav-bar">
+      <div class="brand">
+        <span class="brand-icon">🌐</span>
+        <span>Web-Dev-Journey / 01-HTML</span>
+      </div>
+      <div class="nav-actions">
+        <a href="HTML-Notes.pdf" target="_blank" class="pdf-link">
+          <span>📄</span> HTML-Notes.pdf
+        </a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme" title="Switch Light/Dark Mode">
+          🌙
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="hero-badge">
+        <span>⚡</span> Practical Frontend Foundation
+      </div>
+      <h1>HTML <span>Curriculum &amp; Capstones</span></h1>
+      <p class="hero-desc">
+        Explore interactive forms, structured data tables, native semantic architectures, and comprehensive capstone
+        applications.
+      </p>
+
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input"
+          placeholder="Search exercises, tables, forms, or capstones...">
+      </div>
+    </header>
+
+    <!-- SECTION: Capstone Mini-Projects (Explained & Slideable) -->
+    <section class="module-group" data-group="mini-projects">
+      <div class="section-headline">
+        <h2>
+          <span>🏆</span>
+          <span>Final Mini-Projects (Capstone)</span>
+        </h2>
+        <div class="slider-arrows">
+          <button class="arrow-btn" onclick="slideCarousel('projectsTrack', -380)">‹</button>
+          <button class="arrow-btn" onclick="slideCarousel('projectsTrack', 380)">›</button>
+        </div>
+      </div>
+
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="projectsTrack">
+
+          <!-- 01 MediCare Plus -->
+          <article class="project-card"
+            data-tags="medicare hospital health appointment patient doctor cardiology neurology">
+            <div>
+              <div class="project-badge badge-health">Healthcare System</div>
+              <h3 class="project-title">01. MediCare Plus</h3>
+              <p class="project-explain">
+                <strong>What it is:</strong> A complete, multi-specialty healthcare and hospital management portal[cite:
+                12].
+                <br><br>
+                <strong>Key Features Explained:</strong>
+                Includes multi-tier department listings (Cardiology, Neurology, Pediatrics), doctor consultation
+                schedules with real-time fee grids, diagnostic service breakdowns, and a validated multi-fieldset
+                patient appointment booking system with confirmation status meters[cite: 12].
+              </p>
+              <div class="project-tags">
+                <span class="tech-pill">&lt;form&gt; Validation</span>
+                <span class="tech-pill">&lt;datalist&gt;</span>
+                <span class="tech-pill">&lt;meter&gt; Rating</span>
+                <span class="tech-pill">&lt;details&gt; FAQ</span>
+              </div>
+            </div>
+            <a href="05-Final-Mini-Projects/01-MediCare-Plus.html" class="launch-btn">
+              Launch Portal ↗
+            </a>
+          </article>
+
+          <!-- 02 TechFest -->
+          <article class="project-card"
+            data-tags="techfest university college festival hackathon competition speakers workshop">
+            <div>
+              <div class="project-badge badge-fest">Campus Festival</div>
+              <h3 class="project-title">02. TechFest 2026</h3>
+              <p class="project-explain">
+                <strong>What it is:</strong> An official technology festival portal for Dholakpur Institute of
+                Technology[cite: 12].
+                <br><br>
+                <strong>Key Features Explained:</strong>
+                Features keynote speaker dossiers, chronological 12-hour technical event timetables, competition prize
+                pool trackers, student innovation showcases (CampusConnect, SecureVault, StudyFlow), embedded project
+                demo video players, and a full student registration workflow[cite: 12].
+              </p>
+              <div class="project-tags">
+                <span class="tech-pill">&lt;video&gt; Autoplay</span>
+                <span class="tech-pill">&lt;figure&gt; Showcase</span>
+                <span class="tech-pill">&lt;time&gt; Timetables</span>
+                <span class="tech-pill">Multi-Event Form</span>
+              </div>
+            </div>
+            <a href="05-Final-Mini-Projects/02-TechFest.html" class="launch-btn">
+              Explore TechFest ↗
+            </a>
+          </article>
+
+          <!-- 03 DevConnect -->
+          <article class="project-card"
+            data-tags="devconnect conference developer speakers networking workshop tech community">
+            <div>
+              <div class="project-badge badge-conf">Developer Conference</div>
+              <h3 class="project-title">03. DevConnect 2026</h3>
+              <p class="project-explain">
+                <strong>What it is:</strong> A comprehensive 2-day developer conference portal at Science City
+                Auditorium[cite: 12].
+                <br><br>
+                <strong>Key Features Explained:</strong>
+                Showcases 6 technical tracks, deep-dive speaker spotlight profiles, multi-track hourly schedules across
+                2 days, comprehensive venue transit directions (Metro, Bus, Rail), attendee code of conduct, and an
+                exhaustive registration form with track &amp; dietary selections[cite: 12].
+              </p>
+              <div class="project-tags">
+                <span class="tech-pill">2-Day Agenda Grid</span>
+                <span class="tech-pill">Multi-Fieldset Form</span>
+                <span class="tech-pill">&lt;article&gt; Semantic</span>
+                <span class="tech-pill">&lt;address&gt; Transit</span>
+              </div>
+            </div>
+            <a href="05-Final-Mini-Projects/03-DevConnect.html" class="launch-btn">
+              Visit DevConnect ↗
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 04-Semantic-HTML -->
+    <section class="module-group" data-group="semantic">
+      <div class="section-headline">
+        <h2>
+          <span>🏷️</span>
+          <span>04-Semantic-HTML Modules</span>
+        </h2>
+        <div class="slider-arrows">
+          <button class="arrow-btn" onclick="slideCarousel('trackSemantic', -300)">‹</button>
+          <button class="arrow-btn" onclick="slideCarousel('trackSemantic', 300)">›</button>
+        </div>
+      </div>
+
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="trackSemantic">
+          <a href="04-Semantic-HTML/01-Tech-Blog.html" class="curriculum-card"
+            data-tags="tech blog programming beginner coding articles">
+            <div class="curriculum-top">
+              <span class="item-icon">📰</span>
+              <div>
+                <h4 class="item-name">01-Tech-Blog.html</h4>
+                <p class="item-desc">Multi-article programming blog utilizing header, nav, main, article, and section
+                  elements[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Semantic Layout</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="04-Semantic-HTML/02-CS-Reference-Handbook.html" class="curriculum-card"
+            data-tags="cs handbook algorithms complexity asymptotic binary search">
+            <div class="curriculum-top">
+              <span class="item-icon">📚</span>
+              <div>
+                <h4 class="item-name">02-CS-Reference-Handbook.html</h4>
+                <p class="item-desc">Asymptotic bounds reference, complexity matrices, and embedded C++ binary search
+                  code blocks[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Algorithm Reference</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="04-Semantic-HTML/03-Student-Learning-Dashboard.html" class="curriculum-card"
+            data-tags="learnhub dashboard academic student portal progress meter">
+            <div class="curriculum-top">
+              <span class="item-icon">📊</span>
+              <div>
+                <h4 class="item-name">03-Student-Learning-Dashboard.html</h4>
+                <p class="item-desc">LearnHub workspace displaying semester course progress meters, GPA, and assignment
+                  deadlines[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Academic Portal</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 03-Forms-in-HTML -->
+    <section class="module-group" data-group="forms">
+      <div class="section-headline">
+        <h2>
+          <span>📝</span>
+          <span>03-Forms-in-HTML Modules</span>
+        </h2>
+        <div class="slider-arrows">
+          <button class="arrow-btn" onclick="slideCarousel('trackForms', -300)">‹</button>
+          <button class="arrow-btn" onclick="slideCarousel('trackForms', 300)">›</button>
+        </div>
+      </div>
+
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="trackForms">
+          <a href="03-Forms-in-HTML/01-Search-Engine.html" class="curriculum-card"
+            data-tags="search engine google youtube wikipedia quora github get redirection">
+            <div class="curriculum-top">
+              <span class="item-icon">🔍</span>
+              <div>
+                <h4 class="item-name">01-Search-Engine.html</h4>
+                <p class="item-desc">Multi-engine search portal redirecting queries natively via HTTP GET parameters to
+                  Google, YouTube &amp; GitHub[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Native GET Routing</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="03-Forms-in-HTML/02-College-Admission-Form.html" class="curriculum-card"
+            data-tags="admission college form btech engineering registration upload">
+            <div class="curriculum-top">
+              <span class="item-icon">🎓</span>
+              <div>
+                <h4 class="item-name">02-College-Admission-Form.html</h4>
+                <p class="item-desc">Comprehensive academic registration with file uploads for marksheets, identity, and
+                  branch choices[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Multi-Fieldset Form</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="03-Forms-in-HTML/03-Internship-Application-Form.html" class="curriculum-card"
+            data-tags="internship software engineer job application portfolio dsa">
+            <div class="curriculum-top">
+              <span class="item-icon">💻</span>
+              <div>
+                <h4 class="item-name">03-Internship-Application-Form.html</h4>
+                <p class="item-desc">Software engineering job application featuring proficiency ranges, tech stack
+                  checkboxes, and GitHub links[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Job Application</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="03-Forms-in-HTML/04-Feedback-Form.html" class="curriculum-card"
+            data-tags="feedback evaluation project review rating radio">
+            <div class="curriculum-top">
+              <span class="item-icon">⭐</span>
+              <div>
+                <h4 class="item-name">04-Feedback-Form.html</h4>
+                <p class="item-desc">Concise peer and mentor evaluation form with rating radios and modular assessment
+                  categories[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Review System</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 02-Table-in-HTML -->
+    <section class="module-group" data-group="tables">
+      <div class="section-headline">
+        <h2>
+          <span>📊</span>
+          <span>02-Table-in-HTML Modules</span>
+        </h2>
+        <div class="slider-arrows">
+          <button class="arrow-btn" onclick="slideCarousel('trackTables', -300)">‹</button>
+          <button class="arrow-btn" onclick="slideCarousel('trackTables', 300)">›</button>
+        </div>
+      </div>
+
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="trackTables">
+          <a href="02-Table-in-HTML/01-Student-Information-Table.html" class="curriculum-card"
+            data-tags="student information table address city rowspan colspan">
+            <div class="curriculum-top">
+              <span class="item-icon">👥</span>
+              <div>
+                <h4 class="item-name">01-Student-Information-Table.html</h4>
+                <p class="item-desc">Multi-span directory structure formatting names, residential cities, and housing
+                  addresses[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Rowspan Mastery</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="02-Table-in-HTML/02-College-Timetable.html" class="curriculum-card"
+            data-tags="routine timetable college btech cse weekly schedule labs">
+            <div class="curriculum-top">
+              <span class="item-icon">🗓️</span>
+              <div>
+                <h4 class="item-name">02-College-Timetable.html</h4>
+                <p class="item-desc">Complete B.Tech 1st Sem weekly academic routine with theory slots, lab group
+                  divisions, and faculty index[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Complex Timetable</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="02-Table-in-HTML/03-Invoice.html" class="curriculum-card"
+            data-tags="invoice gst tax technova billing receipt ecommerce">
+            <div class="curriculum-top">
+              <span class="item-icon">🧾</span>
+              <div>
+                <h4 class="item-name">03-Invoice.html</h4>
+                <p class="item-desc">Commercial tax invoice with GST breakdown, HSN/SAC numbers, subtotal calculation,
+                  and legal declarations[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">E-Commerce Invoice</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="02-Table-in-HTML/04-JEE-Score-Card.html" class="curriculum-card"
+            data-tags="jee scorecard nta main percentile rank air cutoffs">
+            <div class="curriculum-top">
+              <span class="item-icon">📈</span>
+              <div>
+                <h4 class="item-name">04-JEE-Score-Card.html</h4>
+                <p class="item-desc">Official NTA score format replicating multi-shift percentile normalizations, AIR
+                  rank lists, and cutoffs[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Official Scorecard</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 01-Basics-of-HTML -->
+    <section class="module-group" data-group="basics">
+      <div class="section-headline">
+        <h2>
+          <span>🌐</span>
+          <span>01-Basics-of-HTML Modules</span>
+        </h2>
+        <div class="slider-arrows">
+          <button class="arrow-btn" onclick="slideCarousel('trackBasics', -300)">‹</button>
+          <button class="arrow-btn" onclick="slideCarousel('trackBasics', 300)">›</button>
+        </div>
+      </div>
+
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="trackBasics">
+          <a href="01-Basics-of-HTML/01-Basic-Avengers-Webpage.html" class="curriculum-card"
+            data-tags="avengers mcu dossier ironman thor hulk captain america hawkeye widow">
+            <div class="curriculum-top">
+              <span class="item-icon">🦸</span>
+              <div>
+                <h4 class="item-name">01-Basic-Avengers-Webpage.html</h4>
+                <p class="item-desc">Expanded Marvel Cinematic Universe dossier detailing the Original Six Avengers with
+                  backstories and quotes[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Comprehensive Dossier</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="01-Basics-of-HTML/02-List-of-Fruits.html" class="curriculum-card"
+            data-tags="fruits nutrition vitamins health dietary fiber minerals">
+            <div class="curriculum-top">
+              <span class="item-icon">🍎</span>
+              <div>
+                <h4 class="item-name">02-List-of-Fruits.html</h4>
+                <p class="item-desc">Botanical profiles, vitamin facts, and dietary recommendations for common
+                  fruits[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Nutritional Reference</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="01-Basics-of-HTML/03-Basic-Portfolio-Page.html" class="curriculum-card"
+            data-tags="portfolio resume ritam education skills developer contact">
+            <div class="curriculum-top">
+              <span class="item-icon">💼</span>
+              <div>
+                <h4 class="item-name">03-Basic-Portfolio-Page.html</h4>
+                <p class="item-desc">Single-page personal developer resume highlighting academic performance, core
+                  stacks, and contact links[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Personal Portfolio</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="01-Basics-of-HTML/04-Basic-Math-Formulas.html" class="curriculum-card"
+            data-tags="math formulas algebra logarithms quadratic identities equations">
+            <div class="curriculum-top">
+              <span class="item-icon">🧮</span>
+              <div>
+                <h4 class="item-name">04-Basic-Math-Formulas.html</h4>
+                <p class="item-desc">Quick reference compilation of 25 essential algebraic identities, cubic expansions,
+                  and logarithm laws[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Formula Reference</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="01-Basics-of-HTML/05-About-Weather-Today.html" class="curriculum-card"
+            data-tags="weather kolkata temperature meteorological humidity report">
+            <div class="curriculum-top">
+              <span class="item-icon">☀️</span>
+              <div>
+                <h4 class="item-name">05-About-Weather-Today.html</h4>
+                <p class="item-desc">Meteorological bulletin for Kolkata detailing temperature, humidity index, day
+                  outlook, and sun advisory[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Weather Bulletin</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 00-Course-Practices -->
+    <section class="module-group" data-group="practices">
+      <div class="section-headline">
+        <h2>
+          <span>🧪</span>
+          <span>00-Course-Practices (10 Sets)</span>
+        </h2>
+        <div class="slider-arrows">
+          <button class="arrow-btn" onclick="slideCarousel('trackPractices', -300)">‹</button>
+          <button class="arrow-btn" onclick="slideCarousel('trackPractices', 300)">›</button>
+        </div>
+      </div>
+
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="trackPractices">
+          <a href="00-Course-Practices/practice-question-01.html" class="curriculum-card"
+            data-tags="practice 01 avengers headings h1 h2 bold">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-01.html</h4>
+                <p class="item-desc">Introduction to HTML heading hierarchy (&lt;h1&gt;, &lt;h2&gt;) and text weight
+                  bolding[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 01</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="00-Course-Practices/practice-question-02.html" class="curriculum-card"
+            data-tags="practice 02 lists fruits ul li image links">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-02.html</h4>
+                <p class="item-desc">Unordered list structures with nested anchor tags linking to local media
+                  attachments[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 02</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="00-Course-Practices/practice-question-03.html" class="curriculum-card"
+            data-tags="practice 03 daku mangal singh semantic profile resume cv">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-03.html</h4>
+                <p class="item-desc">Humorous character portfolio implementing semantic header, main, and section
+                  divisions[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 03</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="00-Course-Practices/practice-question-04.html" class="curriculum-card"
+            data-tags="practice 04 sub sup pythagoras glucose math chemistry">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-04.html</h4>
+                <p class="item-desc">Rendering geometric equations and molecular formulas using &lt;sup&gt; and
+                  &lt;sub&gt;[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 04</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="00-Course-Practices/practice-question-05.html" class="curriculum-card"
+            data-tags="practice 05 html entities cloud rain symbols">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-05.html</h4>
+                <p class="item-desc">Displaying reserved special symbols and cloud/umbrella icons using HTML numeric
+                  entities[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 05</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="00-Course-Practices/practice-question-06.html" class="curriculum-card"
+            data-tags="practice 06 food menu table thead tbody tfoot prices">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-06.html</h4>
+                <p class="item-desc">Food menu structured table with dual-currency columns and total summation
+                  footers[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 06</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="00-Course-Practices/practice-question-07.html" class="curriculum-card"
+            data-tags="practice 07 login form username password submit reset">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-07.html</h4>
+                <p class="item-desc">Foundational credential form with user/password input types and submission reset
+                  buttons[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 07</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="00-Course-Practices/practice-question-08.html" class="curriculum-card"
+            data-tags="practice 08 redirecting search google youtube get form">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-08.html</h4>
+                <p class="item-desc">Targeted forms executing query redirects directly to Google and YouTube search
+                  endpoints[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 08</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="00-Course-Practices/practice-question-09.html" class="curriculum-card"
+            data-tags="practice 09 registration form dropdown select checkbox">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-09.html</h4>
+                <p class="item-desc">Registration form implementing select dropdowns and agreement policy validation
+                  checkboxes[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 09</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+
+          <a href="00-Course-Practices/practice-question-10.html" class="curriculum-card"
+            data-tags="practice 10 feedback fieldset legend radio textarea rating">
+            <div class="curriculum-top">
+              <span class="item-icon">📄</span>
+              <div>
+                <h4 class="item-name">practice-question-10.html</h4>
+                <p class="item-desc">Structured feedback evaluation form utilizing fieldset legends, radio sets, and
+                  textareas[cite: 12].</p>
+              </div>
+            </div>
+            <div class="curriculum-bottom">
+              <span class="item-category">Exercise 10</span>
+              <span class="item-arrow">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empty Search State -->
+    <div id="noResults" class="no-results">
+      <p style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">No matching
+        modules or files found</p>
+      <p style="font-size: 0.9rem;">Try searching for keywords like "avengers", "invoice", "routine", "medicare",
+        "techfest", or "form".</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>Web Development Journey &bull; Authored by <a href="https://github.com/ritamxyz" target="_blank">ritamxyz</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // 1. Theme Toggle (Light / Dark)
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    // Load saved preference or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = (savedTheme === 'dark') ? '🌙' : '☀️';
+
+    themeToggle.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('data-theme');
+      const nextTheme = (current === 'dark') ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('theme', nextTheme);
+      themeToggle.textContent = (nextTheme === 'dark') ? '🌙' : '☀️';
+    });
+
+    // 2. Smooth Slide Navigation for Carousel Tracks
+    function slideCarousel(trackId, amount) {
+      const track = document.getElementById(trackId);
+      if (track) {
+        track.scrollBy({ left: amount, behavior: 'smooth' });
+      }
+    }
+
+    // 3. Live Search & Filter
+    const searchInput = document.getElementById('searchInput');
+    const moduleGroups = document.querySelectorAll('.module-group');
+    const noResults = document.getElementById('noResults');
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      let totalVisibleGroups = 0;
+
+      moduleGroups.forEach(group => {
+        const cards = group.querySelectorAll('.curriculum-card, .project-card');
+        let hasMatches = false;
+
+        cards.forEach(card => {
+          const tags = card.getAttribute('data-tags') || '';
+          const cardText = card.textContent.toLowerCase();
+
+          if (tags.toLowerCase().includes(term) || cardText.includes(term)) {
+            card.style.display = 'flex';
+            hasMatches = true;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (hasMatches) {
+          group.style.display = 'block';
+          totalVisibleGroups++;
+        } else {
+          group.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = (totalVisibleGroups === 0) ? 'block' : 'none';
+    });
+  </script>
+</body>
+
+</html>
