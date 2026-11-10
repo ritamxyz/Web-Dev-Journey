@@ -1,0 +1,89 @@
+/* 1. Nav Links */
+nav a:hover {
+    color: #f59e0b;
+    text-decoration: none;
+    background-color: #0f172a;
+}
+
+nav a:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #dc2626;
+}
+
+/* 2. Thruster Button */
+.btn-fire:hover {
+    background-color: #ea580c;
+    border-color: #facc15;
+}
+
+.btn-fire:active {
+    background-color: #18181b;
+    color: #38bdf8;
+}
+
+/* 3. Inputs & Forms */
+#pilot-code:focus,
+#status-note:focus {
+    border-color: #38bdf8;
+    background-color: #000;
+    outline: none;
+}
+
+input::placeholder {
+    font-style: italic;
+    color: #64748b;
+}
+
+#ai-link:checked+label {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+/* 4. Suits List */
+ul li:first-child {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+ul li:last-child {
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+ul li:nth-child(even) {
+    background-color: #232936;
+}
+
+ul li:hover {
+    background-color: #450a0a;
+}
+
+/* 5. Typography, Selection & Quotes */
+.intel-text::first-letter {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ef4444;
+}
+
+.intel-text::first-line {
+    font-weight: bold;
+    color: #fef08a;
+}
+
+::selection {
+    background-color: #f59e0b;
+    color: #000;
+}
+
+.stark-quote::before {
+    content: '“';
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+.stark-quote::after {
+    content: '”';
+    color: #f59e0b;
+    font-weight: bold;
+}

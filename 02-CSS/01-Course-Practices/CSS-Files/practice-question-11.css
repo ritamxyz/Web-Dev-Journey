@@ -1,0 +1,27 @@
+#static {
+    background-color: coral;
+    position: static;
+    top: 100px;
+    left: 100px;
+}
+
+#relative {
+    background-color: darkolivegreen;
+    position: relative;
+    top: 100px;
+    left: 100px;
+}
+
+#absolute {
+    position: absolute;
+    background-color: mediumpurple;
+    top: 38px;
+    left: 50px;
+}
+
+#fixed {
+    background-color: sienna;
+    position: fixed;
+    top: 38px;
+    left: 248px;
+}

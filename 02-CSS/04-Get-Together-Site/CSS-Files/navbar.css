@@ -1,0 +1,94 @@
+/* In CSS-Files/navbar.css */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+    padding: 0.85rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    background-color: rgba(26, 5, 50, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header span {
+    color: white;
+}
+
+header i {
+    color: blueviolet;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+header .btns {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+header .btns a {
+    padding: 0.5rem 1rem;
+    border: 1px solid blueviolet;
+    background-color: blueviolet;
+    border-radius: 0.75rem;
+    transition: 0.5s ease-in-out 0.15s;
+}
+
+header .btns a:hover {
+    box-shadow: 0px 2px 4px gray;
+    background-color: gainsboro;
+    color: blueviolet;
+}
+
+#login-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    transition: 0.5s ease-in-out 0.15s;
+}
+
+#login-btn:hover {
+    background-color: gainsboro;
+    color: blueviolet;
+    border: 1px solid blueviolet;
+}
+
+#menu {
+    position: absolute;
+    right: 50000px;
+}
+
+.menu-icon i {
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+header li {
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: 0.4s linear 0.1s;
+    opacity: 0.75;
+}
+
+header li:hover {
+    border-bottom: 2px solid blueviolet;
+    opacity: 1;
+}

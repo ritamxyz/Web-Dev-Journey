@@ -1,0 +1,247 @@
+.about-us a {
+    background-color: blueviolet;
+    color: white;
+    padding: 0.5rem 1rem;
+    max-width: fit-content;
+    border-radius: 1rem;
+    transition: 0.5s ease-in-out 0.15s;
+    border: 1px solid blueviolet;
+    margin-top: 0.5rem;
+}
+
+.about-us a:hover {
+    box-shadow: 0px 2px 4px gray;
+    background-color: gainsboro;
+    color: blueviolet;
+}
+
+#features .header,
+#events .events-header {
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    header {
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+    #nav-bar {
+        width: 40vw;
+    }
+
+    #features .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    #events .events-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+
+    .points {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        justify-content: space-between;
+    }
+
+    .end {
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: space-between;
+        padding: 0 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 768px) {
+    #top>nav {
+        display: none;
+    }
+
+    #top .menu-icon {
+        display: inline-block;
+    }
+
+    header {
+        padding: 1rem 1.25rem;
+    }
+
+    #nav-bar {
+        width: 55vw;
+    }
+
+    #hero {
+        min-height: 100vh;
+        height: auto;
+        padding: 5.5rem 1.5rem 2.5rem 1.5rem;
+    }
+
+    #hero h1 {
+        font-size: 2rem;
+    }
+
+    #hero>p {
+        max-width: 100%;
+    }
+
+    #hero .stats {
+        flex-wrap: wrap;
+        gap: 1.25rem;
+    }
+
+    #features .header h2,
+    #events .events-header h2,
+    #academics .main-content h2,
+    .about-us h2 {
+        font-size: 1.75rem;
+    }
+
+    #academics {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        margin: 0.5rem;
+    }
+
+    #academics .main-content p {
+        max-width: 100%;
+    }
+
+    .main-content+div {
+        min-height: 260px;
+        margin: 0 1rem 1rem 1rem;
+    }
+
+    #events .events-container {
+        grid-template-columns: 1fr;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #about {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        margin: 0.5rem;
+    }
+
+    .campus {
+        min-height: 260px;
+        margin: 1rem 1rem 0 1rem;
+        order: 2;
+    }
+
+    #about .about-us {
+        order: 1;
+    }
+
+    .about-us p {
+        max-width: 100%;
+    }
+
+    .points {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .footer-content {
+        gap: 2rem;
+        margin: 0 1.25rem;
+    }
+
+    .end {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.75rem 1rem;
+    }
+
+    header .logo {
+        font-size: 1.2rem;
+    }
+
+    header .btns {
+        gap: 0.5rem;
+    }
+
+    header .btns a {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.85rem;
+    }
+
+    #nav-bar {
+        width: 75vw;
+    }
+
+    #hero {
+        padding: 5.25rem 1rem 2rem 1rem;
+    }
+
+    #hero>span {
+        font-size: 0.8rem;
+    }
+
+    #hero h1 {
+        font-size: 1.65rem;
+    }
+
+    .hero-btns {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .hero-btns a {
+        text-align: center;
+        flex: 1 1 auto;
+    }
+
+    #features {
+        padding: 1rem 0.5rem;
+    }
+
+    #features .cards-container {
+        grid-template-columns: 1fr;
+        margin: 0.5rem;
+    }
+
+    #events {
+        padding: 1rem 0.5rem;
+    }
+
+    .events-container .event-cards {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .events-container .date {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.75rem;
+    }
+
+    .events-container .date br {
+        display: none;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .boxs p {
+        max-width: 100%;
+    }
+}

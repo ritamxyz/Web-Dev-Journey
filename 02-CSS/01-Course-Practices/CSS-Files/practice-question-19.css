@@ -1,0 +1,64 @@
+@keyframes animationBabua {
+    from {
+        width: 0px;
+        height: 0px;
+        display: none;
+        font-size: 0px;
+        color: black;
+    }
+
+    to {
+        width: 250px;
+        height: 100px;
+        font-weight: bold;
+        font-size: 2rem;
+        display: block;
+    }
+}
+
+@keyframes borderAnimate {
+    0% {
+        border-top: 5px solid goldenrod;
+        border-right: 5px solid black;
+        border-bottom: 5px solid black;
+        border-left: 5px solid black;
+    }
+
+    25% {
+        border-top: 5px solid black;
+        border-right: 5px solid tomato;
+        border-bottom: 5px solid black;
+        border-left: 5px solid black;
+    }
+
+    50% {
+        border-top: 5px solid black;
+        border-right: 5px solid black;
+        border-bottom: 5px solid green;
+        border-left: 5px solid black;
+    }
+
+    75% {
+        border-top: 5px solid black;
+        border-right: 5px solid black;
+        border-bottom: 5px solid black;
+        border-left: 5px solid blue;
+    }
+    100%{
+        border-top: 5px solid goldenrod;
+        border-right: 5px solid black;
+        border-bottom: 5px solid black;
+        border-left: 5px solid black;
+    }
+}
+
+div {
+    /* animation-name: animationBabua;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal; */
+    animation: animationBabua 4s linear 0s 1 normal, borderAnimate 4s linear 4s infinite normal;
+    /* Using Short Form */
+}
