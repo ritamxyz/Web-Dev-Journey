@@ -6,7 +6,7 @@ It includes **20 course practice exercises**, **4 independent projects**, and a 
 
 ## 🌐 Live Preview
 
-**CSS Portfolio:** [Add complete CSS repository live link here](#)
+**CSS Portfolio:** [Complete CSS live link here](https://css-ritamxyz.netlify.app/)
 
 ## 📁 Folder Structure
 
