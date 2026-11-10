@@ -30,8 +30,7 @@ It includes **20 course practice exercises**, **4 independent projects**, and a 
 │
 ├── 05-Spotify-Clone-v1.0/
 │
-├── CSS-Notes/
-│
+├── CSS-Notes.pdf
 ├── README.md
 ├── index.html
 ├── style.css
