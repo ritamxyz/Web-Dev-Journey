@@ -1,0 +1,111 @@
+#container1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#green1 {
+    flex-basis: 350px;
+}
+
+#container2 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#green2 {
+    flex-basis: 350px;
+}
+
+#container3>div {
+    height: 50px;
+    width: 100px;
+}
+
+#container3 {
+    display: flex;
+    flex-direction: row;
+}
+
+#green3 {
+    flex-grow: 1;
+    min-width: 300px;
+}
+
+#violet1 {
+    flex-grow: 2;
+}
+
+#container4>div {
+    height: 25px;
+    width: 100px;
+}
+
+#container4 {
+    display: flex;
+    flex-direction: column;
+}
+
+#green4 {
+    flex-grow: 1;
+}
+
+#violet2 {
+    flex-grow: 2;
+    max-height: 70px;
+}
+
+#container5>div {
+    height: 50px;
+    width: 250px;
+}
+
+#container5 {
+    display: flex;
+    flex-direction: row;
+}
+
+#green5 {
+    flex-shrink: 3;
+}
+
+#violet3 {
+    flex-shrink: 5;
+}
+
+#container6>div {
+    height: 50px;
+    width: 200px;
+}
+
+#container6 {
+    display: flex;
+    flex-direction: column;
+}
+
+#green6 {
+    flex-shrink: 2;
+}
+
+#violet4 {
+    flex-shrink: 3;
+}
+
+#container7>div {
+    height: 50px;
+    width: 200px;
+}
+
+#container7 {
+    display: flex;
+    flex-direction: row;
+}
+
+#green7 {
+    flex: 2 2 350px;
+}
+
+#violet5 {
+    flex-shrink: 5;
+}

@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    background-color: black;
+    color: aliceblue;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: fadeOut 0.5s ease-in-out forwards;
+    animation-delay: 3s;
+}
+
+#spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid black;
+    border-top: 5px solid brown;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+#main-content {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+    animation-delay: 3.5s;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+h1,
+h2 {
+    padding: 10px;
+}
+
+h3,
+p {
+    padding: 5px;
+}
+
+h2 i {
+    color: brown;
+}
+
+h1 span,
+h3 span {
+    color: burlywood;
+}
+
+h4 {
+    text-align: right;
+    color: #3c787e;
+}
+
+#pets {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.15);
+    height: 480px;
+    width: 320px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: 1s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.025);
+    box-shadow: 0px 2px 5px burlywood;
+}
+
+.card img {
+    height: 150px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+@media (max-width: 690px) {
+    #pets {
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,89 @@
+#container1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#container2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#container3 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+}
+
+#container4 {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+
+#container5 {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+}
+
+#container6>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container7>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container8>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container9>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container7>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container10>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container6 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#container7 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#container8 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+}
+
+#container9 {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+}
+
+#container10 {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap-reverse;
+}

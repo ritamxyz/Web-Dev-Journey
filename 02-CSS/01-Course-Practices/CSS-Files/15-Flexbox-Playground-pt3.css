@@ -1,0 +1,176 @@
+#container1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+#container2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+#container3 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#container4>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container5>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container6>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container4 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+#container5 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+#container6 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#container7 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#container8 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+#container9 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-end;
+}
+
+#container10 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+#container11>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container12>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container13>div {
+    height: 75px;
+    width: 200px;
+}
+
+#container11 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+#container12 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-end;
+}
+
+#container13 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+#container14 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: baseline;
+}
+
+#container15 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+#container16 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+#container17 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+}
+
+#container18 {
+    display: flex;
+    flex-direction: row;
+}
+
+#container19 {
+    display: flex;
+    flex-direction: row;
+}
+
+#container20 {
+    display: flex;
+    flex-direction: row;
+}
+
+#akela1 {
+    align-self: flex-start;
+}
+
+#akela2 {
+    align-self: center;
+}
+
+#akela3 {
+    align-self: flex-end;
+}

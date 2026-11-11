@@ -1,0 +1,59 @@
+html {
+    height: 2000px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    background-color: black;
+}
+
+h1 {
+    background-color: brown;
+    color: aliceblue;
+}
+
+h2 {
+    background-color: brown;
+    color: aliceblue;
+}
+
+#face {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: orange;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+}
+
+.eyes {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+#l-eye {
+    position: fixed;
+    top: 120px;
+    left: 100px;
+}
+
+#r-eye {
+    position: fixed;
+    top: 120px;
+    left: 200px;
+}
+
+#smile {
+    width: 150px;
+    height: 50px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: brown;
+    position: fixed;
+    top: 215px;
+    left: 100px;
+}
