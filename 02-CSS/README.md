@@ -2,11 +2,11 @@
 
 This directory documents my CSS learning journey, covering everything from basic styling and selectors to advanced layouts, responsive design, animations, and practical web development projects.
 
-It includes **20 course practice exercises**, **4 independent projects**, and a dedicated collection of CSS notes, built to apply and strengthen CSS concepts through hands-on implementation.
+It includes **24 course practice exercises**, **4 independent projects**, and a dedicated collection of CSS notes, built to apply and strengthen CSS concepts through hands-on implementation.
 
 ## 🌐 Live Preview
 
-**CSS Portfolio:** [Complete CSS live link here](https://css-ritamxyz.netlify.app/)
+**CSS Portfolio:** [Complete CSS Live Preview](https://css-ritamxyz.netlify.app/)
 
 ## 📁 Folder Structure
 
@@ -41,7 +41,7 @@ It includes **20 course practice exercises**, **4 independent projects**, and a 
 
 ## 📚 01. Course Practices
 
-A collection of **20 practice questions** completed alongside the CSS course. These exercises focus on understanding individual CSS properties, selectors, layout systems, and their practical applications.
+A collection of **24 practice exercises** completed alongside the CSS course. These exercises focus on understanding individual CSS properties, selectors, layout systems, and their practical applications.
 
 ### 🧠 Concepts & Topics Practised
 
@@ -53,22 +53,28 @@ A collection of **20 practice questions** completed alongside the CSS course. Th
 | Q7–Q8 | Box model, dimensions, borders and traffic-light implementation |
 | Q9–Q10 | Transforms, transitions, hover effects and card styling |
 | Q11–Q12 | Positioning: static, relative, absolute and fixed |
-| Q13–Q14 | Flexbox and responsive navigation bars |
-| Q15–Q18 | CSS Grid, track sizing, placement, spanning and alignment |
-| Q19–Q20 | CSS animations, keyframes and a practical pet adoption page |
+| Q13–Q16 | Flexbox, layout arrangements and practical playground exercises |
+| Q17 | Number Pad layout |
+| Q18 | Responsive navigation bar |
+| Q19–Q22 | CSS Grid, track sizing, placement, spanning and alignment |
+| Q23 | CSS animations and keyframes |
+| Q24 | Practical Pet Adoption page |
 
 ### 🛠️ Practical Learning
 
-The exercises move from basic styling to combining multiple concepts in complete UI components.
+The exercises move from basic styling to combining multiple concepts in practical UI components.
 
 Some practical implementations include:
 
 - 🚦 Traffic light using CSS styling and positioning.
 - 🃏 Styled cards with hover effects and transitions.
+- 😊 Smiley face using CSS properties.
 - 📐 Positioning exercises using different CSS position values.
 - 🧭 Responsive navigation bar with dropdowns.
-- 🧩 Grid-based layouts with item placement and alignment.
-- 🐾 Pet adoption page combining cards, responsive layouts and animations.
+- 🔢 Number Pad layout.
+- 🧩 Flexbox and Grid playground exercises.
+- 🐾 Pet Adoption page combining cards, layouts and styling.
+- ✨ CSS animations using keyframes.
 
 The practice collection is organized into separate HTML and CSS files, with attachments included where applicable.
 
@@ -83,10 +89,10 @@ Four independent projects built to apply CSS concepts beyond individual exercise
 A modern café landing page featuring a structured homepage with multiple content sections. The project focuses on creating a consistent visual layout, organizing content, and styling different sections of a business website.
 
 **✨ Implemented Sections**
-- Navigation bar and hero section
-- Drinks and speciality menu
-- About section and opening hours
-- Contact information and footer
+- Navigation bar and hero section.
+- Drinks and speciality menu.
+- About section and opening hours.
+- Contact information and footer.
 
 **🎯 CSS & Layout Learning**
 - Flexbox and Grid for arranging page sections and content.
@@ -126,11 +132,11 @@ A small JavaScript helper handles sidebar interactions, while CSS controls the v
 A multi-page campus platform interface designed around college-related information and student-facing features. This project focuses on building a consistent design across multiple pages and organizing CSS into separate stylesheets.
 
 **✨ Implemented Pages & Sections**
-- Homepage
-- Features and academics
-- Events and about sections
-- Login and signup pages
-- Shared navigation and footer
+- Homepage.
+- Features and academics.
+- Events and about sections.
+- Login and signup pages.
+- Shared navigation and footer.
 
 **🎯 CSS & Layout Learning**
 - Modular CSS organization across multiple pages.
@@ -158,15 +164,15 @@ A desktop-focused visual recreation of Spotify's interface. The project focuses 
 - Fixed bottom music player.
 
 **🎯 CSS & Layout Learning**
-- Flexbox for arranging the sidebar, content and player.
+- Flexbox for arranging interface elements.
 - Fixed and sticky positioning for persistent interface elements.
-- Scrollable content areas and overflow handling.
+- Scrollable main content area and overflow handling.
 - Card-based layouts for playlists and podcasts.
 - Hover transitions for interactive visual feedback.
 - Custom range slider styling.
 - Scroll-driven CSS animations.
 
-*Note: This is a visual UI clone. Actual music playback functionality is not implemented.*
+*Note: This is a desktop-only visual UI clone. It does not include responsive mobile layouts or actual music playback functionality. Future versions will introduce JavaScript and additional web technologies to extend its functionality.*
 
 🔗 **Live Preview:** [Spotify Clone v1.0](https://spotifyclone-v1.netlify.app/)
 
