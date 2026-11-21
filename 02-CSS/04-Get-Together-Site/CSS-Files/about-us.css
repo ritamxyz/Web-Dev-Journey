@@ -1,0 +1,74 @@
+#about {
+    margin: 1rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+#about .about-us {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.campus {
+    background-image: url("../Assets/contact-us.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-position: top right;
+    background-position: 20% 80%;
+    margin: 2rem;
+    border-radius: 0.85rem;
+}
+
+.about-us>span {
+    padding: 0.5rem 1rem;
+    background-color: rgba(137, 43, 226, 0.2);
+    color: blueviolet;
+    font-weight: bold;
+    border-radius: 1.25rem;
+    max-width: fit-content;
+}
+
+.about-us h2>span {
+    color: blueviolet;
+}
+
+.about-us p {
+    max-width: 325px;
+    opacity: 0.75;
+}
+
+.points {
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+
+.point {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.point>i {
+    color: blueviolet;
+    font-size: 1.5rem;
+}
+
+.point div {
+    display: flex;
+    flex-direction: column;
+}
+
+.point h3 {
+    font-size: 0.9rem;
+}
+
+.point p {
+    font-size: 0.75rem;
+}

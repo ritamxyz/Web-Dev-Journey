@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Class and Element</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+            line-height: 1.25;
+            letter-spacing: 1.25px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h3,
+        h3+p {
+            text-align: center;
+        }
+
+        h1 {
+            background-color: rgba(165, 42, 42, 0.83);
+        }
+
+        h2 {
+            background-color: rgba(0, 128, 128, 0.755);
+        }
+
+        h3 {
+            background-color: rgba(102, 51, 153, 0.756);
+        }
+
+        h3+p {
+            background-color: rgb(255, 223, 181);
+        }
+
+        .hover div>p {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CSS: Pseudo Class and Pseudo Element</h1>
+    </header>
+    <hr>
+    <main>
+        <article id="pseudo-class">
+            <h2><u>Pseudo Class</u></h2>
+            <p>- Denoted by the ":" (colon) symbol.</p>
+            <p>- It applies CSS properties based on the current state of an element.</p>
+            <section class="hover">
+                <h3>selector:hover{}</h3>
+                <p>- The following styles are applied when the mouse pointer hovers over the element.</p>
+                <div>
+                    <p><b>div</b></p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum possimus omnis asperiores odit
+                        sequi,
+                        architecto excepturi amet neque autem minus, tempora accusantium quibusdam pariatur provident et
+                        officiis
+                        illum consectetur doloribus ex ut cum rerum iusto saepe? Minima maxime suscipit voluptate autem
+                        pariatur
+                        in
+                        similique fugiat iste adipisci accusamus, facilis, temporibus nihil aperiam? Architecto pariatur
+                        hic
+                        nam,
+                        non quisquam facere quas corporis temporibus quia dolore! Quam magnam aperiam necessitatibus
+                        tempora!
+                    </p>
+                </div>
+            </section>
+            <section class="active">
+                <h3>selector:active{}</h3>
+                <p>- The following styles are applied while the element is active (being clicked).</p>
+                <div>
+                    <button>Button 1</button>
+                    <button>Button 2</button>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque explicabo recusandae laboriosam
+                        delectus
+                        quisquam placeat obcaecati quaerat nihil blanditiis. Voluptatem ex voluptas ratione porro
+                        corrupti!
+                    </p>
+                    <a href="#">A clickable link</a>
+                </div>
+            </section>
+            <section class="checked">
+                <h3>selector:checked{}</h3>
+                <p>- The following styles are applied when a checkbox or radio button is checked.</p>
+                <div>
+                    <p><b>Things you like-</b></p>
+                    <input type="checkbox" name="ice" id="ice">
+                    <label for="ice">Ice-cream</label>
+                    <br>
+                    <input type="checkbox" name="coke" id="coke">
+                    <label for="coke">Coke</label>
+                    <br>
+                    <input type="checkbox" name="choco" id="choco">
+                    <label for="choco">Chocolate</label>
+                    <br>
+                    <p><b>Your Background-</b></p>
+                    <input type="radio" name="bg" id="pcm">
+                    <label for="pcm">PCM</label>
+                    <br>
+                    <input type="radio" name="bg" id="pcb">
+                    <label for="pcb">PCB</label>
+                    <br>
+                    <input type="radio" name="bg" id="other">
+                    <label for="other">Others</label>
+                </div>
+            </section>
+            <section class="nth">
+                <h3>selector:nth-of-type{}</h3>
+                <p>- The following styles are applied to odd-numbered paragraphs.</p>
+                <div>
+                    <p>Paragraph 1</p>
+                    <p>Paragraph 2</p>
+                    <p>Paragraph 3</p>
+                    <p>Paragraph 4</p>
+                    <p>Paragraph 5</p>
+                </div>
+            </section>
+        </article>
+        <hr>
+        <article id="pseudo-element">
+            <h2><u>Pseudo Element</u></h2>
+            <p>- Denoted by "::" sign/ symbol.</p>
+            <p>- It applies CSS properties to a specific part of a selected element.</p>
+            <section class="first-l">
+                <h3>selector::first-letter{}</h3>
+                <p>- The following styles are applied to the first letter of the selected element.</p>
+                <div>
+                    <p>Paragraph 1</p>
+                    <p>Paragraph 2</p>
+                    <p>Paragraph 3</p>
+                </div>
+            </section>
+            <section class="first-line">
+                <h3>selector::first-line{}</h3>
+                <p>- The following styles are applied to the first line of the selected element.</p>
+                <div>
+                    <p> Paragraph 1<br>
+                        Paragraph 2<br>
+                        Paragraph 3</p>
+                </div>
+            </section>
+            <section class="selection">
+                <h3>selector::selection{}</h3>
+                <p>- The following styles are applied when you select text (for example, while copying).</p>
+                <div>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias asperiores incidunt, ex
+                        consequuntur, debitis temporibus vel quidem perferendis numquam dolorum ullam laborum rerum fuga
+                        placeat fugit enim sequi repudiandae delectus vero? Illo incidunt excepturi laudantium dicta
+                        commodi maxime in ut reprehenderit quibusdam ratione, vero ducimus natus earum soluta repellat
+                        modi temporibus id? Pariatur velit sapiente architecto molestias ut rerum consequuntur doloribus
+                        saepe. Harum saepe velit modi amet laboriosam. Alias aliquam quas maxime quod error sunt soluta
+                        deserunt perferendis, repellat rerum non distinctio praesentium ex id laborum, perspiciatis odit
+                        cumque ipsa. Veritatis placeat voluptatem necessitatibus cum cupiditate illum quidem laborum
+                        numquam.</p>
+                </div>
+            </section>
+        </article>
+    </main>
+    <hr>
+    <footer>
+        <p>Thanks for visiting &hearts;</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,416 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.main {
+    height: 88vh;
+    margin: 0.25rem;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.sidebar {
+    background-color: black;
+    height: 88vh;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.main-content {
+    background-color: #121212;
+    height: 88vh;
+    width: 75vw;
+    border-radius: 0.5rem;
+    overflow: auto;
+    flex: 1;
+}
+
+.music-player {
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    height: 10vh;
+    width: 100vw;
+}
+
+.nav-options {
+    flex: 1;
+    background-color: #121212;
+    border-radius: 0.5rem;
+}
+
+#home {
+    font-weight: 700;
+}
+
+#home:hover {
+    cursor: pointer;
+}
+
+.nav-options ul {
+    padding: 0.75rem 1rem;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-options li {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.nav-options #search {
+    background-color: #121212;
+    color: white;
+    border: 0px;
+    width: 7.5rem;
+}
+
+.nav-options #search:focus {
+    outline: none;
+    color: white;
+}
+
+.nav-options label i {
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.nav-options label i:hover {
+    opacity: 1;
+}
+
+.library {
+    flex: 5;
+    background-color: #121212;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.logo img {
+    height: 1rem;
+    width: 1rem;
+}
+
+.top-libry {
+    font-size: smaller;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 0.75rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.top-libry img,
+.top-libry span,
+.top-libry i {
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.top-libry img:hover,
+.top-libry span:hover,
+.top-libry i:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.box {
+    background-color: #232323;
+    padding: 0.75rem;
+    padding-right: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.box:hover {
+    box-shadow: 2px 2px 4px white;
+}
+
+.box p {
+    padding: 0;
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.box button {
+    font-weight: 800;
+    width: fit-content;
+    color: black;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.6rem;
+    margin-top: 0.25rem;
+}
+
+.box button:hover {
+    cursor: pointer;
+}
+
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    animation: change-nav-bg linear both;
+    animation-timeline: scroll();
+    animation-range: 0px 100px;
+    z-index: 999;
+}
+
+@keyframes change-nav-bg {
+    to {
+        background-color: #232323;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.sticky-nav .icons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sticky-nav .icons i {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: black;
+    box-shadow: 0px 2px 2px black;
+    padding: 0.3rem;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.sticky-nav .icons i:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+.sticky-nav .nav-options {
+    display: flex;
+    align-items: center;
+}
+
+.sticky-nav button {
+    width: fit-content;
+    border-radius: 1rem;
+    border: none;
+    padding: 0.25rem 0.4rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.sticky-nav button:hover {
+    cursor: pointer;
+}
+
+#install {
+    background-color: black;
+    color: white;
+}
+
+.nav-options>i {
+    background-color: black;
+    color: white;
+}
+
+.main-content h2 {
+    padding: 0.5rem;
+}
+
+.card-container {
+    margin: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    height: 32vh;
+    width: 18vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #181818;
+    border-radius: 0.75rem;
+    transition: background-color 0.2s ease;
+}
+
+.card:hover {
+    cursor: pointer;
+    background-color: #232323;
+}
+
+.card img {
+    height: 24vh;
+    width: 16vw;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+}
+
+.card h3 {
+    padding: 0px 0.5rem;
+    margin: 0;
+    font-size: 0.7rem;
+}
+
+.card p {
+    padding: 0px 0.5rem;
+    margin: 0;
+    font-size: 0.5rem;
+    font-weight: 500;
+    opacity: 0.5;
+}
+
+.slider {
+    display: none;
+}
+
+.footer {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line {
+    height: 100px;
+    width: 80%;
+    border-top: 2px solid white;
+    opacity: 0.5;
+}
+
+.music-player {
+    display: flex;
+}
+
+.album {
+    width: 25vw;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.album #poster{
+    width: 8vw;
+    height: 8vh;
+    border-radius: 0.5rem;
+    margin-left: 0.75rem;
+}
+.album-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+h4{
+    padding: 0;
+    margin: 0;
+    font-size: 0.6rem;
+}
+.album-info p{
+    padding: 0;
+    margin: 0;
+    font-size: 0.5rem;
+}
+.player {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.ctrls {
+    width: 25vw;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.ctrls img{
+    height: auto;
+    width: 1.5rem;
+}
+
+.ctrl-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ctrl-icons img {
+    height: 0.75rem;
+    width: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.ctrl-icons img:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#play {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.progress-bar span {
+    opacity: 0.75;
+    font-size: 0.8rem;
+}
+
+.progress-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bar {
+    width: 30vw;
+    appearance: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#bar::-webkit-slider-runnable-track {
+    background-color: #ddd;
+    border-radius: 2rem;
+    height: 0.25rem;
+}
+
+#bar::-webkit-slider-thumb {
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: #1bd760;
+    margin-top: -0.35rem;
+}

@@ -1,1158 +1,525 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>01-HTML Curriculum &amp; Mini-Projects Showcase | Web-Dev-Journey</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      /* Dark Theme Tokens (Default) */
-      --bg: #0b0f19;
-      --bg-surface: #111827;
-      --bg-card: rgba(17, 24, 39, 0.72);
-      --bg-card-hover: rgba(30, 41, 59, 0.85);
-      --bg-pill: rgba(56, 189, 248, 0.12);
-      --border: rgba(148, 163, 184, 0.12);
-      --border-hover: rgba(56, 189, 248, 0.4);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.22);
-      --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-      --glow-bg-1: rgba(56, 189, 248, 0.08);
-      --glow-bg-2: rgba(129, 140, 248, 0.08);
-    }
-
-    [data-theme="light"] {
-      /* Light Theme Tokens */
-      --bg: #f8fafc;
-      --bg-surface: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.88);
-      --bg-card-hover: #ffffff;
-      --bg-pill: rgba(14, 165, 233, 0.1);
-      --border: rgba(148, 163, 184, 0.22);
-      --border-hover: rgba(14, 165, 233, 0.5);
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --text-dim: #94a3b8;
-      --accent: #0284c7;
-      --accent-glow: rgba(14, 165, 233, 0.18);
-      --accent-gradient: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
-      --shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.08);
-      --glow-bg-1: rgba(14, 165, 233, 0.06);
-      --glow-bg-2: rgba(99, 102, 241, 0.05);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg);
-      color: var(--text-main);
-      min-height: 100vh;
-      line-height: 1.6;
-      padding: 2.5rem 1.25rem 5rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      background-image: 
-        radial-gradient(circle at 10% 8%, var(--glow-bg-1) 0%, transparent 40%),
-        radial-gradient(circle at 90% 45%, var(--glow-bg-2) 0%, transparent 45%);
-      background-attachment: fixed;
-    }
-
-    section{
-        overflow: hidden;
-    }
-
-    .container {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
-    /* Top Utility Bar */
-    .nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2.5rem;
-      padding: 0.75rem 1.25rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 9999px;
-      backdrop-filter: blur(14px);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: -0.01em;
-    }
-
-    .brand-icon {
-      font-size: 1.15rem;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .theme-toggle {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      transition: all 0.25s ease;
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--accent);
-      transform: rotate(15deg);
-    }
-
-    .pdf-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: rgba(239, 68, 68, 0.12);
-      color: #ef4444;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border: 1px solid rgba(239, 68, 68, 0.25);
-      transition: all 0.25s ease;
-    }
-
-    .pdf-link:hover {
-      background: #ef4444;
-      color: #fff;
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: var(--bg-pill);
-      color: var(--accent);
-      padding: 0.35rem 0.95rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      border: 1px solid var(--border);
-      margin-bottom: 1.25rem;
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -0.035em;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-
-    h1 span {
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-desc {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      max-width: 680px;
-      margin: 0 auto 2rem;
-    }
-
-    /* Search & Filter Input */
-    .search-box {
-      max-width: 580px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 0.85rem 1.25rem 0.85rem 3rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      font-size: 0.95rem;
-      color: var(--text-main);
-      outline: none;
-      transition: all 0.25s ease;
-      backdrop-filter: blur(12px);
-    }
-
-    .search-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 1.1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1rem;
-      color: var(--text-dim);
-    }
-
-    /* Section Headers */
-    .section-headline {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 1.25rem;
-      padding: 0 0.5rem;
-    }
-
-    .section-headline h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .slider-arrows {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .arrow-btn {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 0.95rem;
-      user-select: none;
-    }
-
-    .arrow-btn:hover {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
-
-    /* Slideable Carousel Container */
-    .carousel-wrapper {
-      position: relative;
-      margin-bottom: 3.5rem;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 1.25rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      padding: 0.5rem 0.5rem 1.25rem 0.5rem;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
-    }
-
-    .carousel-track::-webkit-scrollbar {
-      height: 6px;
-    }
-    .carousel-track::-webkit-scrollbar-thumb {
-      background: var(--border);
-      border-radius: 9999px;
-    }
-
-    /* Mini-Project Featured Showcase Cards */
-    .project-card {
-      flex: 0 0 380px;
-      scroll-snap-align: start;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s ease;
-      backdrop-filter: blur(14px);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    @media (max-width: 640px) {
-      .project-card {
-        flex: 0 0 88vw;
-      }
-    }
-
-    .project-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      background: var(--bg-card-hover);
-    }
-
-    .project-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.25rem 0.65rem;
-      border-radius: 6px;
-      width: fit-content;
-      margin-bottom: 1rem;
-    }
-
-    .badge-health { background: rgba(16, 185, 129, 0.12); color: #10b981; }
-    .badge-fest { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
-    .badge-conf { background: rgba(99, 102, 241, 0.12); color: #6366f1; }
-
-    .project-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--text-main);
-    }
-
-    .project-explain {
-      font-size: 0.885rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .tech-pill {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      background: rgba(148, 163, 184, 0.1);
-      color: var(--text-dim);
-      padding: 0.2rem 0.55rem;
-      border-radius: 6px;
-    }
-
-    .launch-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      padding: 0.75rem;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: all 0.2s ease;
-    }
-
-    .launch-btn:hover {
-      opacity: 0.92;
-      transform: translateY(-1px);
-    }
-
-    /* Standard Module Slide Cards */
-    .curriculum-card {
-      flex: 0 0 290px;
-      scroll-snap-align: start;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.15rem 1.25rem;
-      text-decoration: none;
-      color: var(--text-main);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(12px);
-      position: relative;
-    }
-
-    .curriculum-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-3px);
-      background: var(--bg-card-hover);
-      box-shadow: var(--shadow);
-    }
-
-    .curriculum-top {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.85rem;
-      margin-bottom: 0.85rem;
-    }
-
-    .item-icon {
-      font-size: 1.35rem;
-      line-height: 1;
-    }
-
-    .item-name {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--text-main);
-      letter-spacing: -0.01em;
-      line-height: 1.3;
-      margin-bottom: 0.25rem;
-    }
-
-    .curriculum-card:hover .item-name {
-      color: var(--accent);
-    }
-
-    .item-desc {
-      font-size: 0.785rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
-
-    .curriculum-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--border);
-      margin-top: 0.5rem;
-    }
-
-    .item-category {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--text-dim);
-    }
-
-    .item-arrow {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      transition: all 0.2s ease;
-    }
-
-    .curriculum-card:hover .item-arrow {
-      color: var(--accent);
-      transform: translateX(3px);
-    }
-
-    /* Empty state */
-    .no-results {
-      text-align: center;
-      padding: 3.5rem 1rem;
-      color: var(--text-muted);
-      display: none;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 4.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.85rem;
-      color: var(--text-dim);
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-HTML — Fundamentals to Implementations | Ritam Das</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_960_720.png">
 </head>
+
 <body>
+    <!-- Mobile Navigation Backdrop Overlay -->
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
-  <div class="container">
-    
-    <!-- Top Utility Bar -->
-    <nav class="nav-bar">
-      <div class="brand">
-        <span class="brand-icon">🌐</span>
-        <span>Web-Dev-Journey / 01-HTML</span>
-      </div>
-      <div class="nav-actions">
-        <a href="HTML-Notes.pdf" target="_blank" class="pdf-link">
-          <span>📄</span> HTML-Notes.pdf
-        </a>
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme" title="Switch Light/Dark Mode">
-          🌙
-        </button>
-      </div>
-    </nav>
+    <!-- Sticky Navigation Header -->
+    <header class="site-header" id="top">
+        <div class="header-container">
+            <a href="#top" class="brand">
+                <span class="brand-badge">01</span>
+                <span class="brand-text">HTML <span class="brand-muted">/ Repository Hub</span></span>
+            </a>
 
-    <!-- Hero Header -->
-    <header class="hero">
-      <div class="hero-badge">
-        <span>⚡</span> Practical Frontend Foundation
-      </div>
-      <h1>HTML <span>Curriculum &amp; Capstones</span></h1>
-      <p class="hero-desc">
-        Explore interactive forms, structured data tables, native semantic architectures, and comprehensive capstone applications.
-      </p>
+            <!-- Navigation Links -->
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <div class="mobile-nav-header">
+                    <span class="mobile-nav-title">Menu Navigation</span>
+                    <button class="mobile-close-btn" id="mobile-nav-close" aria-label="Close menu">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="#overview" class="nav-link">Overview</a></li>
+                    <li><a href="#mini-projects" class="nav-link">Mini-Projects</a></li>
+                    <li><a href="#documents" class="nav-link">29 Documents</a></li>
+                    <li><a href="#notes-section" class="nav-link">HTML Notes</a></li>
+                    <li><a href="#structure" class="nav-link">Structure</a></li>
+                </ul>
+                <div class="mobile-nav-actions">
+                    <a href="./HTML-Notes.pdf" download="HTML-Notes.pdf" class="btn btn-sm btn-emerald pdf-download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> Download Notes (PDF)
+                    </a>
+                </div>
+            </nav>
 
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search exercises, tables, forms, or capstones...">
-      </div>
+            <div class="header-actions">
+                <a href="./HTML-Notes.pdf" download="HTML-Notes.pdf" class="btn btn-sm btn-emerald desktop-only pdf-download-btn">
+                    <i class="fa-solid fa-file-pdf"></i> Download Notes (PDF)
+                </a>
+                <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Open mobile navigation" aria-expanded="false" aria-controls="main-nav">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <!-- SECTION: Capstone Mini-Projects (Explained & Slideable) -->
-    <section class="module-group" data-group="mini-projects">
-      <div class="section-headline">
-        <h2>
-          <span>🏆</span>
-          <span>Final Mini-Projects (Capstone)</span>
-        </h2>
-        <div class="slider-arrows">
-          <button class="arrow-btn" onclick="slideCarousel('projectsTrack', -380)">‹</button>
-          <button class="arrow-btn" onclick="slideCarousel('projectsTrack', 380)">›</button>
-        </div>
-      </div>
+    <main>
+        <!-- Hero Section -->
+        <section id="overview" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="status-pill">
+                        <span class="status-dot"></span>
+                        <span>Milestone Completed • Progressed to 02-CSS</span>
+                    </div>
 
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="projectsTrack">
+                    <h1 class="hero-title">
+                        HTML Foundations to <span class="gradient-text">Practical Implementations</span>
+                    </h1>
 
-          <!-- 01 MediCare Plus -->
-          <article class="project-card" data-tags="medicare hospital health appointment patient doctor cardiology neurology">
-            <div>
-              <div class="project-badge badge-health">Healthcare System</div>
-              <h3 class="project-title">01. MediCare Plus</h3>
-              <p class="project-explain">
-                <strong>What it is:</strong> A complete, multi-specialty healthcare and hospital management portal[cite: 12].
-                <br><br>
-                <strong>Key Features Explained:</strong>
-                Includes multi-tier department listings (Cardiology, Neurology, Pediatrics), doctor consultation schedules with real-time fee grids, diagnostic service breakdowns, and a validated multi-fieldset patient appointment booking system with confirmation status meters[cite: 12].
-              </p>
-              <div class="project-tags">
-                <span class="tech-pill">&lt;form&gt; Validation</span>
-                <span class="tech-pill">&lt;datalist&gt;</span>
-                <span class="tech-pill">&lt;meter&gt; Rating</span>
-                <span class="tech-pill">&lt;details&gt; FAQ</span>
-              </div>
-            </div>
-            <a href="05-Final-Mini-Projects/01-MediCare-Plus/index.html" class="launch-btn">
-              Launch Portal ↗
-            </a>
-          </article>
+                    <p class="hero-description">
+                        A structured archive documenting my HTML learning journey: starting from core lecture exercises to comprehensive data tables, complex input forms, semantic layouts, and 3 full-scale mini-projects.
+                    </p>
 
-          <!-- 02 TechFest -->
-          <article class="project-card" data-tags="techfest university college festival hackathon competition speakers workshop">
-            <div>
-              <div class="project-badge badge-fest">Campus Festival</div>
-              <h3 class="project-title">02. TechFest 2026</h3>
-              <p class="project-explain">
-                <strong>What it is:</strong> An official technology festival portal for Dholakpur Institute of Technology[cite: 12].
-                <br><br>
-                <strong>Key Features Explained:</strong>
-                Features keynote speaker dossiers, chronological 12-hour technical event timetables, competition prize pool trackers, student innovation showcases (CampusConnect, SecureVault, StudyFlow), embedded project demo video players, and a full student registration workflow[cite: 12].
-              </p>
-              <div class="project-tags">
-                <span class="tech-pill">&lt;video&gt; Autoplay</span>
-                <span class="tech-pill">&lt;figure&gt; Showcase</span>
-                <span class="tech-pill">&lt;time&gt; Timetables</span>
-                <span class="tech-pill">Multi-Event Form</span>
-              </div>
-            </div>
-            <a href="05-Final-Mini-Projects/02-TechFest/index.html" class="launch-btn">
-              Explore TechFest ↗
-            </a>
-          </article>
+                    <div class="hero-cta-group">
+                        <a href="#mini-projects" class="btn btn-primary">
+                            <i class="fa-solid fa-rocket"></i> Explore 3 Mini-Projects
+                        </a>
+                        <a href="#documents" class="btn btn-secondary">
+                            <i class="fa-solid fa-code"></i> Browse 29 Webpages
+                        </a>
+                        <a href="./HTML-Notes.pdf" download="HTML-Notes.pdf" class="btn btn-emerald pdf-download-btn" id="hero-download-btn">
+                            <i class="fa-solid fa-file-pdf"></i> Download HTML Notes (PDF)
+                        </a>
+                    </div>
+                </div>
 
-          <!-- 03 DevConnect -->
-          <article class="project-card" data-tags="devconnect conference developer speakers networking workshop tech community">
-            <div>
-              <div class="project-badge badge-conf">Developer Conference</div>
-              <h3 class="project-title">03. DevConnect 2026</h3>
-              <p class="project-explain">
-                <strong>What it is:</strong> A comprehensive 2-day developer conference portal at Science City Auditorium[cite: 12].
-                <br><br>
-                <strong>Key Features Explained:</strong>
-                Showcases 6 technical tracks, deep-dive speaker spotlight profiles, multi-track hourly schedules across 2 days, comprehensive venue transit directions (Metro, Bus, Rail), attendee code of conduct, and an exhaustive registration form with track &amp; dietary selections[cite: 12].
-              </p>
-              <div class="project-tags">
-                <span class="tech-pill">2-Day Agenda Grid</span>
-                <span class="tech-pill">Multi-Fieldset Form</span>
-                <span class="tech-pill">&lt;article&gt; Semantic</span>
-                <span class="tech-pill">&lt;address&gt; Transit</span>
-              </div>
+                <!-- Metrics Strip -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-solid fa-file-code"></i></div>
+                        <div class="metric-data">
+                            <span class="metric-number">29</span>
+                            <span class="metric-label">Total HTML Documents</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div class="metric-data">
+                            <span class="metric-number">10</span>
+                            <span class="metric-label">Course Practice Labs</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-solid fa-cubes"></i></div>
+                        <div class="metric-data">
+                            <span class="metric-number">16</span>
+                            <span class="metric-label">Independent Webpages</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <div class="metric-data">
+                            <span class="metric-number">03</span>
+                            <span class="metric-label">Complete Mini-Projects</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a href="05-Final-Mini-Projects/03-DevConnect/index.html" class="launch-btn">
-              Visit DevConnect ↗
-            </a>
-          </article>
+        </section>
 
-        </div>
-      </div>
-    </section>
+        <!-- 05. Final Mini-Projects Section -->
+        <section id="mini-projects" class="content-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-kicker">🚀 Production Builds</span>
+                    <h2 class="section-heading">05. Final Mini-Projects</h2>
+                    <p class="section-subtext">Three complete web applications synthesizing information architecture, semantic regions, complex data tables, and multi-step forms.</p>
+                </div>
 
-    <!-- SECTION: 04-Semantic-HTML -->
-    <section class="module-group" data-group="semantic">
-      <div class="section-headline">
-        <h2>
-          <span>🏷️</span>
-          <span>04-Semantic-HTML Modules</span>
-        </h2>
-        <div class="slider-arrows">
-          <button class="arrow-btn" onclick="slideCarousel('trackSemantic', -300)">‹</button>
-          <button class="arrow-btn" onclick="slideCarousel('trackSemantic', 300)">›</button>
-        </div>
-      </div>
+                <div class="projects-grid">
+                    <!-- Project 01: MediCare Plus -->
+                    <article class="project-card">
+                        <div class="project-card-header">
+                            <div class="project-identity">
+                                <span class="project-id-tag">01</span>
+                                <div>
+                                    <h3 class="project-title">MediCare Plus</h3>
+                                    <span class="project-subtitle">Patient Care &amp; Appointment Portal</span>
+                                </div>
+                            </div>
+                            <span class="theme-pill pill-medicare"><i class="fa-solid fa-heart-pulse"></i> Healthcare</span>
+                        </div>
 
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="trackSemantic">
-          <a href="04-Semantic-HTML/01-Tech-Blog.html" class="curriculum-card" data-tags="tech blog programming beginner coding articles">
-            <div class="curriculum-top">
-              <span class="item-icon">📰</span>
-              <div>
-                <h4 class="item-name">01-Tech-Blog.html</h4>
-                <p class="item-desc">Multi-article programming blog utilizing header, nav, main, article, and section elements[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Semantic Layout</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                        <p class="project-overview">
+                            Comprehensive healthcare portal featuring hospital statistics, multi-specialty department listings, doctor availability timetables, consultation fee schedules, diagnostic service guides, and a multi-step appointment booking form with live request outputs.
+                        </p>
 
-          <a href="04-Semantic-HTML/02-CS-Reference-Handbook.html" class="curriculum-card" data-tags="cs handbook algorithms complexity asymptotic binary search">
-            <div class="curriculum-top">
-              <span class="item-icon">📚</span>
-              <div>
-                <h4 class="item-name">02-CS-Reference-Handbook.html</h4>
-                <p class="item-desc">Asymptotic bounds reference, complexity matrices, and embedded C++ binary search code blocks[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Algorithm Reference</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                        <div class="project-specs">
+                            <div class="spec-block">
+                                <span class="spec-label">Key Implementations</span>
+                                <ul class="spec-list">
+                                    <li>Multi-fieldset appointment booking form with native validation</li>
+                                    <li>Interactive <code>&lt;datalist&gt;</code> for doctor recommendations</li>
+                                    <li>Tabular consultation fees &amp; weekday availability matrices</li>
+                                    <li>Accessible <code>&lt;details&gt;</code> &amp; <code>&lt;summary&gt;</code> accordion FAQ section</li>
+                                </ul>
+                            </div>
+                            <div class="spec-block">
+                                <span class="spec-label">HTML Concepts Explored</span>
+                                <div class="badge-row">
+                                    <span class="badge">&lt;table&gt;</span>
+                                    <span class="badge">&lt;fieldset&gt;</span>
+                                    <span class="badge">&lt;datalist&gt;</span>
+                                    <span class="badge">&lt;meter&gt;</span>
+                                    <span class="badge">&lt;output&gt;</span>
+                                </div>
+                            </div>
+                        </div>
 
-          <a href="04-Semantic-HTML/03-Student-Learning-Dashboard.html" class="curriculum-card" data-tags="learnhub dashboard academic student portal progress meter">
-            <div class="curriculum-top">
-              <span class="item-icon">📊</span>
-              <div>
-                <h4 class="item-name">03-Student-Learning-Dashboard.html</h4>
-                <p class="item-desc">LearnHub workspace displaying semester course progress meters, GPA, and assignment deadlines[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Academic Portal</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+                        <div class="project-card-actions">
+                            <a href="./05-Final-Mini-Projects/01-MediCare-Plus.html" class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Webpage
+                            </a>
+                            <a href="https://html-ritamxyz.netlify.app/05-Final-Mini-Projects/01-MediCare-Plus.html" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+                                <i class="fa-solid fa-globe"></i> Live Preview
+                            </a>
+                        </div>
+                    </article>
 
-    <!-- SECTION: 03-Forms-in-HTML -->
-    <section class="module-group" data-group="forms">
-      <div class="section-headline">
-        <h2>
-          <span>📝</span>
-          <span>03-Forms-in-HTML Modules</span>
-        </h2>
-        <div class="slider-arrows">
-          <button class="arrow-btn" onclick="slideCarousel('trackForms', -300)">‹</button>
-          <button class="arrow-btn" onclick="slideCarousel('trackForms', 300)">›</button>
-        </div>
-      </div>
+                    <!-- Project 02: TechFest 2026 -->
+                    <article class="project-card">
+                        <div class="project-card-header">
+                            <div class="project-identity">
+                                <span class="project-id-tag">02</span>
+                                <div>
+                                    <h3 class="project-title">TechFest 2026</h3>
+                                    <span class="project-subtitle">Annual University Technology Festival</span>
+                                </div>
+                            </div>
+                            <span class="theme-pill pill-techfest"><i class="fa-solid fa-graduation-cap"></i> Event Portal</span>
+                        </div>
 
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="trackForms">
-          <a href="03-Forms-in-HTML/01-Search-Engine.html" class="curriculum-card" data-tags="search engine google youtube wikipedia quora github get redirection">
-            <div class="curriculum-top">
-              <span class="item-icon">🔍</span>
-              <div>
-                <h4 class="item-name">01-Search-Engine.html</h4>
-                <p class="item-desc">Multi-engine search portal redirecting queries natively via HTTP GET parameters to Google, YouTube &amp; GitHub[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Native GET Routing</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                        <p class="project-overview">
+                            Event information portal for an annual university tech fest. Features key event highlights, speaker dossiers, day-long schedule tables, competition category tracks, student project showcase with video demonstrations, and student registration forms.
+                        </p>
 
-          <a href="03-Forms-in-HTML/02-College-Admission-Form.html" class="curriculum-card" data-tags="admission college form btech engineering registration upload">
-            <div class="curriculum-top">
-              <span class="item-icon">🎓</span>
-              <div>
-                <h4 class="item-name">02-College-Admission-Form.html</h4>
-                <p class="item-desc">Comprehensive academic registration with file uploads for marksheets, identity, and branch choices[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Multi-Fieldset Form</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                        <div class="project-specs">
+                            <div class="spec-block">
+                                <span class="spec-label">Key Implementations</span>
+                                <ul class="spec-list">
+                                    <li>Chronological event timetable with timing &amp; venue details</li>
+                                    <li>Embedded <code>&lt;video controls&gt;</code> project demonstration</li>
+                                    <li>Student showcase articles featuring figure &amp; caption cards</li>
+                                    <li>Multi-select checkbox form for technical competition tracks</li>
+                                </ul>
+                            </div>
+                            <div class="spec-block">
+                                <span class="spec-label">HTML Concepts Explored</span>
+                                <div class="badge-row">
+                                    <span class="badge">&lt;video&gt;</span>
+                                    <span class="badge">&lt;article&gt;</span>
+                                    <span class="badge">&lt;figure&gt;</span>
+                                    <span class="badge">&lt;time&gt;</span>
+                                    <span class="badge">&lt;table&gt;</span>
+                                </div>
+                            </div>
+                        </div>
 
-          <a href="03-Forms-in-HTML/03-Internship-Application-Form.html" class="curriculum-card" data-tags="internship software engineer job application portfolio dsa">
-            <div class="curriculum-top">
-              <span class="item-icon">💻</span>
-              <div>
-                <h4 class="item-name">03-Internship-Application-Form.html</h4>
-                <p class="item-desc">Software engineering job application featuring proficiency ranges, tech stack checkboxes, and GitHub links[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Job Application</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                        <div class="project-card-actions">
+                            <a href="./05-Final-Mini-Projects/02-TechFest.html" class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Webpage
+                            </a>
+                            <a href="https://html-ritamxyz.netlify.app/05-Final-Mini-Projects/02-TechFest.html" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+                                <i class="fa-solid fa-globe"></i> Live Preview
+                            </a>
+                        </div>
+                    </article>
 
-          <a href="03-Forms-in-HTML/04-Feedback-Form.html" class="curriculum-card" data-tags="feedback evaluation project review rating radio">
-            <div class="curriculum-top">
-              <span class="item-icon">⭐</span>
-              <div>
-                <h4 class="item-name">04-Feedback-Form.html</h4>
-                <p class="item-desc">Concise peer and mentor evaluation form with rating radios and modular assessment categories[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Review System</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+                    <!-- Project 03: DevConnect 2026 -->
+                    <article class="project-card">
+                        <div class="project-card-header">
+                            <div class="project-identity">
+                                <span class="project-id-tag">03</span>
+                                <div>
+                                    <h3 class="project-title">DevConnect 2026</h3>
+                                    <span class="project-subtitle">Developer Conference Platform</span>
+                                </div>
+                            </div>
+                            <span class="theme-pill pill-devconnect"><i class="fa-solid fa-terminal"></i> Conference</span>
+                        </div>
 
-    <!-- SECTION: 02-Table-in-HTML -->
-    <section class="module-group" data-group="tables">
-      <div class="section-headline">
-        <h2>
-          <span>📊</span>
-          <span>02-Table-in-HTML Modules</span>
-        </h2>
-        <div class="slider-arrows">
-          <button class="arrow-btn" onclick="slideCarousel('trackTables', -300)">‹</button>
-          <button class="arrow-btn" onclick="slideCarousel('trackTables', 300)">›</button>
-        </div>
-      </div>
+                        <p class="project-overview">
+                            Large-scale developer conference website covering 6 technical tracks, multi-speaker profiles, a 2-day chronological conference agenda, venue transit guides, expandable FAQ, code of conduct policies, and an 8-fieldset delegate registration form.
+                        </p>
 
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="trackTables">
-          <a href="02-Table-in-HTML/01-Student-Information-Table.html" class="curriculum-card" data-tags="student information table address city rowspan colspan">
-            <div class="curriculum-top">
-              <span class="item-icon">👥</span>
-              <div>
-                <h4 class="item-name">01-Student-Information-Table.html</h4>
-                <p class="item-desc">Multi-span directory structure formatting names, residential cities, and housing addresses[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Rowspan Mastery</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                        <div class="project-specs">
+                            <div class="spec-block">
+                                <span class="spec-label">Key Implementations</span>
+                                <ul class="spec-list">
+                                    <li>Comprehensive 2-day chronological timeline structure</li>
+                                    <li>In-depth 8-section fieldset conference registration form</li>
+                                    <li>Granular venue transit accessibility &amp; accommodation guide</li>
+                                    <li>Extensive semantic nesting with anchor shortcuts</li>
+                                </ul>
+                            </div>
+                            <div class="spec-block">
+                                <span class="spec-label">HTML Concepts Explored</span>
+                                <div class="badge-row">
+                                    <span class="badge">&lt;nav&gt;</span>
+                                    <span class="badge">&lt;section&gt;</span>
+                                    <span class="badge">&lt;address&gt;</span>
+                                    <span class="badge">&lt;details&gt;</span>
+                                    <span class="badge">&lt;fieldset&gt;</span>
+                                </div>
+                            </div>
+                        </div>
 
-          <a href="02-Table-in-HTML/02-College-Timetable.html" class="curriculum-card" data-tags="routine timetable college btech cse weekly schedule labs">
-            <div class="curriculum-top">
-              <span class="item-icon">🗓️</span>
-              <div>
-                <h4 class="item-name">02-College-Timetable.html</h4>
-                <p class="item-desc">Complete B.Tech 1st Sem weekly academic routine with theory slots, lab group divisions, and faculty index[cite: 12].</p>
-              </div>
+                        <div class="project-card-actions">
+                            <a href="./05-Final-Mini-Projects/03-DevConnect.html" class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Webpage
+                            </a>
+                            <a href="https://html-ritamxyz.netlify.app/05-Final-Mini-Projects/03-DevConnect.html" target="_blank" rel="noopener" class="btn btn-sm btn-outline">
+                                <i class="fa-solid fa-globe"></i> Live Preview
+                            </a>
+                        </div>
+                    </article>
+                </div>
             </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Complex Timetable</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+        </section>
 
-          <a href="02-Table-in-HTML/03-Invoice.html" class="curriculum-card" data-tags="invoice gst tax technova billing receipt ecommerce">
-            <div class="curriculum-top">
-              <span class="item-icon">🧾</span>
-              <div>
-                <h4 class="item-name">03-Invoice.html</h4>
-                <p class="item-desc">Commercial tax invoice with GST breakdown, HSN/SAC numbers, subtotal calculation, and legal declarations[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">E-Commerce Invoice</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+        <!-- Document Directory & Practices Hub -->
+        <section id="documents" class="content-section section-dimmed">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-kicker">📚 Complete Catalog</span>
+                    <h2 class="section-heading">29 Practical HTML Documents</h2>
+                    <p class="section-subtext">Filter and search across course practices, foundational experiments, tables, form portals, semantic layouts, and mini-projects.</p>
+                </div>
 
-          <a href="02-Table-in-HTML/04-JEE-Score-Card.html" class="curriculum-card" data-tags="jee scorecard nta main percentile rank air cutoffs">
-            <div class="curriculum-top">
-              <span class="item-icon">📈</span>
-              <div>
-                <h4 class="item-name">04-JEE-Score-Card.html</h4>
-                <p class="item-desc">Official NTA score format replicating multi-shift percentile normalizations, AIR rank lists, and cutoffs[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Official Scorecard</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+                <!-- Category Progression Matrix -->
+                <div class="table-container">
+                    <div class="table-header">
+                        <div class="table-header-title">
+                            <i class="fa-solid fa-table-list"></i>
+                            <span>Curriculum Progression Matrix</span>
+                        </div>
+                        <span class="table-header-sub">00-Course-Practices → 05-Final-Mini-Projects</span>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Section</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Core Concepts &amp; Implementations Covered</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="code-pill">00</span></td>
+                                    <td>Course Practices (10 Labs)</td>
+                                    <td>Document skeleton, lists, Daku Mangal Singh semantic profile, sub/sup math, entities, food menu tables, GET redirection, and feedback fieldsets.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">01</span></td>
+                                    <td>Basics of HTML (5 Pages)</td>
+                                    <td>Original Six Avengers dossier, fruit nutrition guide, single-page resume, 25 algebraic/log formulas, and Alipore weather observation report.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">02</span></td>
+                                    <td>Tables in HTML (4 Pages)</td>
+                                    <td>Student records with grouped headings, B.Tech 1st semester routine with recess columns, retail GST invoice, and official NTA JEE Main scorecard.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">03</span></td>
+                                    <td>Forms in HTML (4 Pages)</td>
+                                    <td>Multi-engine search portal (Google, YouTube, GitHub, MDN), college admission form, software engineering internship form, and project evaluation form.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">04</span></td>
+                                    <td>Semantic HTML (3 Pages)</td>
+                                    <td>Multi-article Tech Blog, CS Algorithms &amp; Complexity Knowledge Base (Big-O analysis &amp; C++ code blocks), and LearnHub student dashboard.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">05</span></td>
+                                    <td>Final Mini-Projects (3 Projects)</td>
+                                    <td>MediCare Plus healthcare portal, TechFest 2026 university event website, and DevConnect 2026 developer conference platform.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-    <!-- SECTION: 01-Basics-of-HTML -->
-    <section class="module-group" data-group="basics">
-      <div class="section-headline">
-        <h2>
-          <span>🌐</span>
-          <span>01-Basics-of-HTML Modules</span>
-        </h2>
-        <div class="slider-arrows">
-          <button class="arrow-btn" onclick="slideCarousel('trackBasics', -300)">‹</button>
-          <button class="arrow-btn" onclick="slideCarousel('trackBasics', 300)">›</button>
-        </div>
-      </div>
+                <!-- Interactive Filters & Search -->
+                <div class="filter-toolbar">
+                    <div class="filter-chips-scroll" role="tablist" aria-label="HTML Categories">
+                        <button class="chip active" data-filter="all">All (29)</button>
+                        <button class="chip" data-filter="course-practices">Course Practices (10)</button>
+                        <button class="chip" data-filter="basics">Basics of HTML (5)</button>
+                        <button class="chip" data-filter="tables">Tables (4)</button>
+                        <button class="chip" data-filter="forms">Forms (4)</button>
+                        <button class="chip" data-filter="semantic">Semantic HTML (3)</button>
+                        <button class="chip" data-filter="projects">Mini-Projects (3)</button>
+                    </div>
 
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="trackBasics">
-          <a href="01-Basics-of-HTML/01-Basic-Avengers-Webpage.html" class="curriculum-card" data-tags="avengers mcu dossier ironman thor hulk captain america hawkeye widow">
-            <div class="curriculum-top">
-              <span class="item-icon">🦸</span>
-              <div>
-                <h4 class="item-name">01-Basic-Avengers-Webpage.html</h4>
-                <p class="item-desc">Expanded Marvel Cinematic Universe dossier detailing the Original Six Avengers with backstories and quotes[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Comprehensive Dossier</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                    <div class="search-input-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="doc-search" placeholder="Search by name, element, category..." aria-label="Search documents">
+                    </div>
+                </div>
 
-          <a href="01-Basics-of-HTML/02-List-of-Fruits.html" class="curriculum-card" data-tags="fruits nutrition vitamins health dietary fiber minerals">
-            <div class="curriculum-top">
-              <span class="item-icon">🍎</span>
-              <div>
-                <h4 class="item-name">02-List-of-Fruits.html</h4>
-                <p class="item-desc">Botanical profiles, vitamin facts, and dietary recommendations for common fruits[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Nutritional Reference</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                <div class="results-meta">
+                    <span id="results-count">Showing 29 documents</span>
+                </div>
 
-          <a href="01-Basics-of-HTML/03-Basic-Portfolio-Page.html" class="curriculum-card" data-tags="portfolio resume ritam education skills developer contact">
-            <div class="curriculum-top">
-              <span class="item-icon">💼</span>
-              <div>
-                <h4 class="item-name">03-Basic-Portfolio-Page.html</h4>
-                <p class="item-desc">Single-page personal developer resume highlighting academic performance, core stacks, and contact links[cite: 12].</p>
-              </div>
+                <!-- Dynamic Grid for HTML Documents (Rendered by app.js) -->
+                <div class="practices-card-grid" id="documents-grid"></div>
             </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Personal Portfolio</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+        </section>
 
-          <a href="01-Basics-of-HTML/04-Basic-Math-Formulas.html" class="curriculum-card" data-tags="math formulas algebra logarithms quadratic identities equations">
-            <div class="curriculum-top">
-              <span class="item-icon">🧮</span>
-              <div>
-                <h4 class="item-name">04-Basic-Math-Formulas.html</h4>
-                <p class="item-desc">Quick reference compilation of 25 essential algebraic identities, cubic expansions, and logarithm laws[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Formula Reference</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+        <!-- 03. HTML Notes Section & Dedicated PDF Download -->
+        <section id="notes-section" class="content-section">
+            <div class="container">
+                <div class="notes-feature-card">
+                    <div class="notes-feature-content">
+                        <span class="section-kicker">📝 Learning Reference</span>
+                        <h2 class="notes-feature-heading">HTML Reference Notes (PDF)</h2>
+                        <p class="notes-feature-text">
+                            A supplementary reference document accompanying my coursework and independent projects. Covers document skeleton anatomy, semantic tag hierarchies, table spanning mechanics (rowspan/colspan), form input validation attributes, and character entity encoding.
+                        </p>
 
-          <a href="01-Basics-of-HTML/05-About-Weather-Today.html" class="curriculum-card" data-tags="weather kolkata temperature meteorological humidity report">
-            <div class="curriculum-top">
-              <span class="item-icon">☀️</span>
-              <div>
-                <h4 class="item-name">05-About-Weather-Today.html</h4>
-                <p class="item-desc">Meteorological bulletin for Kolkata detailing temperature, humidity index, day outlook, and sun advisory[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Weather Bulletin</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+                        <div class="notes-btn-group">
+                            <a href="./HTML-Notes.pdf" download="HTML-Notes.pdf" class="btn btn-emerald pdf-download-btn" id="download-notes-main-btn">
+                                <i class="fa-solid fa-file-pdf"></i> Download Notes (PDF)
+                            </a>
+                            <a href="./HTML-Notes.pdf" target="_blank" rel="noopener" class="btn btn-outline">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open PDF in Tab
+                            </a>
+                            <a href="./README.md" class="btn btn-ghost">
+                                <i class="fa-brands fa-markdown"></i> Read README.md
+                            </a>
+                        </div>
+                    </div>
 
-    <!-- SECTION: 00-Course-Practices -->
-    <section class="module-group" data-group="practices">
-      <div class="section-headline">
-        <h2>
-          <span>🧪</span>
-          <span>00-Course-Practices (10 Sets)</span>
-        </h2>
-        <div class="slider-arrows">
-          <button class="arrow-btn" onclick="slideCarousel('trackPractices', -300)">‹</button>
-          <button class="arrow-btn" onclick="slideCarousel('trackPractices', 300)">›</button>
-        </div>
-      </div>
+                    <!-- PDF Document Preview Card -->
+                    <div class="notes-feature-preview">
+                        <div class="pdf-document-card">
+                            <div class="pdf-card-badge"><i class="fa-solid fa-file-pdf"></i> PDF DOCUMENT</div>
+                            <div class="pdf-card-title">HTML Fundamentals &amp; Semantics</div>
+                            <div class="pdf-card-desc">Synthesized lecture notes, element syntax, tag references, and structural rules.</div>
+                            <ul class="pdf-card-topics">
+                                <li><i class="fa-solid fa-check"></i> Document Structure &amp; Text Semantics</li>
+                                <li><i class="fa-solid fa-check"></i> Complex Table Layouts (rowspan &amp; colspan)</li>
+                                <li><i class="fa-solid fa-check"></i> Form Controls, Validation &amp; Encodings</li>
+                                <li><i class="fa-solid fa-check"></i> Semantic Landmarks (&lt;header&gt;, &lt;main&gt;, &lt;footer&gt;)</li>
+                                <li><i class="fa-solid fa-check"></i> Media Embedding (&lt;figure&gt;, &lt;video&gt;, &lt;audio&gt;)</li>
+                            </ul>
+                            <div class="pdf-card-footer">
+                                <span class="pdf-file-tag"><i class="fa-solid fa-folder"></i> 01-HTML/HTML-Notes.pdf</span>
+                                <a href="./HTML-Notes.pdf" download="HTML-Notes.pdf" class="pdf-quick-link pdf-download-btn">
+                                    <i class="fa-solid fa-download"></i> Get File
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="carousel-wrapper">
-        <div class="carousel-track" id="trackPractices">
-          <a href="00-Course-Practices/practice-question-01.html" class="curriculum-card" data-tags="practice 01 avengers headings h1 h2 bold">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-01.html</h4>
-                <p class="item-desc">Introduction to HTML heading hierarchy (&lt;h1&gt;, &lt;h2&gt;) and text weight bolding[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 01</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+        <!-- Repository Structure Section -->
+        <section id="structure" class="content-section section-dimmed">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-kicker">📁 File Architecture</span>
+                    <h2 class="section-heading">Repository Directory Structure</h2>
+                    <p class="section-subtext">Clear separation across practice exercises, topic modules, project builds, and shared media assets.</p>
+                </div>
 
-          <a href="00-Course-Practices/practice-question-02.html" class="curriculum-card" data-tags="practice 02 lists fruits ul li image links">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-02.html</h4>
-                <p class="item-desc">Unordered list structures with nested anchor tags linking to local media attachments[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 02</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                <div class="structure-split-grid">
+                    <div class="structure-panel">
+                        <div class="panel-top-row">
+                            <span class="panel-title-text"><i class="fa-solid fa-folder-tree"></i> 01-HTML Directory Tree</span>
+                            <button class="copy-tree-action" id="copy-tree-btn" aria-label="Copy tree structure">
+                                <i class="fa-regular fa-copy"></i> <span id="copy-tree-label">Copy Tree</span>
+                            </button>
+                        </div>
+                        <pre class="tree-code-block" id="repo-tree-code"><code>01-HTML/
+│
+├── 00-Course-Practices/    (10 practice question HTML files)
+├── 01-Basics-of-HTML/      (5 foundational topic HTML files)
+├── 02-Table-in-HTML/       (4 structured table HTML files)
+├── 03-Forms-in-HTML/       (4 user input &amp; search portal files)
+├── 04-Semantic-HTML/       (3 semantic layout &amp; dashboard files)
+├── 05-Final-Mini-Projects/ (3 complete web portal files)
+├── Attachments/            (Images, demo videos &amp; supporting media)
+│
+├── HTML-Notes.pdf          (Course Reference Notes PDF)
+├── README.md               (Repository Documentation)
+├── index.html              (Repository Showcase Hub)
+├── style.css
+└── app.js</code></pre>
+                    </div>
 
-          <a href="00-Course-Practices/practice-question-03.html" class="curriculum-card" data-tags="practice 03 daku mangal singh semantic profile resume cv">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-03.html</h4>
-                <p class="item-desc">Humorous character portfolio implementing semantic header, main, and section divisions[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 03</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
+                    <div class="tech-side-panel">
+                        <div class="tech-panel-card">
+                            <h3 class="tech-card-heading"><i class="fa-solid fa-layer-group"></i> Technologies &amp; Standards</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <div class="tech-icon-wrap html-icon"><i class="fa-brands fa-html5"></i></div>
+                                    <div>
+                                        <strong>HTML5 Standards</strong>
+                                        <p>Strict semantic nesting, accessible landmarks, form validation, and native tables.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tech-icon-wrap css-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                                    <div>
+                                        <strong>CSS3 Design System</strong>
+                                        <p>High-contrast dark theme, custom properties, responsive grids, and drawer transitions.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tech-icon-wrap js-icon"><i class="fa-brands fa-js"></i></div>
+                                    <div>
+                                        <strong>JavaScript Helpers</strong>
+                                        <p>Client-side catalog filtering, search query matching, and mobile navigation drawer.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
 
-          <a href="00-Course-Practices/practice-question-04.html" class="curriculum-card" data-tags="practice 04 sub sup pythagoras glucose math chemistry">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-04.html</h4>
-                <p class="item-desc">Rendering geometric equations and molecular formulas using &lt;sup&gt; and &lt;sub&gt;[cite: 12].</p>
-              </div>
+                        <div class="workflow-card">
+                            <h3 class="tech-card-heading"><i class="fa-solid fa-arrows-spin"></i> 3-Tier Learning Methodology</h3>
+                            <div class="workflow-steps">
+                                <div class="step-item"><span>1</span> <strong>Understand Elements:</strong> Completed 10 lecture practice labs.</div>
+                                <div class="step-item"><span>2</span> <strong>Explore Beyond:</strong> Built 16 independent pages with real data.</div>
+                                <div class="step-item"><span>3</span> <strong>Combine &amp; Deliver:</strong> Developed 3 complete multi-page projects.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 04</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="00-Course-Practices/practice-question-05.html" class="curriculum-card" data-tags="practice 05 html entities cloud rain symbols">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-05.html</h4>
-                <p class="item-desc">Displaying reserved special symbols and cloud/umbrella icons using HTML numeric entities[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 05</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="00-Course-Practices/practice-question-06.html" class="curriculum-card" data-tags="practice 06 food menu table thead tbody tfoot prices">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-06.html</h4>
-                <p class="item-desc">Food menu structured table with dual-currency columns and total summation footers[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 06</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="00-Course-Practices/practice-question-07.html" class="curriculum-card" data-tags="practice 07 login form username password submit reset">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-07.html</h4>
-                <p class="item-desc">Foundational credential form with user/password input types and submission reset buttons[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 07</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="00-Course-Practices/practice-question-08.html" class="curriculum-card" data-tags="practice 08 redirecting search google youtube get form">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-08.html</h4>
-                <p class="item-desc">Targeted forms executing query redirects directly to Google and YouTube search endpoints[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 08</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="00-Course-Practices/practice-question-09.html" class="curriculum-card" data-tags="practice 09 registration form dropdown select checkbox">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-09.html</h4>
-                <p class="item-desc">Registration form implementing select dropdowns and agreement policy validation checkboxes[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 09</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-
-          <a href="00-Course-Practices/practice-question-10.html" class="curriculum-card" data-tags="practice 10 feedback fieldset legend radio textarea rating">
-            <div class="curriculum-top">
-              <span class="item-icon">📄</span>
-              <div>
-                <h4 class="item-name">practice-question-10.html</h4>
-                <p class="item-desc">Structured feedback evaluation form utilizing fieldset legends, radio sets, and textareas[cite: 12].</p>
-              </div>
-            </div>
-            <div class="curriculum-bottom">
-              <span class="item-category">Exercise 10</span>
-              <span class="item-arrow">→</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Empty Search State -->
-    <div id="noResults" class="no-results">
-      <p style="font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.35rem;">No matching modules or files found</p>
-      <p style="font-size: 0.9rem;">Try searching for keywords like "avengers", "invoice", "routine", "medicare", "techfest", or "form".</p>
-    </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
-      <p>Web Development Journey &bull; Authored by <a href="https://github.com/ritamxyz" target="_blank">ritamxyz</a></p>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand-info">
+                <div class="brand">
+                    <span class="brand-badge">01</span>
+                    <span class="brand-text">HTML <span class="brand-muted">/ Repository Hub</span></span>
+                </div>
+                <p class="footer-tagline">Web Development Journey • Built by Ritam Das</p>
+            </div>
+            <div class="footer-meta-info">
+                <span class="roadmap-badge">
+                    <i class="fa-solid fa-forward"></i> Next Step: 02-CSS (Styling, Layouts &amp; Responsive Design)
+                </span>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    // 1. Theme Toggle (Light / Dark)
-    const themeToggle = document.getElementById('themeToggle');
-    const htmlEl = document.documentElement;
+    <!-- Toast Notification for Downloads & Clipboard -->
+    <div class="toast" id="toast" role="alert" aria-live="polite"></div>
 
-    // Load saved preference or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    htmlEl.setAttribute('data-theme', savedTheme);
-    themeToggle.textContent = (savedTheme === 'dark') ? '🌙' : '☀️';
-
-    themeToggle.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
-      const nextTheme = (current === 'dark') ? 'light' : 'dark';
-      htmlEl.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('theme', nextTheme);
-      themeToggle.textContent = (nextTheme === 'dark') ? '🌙' : '☀️';
-    });
-
-    // 2. Smooth Slide Navigation for Carousel Tracks
-    function slideCarousel(trackId, amount) {
-      const track = document.getElementById(trackId);
-      if (track) {
-        track.scrollBy({ left: amount, behavior: 'smooth' });
-      }
-    }
-
-    // 3. Live Search & Filter
-    const searchInput = document.getElementById('searchInput');
-    const moduleGroups = document.querySelectorAll('.module-group');
-    const noResults = document.getElementById('noResults');
-
-    searchInput.addEventListener('input', (e) => {
-      const term = e.target.value.toLowerCase().trim();
-      let totalVisibleGroups = 0;
-
-      moduleGroups.forEach(group => {
-        const cards = group.querySelectorAll('.curriculum-card, .project-card');
-        let hasMatches = false;
-
-        cards.forEach(card => {
-          const tags = card.getAttribute('data-tags') || '';
-          const cardText = card.textContent.toLowerCase();
-
-          if (tags.toLowerCase().includes(term) || cardText.includes(term)) {
-            card.style.display = 'flex';
-            hasMatches = true;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        if (hasMatches) {
-          group.style.display = 'block';
-          totalVisibleGroups++;
-        } else {
-          group.style.display = 'none';
-        }
-      });
-
-      noResults.style.display = (totalVisibleGroups === 0) ? 'block' : 'none';
-    });
-  </script>
+    <script src="app.js"></script>
 </body>
+
 </html>

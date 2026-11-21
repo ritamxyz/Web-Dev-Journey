@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-CSS — Styling & Layout Portfolio | Ritam Das</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747_1280.png">
+</head>
+
+<body>
+    <!-- Sticky Navigation Header -->
+    <header class="site-header" id="top">
+        <div class="header-container">
+            <a href="#top" class="brand">
+                <span class="brand-badge">02</span>
+                <span class="brand-text">CSS <span class="brand-muted">/ Repository Hub</span></span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <div class="mobile-nav-header">
+                    <span class="mobile-nav-title">Menu Navigation</span>
+                    <button class="mobile-close-btn" id="mobile-nav-close" aria-label="Close menu">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="#overview" class="nav-link">Overview</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#practices" class="nav-link">24 Practices</a></li>
+                    <li><a href="#notes-section" class="nav-link">CSS Notes</a></li>
+                    <li><a href="#structure" class="nav-link">Structure</a></li>
+                </ul>
+                <div class="mobile-nav-actions">
+                    <a href="CSS-Notes.pdf" download="CSS-Notes.pdf" class="btn btn-sm btn-emerald pdf-download-btn">
+                        <i class="fa-solid fa-file-pdf"></i> Download Notes (PDF)
+                    </a>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <a href="CSS-Notes.pdf" download="CSS-Notes.pdf" class="btn btn-sm btn-emerald desktop-only pdf-download-btn">
+                    <i class="fa-solid fa-file-pdf"></i> Download Notes (PDF)
+                </a>
+                <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Open mobile navigation" aria-expanded="false" aria-controls="main-nav">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="overview" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="status-pill">
+                        <span class="status-dot"></span>
+                        <span>Milestone Completed • Ready for 03-JavaScript</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        CSS Styling &amp; Layout <span class="gradient-text">Architecture Hub</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        A structured archive documenting my journey across CSS foundations: from selectors and box model mechanics to custom Flexbox, CSS Grid layouts, keyframe animations, and 4 complete web projects.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fa-solid fa-rocket"></i> Explore 4 Projects
+                        </a>
+                        <a href="#practices" class="btn btn-secondary">
+                            <i class="fa-solid fa-code"></i> Browse 24 Practices
+                        </a>
+                        <a href="CSS-Notes.pdf" download="CSS-Notes.pdf" class="btn btn-emerald pdf-download-btn" id="hero-download-btn">
+                            <i class="fa-solid fa-file-pdf"></i> Download CSS Notes (PDF)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Metrics Strip -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div class="metric-data">
+                            <span class="metric-number">24</span>
+                            <span class="metric-label">Targeted Practice Labs</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-solid fa-globe"></i></div>
+                        <div class="metric-data">
+                            <span class="metric-number">04</span>
+                            <span class="metric-label">Independent Web Projects</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                        <div class="metric-data">
+                            <span class="metric-number">39+</span>
+                            <span class="metric-label">Modular CSS Stylesheets</span>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                        <div class="metric-data">
+                            <span class="metric-number">PDF</span>
+                            <span class="metric-label">CSS Quick Reference Notes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. Independent Projects Section -->
+        <section id="projects" class="content-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-kicker">🚀 Production Builds</span>
+                    <h2 class="section-heading">02. Independent Web Projects</h2>
+                    <p class="section-subtext">Four standalone multi-section and multi-page interfaces applying styling, responsive grids, and layout systems.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 02: Aurora Cafe -->
+                    <article class="project-card">
+                        <div class="project-card-header">
+                            <div class="project-identity">
+                                <span class="project-id-tag">02</span>
+                                <div>
+                                    <h3 class="project-title">Aurora Café</h3>
+                                    <span class="project-subtitle">Late-Night Coffee House Landing Page</span>
+                                </div>
+                            </div>
+                            <span class="theme-pill pill-cafe"><i class="fa-solid fa-mug-hot"></i> Food &amp; Beverage</span>
+                        </div>
+
+                        <p class="project-overview">
+                            Modern dark-themed café landing page featuring sticky frosted-glass navigation, signature drink menu cards with hover elevations, opening hours table, and responsive breakpoints[cite: 13].
+                        </p>
+
+                        <div class="project-specs">
+                            <div class="spec-block">
+                                <span class="spec-label">Key Implementations</span>
+                                <ul class="spec-list">
+                                    <li>Sticky blur navigation with <code>backdrop-filter</code></li>
+                                    <li>3-column card grid with hover translate</li>
+                                    <li>Opening hours tabular data &amp; contact card</li>
+                                    <li>Fluid breakpoints at 64rem, 48rem, and 30rem</li>
+                                </ul>
+                            </div>
+                            <div class="spec-block">
+                                <span class="spec-label">CSS Techniques</span>
+                                <div class="badge-row">
+                                    <span class="badge">CSS Grid</span>
+                                    <span class="badge">Flexbox</span>
+                                    <span class="badge">Sticky Nav</span>
+                                    <span class="badge">Media Queries</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card-actions">
+                            <a href="https://auroracafe-ritamxyz.netlify.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Preview
+                            </a>
+                            <a href="./02-Aurora-Cafe-Site/index.html" class="btn btn-sm btn-outline">
+                                <i class="fa-solid fa-folder"></i> Local HTML
+                            </a>
+                            <a href="./02-Aurora-Cafe-Site/style.css" class="btn btn-sm btn-ghost">
+                                <i class="fa-brands fa-css3-alt"></i> style.css
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 03: Ben 10 Photo Album -->
+                    <article class="project-card">
+                        <div class="project-card-header">
+                            <div class="project-identity">
+                                <span class="project-id-tag">03</span>
+                                <div>
+                                    <h3 class="project-title">Ben 10 Photo Album</h3>
+                                    <span class="project-subtitle">Themed Gallery &amp; Slide-Out Sidebar</span>
+                                </div>
+                            </div>
+                            <span class="theme-pill pill-ben10"><i class="fa-solid fa-images"></i> Media Gallery</span>
+                        </div>
+
+                        <p class="project-overview">
+                            Categorized pop-culture photo album site organized into 5 photo galleries with an off-canvas drawer controlled via the CSS checkbox hack and keyframe icon rotation[cite: 13].
+                        </p>
+
+                        <div class="project-specs">
+                            <div class="spec-block">
+                                <span class="spec-label">Key Implementations</span>
+                                <ul class="spec-list">
+                                    <li>5x2 CSS Grid photo showcase galleries</li>
+                                    <li>Checkbox-hack off-canvas slide-out sidebar</li>
+                                    <li><code>@keyframes crossRot</code> 90deg close icon animation</li>
+                                    <li>JS helper for auto-closing drawer on item click</li>
+                                </ul>
+                            </div>
+                            <div class="spec-block">
+                                <span class="spec-label">CSS Techniques</span>
+                                <div class="badge-row">
+                                    <span class="badge">CSS Grid</span>
+                                    <span class="badge">Fixed Drawer</span>
+                                    <span class="badge">Keyframes</span>
+                                    <span class="badge">clamp() Type</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card-actions">
+                            <a href="https://ben10album-ritamxyz.netlify.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Preview
+                            </a>
+                            <a href="./03-Ben10-Photo-Album-Site/index.html" class="btn btn-sm btn-outline">
+                                <i class="fa-solid fa-folder"></i> Local HTML
+                            </a>
+                            <a href="./03-Ben10-Photo-Album-Site/style.css" class="btn btn-sm btn-ghost">
+                                <i class="fa-brands fa-css3-alt"></i> style.css
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 04: Get Together -->
+                    <article class="project-card">
+                        <div class="project-card-header">
+                            <div class="project-identity">
+                                <span class="project-id-tag">04</span>
+                                <div>
+                                    <h3 class="project-title">Get Together</h3>
+                                    <span class="project-subtitle">Unified Campus Platform Multi-Page UI</span>
+                                </div>
+                            </div>
+                            <span class="theme-pill pill-campus"><i class="fa-solid fa-graduation-cap"></i> Campus Platform</span>
+                        </div>
+
+                        <p class="project-overview">
+                            Large-scale campus interface with 13 modular stylesheets covering the hero, features, academics, upcoming events, and dedicated Login &amp; Sign-Up portals[cite: 10, 13].
+                        </p>
+
+                        <div class="project-specs">
+                            <div class="spec-block">
+                                <span class="spec-label">Key Implementations</span>
+                                <ul class="spec-list">
+                                    <li>13 modular stylesheets in <code>CSS-Files/</code></li>
+                                    <li>Glassmorphic topbar with <code>:has(#menu:checked)</code> drawer</li>
+                                    <li>Split-screen responsive auth forms (Login &amp; Sign-up)</li>
+                                    <li>Event card grids with calendar date badges</li>
+                                </ul>
+                            </div>
+                            <div class="spec-block">
+                                <span class="spec-label">CSS Techniques</span>
+                                <div class="badge-row">
+                                    <span class="badge">Modular CSS</span>
+                                    <span class="badge">:has() Selector</span>
+                                    <span class="badge">Form UI</span>
+                                    <span class="badge">Multi-Breakpoints</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card-actions">
+                            <a href="https://gettogether-ritamxyz.netlify.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Preview
+                            </a>
+                            <a href="./04-Get-Together-Site/index.html" class="btn btn-sm btn-outline">
+                                <i class="fa-solid fa-folder"></i> Home
+                            </a>
+                            <a href="./04-Get-Together-Site/HTML-Files/Login-Page.html" class="btn btn-sm btn-ghost">
+                                <i class="fa-solid fa-right-to-bracket"></i> Login
+                            </a>
+                            <a href="./04-Get-Together-Site/HTML-Files/Signup-Page.html" class="btn btn-sm btn-ghost">
+                                <i class="fa-solid fa-user-plus"></i> Sign Up
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Project 05: Spotify Clone v1.0 -->
+                    <article class="project-card">
+                        <div class="project-card-header">
+                            <div class="project-identity">
+                                <span class="project-id-tag">05</span>
+                                <div>
+                                    <h3 class="project-title">Spotify Clone v1.0</h3>
+                                    <span class="project-subtitle">Desktop Web Player UI Recreation</span>
+                                </div>
+                            </div>
+                            <span class="theme-pill pill-spotify"><i class="fa-brands fa-spotify"></i> Web App UI</span>
+                        </div>
+
+                        <p class="project-overview">
+                            Desktop application layout featuring an independent dual-pane scrollable architecture, scroll-driven sticky nav tint, and fixed bottom music player with custom range styling[cite: 12].
+                        </p>
+
+                        <div class="project-specs">
+                            <div class="spec-block">
+                                <span class="spec-label">Key Implementations</span>
+                                <ul class="spec-list">
+                                    <li>Fixed 25vw sidebar + 75vw scrollable content shell</li>
+                                    <li>Modern <code>animation-timeline: scroll()</code> sticky header</li>
+                                    <li>Persistent fixed audio player with track info &amp; controls</li>
+                                    <li>Custom green WebKit range progress slider</li>
+                                </ul>
+                            </div>
+                            <div class="spec-block">
+                                <span class="spec-label">CSS Techniques</span>
+                                <div class="badge-row">
+                                    <span class="badge">App Shell</span>
+                                    <span class="badge">Scroll-Driven CSS</span>
+                                    <span class="badge">WebKit Pseudo</span>
+                                    <span class="badge">Fixed Elements</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card-actions">
+                            <a href="https://spotifyclone-v1.netlify.app/" target="_blank" rel="noopener" class="btn btn-sm btn-primary">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Preview
+                            </a>
+                            <a href="./05-Spotify-Clone-v1.0/index.html" class="btn btn-sm btn-outline">
+                                <i class="fa-solid fa-folder"></i> Local HTML
+                            </a>
+                            <a href="./05-Spotify-Clone-v1.0/style.css" class="btn btn-sm btn-ghost">
+                                <i class="fa-brands fa-css3-alt"></i> style.css
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01. Course Practices Section -->
+        <section id="practices" class="content-section section-dimmed">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-kicker">📚 01. Course Practices</span>
+                    <h2 class="section-heading">24 Practice Exercises</h2>
+                    <p class="section-subtext">Systematic exercises progressing from basic selectors to flexbox alignment matrices, CSS Grid spanning, and keyframe animations.</p>
+                </div>
+
+                <!-- Concept Progression Summary Table -->
+                <div class="table-container">
+                    <div class="table-header">
+                        <div class="table-header-title">
+                            <i class="fa-solid fa-table-list"></i>
+                            <span>Concept Progression Matrix</span>
+                        </div>
+                        <span class="table-header-sub">Exercises Q01 through Q24[cite: 21, 22]</span>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Range</th>
+                                    <th scope="col">Focus Area</th>
+                                    <th scope="col">Core Properties &amp; Implementations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="code-pill">Q01–Q02</span></td>
+                                    <td>Foundations &amp; Colour</td>
+                                    <td>Inline, internal &amp; external stylesheets, hex/rgb/rgba, Ozymandias poem typography</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">Q03–Q04</span></td>
+                                    <td>Selectors &amp; Combinators</td>
+                                    <td>Universal, element, ID, class, descendant, child (<code>&gt;</code>), sibling (<code>+</code>), attribute selectors</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">Q05–Q06</span></td>
+                                    <td>Typography &amp; Pseudo-Selectors</td>
+                                    <td>Tony Stark MCU wiki layout, <code>:hover</code>, <code>:focus</code>, <code>:checked</code>, <code>:nth-child</code>, <code>::selection</code></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">Q07–Q08</span></td>
+                                    <td>Box Model &amp; Traffic Light</td>
+                                    <td>Dimensions, padding, border-radius, margins &amp; complete 3-state Traffic Light UI component</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">Q09–Q10</span></td>
+                                    <td>Transforms &amp; Transitions</td>
+                                    <td><code>rotate()</code>, <code>skew()</code>, <code>scale()</code>, <code>translateY()</code> transitions &amp; interactive wedding profile cards</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">Q11–Q12</span></td>
+                                    <td>Positioning Contexts</td>
+                                    <td><code>static</code>, <code>relative</code>, <code>absolute</code>, and <code>fixed</code> demos + "Keep Smiling" face composition</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">Q13–Q16</span></td>
+                                    <td>Flexbox Playgrounds (Pt 1–4)</td>
+                                    <td>Flex container foundations, justify-content main-axis alignment, cross-axis align-items, flex-wrap, and align-content</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">Q17–Q18</span></td>
+                                    <td>Flexbox Applications</td>
+                                    <td>3x3 keypad alignment matrix &amp; SVMCM multi-tier responsive navbar with flyout sub-menus</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">Q19–Q22</span></td>
+                                    <td>CSS Grid Playgrounds (Pt 1–4)</td>
+                                    <td>Track sizing, <code>repeat()</code>, <code>fr</code> units, column/row spans, and complete justify/align/place alignment tasks</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="code-pill">Q23–Q24</span></td>
+                                    <td>Keyframes &amp; Pet Adoption UI</td>
+                                    <td>Chained border color cycling keyframes, preloader overlay spinner, and responsive Pet Adoption page</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Interactive Filters & Search -->
+                <div class="filter-toolbar">
+                    <div class="filter-chips-scroll" role="tablist" aria-label="Practice Categories">
+                        <button class="chip active" data-filter="all">All (24)</button>
+                        <button class="chip" data-filter="foundations">Foundations (Q1–Q6)</button>
+                        <button class="chip" data-filter="box-effects">Box Model &amp; Pos (Q7–Q12)</button>
+                        <button class="chip" data-filter="flexbox">Flexbox (Q13–Q18)</button>
+                        <button class="chip" data-filter="grid">CSS Grid (Q19–Q22)</button>
+                        <button class="chip" data-filter="animations">Animations &amp; UI (Q23–Q24)</button>
+                    </div>
+
+                    <div class="search-input-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="practice-search" placeholder="Search Q1-Q24, property, topic..." aria-label="Search exercises">
+                    </div>
+                </div>
+
+                <div class="results-meta">
+                    <span id="results-count">Showing 24 exercises</span>
+                </div>
+
+                <!-- Dynamic Grid for Practice Cards (Rendered by app.js) -->
+                <div class="practices-card-grid" id="practices-grid"></div>
+            </div>
+        </section>
+
+        <!-- 03. CSS Notes Section & Dedicated PDF Download -->
+        <section id="notes-section" class="content-section">
+            <div class="container">
+                <div class="notes-feature-card">
+                    <div class="notes-feature-content">
+                        <span class="section-kicker">📝 03. CSS Notes</span>
+                        <h2 class="notes-feature-heading">CSS Course Revision Notes (PDF)</h2>
+                        <p class="notes-feature-text">
+                            A dedicated reference document compiling all CSS concepts studied throughout the course. Covers selector specificity calculation, box model margin collapsing, positioning schemes, Flexbox vs. Grid layout decision rules, and keyframe animations.
+                        </p>
+
+                        <div class="notes-btn-group">
+                            <a href="CSS-Notes.pdf" download="CSS-Notes.pdf" class="btn btn-emerald pdf-download-btn" id="download-notes-main-btn">
+                                <i class="fa-solid fa-file-pdf"></i> Download Notes (PDF)
+                            </a>
+                            <a href="CSS-Notes.pdf" target="_blank" rel="noopener" class="btn btn-outline">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open PDF in Tab
+                            </a>
+                            <a href="./README.md" class="btn btn-ghost">
+                                <i class="fa-brands fa-markdown"></i> View README.md
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PDF Document Badge Card Preview -->
+                    <div class="notes-feature-preview">
+                        <div class="pdf-document-card">
+                            <div class="pdf-card-badge"><i class="fa-solid fa-file-pdf"></i> PDF DOCUMENT</div>
+                            <div class="pdf-card-title">CSS Mastery &amp; Reference Notes</div>
+                            <div class="pdf-card-desc">Comprehensive lecture notes, code snippets, syntax rules, and layout cheatsheets.</div>
+                            <ul class="pdf-card-topics">
+                                <li><i class="fa-solid fa-check"></i> CSS Specificity &amp; Cascade Hierarchy</li>
+                                <li><i class="fa-solid fa-check"></i> Box Model: content-box vs. border-box</li>
+                                <li><i class="fa-solid fa-check"></i> Positioning: static, relative, absolute, fixed, sticky</li>
+                                <li><i class="fa-solid fa-check"></i> Flexbox &amp; Grid Sizing Matrices</li>
+                                <li><i class="fa-solid fa-check"></i> Transforms, Transitions &amp; @keyframes</li>
+                            </ul>
+                            <div class="pdf-card-footer">
+                                <span class="pdf-file-tag"><i class="fa-solid fa-folder"></i> CSS-Notes.pdf</span>
+                                <a href="CSS-Notes.pdf" download="CSS-Notes.pdf" class="pdf-quick-link pdf-download-btn">
+                                    <i class="fa-solid fa-download"></i> Get File
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Repository Structure & Technical Architecture -->
+        <section id="structure" class="content-section section-dimmed">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-kicker">📁 File Architecture</span>
+                    <h2 class="section-heading">Repository Directory Structure</h2>
+                    <p class="section-subtext">Clean modular layout separating course practices, independent builds, CSS notes, and root files.</p>
+                </div>
+
+                <div class="structure-split-grid">
+                    <div class="structure-panel">
+                        <div class="panel-top-row">
+                            <span class="panel-title-text"><i class="fa-solid fa-folder-tree"></i> 02-CSS Directory Tree</span>
+                            <button class="copy-tree-action" id="copy-tree-btn" aria-label="Copy tree structure">
+                                <i class="fa-regular fa-copy"></i> <span id="copy-tree-label">Copy Tree</span>
+                            </button>
+                        </div>
+                        <pre class="tree-code-block" id="repo-tree-code"><code>02-CSS/
+│
+├── 01-Course-Practices/
+│   ├── Attachments/
+│   ├── CSS-Files/          (02-CSS-Colour-System.css → 24-Pet-Adoption-Page.css)
+│   └── HTML-Files/         (01-CSS-and-CSS-Colors.html → 24-Pet-Adoption-Page.html)
+│
+├── 02-Aurora-Cafe-Site/
+│   ├── Assets/
+│   ├── index.html
+│   └── style.css
+│
+├── 03-Ben10-Photo-Album-Site/
+│   ├── Attachments/
+│   ├── index.html
+│   └── style.css
+│
+├── 04-Get-Together-Site/
+│   ├── Assets/
+│   ├── CSS-Files/          (13 modular stylesheets)
+│   ├── HTML-Files/         (Login-Page.html, Signup-Page.html)
+│   └── index.html
+│
+├── 05-Spotify-Clone-v1.0/
+│   ├── Assets/
+│   ├── index.html
+│   └── style.css
+│
+├── CSS-Notes.pdf           (Dedicated Revision Notes PDF)
+├── README.md               (Repository Documentation)
+├── index.html              (Repository Showcase Hub)
+├── style.css
+└── app.js</code></pre>
+                    </div>
+
+                    <div class="tech-side-panel">
+                        <div class="tech-panel-card">
+                            <h3 class="tech-card-heading"><i class="fa-solid fa-layer-group"></i> Technologies &amp; Standards</h3>
+                            <ul class="tech-list">
+                                <li>
+                                    <div class="tech-icon-wrap html-icon"><i class="fa-brands fa-html5"></i></div>
+                                    <div>
+                                        <strong>HTML5</strong>
+                                        <p>Semantic page regions, accessible forms, audio player markups, and responsive media tags.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tech-icon-wrap css-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                                    <div>
+                                        <strong>CSS3</strong>
+                                        <p>Custom CSS variables, Flexbox, Grid, <code>@keyframes</code>, and scroll-driven timelines[cite: 12].</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tech-icon-wrap js-icon"><i class="fa-brands fa-js"></i></div>
+                                    <div>
+                                        <strong>JavaScript</strong>
+                                        <p>DOM query helpers, mobile menu state management, and real-time exercise search.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="workflow-card">
+                            <h3 class="tech-card-heading"><i class="fa-solid fa-arrows-spin"></i> 5-Step Learning Approach</h3>
+                            <div class="workflow-steps">
+                                <div class="step-item"><span>1</span> Learn core specifications</div>
+                                <div class="step-item"><span>2</span> Solve targeted practices (Q1–Q24)</div>
+                                <div class="step-item"><span>3</span> Build independent web projects</div>
+                                <div class="step-item"><span>4</span> Inspect box models &amp; breakpoints</div>
+                                <div class="step-item"><span>5</span> Refine modular stylesheet architecture</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand-info">
+                <div class="brand">
+                    <span class="brand-badge">02</span>
+                    <span class="brand-text">CSS <span class="brand-muted">/ Repository Hub</span></span>
+                </div>
+                <p class="footer-tagline">Web Development Journey • Built by Ritam Das</p>
+            </div>
+            <div class="footer-meta-info">
+                <span class="roadmap-badge">
+                    <i class="fa-solid fa-forward"></i> Next Step: 03-JavaScript Fundamentals &amp; DOM
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for Downloads & Clipboard -->
+    <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

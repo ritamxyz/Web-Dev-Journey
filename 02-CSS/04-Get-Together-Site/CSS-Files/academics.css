@@ -1,0 +1,71 @@
+#academics {
+    margin: 1rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+#academics .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.main-content+div {
+    background-image: url("../Assets/academics-img.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-position: top right;
+    background-position: 20% 80%;
+    margin: 2rem;
+    border-radius: 0.85rem;
+}
+
+.main-content>span {
+    padding: 0.5rem 1rem;
+    background-color: rgba(137, 43, 226, 0.2);
+    color: blueviolet;
+    font-weight: bold;
+    border-radius: 1.25rem;
+    max-width: fit-content;
+}
+
+.main-content h2>span {
+    color: blueviolet;
+}
+
+.main-content p {
+    max-width: 320px;
+    opacity: 0.75;
+}
+
+.main-content ul {
+    list-style: none;
+    margin: 0.5rem 0;
+    opacity: 0.75;
+}
+
+.main-content ul i {
+    padding: 0.125rem;
+    background-color: rgba(137, 43, 226, 0.2);
+    color: blueviolet;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.main-content a {
+    background-color: blueviolet;
+    padding: 0.5rem 1rem;
+    max-width: fit-content;
+    border-radius: 1rem;
+    transition: 0.5s ease-in-out 0.15s;
+    border: 1px solid blueviolet;
+}
+
+.main-content a:hover {
+    box-shadow: 0px 2px 4px gray;
+    background-color: gainsboro;
+    color: blueviolet;
+}

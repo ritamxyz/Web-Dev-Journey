@@ -1,0 +1,44 @@
+#rotate {
+    background-image: url("../Attachments/bunny.jpg");
+    background-size: cover;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+
+#rotate:hover {
+    transform: rotate(-10deg);
+}
+
+#skew {
+    background-image: url("../Attachments/skew.png");
+    background-size: cover;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+
+#skew:hover {
+    transform: skew(-20deg);
+}
+
+#scale {
+    background-image: url("../Attachments/scale.png");
+    background-size: cover;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+
+#scale:hover {
+    transform: scale(0.3);
+}
+
+#translate {
+    background-image: url("../Attachments/translate.png");
+    background-size: cover;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+
+#translate:hover {
+    background-image: url("../Attachments/translate2.png");
+    transform: translateY(-30%);
+}

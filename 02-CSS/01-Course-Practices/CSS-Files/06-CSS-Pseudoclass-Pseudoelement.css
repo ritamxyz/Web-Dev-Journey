@@ -1,0 +1,54 @@
+.hover div p+p:hover {
+    background-color: rgba(255, 0, 0, 0.553);
+    text-decoration: dotted underline;
+}
+
+.active button:active {
+    background-color: black;
+    color: gold;
+}
+
+.active div>p:active {
+    background-color: black;
+    color: gold;
+}
+
+.active a:active {
+    background-color: black;
+    color: gold;
+    text-decoration: none;
+}
+
+.checked input[type="checkbox"]:checked+label {
+    background-color: aqua;
+    color: tomato;
+    font-weight: bold;
+}
+
+.checked input[type="radio"]:checked+label {
+    background-color: aqua;
+    color: tomato;
+    font-weight: bold;
+}
+
+.nth div>p:nth-of-type(2n-1) {
+    background-color: rgb(214, 166, 121);
+    color: brown;
+    font-family: impact;
+    font-weight: 400;
+}
+
+.first-l div>p::first-letter {
+    color: blue;
+    font-weight: bold;
+}
+
+.first-line div>p::first-line {
+    color: green;
+    font-weight: bold;
+}
+
+.selection div>p::selection {
+    background-color: rgb(144, 190, 43);
+    text-decoration: solid red underline;
+}

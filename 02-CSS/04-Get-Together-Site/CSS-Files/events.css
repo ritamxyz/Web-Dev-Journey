@@ -1,0 +1,93 @@
+#events {
+    background-color: rgba(194, 165, 220, 0.2);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#events .events-container {
+    margin: 1rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+
+#events .events-header {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#events .events-header span {
+    padding: 0.5rem 1rem;
+    background-color: rgba(137, 43, 226, 0.2);
+    color: blueviolet;
+    font-weight: bold;
+    border-radius: 1.25rem;
+}
+
+#events .events-header h2 {
+    font-size: 2.1rem;
+}
+
+#events .events-header p {
+    opacity: 0.75;
+    margin-bottom: 1rem;
+}
+
+.events-container .event-cards {
+    padding: 1rem;
+    background-color: white;
+    border-radius: 0.85rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.events-container .event-cards .date+div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    opacity: 0.75;
+}
+
+.date+div h3 {
+    font-size: 0.9rem;
+    opacity: 1;
+}
+
+.date+div i {
+    color: blueviolet;
+}
+
+.events-container .date {
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 1rem;
+}
+
+.events-container .date span {
+    font-size: 1.45rem;
+}
+
+#events a {
+    color: blueviolet;
+    background-color: transparent;
+    padding: 0.75rem 1rem;
+    border: 2px solid blueviolet;
+    border-radius: 0.75rem;
+    font-weight: bold;
+    transition: 0.5s ease-in-out 0.15s;
+}
+
+#events a:hover {
+    box-shadow: 0px 2px 4px gray;
+    background-color: blueviolet;
+    color: gainsboro;
+}

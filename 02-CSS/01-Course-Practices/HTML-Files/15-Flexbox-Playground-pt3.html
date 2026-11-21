@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox: Playground</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 1.25px;
+        }
+
+        h1 {
+            background-color: rgba(165, 42, 42, 0.749);
+            border: 2px solid black;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+        h2 {
+            background-color: rgba(0, 128, 128, 0.747);
+            border: 2px solid black;
+            border-radius: 10px;
+            padding-left: 20px;
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        h2+div {
+            height: 250px;
+            width: 80%;
+            border: 2px solid black;
+            text-align: center;
+            font-size: 1.25em;
+            background-color: aliceblue;
+        }
+
+        div[id]>div {
+            height: 50px;
+            width: 300px;
+        }
+    </style>
+    <link rel="stylesheet" href="../CSS-Files/15-Flexbox-Playground-pt3.css">
+</head>
+
+<body>
+    <header>
+        <h1>Flexbox Playground</h1>
+    </header>
+    <hr>
+    <main>
+        <section>
+            <h2>1. Display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start;</h2>
+            <div id="container1">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>2. Display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-end;</h2>
+            <div id="container2">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>3. Display: flex; flex-direction: row; flex-wrap: wrap; align-items: center;</h2>
+            <div id="container3">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+
+        <h2>4. Display: flex; flex-direction: column; flex-wrap: wrap; align-items: flex-start;</h2>
+        <div id="container4">
+            <div style="background-color: tomato;">1</div>
+            <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+            <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+            <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+            <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+        </div>
+        </section>
+        <section>
+            <h2>5. Display: flex; flex-direction: column; flex-wrap: wrap; align-items: flex-end;</h2>
+            <div id="container5">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>6. Display: flex; flex-direction: column; flex-wrap: wrap; align-items: center;</h2>
+            <div id="container6">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>7. Display: flex; flex-direction: column; flex-wrap: wrap; align-items: baseline;</h2>
+            <div id="container7">
+                <div style="background-color: tomato; height: 40px; font-size: 1.2em;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751); font-size: 1.5em; height: 75px;">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h2>8. Display: flex; flex-direction: row; flex-wrap: wrap; align-content: flex-start;</h2>
+            <div id="container8">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>9. Display: flex; flex-direction: row; flex-wrap: wrap; align-content: flex-end;</h2>
+            <div id="container9">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>10. Display: flex; flex-direction: row; flex-wrap: wrap; align-content: center;</h2>
+            <div id="container10">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+
+        <h2>11. Display: flex; flex-direction: column; flex-wrap: wrap; align-content: flex-start;</h2>
+        <div id="container11">
+            <div style="background-color: tomato;">1</div>
+            <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+            <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+            <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+            <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+        </div>
+        </section>
+        <section>
+            <h2>12. Display: flex; flex-direction: column; flex-wrap: wrap; align-content: flex-end;</h2>
+            <div id="container12">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>13. Display: flex; flex-direction: column; flex-wrap: wrap; align-content: center;</h2>
+            <div id="container13">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>14. Display: flex; flex-direction: row; flex-wrap: wrap; align-content: baseline;</h2>
+            <div id="container14">
+                <div style="background-color: tomato; height: 40px; font-size: 1.2em;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751); font-size: 1.5em; height: 75px;">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <h2>15. Display: flex; flex-direction: row; flex-wrap: wrap; align-content: space-between;</h2>
+        <div id="container15">
+            <div style="background-color: tomato;">1</div>
+            <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+            <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+            <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+            <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+        </div>
+        </section>
+        <section>
+            <h2>16. Display: flex; flex-direction: row; flex-wrap: wrap; align-content: space-around;</h2>
+            <div id="container16">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>17. Display: flex; flex-direction: row; flex-wrap: wrap; align-content: space-evenly;</h2>
+            <div id="container17">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div style="background-color: rgba(255, 255, 0, 0.749);">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h2>18. Display: flex; flex-direction: row; align-self: flex-start;</h2>
+            <div id="container18">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div id="akela1" style="background-color: rgba(255, 255, 0, 0.749); height: 75px;">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>19. Display: flex; flex-direction: row; align-self: center;</h2>
+            <div id="container19">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div id="akela2" style="background-color: rgba(255, 255, 0, 0.749); height: 75px;">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+        <section>
+            <h2>20. Display: flex; flex-direction: row; align-self: flex-end;</h2>
+            <div id="container20">
+                <div style="background-color: tomato;">1</div>
+                <div style="background-color: rgba(0, 0, 255, 0.750);">2</div>
+                <div style="background-color: rgba(0, 128, 0, 0.751);">3</div>
+                <div id="akela3" style="background-color: rgba(255, 255, 0, 0.749); height: 75px;">4</div>
+                <div style="background-color: rgba(238, 130, 238, 0.753);">5</div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

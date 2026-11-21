@@ -10,9 +10,7 @@ The original coursework and independent implementations are maintained separatel
 
 ## 🌐 Live Preview
 
-### [Explore the HTML Collection →](YOUR_HTML_INDEX_URL_HERE)
-
-> Replace `YOUR_HTML_INDEX_URL_HERE` with the published URL of the `index.html` file located in this directory.
+### [Explore the HTML Collection →](https://html-ritamxyz.netlify.app/)
 
 ---
 
