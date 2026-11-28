@@ -1,0 +1,1112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Documentation | 06. Display &amp; Positioning</title>
+    <link rel="stylesheet" href="../CSS-Files/01-global.css" />
+    <link rel="stylesheet" href="../CSS-Files/02-colors.css" />
+    <link rel="stylesheet" href="../CSS-Files/03-typography.css" />
+    <link rel="stylesheet" href="../CSS-Files/04-selectors.css" />
+    <link rel="stylesheet" href="../CSS-Files/05-box-model.css" />
+    <link rel="stylesheet" href="../CSS-Files/06-display-position.css" />
+    <link rel="stylesheet" href="../CSS-Files/07-flexbox.css" />
+    <link rel="stylesheet" href="../CSS-Files/08-grid.css" />
+    <link rel="stylesheet" href="../CSS-Files/09-transistions-animation.css" />
+    <link rel="stylesheet" href="../CSS-Files/10-responsive-design.css" />
+    <link rel="stylesheet" href="../CSS-Files/11-miscellaneous.css" />
+    <link rel="stylesheet" href="../CSS-Files/12-advanced-css.css" />
+  </head>
+  <body>
+    <!-- TOP HEADER / NAVBAR -->
+    <header id="site-header">
+      <div class="header-left">
+        <button id="menu-toggle" aria-label="Toggle Navigation Menu">
+          &#9776;
+        </button>
+        <span class="site-logo">CSS.Docs</span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">06. Display &amp; Positioning</span>
+      </div>
+      <div class="header-right">
+        <span class="doc-version">CSS3 / Modern CSS</span>
+      </div>
+    </header>
+
+    <div id="layout-container">
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <aside id="sidebar-nav">
+        <div class="sidebar-header">
+          <h2>Documentation</h2>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">01. Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a href="02-colors.html" class="nav-link">02. Colors</a>
+            </li>
+            <li class="nav-item">
+              <a href="03-typography.html" class="nav-link">03. Typography</a>
+            </li>
+            <li class="nav-item">
+              <a href="04-selectors.html" class="nav-link"
+                >04. Selectors &amp; Specificity</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="05-box-model.html" class="nav-link">05. Box Model</a>
+            </li>
+            <li class="nav-item">
+              <a href="06-display-position.html" class="nav-link"
+                >06. Display &amp; Positioning</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="07-flexbox.html" class="nav-link">07. Flexbox</a>
+            </li>
+            <li class="nav-item">
+              <a href="08-grid.html" class="nav-link">08. CSS Grid</a>
+            </li>
+            <li class="nav-item">
+              <a href="09-transistions-animation.html" class="nav-link"
+                >09. Transitions &amp; Animations</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="10-responsive-design.html" class="nav-link"
+                >10. Responsive Design</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="11-miscellaneous.html" class="nav-link"
+                >11. Miscellaneous &amp; Visual FX</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="12-advanced-css.html" class="nav-link"
+                >12. Advanced CSS &amp; Motion</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- MAIN DOCUMENTATION CONTENT -->
+      <main id="main-content">
+        <!-- PAGE OVERVIEW -->
+        <section id="doc-overview">
+          <h1>CSS Display Modes, Flow &amp; Positioning Systems</h1>
+          <p>
+            <strong>Module:</strong> 06. Layout Engine &amp; Coordinate
+            Positioning
+          </p>
+          <p>
+            <strong>Description:</strong> An architectural deep dive into how
+            browsers orchestrate layout geometry. Master normal document flow,
+            block and inline formatting contexts, the display property matrix,
+            the mechanics of removing elements from the flow, coordinate offsets
+            (static, relative, absolute, fixed, sticky), the 3D stacking context
+            engine (z-index), and multi-tier interactive testing playgrounds.
+          </p>
+        </section>
+        <hr />
+
+        <!-- 1. NORMAL FLOW & FORMATTING CONTEXTS -->
+        <section id="normal-flow">
+          <h2>1. Normal Document Flow &amp; Formatting Contexts</h2>
+          <p>
+            <strong>Def:</strong> Normal Flow is the default algorithm the
+            browser engine uses to place HTML elements on a screen when no
+            explicit layout rules (like flex, grid, absolute positioning, or
+            floats) are applied.
+          </p>
+          <p>
+            <strong>Core Concept:</strong> In normal flow, elements arrange
+            themselves strictly based on reading order and their natural display
+            category:
+          </p>
+          <ul>
+            <li>
+              <strong>Block Elements:</strong> Stack vertically one after
+              another from top to bottom (like paragraphs in an essay).
+            </li>
+            <li>
+              <strong>Inline Elements:</strong> Sit side-by-side horizontally
+              along a line, wrapping onto a new line only when hitting the
+              boundary edge of their parent (like words in a sentence).
+            </li>
+          </ul>
+
+          <!-- 1.1 In-Flow vs Out-of-Flow -->
+          <article id="in-flow-vs-out-of-flow">
+            <h3>1.1 In-Flow vs. Out-of-Flow Elements</h3>
+            <p>
+              Every element in CSS is categorized into one of two operational
+              states:
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>State</th>
+                  <th>Position in Document Flow</th>
+                  <th>Effect on Neighboring Elements</th>
+                  <th>Trigger Properties</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>In-Flow</strong></td>
+                  <td>
+                    Resides in the normal layout pipeline. Takes up physical
+                    layout space.
+                  </td>
+                  <td>
+                    Neighboring elements acknowledge its geometry and wrap or
+                    shift around it.
+                  </td>
+                  <td>
+                    <code>position: static;</code>,
+                    <code>position: relative;</code>,
+                    <code>position: sticky;</code> (before trigger).
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Out-of-Flow</strong></td>
+                  <td>
+                    <strong>Completely removed</strong> from the normal flow.
+                    Has zero layout footprint.
+                  </td>
+                  <td>
+                    Neighboring elements act as if the element does not exist at
+                    all, closing the gap and occupying its original space.
+                  </td>
+                  <td>
+                    <code>position: absolute;</code>,
+                    <code>position: fixed;</code>,
+                    <code>float: left/right;</code>,
+                    <code>display: none;</code>.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 1.2 Block Formatting Context (BFC) -->
+          <article id="bfc-concept">
+            <h3>1.2 The Block Formatting Context (BFC)</h3>
+            <p>
+              <strong>Def:</strong> A self-contained mini-layout environment on
+              the page where block boxes are laid out. What happens inside a BFC
+              stays inside: margins will not collapse outside its boundaries,
+              and it contains internal floated children automatically.
+            </p>
+            <p><strong>How to Create a BFC in Modern CSS:</strong></p>
+            <p>
+              <span
+                >display: flow-root; /* The modern, purpose-built standard for
+                establishing a BFC */</span
+              ><br />
+              <span>overflow: hidden; /* Traditional fallback method */</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 2. THE DISPLAY PROPERTY -->
+        <section id="display-property">
+          <h2>2. The display Property (The Outer &amp; Inner Engine)</h2>
+          <p>
+            <strong>Def:</strong> The <code>display</code> property specifies
+            the display behavior of an element. Under the modern CSS Display
+            Module Level 3 specification, display actually controls two distinct
+            roles:
+          </p>
+          <ol>
+            <li>
+              <strong>Outer Display Type:</strong> How the box behaves relative
+              to its surrounding sibling elements (e.g., does it break onto a
+              new line or sit inline?).
+            </li>
+            <li>
+              <strong>Inner Display Type:</strong> How the box formats its
+              direct child elements (e.g., normal flow, flexbox formatting, or
+              grid coordinates).
+            </li>
+          </ol>
+
+          <!-- 2.1 The Big Three: block, inline, inline-block -->
+          <article id="core-display-types">
+            <h3>2.1 The Big Three: block vs. inline vs. inline-block</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Feature / Behavior</th>
+                  <th><code>display: block;</code></th>
+                  <th><code>display: inline;</code></th>
+                  <th><code>display: inline-block;</code></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>New Line Behavior</strong></td>
+                  <td>Always forces a line break; starts on a fresh line.</td>
+                  <td>Sits inline horizontally next to siblings.</td>
+                  <td>Sits inline horizontally next to siblings.</td>
+                </tr>
+                <tr>
+                  <td><strong>Default Width</strong></td>
+                  <td>Stretches to 100% of parent width.</td>
+                  <td>Shrink-wraps tightly to inner content.</td>
+                  <td>Shrink-wraps tightly to inner content.</td>
+                </tr>
+                <tr>
+                  <td><strong>width &amp; height</strong></td>
+                  <td>Fully respected and customizable.</td>
+                  <td><strong>COMPLETELY IGNORED.</strong> Cannot be set.</td>
+                  <td>Fully respected and customizable.</td>
+                </tr>
+                <tr>
+                  <td><strong>Horizontal Padding &amp; Margin</strong></td>
+                  <td>Fully respected (pushes siblings).</td>
+                  <td>Fully respected (pushes inline neighbors).</td>
+                  <td>Fully respected (pushes horizontal neighbors).</td>
+                </tr>
+                <tr>
+                  <td><strong>Vertical Padding</strong></td>
+                  <td>Fully respected (pushes lines).</td>
+                  <td>
+                    Paints background, but <em>does not push text lines</em>.
+                  </td>
+                  <td>Fully respected (pushes lines up and down).</td>
+                </tr>
+                <tr>
+                  <td><strong>Vertical Margin</strong></td>
+                  <td>Fully respected (collapses with siblings).</td>
+                  <td><strong>COMPLETELY IGNORED.</strong></td>
+                  <td>Fully respected (never collapses!).</td>
+                </tr>
+                <tr>
+                  <td><strong>Default HTML Examples</strong></td>
+                  <td>
+                    <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>,
+                    <code>&lt;h1&gt;</code>, <code>&lt;section&gt;</code>,
+                    <code>&lt;ul&gt;</code>
+                  </td>
+                  <td>
+                    <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>,
+                    <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>,
+                    <code>&lt;code&gt;</code>
+                  </td>
+                  <td>
+                    <code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>,
+                    <code>&lt;select&gt;</code>, <code>&lt;img&gt;</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Ascii Visual Comparison</h4>
+            <p>
+              <span>[ display: block ]</span><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              ><br />
+              <span
+                >| Box 1: Stretches full available width (Forces new line)
+                |</span
+              ><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              ><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              ><br />
+              <span>| Box 2: Starts on a brand new line underneath |</span
+              ><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              ><br /><br />
+              <span>[ display: inline ]</span><br />
+              <span
+                >Text text +-------+ text +-------+ text text text (No
+                width/height)</span
+              ><br />
+              <span> | Box 1 | | Box 2 |</span><br />
+              <span> +-------+ +-------+</span><br /><br />
+              <span>[ display: inline-block ]</span><br />
+              <span
+                >Text text +---------------+ +---------------+ text (Has custom
+                W/H)</span
+              ><br />
+              <span> | Box 1 (W x H) | | Box 2 (W x H) |</span><br />
+              <span> | With padding | | With margins |</span><br />
+              <span> +---------------+ +---------------+</span>
+            </p>
+          </article>
+
+          <!-- 2.2 display: none vs Visibility vs Opacity -->
+          <article id="hiding-elements-comparison">
+            <h3>2.2 The 4 Ways to Hide Elements on the Web</h3>
+            <p>
+              Developers frequently need to hide tooltips, drop-downs, and modal
+              dialogues. Choosing the wrong property causes major layout shifts
+              or breaks accessibility for screen reader users:
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Layout Space Preserved?</th>
+                  <th>Pointer / Click Events Active?</th>
+                  <th>Screen Reader Accessible?</th>
+                  <th>Animatable via Transition?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>display: none;</code></td>
+                  <td>
+                    <strong>No.</strong> Removed from rendering tree. Zero space
+                    left.
+                  </td>
+                  <td>No (element cannot be clicked).</td>
+                  <td>
+                    <strong>Hidden completely</strong> from screen readers.
+                  </td>
+                  <td>No (cannot transition from none to block smoothly).</td>
+                </tr>
+                <tr>
+                  <td><code>visibility: hidden;</code></td>
+                  <td>
+                    <strong>Yes.</strong> Leaves an invisible empty box in the
+                    layout.
+                  </td>
+                  <td>No (clicks pass through or are ignored).</td>
+                  <td><strong>Hidden</strong> from screen readers.</td>
+                  <td>Yes (visibility can toggle after transitions).</td>
+                </tr>
+                <tr>
+                  <td><code>opacity: 0;</code></td>
+                  <td>
+                    <strong>Yes.</strong> Full layout footprint preserved.
+                  </td>
+                  <td>
+                    <strong>Yes!</strong> Invisible element can still be
+                    clicked!
+                  </td>
+                  <td>
+                    <strong>Accessible!</strong> Screen reader still reads text!
+                  </td>
+                  <td>
+                    <strong>Yes.</strong> Perfect for smooth fade-in/out
+                    animations.
+                  </td>
+                </tr>
+                <tr>
+                  <td>HTML <code>hidden</code> attribute</td>
+                  <td>
+                    <strong>No.</strong> Browser applies
+                    <code>display: none</code> internally.
+                  </td>
+                  <td>No.</td>
+                  <td>Hidden completely.</td>
+                  <td>No.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>The Click Ghost Hazard of opacity: 0</h4>
+            <p>
+              If you fade out a modal using only <code>opacity: 0;</code>, the
+              invisible modal still sits on top of the page, completely blocking
+              users from clicking links or buttons underneath it!
+              <strong>Production Solution:</strong> Combine opacity with
+              <code>pointer-events: none;</code> or toggle
+              <code>visibility: hidden;</code>.
+            </p>
+          </article>
+
+          <!-- 2.3 display: contents -->
+          <article id="display-contents">
+            <h3>2.3 display: contents (The Box Destroyer)</h3>
+            <p>
+              <strong>Def:</strong> Renders the element as if it were not in the
+              DOM at all, while preserving all of its children. The element's
+              own outer box (margins, borders, padding, background) is
+              completely erased, and its direct children take its place in the
+              parent layout.
+            </p>
+            <p>
+              <strong>Production Superpower:</strong> Perfect for semantic HTML
+              wrappers that interfere with CSS Flexbox or CSS Grid parent
+              layouts.
+            </p>
+            <p>
+              <strong>Syntax:</strong><br />
+              <span>.card-wrapper { display: contents; }</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 3. THE POSITION PROPERTY SUITE -->
+        <section id="position-property">
+          <h2>3. The position Property Suite &amp; Coordinate Offsets</h2>
+          <p>
+            <strong>Def:</strong> Dictates the positioning algorithm used to
+            compute the geometric location of an element on the screen.
+          </p>
+          <p>
+            <strong>The Offset Coordinate Engine:</strong> When an element has
+            an active position type, its physical placement is shifted using
+            four offset properties: <code>top</code>, <code>right</code>,
+            <code>bottom</code>, and <code>left</code> (or the logical shorthand
+            <code>inset</code>).
+          </p>
+
+          <!-- 3.1 The 5 Position Types -->
+          <article id="position-types-matrix">
+            <h3>3.1 The 5 Position Types Compared</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value</th>
+                  <th>In-Flow or Out-of-Flow?</th>
+                  <th>Positioned Relative To...</th>
+                  <th>Responds to top/right/bottom/left?</th>
+                  <th>Supports z-index?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>static</code> (Default)</td>
+                  <td>In-Flow</td>
+                  <td>Normal flow sequence.</td>
+                  <td><strong>IGNORED.</strong> Offsets have zero effect.</td>
+                  <td><strong>IGNORED.</strong> Cannot be stacked.</td>
+                </tr>
+                <tr>
+                  <td><code>relative</code></td>
+                  <td>In-Flow</td>
+                  <td><strong>Its own original normal position.</strong></td>
+                  <td>
+                    <strong>Yes.</strong> Nudges element from where it would
+                    have been.
+                  </td>
+                  <td><strong>Yes.</strong></td>
+                </tr>
+                <tr>
+                  <td><code>absolute</code></td>
+                  <td><strong>Out-of-Flow</strong></td>
+                  <td>
+                    <strong>Nearest positioned ancestor</strong> (position &ne;
+                    static).
+                  </td>
+                  <td>
+                    <strong>Yes.</strong> Positions relative to ancestor's
+                    padding edge.
+                  </td>
+                  <td><strong>Yes.</strong></td>
+                </tr>
+                <tr>
+                  <td><code>fixed</code></td>
+                  <td><strong>Out-of-Flow</strong></td>
+                  <td>
+                    <strong>The browser viewport window</strong> (screen
+                    boundary).
+                  </td>
+                  <td>
+                    <strong>Yes.</strong> Stays locked to screen during scroll.
+                  </td>
+                  <td><strong>Yes.</strong></td>
+                </tr>
+                <tr>
+                  <td><code>sticky</code></td>
+                  <td>Hybrid (In &rarr; Fixed)</td>
+                  <td>Normal flow until scroll threshold hits parent edge.</td>
+                  <td>
+                    <strong>Yes.</strong> Requires at least one offset (e.g.,
+                    <code>top: 0</code>).
+                  </td>
+                  <td><strong>Yes.</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 3.2 Deep Dive: position: relative -->
+          <article id="deep-dive-relative">
+            <h3>3.2 Deep Dive: position: relative (The Nudge &amp; Anchor)</h3>
+            <p>
+              Setting <code>position: relative;</code> serves two very distinct
+              purposes in frontend engineering:
+            </p>
+            <ol>
+              <li>
+                <strong>The Visual Nudge (Without Affecting Layout):</strong>
+                When you declare <code>top: 20px; left: 30px;</code>, the
+                element visually shifts down and to the right. However,
+                <em
+                  >the space it originally occupied remains completely reserved
+                  in the normal flow</em
+                >. Other elements do not move to fill the gap.
+              </li>
+              <li>
+                <strong>The Anchor for Absolute Children:</strong> It acts as
+                the coordinate bounding frame for any child elements that have
+                <code>position: absolute;</code>.
+              </li>
+            </ol>
+            <h4>Ascii Geometry: The Ghost Footprint of Relative</h4>
+            <p>
+              <span>[ Normal Layout Flow ]</span><br />
+              <span
+                >+-------------+ +---------------------+ +-------------+</span
+              ><br />
+              <span>| Prev Box | | Original Footprint | | Next Box |</span
+              ><br />
+              <span>+-------------+ | (Ghost Space Kept) | +-------------+</span
+              ><br />
+              <span> +.....................+</span><br />
+              <span> \</span><br />
+              <span> \ top: 20px; left: 30px;</span><br />
+              <span> +---------------------+</span><br />
+              <span> | Shifted Box Renders |</span><br />
+              <span> +---------------------+</span>
+            </p>
+          </article>
+
+          <!-- 3.3 Deep Dive: position: absolute -->
+          <article id="deep-dive-absolute">
+            <h3>3.3 Deep Dive: position: absolute (The Free-Floating Hero)</h3>
+            <p>
+              <strong>Def:</strong> Rips the element completely out of the
+              document flow. The browser assigns it zero width, height, and
+              margin in flow calculations, causing siblings to collapse together
+              as if the element was never there.
+            </p>
+            <p>
+              <strong
+                >The "Nearest Positioned Ancestor" Search Algorithm:</strong
+              >
+            </p>
+            <ul>
+              <li>
+                When you declare <code>top: 0; left: 0;</code> on an absolute
+                element, the browser walks up the DOM parent tree looking for
+                the closest ancestor that has a <code>position</code> other than
+                <code>static</code> (usually <code>position: relative;</code>).
+              </li>
+              <li>
+                If it finds one, it positions the element against the inner
+                padding boundary of that parent box.
+              </li>
+              <li>
+                If it reaches the top of the DOM without finding any positioned
+                ancestor, it positions against the
+                <strong>Initial Containing Block</strong> (the viewport canvas
+                boundary).
+              </li>
+            </ul>
+
+            <h4>The Standard Card Pattern: Parent Relative, Child Absolute</h4>
+            <p>
+              <span>.card {</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;position: relative; /* The Anchor Frame
+                */</span
+              ><br />
+              <span>}</span><br />
+              <span>.card-badge {</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;position: absolute; /* Pinned inside
+                the card */</span
+              ><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;top: 12px;</span><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;right: 12px;</span><br />
+              <span>}</span>
+            </p>
+          </article>
+
+          <!-- 3.4 Deep Dive: position: fixed -->
+          <article id="deep-dive-fixed">
+            <h3>3.4 Deep Dive: position: fixed (The Viewport Pin)</h3>
+            <p>
+              <strong>Def:</strong> Removes the element from normal flow and
+              pins it directly to the browser viewport window. When the user
+              scrolls the page up, down, left, or right, the fixed element
+              remains frozen in the exact same coordinates on the physical
+              screen glass.
+            </p>
+            <p>
+              <strong>Common UI Use Cases:</strong> Pinned top navigation
+              headers, floating back-to-top buttons, persistent bottom mobile
+              tab bars, and modal backdrop overlays.
+            </p>
+
+            <h4>The "Transform Trap" Gotcha</h4>
+            <p>
+              <strong>The Bug:</strong> You declare
+              <code>position: fixed;</code> on a modal, but when you scroll, it
+              moves along with the page! Why?
+            </p>
+            <p>
+              <strong>The Engine Rule:</strong> If <em>any ancestor</em> of a
+              fixed element has a CSS <code>transform</code>,
+              <code>filter</code>, or <code>perspective</code> property declared
+              (e.g., <code>transform: translate(0, 0);</code>), the browser
+              stops using the viewport as the container and instead treats that
+              ancestor as the bounding frame!
+            </p>
+          </article>
+
+          <!-- 3.5 Deep Dive: position: sticky -->
+          <article id="deep-dive-sticky">
+            <h3>
+              3.5 Deep Dive: position: sticky (The Scroll-Triggered Hybrid)
+            </h3>
+            <p>
+              <strong>Def:</strong> A hybrid that switches behavior dynamically
+              during scrolling. It acts as
+              <code>position: relative;</code> inside its normal flow until the
+              page scroll reaches a specified threshold (e.g.,
+              <code>top: 0;</code>), at which point it sticks in place like
+              <code>position: fixed;</code>
+              <em>until it hits the end boundary of its parent container</em>.
+            </p>
+
+            <h4>The 3 Strict Requirements for sticky to Work:</h4>
+            <ol>
+              <li>
+                You
+                <strong>must specify at least one directional offset</strong>
+                (e.g., <code>top: 0;</code> or <code>bottom: 20px;</code>).
+                Without an offset, the browser doesn't know where to pin it, so
+                it remains static forever.
+              </li>
+              <li>
+                <strong
+                  >The Parent Container Must Have Remaining Height:</strong
+                >
+                A sticky element can only stick
+                <em>within the bounds of its immediate parent</em>. If the
+                parent container has the exact same height as the sticky
+                element, it will never stick.
+              </li>
+              <li>
+                <strong>No Ancestor Overflow:</strong> If <em>any</em> ancestor
+                container between the sticky element and the body has
+                <code>overflow: hidden;</code>, <code>overflow: auto;</code>, or
+                <code>overflow: scroll;</code>, the sticky effect is completely
+                disabled!
+              </li>
+            </ol>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 4. INSET & COORDINATE CENTERING -->
+        <section id="coordinate-offsets-centering">
+          <h2>4. Coordinate Offsets &amp; Centering Formulas</h2>
+          <p>
+            <strong>Def:</strong> The offset coordinates determine how far a
+            positioned element is displaced from the edges of its containing
+            reference block.
+          </p>
+
+          <!-- 4.1 Inset Shorthand -->
+          <article id="inset-shorthand">
+            <h3>4.1 The inset Shorthand Property</h3>
+            <p>
+              Modern CSS introduces <code>inset</code> as a shorthand for
+              <code>top</code>, <code>right</code>, <code>bottom</code>, and
+              <code>left</code> simultaneously. It uses the exact same clockwise
+              rotation rule as padding and margin:
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Syntax</th>
+                  <th>Expanded Longhand Equivalent</th>
+                  <th>Typical Application</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>inset: 0;</code></td>
+                  <td><code>top: 0; right: 0; bottom: 0; left: 0;</code></td>
+                  <td>
+                    Full-bleed backdrop overlays, modal covers, edge-to-edge
+                    frames.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>inset: 10px 20px;</code></td>
+                  <td>
+                    <code
+                      >top: 10px; bottom: 10px; left: 20px; right: 20px;</code
+                    >
+                  </td>
+                  <td>Symmetrical floating frames.</td>
+                </tr>
+                <tr>
+                  <td><code>inset-block: 0;</code></td>
+                  <td>
+                    <code>top: 0; bottom: 0;</code> (Logical vertical edges).
+                  </td>
+                  <td>Vertical full-height sidebars.</td>
+                </tr>
+                <tr>
+                  <td><code>inset-inline: 0;</code></td>
+                  <td>
+                    <code>left: 0; right: 0;</code> (Logical horizontal edges).
+                  </td>
+                  <td>Full-width banners.</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 4.2 Absolute Centering Techniques -->
+          <article id="absolute-centering-recipes">
+            <h3>4.2 Two Formulas for Dead-Center Absolute Alignment</h3>
+            <p>
+              Before Flexbox and Grid, centering an unknown-sized element was
+              one of the hardest challenges in CSS. Here are the two definitive
+              coordinate recipes:
+            </p>
+
+            <h4>
+              Formula 1: The Modern Inset + Margin Auto Trick (Zero Transforms)
+            </h4>
+            <p>
+              <span>.modal-box {</span><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;position: absolute;</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;inset: 0; /* Pulls box toward all 4
+                edges equally */</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;margin: auto; /* Browser balances
+                leftover space equally */</span
+              ><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;width: 400px;</span><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;height: 250px;</span><br />
+              <span>}</span>
+            </p>
+
+            <h4>Formula 2: The Coordinate 50% + Transform Technique</h4>
+            <p>
+              <span>.modal-box {</span><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;position: absolute;</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;top: 50%; /* Pushes top edge to parent
+                center */</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;left: 50%; /* Pushes left edge to
+                parent center */</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;transform: translate(-50%, -50%); /*
+                Shifts box back by 50% of its OWN width/height */</span
+              ><br />
+              <span>}</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 5. Z-INDEX & STACKING CONTEXTS -->
+        <section id="z-index-stacking">
+          <h2>5. The 3D Engine: z-index &amp; Stacking Contexts</h2>
+          <p>
+            <strong>Def:</strong> When elements overlap on the 2D plane (X and Y
+            axes), the browser needs a mathematical system to determine which
+            element renders on top along the imaginary perpendicular
+            <strong>Z-axis</strong> pointing out from the screen toward the
+            user's eyes.
+          </p>
+
+          <!-- 5.1 When z-index Works -->
+          <article id="z-index-prerequisite">
+            <h3>5.1 The #1 Rule of z-index</h3>
+            <p><strong>z-index DOES NOT WORK ON STATIC ELEMENTS!</strong></p>
+            <p>
+              Declaring <code>z-index: 9999;</code> on a standard element with
+              default <code>position: static;</code> is completely ignored by
+              the browser engine. The element
+              <strong>must have an explicit position other than static</strong>
+              (relative, absolute, fixed, or sticky) OR be a direct child of a
+              Flexbox or Grid container.
+            </p>
+          </article>
+
+          <!-- 5.2 Natural Stacking Order -->
+          <article id="natural-stacking-order">
+            <h3>5.2 The 7-Layer Natural Stacking Order</h3>
+            <p>
+              When multiple elements overlap without any explicit z-index
+              values, the browser paints them in this strict order from back to
+              front:
+            </p>
+            <ol>
+              <li>
+                <strong>Layer 1 (Deepest):</strong> Background and borders of
+                the root element.
+              </li>
+              <li>
+                <strong>Layer 2:</strong> Non-positioned blocks in normal flow
+                (ordered by HTML source code).
+              </li>
+              <li>
+                <strong>Layer 3:</strong> Non-positioned floats (floated
+                blocks).
+              </li>
+              <li>
+                <strong>Layer 4:</strong> Non-positioned inline elements (text,
+                spans, links).
+              </li>
+              <li>
+                <strong>Layer 5:</strong> Positioned elements with
+                <code>z-index: auto</code> or <code>z-index: 0</code>.
+              </li>
+              <li>
+                <strong>Layer 6:</strong> Positioned elements with positive
+                z-index (<code>z-index: 1</code>, <code>2</code>,
+                <code>3...</code>).
+              </li>
+              <li>
+                <strong>Layer 7 (Closest to User):</strong> Elements in higher
+                stacking contexts.
+              </li>
+            </ol>
+          </article>
+
+          <!-- 5.3 What is a Stacking Context -->
+          <article id="stacking-context-traps">
+            <h3>5.3 The Stacking Context Trap (Why z-index: 999999 Fails)</h3>
+            <p>
+              <strong>Def:</strong> A Stacking Context is an isolated
+              three-dimensional rendering environment in the document. Think of
+              a stacking context like a folders-and-files hierarchy:
+            </p>
+            <ul>
+              <li>
+                If Folder A sits behind Folder B,
+                <strong
+                  >no file inside Folder A can ever appear in front of Folder
+                  B</strong
+                >, no matter how high its internal number is!
+              </li>
+              <li>
+                An element with <code>z-index: 999999</code> trapped inside a
+                lower stacking context will lose to an element with
+                <code>z-index: 1</code> in a higher stacking context!
+              </li>
+            </ul>
+
+            <h4>What Triggers a New Stacking Context?</h4>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Property Trigger</th>
+                  <th>Conditions Required</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Root element</td>
+                  <td>
+                    The <code>&lt;html&gt;</code> element automatically forms
+                    the root stacking context.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Positioned + z-index</td>
+                  <td>
+                    <code>position: relative/absolute/fixed/sticky</code> with
+                    <code>z-index</code> other than <code>auto</code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Opacity</td>
+                  <td>
+                    <code>opacity</code> with a value less than
+                    <code>1</code> (e.g., <code>opacity: 0.99;</code>).
+                  </td>
+                </tr>
+                <tr>
+                  <td>Transform, Filter, Clip</td>
+                  <td>
+                    Any non-none value for <code>transform</code>,
+                    <code>filter</code>, <code>backdrop-filter</code>, or
+                    <code>clip-path</code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Isolation Property</td>
+                  <td>
+                    <code>isolation: isolate;</code> &mdash;
+                    <strong
+                      >The clean modern way to create a stacking context
+                      safely!</strong
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 6. INTERACTIVE EXPERIMENTAL PLAYGROUNDS -->
+        <section id="interactive-playgrounds">
+          <h2>6. Interactive Layout &amp; Positioning Playgrounds</h2>
+          <p>
+            <strong>Def:</strong> Semantic testing harnesses designed to observe
+            visual layout shifts, coordinate offsets, and overlapping stacking
+            layer behaviors directly in the browser.
+          </p>
+
+          <!-- Playground 1: Display Modes -->
+          <article id="playground-display-modes">
+            <h3>Playground 1: Display Mode Behavioral Harness</h3>
+            <p>
+              Test how different <code>display</code> settings alter width
+              constraints, line wrapping, and box model spacing:
+            </p>
+
+            <div id="sandbox-display-container">
+              <h4>Stage 1.1: display: block (Vertical Stacking)</h4>
+              <div id="demo-display-block-parent">
+                <p id="demo-display-block-1">
+                  Block Box 1 (Forces line break, 100% width)
+                </p>
+                <p id="demo-display-block-2">
+                  Block Box 2 (Starts on a new line below Box 1)
+                </p>
+              </div>
+
+              <h4>Stage 1.2: display: inline (Horizontal Text Wrapping)</h4>
+              <div id="demo-display-inline-parent">
+                <span id="demo-display-inline-1">Inline Item 1</span>
+                <span id="demo-display-inline-2"
+                  >Inline Item 2 (Sits directly next to Item 1)</span
+                >
+                <span id="demo-display-inline-3"
+                  >Inline Item 3 (Flows naturally like words)</span
+                >
+              </div>
+
+              <h4>
+                Stage 1.3: display: inline-block (Horizontal Grid with Custom
+                Dimensions)
+              </h4>
+              <div id="demo-display-ib-parent">
+                <div id="demo-display-ib-1">
+                  Inline-Block 1 (Has custom W/H &amp; Padding)
+                </div>
+                <div id="demo-display-ib-2">
+                  Inline-Block 2 (Preserves full box geometry)
+                </div>
+                <div id="demo-display-ib-3">
+                  Inline-Block 3 (Sits side-by-side cleanly)
+                </div>
+              </div>
+
+              <h4>Stage 1.4: display: none vs. visibility: hidden</h4>
+              <div id="demo-hiding-parent">
+                <div id="demo-hiding-visible">Box A: Visible Normal Item</div>
+                <div id="demo-hiding-none">
+                  Box B: display: none (No layout footprint)
+                </div>
+                <div id="demo-hiding-hidden">
+                  Box C: visibility: hidden (Empty ghost box preserved)
+                </div>
+                <div id="demo-hiding-end">Box D: Following Sibling Item</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 2: Positioning Matrix -->
+          <article id="playground-positioning-matrix">
+            <h3>Playground 2: Coordinate Positioning Stage</h3>
+            <p>
+              Test the differences between in-flow relative shifts, out-of-flow
+              absolute containment, and viewport pinning:
+            </p>
+
+            <div id="sandbox-position-stage">
+              <h4>Stage 2.1: Relative Nudge vs. Absolute Bounding Frame</h4>
+              <div id="demo-pos-container-relative">
+                <p>
+                  Parent Box (position: relative; acts as the coordinate anchor
+                  for inner children)
+                </p>
+                <div id="demo-pos-child-relative">
+                  Child A: position: relative; (Nudged by top/left, leaves ghost
+                  space behind)
+                </div>
+                <div id="demo-pos-child-absolute">
+                  Child B: position: absolute; (Pinned to top-right corner of
+                  parent frame)
+                </div>
+              </div>
+
+              <h4>Stage 2.2: The Sticky Header Runner</h4>
+              <div id="demo-pos-sticky-container">
+                <div id="demo-pos-sticky-bar">
+                  Pinned Bar: position: sticky; top: 0; (Sticks to top during
+                  container scroll)
+                </div>
+                <p>
+                  Scrollable content area simulating long article copy inside a
+                  bounded parent wrapper...
+                </p>
+                <p>
+                  Paragraph block 1: Demonstrating how sticky holds position
+                  until the parent boundary terminates.
+                </p>
+                <p>
+                  Paragraph block 2: Notice that sticky elements only track
+                  within their direct parent bounds.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 3: Stacking Context & Z-Index Layering -->
+          <article id="playground-zindex-layers">
+            <h3>Playground 3: 3D Stacking Context &amp; Z-Index Lab</h3>
+            <p>
+              Inspect how numeric z-index values resolve overlapping planes and
+              test the boundaries of nested stacking contexts:
+            </p>
+
+            <div id="sandbox-stacking-stage">
+              <div id="stack-parent-alpha">
+                <p>Stacking Context Alpha (Lower Parent Level)</p>
+                <div id="stack-item-high-number">
+                  Inner Child: z-index: 99999; (Trapped inside lower parent)
+                </div>
+              </div>
+
+              <div id="stack-parent-beta">
+                <p>Stacking Context Beta (Higher Parent Level)</p>
+                <div id="stack-item-low-number">
+                  Inner Child: z-index: 1; (Wins and renders on top because
+                  Parent Beta sits above Alpha!)
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="../app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Documentation | 07. Flexbox</title>
+    <link rel="stylesheet" href="../CSS-Files/01-global.css" />
+    <link rel="stylesheet" href="../CSS-Files/02-colors.css" />
+    <link rel="stylesheet" href="../CSS-Files/03-typography.css" />
+    <link rel="stylesheet" href="../CSS-Files/04-selectors.css" />
+    <link rel="stylesheet" href="../CSS-Files/05-box-model.css" />
+    <link rel="stylesheet" href="../CSS-Files/06-display-position.css" />
+    <link rel="stylesheet" href="../CSS-Files/07-flexbox.css" />
+    <link rel="stylesheet" href="../CSS-Files/08-grid.css" />
+    <link rel="stylesheet" href="../CSS-Files/09-transistions-animation.css" />
+    <link rel="stylesheet" href="../CSS-Files/10-responsive-design.css" />
+    <link rel="stylesheet" href="../CSS-Files/11-miscellaneous.css" />
+    <link rel="stylesheet" href="../CSS-Files/12-advanced-css.css" />
+  </head>
+  <body>
+    <!-- TOP HEADER / NAVBAR -->
+    <header id="site-header">
+      <div class="header-left">
+        <button id="menu-toggle" aria-label="Toggle Navigation Menu">
+          &#9776;
+        </button>
+        <span class="site-logo">CSS.Docs</span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">07. Flexbox Layout System</span>
+      </div>
+      <div class="header-right">
+        <span class="doc-version">CSS3 / Modern CSS</span>
+      </div>
+    </header>
+
+    <div id="layout-container">
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <aside id="sidebar-nav">
+        <div class="sidebar-header">
+          <h2>Documentation</h2>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">01. Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a href="02-colors.html" class="nav-link">02. Colors</a>
+            </li>
+            <li class="nav-item">
+              <a href="03-typography.html" class="nav-link">03. Typography</a>
+            </li>
+            <li class="nav-item">
+              <a href="04-selectors.html" class="nav-link"
+                >04. Selectors &amp; Specificity</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="05-box-model.html" class="nav-link">05. Box Model</a>
+            </li>
+            <li class="nav-item">
+              <a href="06-display-position.html" class="nav-link"
+                >06. Display &amp; Positioning</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="07-flexbox.html" class="nav-link">07. Flexbox</a>
+            </li>
+            <li class="nav-item">
+              <a href="08-grid.html" class="nav-link">08. CSS Grid</a>
+            </li>
+            <li class="nav-item">
+              <a href="09-transistions-animation.html" class="nav-link"
+                >09. Transitions &amp; Animations</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="10-responsive-design.html" class="nav-link"
+                >10. Responsive Design</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="11-miscellaneous.html" class="nav-link"
+                >11. Miscellaneous &amp; Visual FX</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="12-advanced-css.html" class="nav-link"
+                >12. Advanced CSS &amp; Motion</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- MAIN DOCUMENTATION CONTENT -->
+      <main id="main-content">
+        <!-- PAGE OVERVIEW -->
+        <section id="doc-overview">
+          <h1>CSS Flexible Box Layout (Flexbox)</h1>
+          <p>
+            <strong>Module:</strong> 07. One-Dimensional Coordinate Layout
+            Engine
+          </p>
+          <p>
+            <strong>Description:</strong> An architectural deep-dive into the
+            CSS Flexible Box Layout module. This guide covers dual-axis
+            mechanics, container vs. item boundaries, space-distribution
+            algorithms, proportional growth/shrink formulas, auto-margin
+            physics, the flex min-width gotcha, and interactive sandbox
+            environments configured for future CSS styling and JavaScript
+            controllers.
+          </p>
+        </section>
+        <hr />
+
+        <!-- 1. THE DUAL-AXIS ENGINE & MENTAL MODEL -->
+        <section id="flexbox-mental-model">
+          <h2>1. The Dual-Axis Engine &amp; Spatial Mental Model</h2>
+          <p>
+            <strong>Def:</strong> Flexbox is a
+            <strong>one-dimensional (1D)</strong> layout model. It computes and
+            distributes space along a single directional axis at a time: either
+            horizontally along a row or vertically down a column.
+          </p>
+
+          <!-- 1.1 Container vs Items -->
+          <article id="concept-container-item">
+            <h3>1.1 The Strict Hierarchy: Flex Container vs. Flex Items</h3>
+            <p>Flexbox operates on a strict parent-child boundary:</p>
+            <ul>
+              <li>
+                <strong>The Flex Container (Parent):</strong> Any HTML element
+                with <code>display: flex</code> or
+                <code>display: inline-flex</code>. It establishes a
+                <em>Flex Formatting Context</em> for its immediate children.
+              </li>
+              <li>
+                <strong>The Flex Items (Children):</strong> The direct child
+                elements inside the flex container. Text nodes wrapped inside
+                direct elements automatically become anonymous flex items.
+              </li>
+              <li>
+                <strong>The Grandchild Boundary:</strong> Elements nested two or
+                more levels deep (grandchildren) are <em>not</em> flex items;
+                they follow normal block/inline flow unless their direct parent
+                is also declared as a flex container.
+              </li>
+            </ul>
+          </article>
+
+          <!-- 1.2 Main Axis vs Cross Axis -->
+          <article id="concept-axes-geometry">
+            <h3>1.2 The Coordinate Axes: Main Axis vs. Cross Axis</h3>
+            <p>
+              Unlike standard CSS that relies on physical top/bottom/left/right
+              coordinates, Flexbox relies on directional axes established by
+              <code>flex-direction</code>:
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Axis Component</th>
+                  <th>Horizontal Mode (<code>flex-direction: row</code>)</th>
+                  <th>Vertical Mode (<code>flex-direction: column</code>)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Main Axis</strong></td>
+                  <td>
+                    Runs horizontally across the screen (Left &rarr; Right in
+                    LTR).
+                  </td>
+                  <td>Runs vertically down the screen (Top &rarr; Bottom).</td>
+                </tr>
+                <tr>
+                  <td><strong>Cross Axis</strong></td>
+                  <td>
+                    Runs vertically, perpendicular to the main axis (Top &rarr;
+                    Bottom).
+                  </td>
+                  <td>
+                    Runs horizontally, perpendicular to the main axis (Left
+                    &rarr; Right).
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Main-Start / Main-End</strong></td>
+                  <td>
+                    Main-start is the left edge; Main-end is the right edge.
+                  </td>
+                  <td>
+                    Main-start is the top edge; Main-end is the bottom edge.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Cross-Start / Cross-End</strong></td>
+                  <td>
+                    Cross-start is the top edge; Cross-end is the bottom edge.
+                  </td>
+                  <td>
+                    Cross-start is the left edge; Cross-end is the right edge.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Main Size / Cross Size</strong></td>
+                  <td>
+                    Main size = <code>width</code>; Cross size =
+                    <code>height</code>.
+                  </td>
+                  <td>
+                    Main size = <code>height</code>; Cross size =
+                    <code>width</code>.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>ASCII Diagram: Axis Geometry under flex-direction: row</h4>
+            <p>
+              <span> CROSS AXIS (Perpendicular)</span><br />
+              <span> |</span><br />
+              <span> cross-start v</span><br />
+              <span>
+                +-------------------------------------------------------------+</span
+              ><br />
+              <span> | +---------+ +---------+ +---------+ |</span><br />
+              <span>
+                | | Item 1 | -----&gt; | Item 2 | -----&gt; | Item 3 | | ---&gt;
+                MAIN AXIS</span
+              ><br />
+              <span> | +---------+ +---------+ +---------+ |</span><br />
+              <span>
+                +-------------------------------------------------------------+</span
+              ><br />
+              <span> cross-end ^</span><br />
+              <span> |</span><br />
+              <span>
+                main-start ----------------------------------------&gt;
+                main-end</span
+              >
+            </p>
+
+            <h4>ASCII Diagram: Axis Geometry under flex-direction: column</h4>
+            <p>
+              <span> main-start (Top)</span><br />
+              <span> |</span><br />
+              <span> v</span><br />
+              <span>
+                +-------------------------------------+ &lt;--- cross-start
+                (Left)</span
+              ><br />
+              <span> | +-----------------------------+ |</span><br />
+              <span> | | Item 1 | |</span><br />
+              <span> | +-----------------------------+ |</span><br />
+              <span> | | | CROSS AXIS</span><br />
+              <span> | v | (Runs Horizontally)</span><br />
+              <span>
+                | +-----------------------------+ |
+                =====================&gt;</span
+              ><br />
+              <span> | | Item 2 | |</span><br />
+              <span> | +-----------------------------+ |</span><br />
+              <span>
+                +-------------------------------------+ &lt;--- cross-end
+                (Right)</span
+              ><br />
+              <span> |</span><br />
+              <span> v</span><br />
+              <span> main-end (Bottom)</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 2. CONTAINER (PARENT) PROPERTIES -->
+        <section id="container-properties">
+          <h2>2. Flex Container (Parent) Properties &amp; Every Value</h2>
+          <p>
+            <strong>Def:</strong> Properties declared directly on the parent
+            container element that govern layout direction, line wrapping, and
+            item alignment across both axes.
+          </p>
+
+          <!-- 2.1 display -->
+          <article id="prop-display">
+            <h3>2.1 display: flex | inline-flex</h3>
+            <p>
+              <strong>Def:</strong> Activates the Flexbox formatting context on
+              the parent container.
+            </p>
+
+            <h4>Value 2.1.1: display: flex</h4>
+            <p>
+              <strong>Behavior:</strong> The container behaves like a
+              <strong>block-level</strong> element in normal flow (expands to
+              100% of the available parent width and forces line breaks before
+              and after itself), while enabling flexbox positioning for its
+              direct children.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.container { display: flex; }</span
+              >
+            </p>
+
+            <h4>Value 2.1.2: display: inline-flex</h4>
+            <p>
+              <strong>Behavior:</strong> The container behaves like an
+              <strong>inline-level</strong> element in normal flow (shrink-wraps
+              its total width around its child contents and flows inline
+              alongside text), while internally formatting its children as flex
+              items.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.badge-cluster { display: inline-flex; }</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.2 flex-direction -->
+          <article id="prop-flex-direction">
+            <h3>2.2 flex-direction Property</h3>
+            <p>
+              <strong>Def:</strong> Establishes the direction of the main axis,
+              dictating whether items flow horizontally or vertically, and
+              whether the starting point is normal or inverted.
+            </p>
+            <p><strong>Initial Value:</strong> <code>row</code></p>
+
+            <h4>Value 2.2.1: flex-direction: row (Default)</h4>
+            <p>
+              <strong>Behavior:</strong> The main axis runs horizontally. Items
+              sit side-by-side from left to right (in Left-To-Right languages
+              like English).
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.box { flex-direction: row; }</span
+              >
+            </p>
+
+            <h4>Value 2.2.2: flex-direction: row-reverse</h4>
+            <p>
+              <strong>Behavior:</strong> The main axis runs horizontally, but
+              the start and end edges swap. Items flow from right to left. The
+              first item in the HTML source renders on the far right edge.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.box { flex-direction: row-reverse; }</span
+              >
+            </p>
+
+            <h4>Value 2.2.3: flex-direction: column</h4>
+            <p>
+              <strong>Behavior:</strong> The main axis flips 90 degrees and runs
+              vertically. Items stack from top to bottom. Main axis = vertical;
+              Cross axis = horizontal.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.box { flex-direction: column; }</span
+              >
+            </p>
+
+            <h4>Value 2.2.4: flex-direction: column-reverse</h4>
+            <p>
+              <strong>Behavior:</strong> The main axis runs vertically from
+              bottom to top. Items stack upwards. The first child in the HTML
+              appears at the bottom of the container.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.box { flex-direction: column-reverse; }</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.3 flex-wrap -->
+          <article id="prop-flex-wrap">
+            <h3>2.3 flex-wrap Property</h3>
+            <p>
+              <strong>Def:</strong> Controls whether flex items are forced into
+              a single line or permitted to break across multiple lines when
+              their combined sizes exceed the container's main-axis dimension.
+            </p>
+            <p><strong>Initial Value:</strong> <code>nowrap</code></p>
+
+            <h4>Value 2.3.1: flex-wrap: nowrap (Default)</h4>
+            <p>
+              <strong>Behavior:</strong> Single-line enforcement. All items are
+              squeezed into one row/column. Items compress using their
+              <code>flex-shrink</code> values, or overflow the container
+              boundaries if they cannot shrink further.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.container { flex-wrap: nowrap; }</span
+              >
+            </p>
+
+            <h4>Value 2.3.2: flex-wrap: wrap</h4>
+            <p>
+              <strong>Behavior:</strong> Multi-line layout enabled. When items
+              run out of room along the main axis, excess items wrap onto a new
+              line along the cross axis (downward in horizontal mode).
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.container { flex-wrap: wrap; }</span
+              >
+            </p>
+
+            <h4>Value 2.3.3: flex-wrap: wrap-reverse</h4>
+            <p>
+              <strong>Behavior:</strong> Multi-line layout enabled, but new
+              lines are generated in the reverse cross-axis direction (new lines
+              stack upward in horizontal mode).
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.container { flex-wrap: wrap-reverse; }</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.4 flex-flow -->
+          <article id="prop-flex-flow">
+            <h3>2.4 flex-flow Shorthand</h3>
+            <p>
+              <strong>Def:</strong> Shorthand syntax combining both
+              <code>flex-direction</code> and <code>flex-wrap</code> in a single
+              declaration.
+            </p>
+            <p>
+              <strong>Syntax:</strong>
+              <code
+                >flex-flow: &lt;'flex-direction'&gt; ||
+                &lt;'flex-wrap'&gt;;</code
+              >
+            </p>
+            <p>
+              <strong>Code Examples:</strong><br />
+              <span>flex-flow: row nowrap; /* Browser Default */</span><br />
+              <span
+                >flex-flow: row wrap; /* Standard responsive card list */</span
+              ><br />
+              <span
+                >flex-flow: column wrap; /* Multi-column vertical masonry
+                */</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.5 justify-content -->
+          <article id="prop-justify-content">
+            <h3>2.5 justify-content Property (Main Axis Alignment)</h3>
+            <p>
+              <strong>Def:</strong> Aligns flex items along the
+              <strong>main axis</strong> and distributes leftover free space
+              between or around items.
+            </p>
+            <p>
+              <strong>Initial Value:</strong> <code>flex-start</code> (or
+              <code>normal</code>)
+            </p>
+
+            <h4>Value 2.5.1: justify-content: flex-start / start</h4>
+            <p>
+              <strong>Behavior:</strong> Items pack flush against the start edge
+              of the main axis. All leftover free space sits at the end of the
+              line.
+            </p>
+            <p>
+              <strong>ASCII Representation:</strong><br />
+              <span>| [Item 1][Item 2][Item 3] |</span>
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >justify-content: flex-start;</span
+              >
+            </p>
+
+            <h4>Value 2.5.2: justify-content: flex-end / end</h4>
+            <p>
+              <strong>Behavior:</strong> Items pack flush against the end edge
+              of the main axis. All leftover free space sits at the start of the
+              line.
+            </p>
+            <p>
+              <strong>ASCII Representation:</strong><br />
+              <span>| [Item 1][Item 2][Item 3] |</span>
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >justify-content: flex-end;</span
+              >
+            </p>
+
+            <h4>Value 2.5.3: justify-content: center</h4>
+            <p>
+              <strong>Behavior:</strong> Items pack tightly in the exact center
+              of the main axis. Leftover space is split equally on both outer
+              sides.
+            </p>
+            <p>
+              <strong>ASCII Representation:</strong><br />
+              <span>| [Item 1][Item 2][Item 3] |</span>
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >justify-content: center;</span
+              >
+            </p>
+
+            <h4>Value 2.5.4: justify-content: space-between</h4>
+            <p>
+              <strong>Behavior:</strong> The first item sits flush against the
+              start edge; the last item sits flush against the end edge. All
+              remaining free space is divided equally between adjacent items.
+            </p>
+            <p>
+              <strong>ASCII Representation:</strong><br />
+              <span>| [Item 1] [Item 2] [Item 3] |</span>
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >justify-content: space-between;</span
+              >
+            </p>
+
+            <h4>Value 2.5.5: justify-content: space-around</h4>
+            <p>
+              <strong>Behavior:</strong> Space is distributed equally on both
+              sides of every item. The gap between two items is twice as wide as
+              the gap between an edge item and the outer wall.
+            </p>
+            <p>
+              <strong>ASCII Representation:</strong><br />
+              <span>| [Item 1] [Item 2] [Item 3] |</span>
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >justify-content: space-around;</span
+              >
+            </p>
+
+            <h4>Value 2.5.6: justify-content: space-evenly</h4>
+            <p>
+              <strong>Behavior:</strong> The space between any two adjacent
+              items, as well as the space between outer items and the container
+              boundary, is mathematically identical.
+            </p>
+            <p>
+              <strong>ASCII Representation:</strong><br />
+              <span>| [Item 1] [Item 2] [Item 3] |</span>
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >justify-content: space-evenly;</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.6 align-items -->
+          <article id="prop-align-items">
+            <h3>
+              2.6 align-items Property (Cross Axis Alignment of Single Line)
+            </h3>
+            <p>
+              <strong>Def:</strong> Controls how flex items align along the
+              <strong>cross axis</strong> on their current flex line.
+            </p>
+            <p><strong>Initial Value:</strong> <code>stretch</code></p>
+
+            <h4>Value 2.6.1: align-items: stretch (Default)</h4>
+            <p>
+              <strong>Behavior:</strong> Items expand to fill the full
+              cross-size of the flex container (or the full height of the
+              current line). Only applies if the items do not have an explicit
+              cross-size (e.g., no fixed <code>height</code> in row mode).
+            </p>
+            <p>
+              <strong>ASCII Representation (Row Mode):</strong><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              ><br />
+              <span>| | | | | | | |</span><br />
+              <span>| |Item 1 | |Item 2 | |Item 3 | (Full Height) |</span><br />
+              <span>| | | | | | | |</span><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              >
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >align-items: stretch;</span
+              >
+            </p>
+
+            <h4>Value 2.6.2: align-items: flex-start / start</h4>
+            <p>
+              <strong>Behavior:</strong> Items pack flush against the
+              cross-start edge (the top in horizontal row mode).
+            </p>
+            <p>
+              <strong>ASCII Representation (Row Mode):</strong><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              ><br />
+              <span>| [Item 1] [Item 2] [Item 3] |</span><br />
+              <span>| |</span><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              >
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >align-items: flex-start;</span
+              >
+            </p>
+
+            <h4>Value 2.6.3: align-items: flex-end / end</h4>
+            <p>
+              <strong>Behavior:</strong> Items pack flush against the cross-end
+              edge (the bottom in horizontal row mode).
+            </p>
+            <p>
+              <strong>ASCII Representation (Row Mode):</strong><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              ><br />
+              <span>| |</span><br />
+              <span>| [Item 1] [Item 2] [Item 3] |</span><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              >
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >align-items: flex-end;</span
+              >
+            </p>
+
+            <h4>Value 2.6.4: align-items: center</h4>
+            <p>
+              <strong>Behavior:</strong> Items center along the cross axis line.
+              Essential for vertical centering inside navigation bars and
+              buttons.
+            </p>
+            <p>
+              <strong>ASCII Representation (Row Mode):</strong><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              ><br />
+              <span>| |</span><br />
+              <span>| [Item 1] [Item 2] [Item 3] |</span><br />
+              <span>| |</span><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              >
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >align-items: center;</span
+              >
+            </p>
+
+            <h4>Value 2.6.5: align-items: baseline</h4>
+            <p>
+              <strong>Behavior:</strong> Items align so the typographic
+              baselines of their first lines of text share a single straight
+              line, even if font sizes or paddings differ.
+            </p>
+            <p>
+              <strong>ASCII Representation:</strong><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              ><br />
+              <span>| [Small text] [GIANT TEXT] [Medium text] |</span><br />
+              <span
+                >| -----baseline-------baseline--------baseline-------------
+                |</span
+              ><br />
+              <span
+                >+-------------------------------------------------------------+</span
+              >
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >align-items: baseline;</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.7 align-content -->
+          <article id="prop-align-content">
+            <h3>2.7 align-content Property (Multi-Line Cross Axis Packing)</h3>
+            <p>
+              <strong>Def:</strong> Governs alignment and space distribution of
+              <strong>multiple flex lines</strong> along the cross axis when
+              <code>flex-wrap: wrap;</code> is active and there is extra
+              cross-axis space.
+            </p>
+            <p>
+              <strong>CRITICAL CONDITION:</strong>
+              <code>align-content</code> has
+              <strong>zero effect on a single-line flex container</strong>
+              (where <code>flex-wrap: nowrap</code>). It requires multiple lines
+              of wrapped content to function.
+            </p>
+            <p>
+              <strong>Values:</strong> <code>stretch</code> (default),
+              <code>flex-start</code>, <code>flex-end</code>,
+              <code>center</code>, <code>space-between</code>,
+              <code>space-around</code>, <code>space-evenly</code>.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.grid-container { flex-wrap: wrap; align-content:
+                space-between; }</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.8 gap -->
+          <article id="prop-gap">
+            <h3>2.8 gap, row-gap &amp; column-gap Properties</h3>
+            <p>
+              <strong>Def:</strong> Specifies gutters between flex items without
+              applying margins directly to the items.
+            </p>
+            <p>
+              <strong>Why Gap is Preferred:</strong> Unlike margin hacks,
+              <code>gap</code> never places space on outer boundaries. The
+              spacing sits <em>strictly between adjacent siblings</em>.
+            </p>
+            <p>
+              <strong>Code Examples:</strong><br />
+              <span>gap: 16px; /* 16px on both rows and columns */</span><br />
+              <span
+                >row-gap: 24px; /* 24px vertical gap between wrapped lines
+                */</span
+              ><br />
+              <span
+                >column-gap: 12px; /* 12px horizontal gap between items on the
+                same line */</span
+              >
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 3. ITEM (CHILD) PROPERTIES -->
+        <section id="item-properties">
+          <h2>3. Flex Item (Child) Properties &amp; Every Value</h2>
+          <p>
+            <strong>Def:</strong> Properties declared directly on child elements
+            inside a flex container to control sizing, space absorption,
+            shrinking priorities, individual alignments, and visual display
+            order.
+          </p>
+
+          <!-- 3.1 flex-grow -->
+          <article id="prop-flex-grow">
+            <h3>3.1 flex-grow Property (Proportional Expansion)</h3>
+            <p>
+              <strong>Def:</strong> Specifies how much an item will expand
+              relative to its siblings to absorb remaining positive free space
+              along the main axis.
+            </p>
+            <p>
+              <strong>Initial Value:</strong> <code>0</code> (items do not
+              expand past their initial size).
+            </p>
+
+            <h4>The Step-by-Step Mathematical Algorithm</h4>
+            <p>
+              Assume a parent container width of <strong>600px</strong> with
+              three items:
+            </p>
+            <ul>
+              <li>Item A: <code>flex-basis: 100px; flex-grow: 1;</code></li>
+              <li>Item B: <code>flex-basis: 100px; flex-grow: 2;</code></li>
+              <li>Item C: <code>flex-basis: 100px; flex-grow: 0;</code></li>
+              <li>
+                <strong>Step 1 (Base Space Used):</strong> 100px + 100px + 100px
+                = 300px.
+              </li>
+              <li>
+                <strong>Step 2 (Remaining Free Space):</strong> 600px - 300px =
+                <strong>300px</strong>.
+              </li>
+              <li>
+                <strong>Step 3 (Sum of Grow Factors):</strong> 1 + 2 + 0 =
+                <strong>3 shares</strong>.
+              </li>
+              <li>
+                <strong>Step 4 (Value of 1 Share):</strong> 300px / 3 =
+                <strong>100px per share</strong>.
+              </li>
+              <li>
+                <strong>Final Width A:</strong> 100px + (1 &times; 100px) =
+                <strong>200px</strong>.
+              </li>
+              <li>
+                <strong>Final Width B:</strong> 100px + (2 &times; 100px) =
+                <strong>300px</strong>.
+              </li>
+              <li>
+                <strong>Final Width C:</strong> 100px + (0 &times; 100px) =
+                <strong>100px</strong>.
+              </li>
+            </ul>
+          </article>
+
+          <!-- 3.2 flex-shrink -->
+          <article id="prop-flex-shrink">
+            <h3>3.2 flex-shrink Property (Proportional Compression)</h3>
+            <p>
+              <strong>Def:</strong> Dictates how much an item will compress
+              relative to its siblings when the combined size of all items
+              exceeds the container's main-axis width.
+            </p>
+            <p>
+              <strong>Initial Value:</strong> <code>1</code> (items shrink by
+              default to prevent container overflow).
+            </p>
+
+            <h4>The Anti-Squish Technique (flex-shrink: 0)</h4>
+            <p>
+              When placing avatars, fixed icons, or badges next to fluid text,
+              browsers compress the icon by default. Setting
+              <code>flex-shrink: 0;</code> forces the browser to preserve the
+              item's original width without compressing.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >.avatar { flex-shrink: 0; width: 48px; height: 48px; }</span
+              >
+            </p>
+          </article>
+
+          <!-- 3.3 flex-basis -->
+          <article id="prop-flex-basis">
+            <h3>3.3 flex-basis Property (Initial Main Axis Dimension)</h3>
+            <p>
+              <strong>Def:</strong> Sets the initial size of a flex item along
+              the main axis before free space is distributed via
+              <code>flex-grow</code> or deducted via <code>flex-shrink</code>.
+            </p>
+            <p><strong>Initial Value:</strong> <code>auto</code></p>
+
+            <h4>flex-basis: auto vs. flex-basis: 0</h4>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value</th>
+                  <th>Starting Size</th>
+                  <th>Effect on flex-grow</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>flex-basis: auto;</code></td>
+                  <td>
+                    Reads declared <code>width</code>/<code>height</code>. Falls
+                    back to content size if none set.
+                  </td>
+                  <td>
+                    Distributes leftover space <em>after</em> accounting for
+                    content sizes. Items with more text end up wider.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>flex-basis: 0;</code></td>
+                  <td>The item's base starting size is treated as zero.</td>
+                  <td>
+                    The entire container width is treated as free space and
+                    split strictly by <code>flex-grow</code> ratios, creating
+                    <strong>perfectly equal column widths</strong>.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 3.4 flex Shorthand -->
+          <article id="prop-flex-shorthand">
+            <h3>3.4 The flex Shorthand Presets</h3>
+            <p>
+              <strong>Syntax:</strong>
+              <code
+                >flex: &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt;? ||
+                &lt;'flex-basis'&gt;;</code
+              >
+            </p>
+
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Preset</th>
+                  <th>Equivalent Longhand</th>
+                  <th>Behavior Summary</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>flex: initial;</code></td>
+                  <td><code>0 1 auto</code></td>
+                  <td>
+                    Default. Does not grow; shrinks if needed; sizes to content.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>flex: 1;</code></td>
+                  <td><code>1 1 0%</code></td>
+                  <td>
+                    <strong>Fluid Column:</strong> Grows and shrinks equally
+                    from a 0 base. Standard for equal multi-column grids.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>flex: auto;</code></td>
+                  <td><code>1 1 auto</code></td>
+                  <td>
+                    Fluidly grows and shrinks, but respects base content size.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>flex: none;</code></td>
+                  <td><code>0 0 auto</code></td>
+                  <td>
+                    <strong>Rigid:</strong> Completely inflexible. Never grows
+                    and never shrinks.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 3.5 align-self -->
+          <article id="prop-align-self">
+            <h3>3.5 align-self Property (Cross Axis Override)</h3>
+            <p>
+              <strong>Def:</strong> Overrides the parent container's
+              <code>align-items</code> value for an individual flex item.
+            </p>
+            <p>
+              <strong>Values:</strong> <code>auto</code> (default, inherits from
+              parent), <code>flex-start</code>, <code>flex-end</code>,
+              <code>center</code>, <code>baseline</code>, <code>stretch</code>.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br />
+              <span>.container { align-items: center; }</span><br />
+              <span
+                >.special-item { align-self: flex-end; /* Overrides center and
+                pins to bottom */ }</span
+              >
+            </p>
+          </article>
+
+          <!-- 3.6 order -->
+          <article id="prop-order">
+            <h3>3.6 order Property (Visual Reordering)</h3>
+            <p>
+              <strong>Def:</strong> Alters the visual rendering order of items
+              on screen using integer values without modifying the underlying
+              HTML markup.
+            </p>
+            <p><strong>Initial Value:</strong> <code>0</code></p>
+            <p>
+              <strong>Rules:</strong> Negative integers (<code>order: -1</code>)
+              pull items to the front; higher integers push items to the back.
+            </p>
+            <p>
+              <strong>Accessibility Warning:</strong> <code>order</code> only
+              changes visual layout. It does <em>not</em> change keyboard Tab
+              focus order or screen-reader reading order. Reordering interactive
+              controls visually while leaving focus order untouched creates
+              accessibility failures.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 4. CRITICAL FLEXBOX MECHANICS & GOTCHAS -->
+        <section id="flexbox-gotchas">
+          <h2>4. Critical Flexbox Mechanics &amp; Edge Cases</h2>
+
+          <!-- 4.1 Auto Margins -->
+          <article id="mechanic-auto-margins">
+            <h3>4.1 Auto Margins in Flexbox (The Spacer Trick)</h3>
+            <p>
+              In Flexbox, auto margins absorb all available free space along
+              their axis <em>before</em> any <code>justify-content</code> or
+              <code>align-items</code> distribution occurs.
+            </p>
+            <p>
+              <strong>The Navbar Spacer Pattern:</strong> Setting
+              <code>margin-left: auto;</code> on a link item pushes that item
+              and all following siblings to the far right edge of the header.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br />
+              <span
+                >.nav-login-btn { margin-left: auto; /* Pushes button flush to
+                right edge */ }</span
+              >
+            </p>
+          </article>
+
+          <!-- 4.2 Min-Width 0 Bug -->
+          <article id="mechanic-min-width-zero">
+            <h3>4.2 The flex item min-width: auto Gotcha</h3>
+            <p>
+              <strong>The Bug:</strong> You place a paragraph with
+              <code>text-overflow: ellipsis;</code> inside a flex item, but the
+              item refuses to shrink and overflows the screen horizontally.
+            </p>
+            <p>
+              <strong>The Reason:</strong> By default, flex items have
+              <code>min-width: auto;</code> (or
+              <code>min-height: auto;</code> in column mode). The browser
+              prevents the item from shrinking smaller than its widest inner
+              content.
+            </p>
+            <p>
+              <strong>The Fix:</strong> Explicitly declare
+              <code>min-width: 0;</code> on the flex child to allow it to shrink
+              below its content size and respect text truncation.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br />
+              <span
+                >.flex-child { min-width: 0; /* Overrides auto and allows
+                shrinking */ }</span
+              >
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 5. INTERACTIVE TESTING PLAYGROUNDS (PREPARED FOR CSS & JS PHASES) -->
+        <section id="interactive-playgrounds">
+          <h2>5. Interactive Flexbox Playgrounds</h2>
+          <p>
+            <strong>Def:</strong> Dedicated sandbox environments structured with
+            unique IDs, semantic data attributes, and UI control slots for Phase
+            2 styling and Phase 3 JavaScript interaction.
+          </p>
+
+          <!-- Playground 1: Justify Content Stage -->
+          <article id="playground-justify">
+            <h3>Playground 1: justify-content Interactive Stage</h3>
+            <p>Test main-axis space distribution dynamically:</p>
+
+            <!-- JS Control Slot: Button Hooks -->
+            <div
+              id="controls-justify"
+              class="playground-controls"
+              data-target="stage-justify-parent"
+            >
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="justify-content"
+                data-val="flex-start"
+              >
+                flex-start
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="justify-content"
+                data-val="flex-end"
+              >
+                flex-end
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="justify-content"
+                data-val="center"
+              >
+                center
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="justify-content"
+                data-val="space-between"
+              >
+                space-between
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="justify-content"
+                data-val="space-around"
+              >
+                space-around
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="justify-content"
+                data-val="space-evenly"
+              >
+                space-evenly
+              </button>
+            </div>
+
+            <!-- CSS Stage Slot -->
+            <div id="stage-justify-parent" class="demo-flex-stage">
+              <div id="justify-item-1" class="demo-flex-item">Box 1</div>
+              <div id="justify-item-2" class="demo-flex-item">Box 2</div>
+              <div id="justify-item-3" class="demo-flex-item">Box 3</div>
+            </div>
+          </article>
+
+          <!-- Playground 2: Align Items Stage -->
+          <article id="playground-align-items">
+            <h3>Playground 2: align-items Interactive Stage</h3>
+            <p>Test cross-axis item alignment with variable content heights:</p>
+
+            <!-- JS Control Slot: Button Hooks -->
+            <div
+              id="controls-align-items"
+              class="playground-controls"
+              data-target="stage-align-parent"
+            >
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="align-items"
+                data-val="stretch"
+              >
+                stretch
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="align-items"
+                data-val="flex-start"
+              >
+                flex-start
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="align-items"
+                data-val="flex-end"
+              >
+                flex-end
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="align-items"
+                data-val="center"
+              >
+                center
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="align-items"
+                data-val="baseline"
+              >
+                baseline
+              </button>
+            </div>
+
+            <!-- CSS Stage Slot -->
+            <div id="stage-align-parent" class="demo-flex-stage">
+              <div id="align-item-1" class="demo-flex-item">
+                Small<br />Height
+              </div>
+              <div id="align-item-2" class="demo-flex-item">
+                Tall Item<br />Extra Line<br />Of Text
+              </div>
+              <div id="align-item-3" class="demo-flex-item">
+                Medium<br />Height
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 3: Flex-Grow Proportions Stage -->
+          <article id="playground-flex-grow">
+            <h3>Playground 3: Proportional Growth Stage (flex-grow)</h3>
+            <p>
+              Inspect how items absorb positive free space relative to siblings:
+            </p>
+
+            <!-- JS Control Slot: Button Hooks -->
+            <div
+              id="controls-grow"
+              class="playground-controls"
+              data-target="stage-grow-parent"
+            >
+              <button type="button" class="ctrl-btn" data-action="equal-grow">
+                Equal Growth (1:1:1)
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-action="weighted-grow"
+              >
+                Weighted (1:2:1)
+              </button>
+              <button type="button" class="ctrl-btn" data-action="reset-grow">
+                Reset Growth (0:0:0)
+              </button>
+            </div>
+
+            <!-- CSS Stage Slot -->
+            <div id="stage-grow-parent" class="demo-flex-stage">
+              <div id="grow-box-1" class="demo-flex-item" data-grow="1">
+                Item A (flex-grow: 1)
+              </div>
+              <div id="grow-box-2" class="demo-flex-item" data-grow="2">
+                Item B (flex-grow: 2)
+              </div>
+              <div id="grow-box-3" class="demo-flex-item" data-grow="1">
+                Item C (flex-grow: 1)
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 4: Multi-Line Wrapping & Gap -->
+          <article id="playground-wrapping">
+            <h3>Playground 4: Multi-Line Wrapping &amp; Gap Distribution</h3>
+            <p>
+              Observe how items wrap across rows and distribute gap channels:
+            </p>
+
+            <!-- JS Control Slot: Button Hooks -->
+            <div
+              id="controls-wrap"
+              class="playground-controls"
+              data-target="stage-wrap-parent"
+            >
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="flex-wrap"
+                data-val="nowrap"
+              >
+                nowrap
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="flex-wrap"
+                data-val="wrap"
+              >
+                wrap
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="flex-wrap"
+                data-val="wrap-reverse"
+              >
+                wrap-reverse
+              </button>
+            </div>
+
+            <!-- CSS Stage Slot -->
+            <div id="stage-wrap-parent" class="demo-flex-stage">
+              <div class="demo-card-item">Card 1</div>
+              <div class="demo-card-item">Card 2</div>
+              <div class="demo-card-item">Card 3</div>
+              <div class="demo-card-item">Card 4</div>
+              <div class="demo-card-item">Card 5</div>
+              <div class="demo-card-item">Card 6</div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="../app.js" defer></script>
+  </body>
+</html>

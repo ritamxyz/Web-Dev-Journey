@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Documentation | 05. Box Model</title>
+    <link rel="stylesheet" href="../CSS-Files/01-global.css" />
+    <link rel="stylesheet" href="../CSS-Files/02-colors.css" />
+    <link rel="stylesheet" href="../CSS-Files/03-typography.css" />
+    <link rel="stylesheet" href="../CSS-Files/04-selectors.css" />
+    <link rel="stylesheet" href="../CSS-Files/05-box-model.css" />
+    <link rel="stylesheet" href="../CSS-Files/06-display-position.css" />
+    <link rel="stylesheet" href="../CSS-Files/07-flexbox.css" />
+    <link rel="stylesheet" href="../CSS-Files/08-grid.css" />
+    <link rel="stylesheet" href="../CSS-Files/09-transistions-animation.css" />
+    <link rel="stylesheet" href="../CSS-Files/10-responsive-design.css" />
+    <link rel="stylesheet" href="../CSS-Files/11-miscellaneous.css" />
+    <link rel="stylesheet" href="../CSS-Files/12-advanced-css.css" />
+  </head>
+  <body>
+    <!-- TOP HEADER / NAVBAR -->
+    <header id="site-header">
+      <div class="header-left">
+        <button id="menu-toggle" aria-label="Toggle Navigation Menu">
+          &#9776;
+        </button>
+        <span class="site-logo">CSS.Docs</span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">05. Box Model &amp; Dimensions</span>
+      </div>
+      <div class="header-right">
+        <span class="doc-version">CSS3 / Modern CSS</span>
+      </div>
+    </header>
+
+    <div id="layout-container">
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <aside id="sidebar-nav">
+        <div class="sidebar-header">
+          <h2>Documentation</h2>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">01. Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a href="02-colors.html" class="nav-link">02. Colors</a>
+            </li>
+            <li class="nav-item">
+              <a href="03-typography.html" class="nav-link">03. Typography</a>
+            </li>
+            <li class="nav-item">
+              <a href="04-selectors.html" class="nav-link"
+                >04. Selectors &amp; Specificity</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="05-box-model.html" class="nav-link">05. Box Model</a>
+            </li>
+            <li class="nav-item">
+              <a href="06-display-position.html" class="nav-link"
+                >06. Display &amp; Positioning</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="07-flexbox.html" class="nav-link">07. Flexbox</a>
+            </li>
+            <li class="nav-item">
+              <a href="08-grid.html" class="nav-link">08. CSS Grid</a>
+            </li>
+            <li class="nav-item">
+              <a href="09-transistions-animation.html" class="nav-link"
+                >09. Transitions &amp; Animations</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="10-responsive-design.html" class="nav-link"
+                >10. Responsive Design</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="11-miscellaneous.html" class="nav-link"
+                >11. Miscellaneous &amp; Visual FX</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="12-advanced-css.html" class="nav-link"
+                >12. Advanced CSS &amp; Motion</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- MAIN DOCUMENTATION CONTENT -->
+      <main id="main-content">
+        <!-- PAGE OVERVIEW -->
+        <section id="doc-overview">
+          <h1>The CSS Box Model &amp; Dimensional Geometry</h1>
+          <p><strong>Module:</strong> 05. Core Layout Geometry</p>
+          <p>
+            <strong>Description:</strong> An exhaustive engineering guide to the
+            rectangular box engine that underpins all CSS layout rendering.
+            Covers the 4 concentric geometry layers, the box-sizing revolution,
+            padding mechanics, multidimensional border systems, margin collapse
+            physics, negative margins, outline rendering, logical sizing
+            properties, and inline vs. block layout constraints.
+          </p>
+        </section>
+        <hr />
+
+        <!-- 1. WHAT IS THE BOX MODEL -->
+        <section id="what-is-box-model">
+          <h2>1. What is the CSS Box Model?</h2>
+          <p>
+            <strong>Def:</strong> In CSS, every single element rendered on a web
+            page is treated by the browser engine as a rectangular box. The CSS
+            Box Model describes the geometric structure of this box, which
+            consists of four concentric rectangular layers wrapping around one
+            another.
+          </p>
+
+          <!-- 1.1 The 4 Layers -->
+          <article id="box-layers">
+            <h3>1.1 The 4 Concentric Layers (From Inside to Outside)</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Layer Name</th>
+                  <th>Position</th>
+                  <th>Definition &amp; Rendering Behavior</th>
+                  <th>Background Fill?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Content Box</strong></td>
+                  <td>Innermost</td>
+                  <td>
+                    The actual core area where text, images, videos, or child
+                    DOM elements reside. Sized by <code>width</code> and
+                    <code>height</code>.
+                  </td>
+                  <td>Yes (covered by <code>background-color</code>)</td>
+                </tr>
+                <tr>
+                  <td><strong>2. Padding Box</strong></td>
+                  <td>Middle-Inner</td>
+                  <td>
+                    Transparent breathing space surrounding the content, pushing
+                    the outer border away from the text.
+                  </td>
+                  <td>
+                    Yes (the element's background extends fully under padding)
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>3. Border Box</strong></td>
+                  <td>Middle-Outer</td>
+                  <td>
+                    A visible or invisible stroke wrapping around the padding
+                    and content. Sized by <code>border-width</code>.
+                  </td>
+                  <td>
+                    Border paints directly over the edge of the background
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>4. Margin Box</strong></td>
+                  <td>Outermost</td>
+                  <td>
+                    Completely transparent buffer space outside the border that
+                    pushes neighboring sibling elements away.
+                  </td>
+                  <td>
+                    No (completely transparent; parent's canvas shows through)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Ascii Visual Architecture</h4>
+            <p>
+              <span>+-------------------------------------------------+</span
+              ><br />
+              <span>| MARGIN BOX |</span><br />
+              <span>| +-----------------------------------------+ |</span><br />
+              <span>| | BORDER BOX | |</span><br />
+              <span>| | +---------------------------------+ | |</span><br />
+              <span>| | | PADDING BOX | | |</span><br />
+              <span>| | | +-------------------------+ | | |</span><br />
+              <span>| | | | CONTENT BOX | | | |</span><br />
+              <span>| | | | (Text &amp; Images) | | | |</span><br />
+              <span>| | | +-------------------------+ | | |</span><br />
+              <span>| | +---------------------------------+ | |</span><br />
+              <span>| +-----------------------------------------+ |</span><br />
+              <span>+-------------------------------------------------+</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 2. BOX-SIZING PROPERTY -->
+        <section id="box-sizing">
+          <h2>2. box-sizing Property (Content-Box vs. Border-Box)</h2>
+          <p>
+            <strong>Def:</strong> Determines how the browser engine calculates
+            the total visual width and height of an element when
+            <code>width</code> and <code>height</code> properties are specified.
+          </p>
+
+          <!-- 2.1 The Two Modes Compared -->
+          <article id="box-sizing-comparison">
+            <h3>2.1 Comparison: content-box vs. border-box</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Property Value</th>
+                  <th>Total Width Calculation Formula</th>
+                  <th>Behavior &amp; Industry Impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>content-box</code> (Browser Default)</td>
+                  <td>
+                    <strong
+                      >Total Width = width + padding-left + padding-right +
+                      border-left + border-right</strong
+                    >
+                  </td>
+                  <td>
+                    <strong>Fragile Math:</strong> Declaring
+                    <code>width: 300px; padding: 20px; border: 5px;</code>
+                    causes the rendered element to swell to
+                    <strong>350px</strong> wide, breaking multi-column grid
+                    layouts and causing horizontal scrolling.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>border-box</code> (Modern Standard)</td>
+                  <td>
+                    <strong
+                      >Total Width = width (padding and border are absorbed
+                      inside)</strong
+                    >
+                  </td>
+                  <td>
+                    <strong>Predictable Geometry:</strong> Declaring
+                    <code>width: 300px; padding: 20px; border: 5px;</code>
+                    guarantees the element remains exactly
+                    <strong>300px</strong> wide on screen. The browser
+                    automatically compresses the inner content box to 250px.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 2.2 Worked Numerical Example -->
+          <article id="box-sizing-math">
+            <h3>2.2 Side-by-Side Mathematical Proof</h3>
+            <p>
+              Suppose you have two elements, both with:
+              <code>width: 200px; padding: 20px; border: 10px;</code>
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Dimension Element</th>
+                  <th>With content-box (Default)</th>
+                  <th>With border-box (Modern)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Inner Content Width</td>
+                  <td>200px</td>
+                  <td>140px (200 - 40 padding - 20 border)</td>
+                </tr>
+                <tr>
+                  <td>Horizontal Padding (Left + Right)</td>
+                  <td>40px (20px + 20px)</td>
+                  <td>40px (20px + 20px)</td>
+                </tr>
+                <tr>
+                  <td>Horizontal Border (Left + Right)</td>
+                  <td>20px (10px + 10px)</td>
+                  <td>20px (10px + 10px)</td>
+                </tr>
+                <tr>
+                  <td><strong>Final Rendered Screen Width</strong></td>
+                  <td><strong>260px (Bloated by +60px)</strong></td>
+                  <td><strong>200px (Exact target maintained)</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>The Universal Production Reset Rule</h4>
+            <p>
+              Frontend developers apply this reset at the very beginning of
+              every project stylesheet:
+            </p>
+            <p>
+              <span>*, *::before, *::after {</span><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;box-sizing: border-box;</span><br />
+              <span>}</span>
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Elements under default content-box swell beyond their declared
+              boundary width when padding is added.
+            </p>
+            <h5>
+              The Paragraph after applying property
+              <span>box-sizing: border-box;</span>
+            </h5>
+            <p id="demo-box-sizing">
+              Elements under default content-box swell beyond their declared
+              boundary width when padding is added.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 3. PADDING PROPERTY -->
+        <section id="padding">
+          <h2>3. padding Property (Internal Breathing Space)</h2>
+          <p>
+            <strong>Def:</strong> Creates space between the content of an
+            element and its surrounding border perimeter.
+          </p>
+          <p><strong>Crucial Rules:</strong></p>
+          <ul>
+            <li>
+              Padding
+              <strong>always adopts the element's background color</strong> or
+              background image.
+            </li>
+            <li>
+              Padding <strong>cannot accept negative values</strong> (negative
+              padding is invalid CSS syntax and ignored).
+            </li>
+            <li>
+              Padding increases the clickable hit area of buttons, links, and
+              form fields.
+            </li>
+          </ul>
+
+          <!-- 3.1 Longhand vs Shorthand -->
+          <article id="padding-shorthand">
+            <h3>3.1 The 4 Shorthand Permutations (The Clockwise Rule)</h3>
+            <p>
+              Like all four-sided CSS box properties, padding rotates clockwise
+              starting from the top:
+              <strong>Top &rarr; Right &rarr; Bottom &rarr; Left (TRBL)</strong
+              >.
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value Pattern</th>
+                  <th>Syntax Example</th>
+                  <th>Mapping Breakdown</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1 Value</td>
+                  <td><code>padding: 20px;</code></td>
+                  <td>
+                    Applies 20px to <strong>all 4 sides</strong> equally (Top,
+                    Right, Bottom, Left).
+                  </td>
+                </tr>
+                <tr>
+                  <td>2 Values</td>
+                  <td><code>padding: 10px 20px;</code></td>
+                  <td>
+                    <strong>[Top &amp; Bottom] [Left &amp; Right]</strong>
+                    &mdash; 10px vertical, 20px horizontal.
+                  </td>
+                </tr>
+                <tr>
+                  <td>3 Values</td>
+                  <td><code>padding: 10px 20px 30px;</code></td>
+                  <td>
+                    <strong>[Top] [Left &amp; Right] [Bottom]</strong> &mdash;
+                    10px top, 20px sides, 30px bottom.
+                  </td>
+                </tr>
+                <tr>
+                  <td>4 Values</td>
+                  <td><code>padding: 10px 15px 20px 25px;</code></td>
+                  <td>
+                    <strong>[Top] [Right] [Bottom] [Left]</strong> &mdash;
+                    Clockwise rotation.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Longhand Properties:</h4>
+            <p>
+              <span>padding-top: 10px;</span><br />
+              <span>padding-right: 15px;</span><br />
+              <span>padding-bottom: 20px;</span><br />
+              <span>padding-left: 25px;</span>
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Text sitting tight against the perimeter with zero internal
+              clearance.
+            </p>
+            <h5>
+              The Paragraph after applying property
+              <span>padding: 16px 24px;</span>
+            </h5>
+            <p id="demo-padding">
+              Text sitting tight against the perimeter with zero internal
+              clearance.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 4. BORDER PROPERTY SUITE -->
+        <section id="border">
+          <h2>4. border Property Suite</h2>
+          <p>
+            <strong>Def:</strong> Draws a visible stroke along the outer
+            boundary of the padding box. In CSS, border is a compound property
+            composed of three distinct sub-properties: width, style, and color.
+          </p>
+          <p>
+            <strong>Shorthand Syntax:</strong><br />
+            <span>border: [border-width] [border-style] [border-color];</span>
+          </p>
+
+          <!-- 4.1 Sub-properties -->
+          <article id="border-subproperties">
+            <h3>4.1 The 3 Sub-Properties of Border</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Sub-Property</th>
+                  <th>Common Values</th>
+                  <th>Mandatory Rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>border-style</code></td>
+                  <td>
+                    <code>solid</code>, <code>dashed</code>,
+                    <code>dotted</code>, <code>double</code>, <code>none</code>,
+                    <code>hidden</code>
+                  </td>
+                  <td>
+                    <strong>STRICTLY MANDATORY:</strong> If
+                    <code>border-style</code> is not defined, the border
+                    defaults to <code>none</code> and will never render on
+                    screen, regardless of width or color!
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>border-width</code></td>
+                  <td>
+                    Length units (<code>1px</code>, <code>4px</code>,
+                    <code>0.2rem</code>) or keywords (<code>thin</code>,
+                    <code>medium</code>, <code>thick</code>)
+                  </td>
+                  <td>Defaults to <code>medium</code> (~3px).</td>
+                </tr>
+                <tr>
+                  <td><code>border-color</code></td>
+                  <td>
+                    Any valid CSS color (Hex, RGB, HSL) or
+                    <code>currentColor</code>
+                  </td>
+                  <td>
+                    Defaults to <code>currentColor</code> (inherits the
+                    element's foreground text color).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 4.2 Styles Reference -->
+          <article id="border-styles-matrix">
+            <h3>4.2 Visual Border Style Reference</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value Keyword</th>
+                  <th>Visual Appearance</th>
+                  <th>Typical Design Use Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>solid</code></td>
+                  <td>A single continuous unbroken stroke line.</td>
+                  <td>Standard for cards, inputs, buttons, and dividers.</td>
+                </tr>
+                <tr>
+                  <td><code>dashed</code></td>
+                  <td>A series of short rectangular dashes.</td>
+                  <td>
+                    File drag-and-drop upload dropzones, discount coupons.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>dotted</code></td>
+                  <td>A series of circular or square dots.</td>
+                  <td>Subtle footer dividers, helper tooltip underlines.</td>
+                </tr>
+                <tr>
+                  <td><code>double</code></td>
+                  <td>
+                    Two parallel solid strokes. Requires at least 3px width to
+                    render both lines.
+                  </td>
+                  <td>
+                    Formal frames, certificate borders, decorative hero
+                    containers.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>none</code></td>
+                  <td>No border rendered; border-width computed to 0.</td>
+                  <td>Removing default button and input borders.</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 4.3 border-radius -->
+          <article id="prop-border-radius">
+            <h3>4.3 border-radius Property (Curved &amp; Circular Corners)</h3>
+            <p>
+              <strong>Def:</strong> Rounds the geometric corners of an element's
+              outer border and background canvas.
+            </p>
+            <p>
+              <strong>Overflow Clipping Note:</strong> Background colors curve
+              automatically, but child content (like inner images) will poke out
+              past curved corners unless the parent has
+              <code>overflow: hidden;</code> declared.
+            </p>
+
+            <h4>Popular Border-Radius Recipes</h4>
+            <ul>
+              <li>
+                <strong>Subtle Modern Card:</strong>
+                <code>border-radius: 8px;</code> or <code>12px;</code>
+              </li>
+              <li>
+                <strong>Pill-Shaped Button:</strong>
+                <code>border-radius: 9999px;</code> (always produces fully
+                rounded ends regardless of width).
+              </li>
+              <li>
+                <strong>Perfect Circle Avatar:</strong>
+                <code>width: 100px; height: 100px; border-radius: 50%;</code>
+                (requires equal width and height).
+              </li>
+            </ul>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Square rectangular container with standard 90-degree sharp
+              corners.
+            </p>
+            <h5>
+              The Paragraph after applying property
+              <span>border: 2px solid #2563eb; border-radius: 8px;</span>
+            </h5>
+            <p id="demo-border">
+              Square rectangular container with standard 90-degree sharp
+              corners.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 5. MARGIN PROPERTY & NEGATIVE MARGINS -->
+        <section id="margin">
+          <h2>5. margin Property &amp; Negative Margins</h2>
+          <p>
+            <strong>Def:</strong> Creates invisible clearance space outside the
+            border, separating the element from its neighboring sibling boxes.
+          </p>
+          <p><strong>Inherited:</strong> No.</p>
+
+          <!-- 5.1 Centering with auto -->
+          <article id="margin-auto">
+            <h3>5.1 Horizontal Centering with margin: 0 auto;</h3>
+            <p>
+              <strong>How It Works:</strong> Setting
+              <code>margin-left: auto;</code> and
+              <code>margin-right: auto;</code> instructs the browser engine to
+              evaluate all remaining empty horizontal space in the parent
+              container, divide it exactly in half, and assign equal margin to
+              both sides.
+            </p>
+            <p>
+              <strong>Strict Prerequisites for margin: auto to Work:</strong>
+            </p>
+            <ol>
+              <li>
+                The element must be a <strong>block-level</strong> element
+                (e.g., <code>&lt;div&gt;</code>, <code>&lt;section&gt;</code>,
+                or <code>display: block;</code>).
+              </li>
+              <li>
+                The element must have an explicit
+                <strong>width or max-width</strong> less than 100% (e.g.,
+                <code>max-width: 800px;</code>). If width is 100%, there is zero
+                leftover space to distribute.
+              </li>
+            </ol>
+          </article>
+
+          <!-- 5.2 Negative Margins -->
+          <article id="negative-margins">
+            <h3>5.2 Negative Margins (Pulling Elements Closer)</h3>
+            <p>
+              Unlike padding,
+              <strong>margins can take negative values</strong> (e.g.,
+              <code>margin-top: -20px;</code>,
+              <code>margin-left: -50px;</code>).
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Negative Margin Direction</th>
+                  <th>Geometric Consequence</th>
+                  <th>Production Use Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>margin-top: -X;</code></td>
+                  <td>
+                    Pulls the element upward into the space of the element above
+                    it.
+                  </td>
+                  <td>
+                    Floating hero cards overlapping a background image above
+                    them.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>margin-bottom: -X;</code></td>
+                  <td>
+                    Pulls following sibling elements upward into its own space.
+                  </td>
+                  <td>
+                    Closing unnatural gaps created by large fixed line heights.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>margin-left: -X;</code></td>
+                  <td>
+                    Pulls the element leftward beyond its normal boundary.
+                  </td>
+                  <td>
+                    Breaking a child container out of its parent's padding
+                    (full-bleed layout).
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>margin-right: -X;</code></td>
+                  <td>
+                    Pulls succeeding content rightward into its territory.
+                  </td>
+                  <td>Negative tracking in horizontal badge clusters.</td>
+                </tr>
+              </tbody>
+            </table>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Standard flow position with default positive clearance margins.
+            </p>
+            <h5>
+              The Paragraph after applying property <span>margin: 24px 0;</span>
+            </h5>
+            <p id="demo-margin">
+              Standard flow position with default positive clearance margins.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 6. MARGIN COLLAPSE (THE GOTCHA) -->
+        <section id="margin-collapse">
+          <h2>6. Margin Collapse (The #1 CSS Layout Gotcha)</h2>
+          <p>
+            <strong>Def:</strong> In standard CSS flow, when the vertical
+            margins of two adjacent elements touch, they do not add together.
+            Instead, they <strong>collapse into a single margin</strong> whose
+            size is equal to the largest of the individual margins.
+          </p>
+          <p>
+            <strong>Crucial Rule:</strong> Horizontal margins (left and right)
+            <strong>NEVER collapse</strong>. Only vertical margins (top and
+            bottom) collapse.
+          </p>
+
+          <!-- 6.1 Three Scenarios -->
+          <article id="collapse-scenarios">
+            <h3>6.1 The 3 Scenarios Where Margins Collapse</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Scenario</th>
+                  <th>How It Occurs</th>
+                  <th>Math Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Adjacent Siblings</strong></td>
+                  <td>
+                    The bottom margin of an element directly touches the top
+                    margin of the next sibling element in normal document flow.
+                  </td>
+                  <td>
+                    Element A has <code>margin-bottom: 30px</code>; Element B
+                    has <code>margin-top: 20px</code>.<br />Resulting gap:
+                    <strong>30px (NOT 50px!)</strong>. The 30px margin absorbs
+                    the 20px margin.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>2. Parent &amp; First/Last Child</strong></td>
+                  <td>
+                    A parent container has no border or padding separating its
+                    own edge from its first child's top margin. The child's
+                    margin "leaks" through and pushes the parent down!
+                  </td>
+                  <td>
+                    A child element's <code>margin-top: 40px</code> moves the
+                    entire parent box down instead of creating space inside the
+                    parent.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>3. Empty Elements</strong></td>
+                  <td>
+                    An element has no height, no content, no padding, and no
+                    border. Its own <code>margin-top</code> and
+                    <code>margin-bottom</code> touch each other and collapse
+                    into one.
+                  </td>
+                  <td>
+                    Top margin 20px + bottom margin 30px = resulting total
+                    height of 30px.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>How to Prevent Unwanted Margin Collapse</h4>
+            <ul>
+              <li>
+                Add <code>1px</code> of padding or border to the parent
+                container (breaks direct margin-to-margin contact).
+              </li>
+              <li>
+                Declare <code>overflow: hidden;</code> on the parent (creates an
+                independent Block Formatting Context).
+              </li>
+              <li>
+                Switch the layout container to <strong>Flexbox</strong> (<code
+                  >display: flex</code
+                >) or <strong>Grid</strong> (<code>display: grid</code>) &mdash;
+                <em>margins between flex/grid items never collapse</em>!
+              </li>
+            </ul>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 7. OUTLINE VS BORDER -->
+        <section id="outline-vs-border">
+          <h2>7. outline vs. border (Layout Footprint Difference)</h2>
+          <p>
+            <strong>Def:</strong> An outline is a line drawn around elements,
+            just like a border, but with one critical architectural difference:
+            <strong
+              >outlines are drawn outside the box model and take up zero space
+              in layout calculations</strong
+            >.
+          </p>
+
+          <table border="2" width="100%">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>border</th>
+                <th>outline</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Takes up Layout Space?</td>
+                <td>
+                  <strong>Yes.</strong> Expands the element's physical
+                  dimensions (under content-box) and pushes neighboring
+                  elements.
+                </td>
+                <td>
+                  <strong>No.</strong> Floats over the screen like a ghost
+                  stroke. Never pushes siblings or triggers layout reflow.
+                </td>
+              </tr>
+              <tr>
+                <td>Can Have Individual Sides?</td>
+                <td>
+                  Yes (<code>border-top</code>, <code>border-left</code>, etc.).
+                </td>
+                <td>No. Outlines can only wrap around all 4 sides equally.</td>
+              </tr>
+              <tr>
+                <td>Respects border-radius?</td>
+                <td>Yes (curves perfectly with corner geometry).</td>
+                <td>
+                  Historically no, but modern browser engines now curve outlines
+                  along with border-radius.
+                </td>
+              </tr>
+              <tr>
+                <td>Distance from Box</td>
+                <td>Fixed directly against the padding edge.</td>
+                <td>
+                  Can be pushed outward or pulled inward via
+                  <strong><code>outline-offset</code></strong
+                  >!
+                </td>
+              </tr>
+              <tr>
+                <td>Primary Use Case</td>
+                <td>Visual card frames, UI inputs, dividing lines.</td>
+                <td>
+                  <strong>Accessibility Focus Rings:</strong> Visual indicators
+                  for keyboard users navigating via Tab key.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <article id="outline-offset-demo">
+            <h3>7.1 The outline-offset Property</h3>
+            <p>
+              <strong>Def:</strong> Adds transparent space between an outline
+              and the edge or border of an element.
+            </p>
+            <p>
+              <strong>e.g.</strong><br />
+              <span>outline: 2px dashed #2563eb;</span><br />
+              <span
+                >outline-offset: 4px; /* Leaves a 4px visible air gap between
+                element and outline */</span
+              >
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>Standard element boundary without external focus outlines.</p>
+            <h5>
+              The Paragraph after applying property
+              <span>outline: 2px solid #2563eb; outline-offset: 4px;</span>
+            </h5>
+            <p id="demo-outline">
+              Standard element boundary without external focus outlines.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 8. CSS LOGICAL PROPERTIES -->
+        <section id="logical-properties">
+          <h2>8. Modern CSS Logical Properties (Writing-Mode Agnostic)</h2>
+          <p>
+            <strong>Def:</strong> Replaces physical directional keywords (top,
+            right, bottom, left) with logical dimensions (<strong>block</strong>
+            and <strong>inline</strong>) that automatically adapt to
+            international writing modes (LTR, RTL, and vertical Asian scripts).
+          </p>
+
+          <!-- 8.1 Physical vs Logical -->
+          <article id="logical-mapping">
+            <h3>
+              8.1 Physical vs. Logical Axis Mapping (Standard English LTR)
+            </h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Physical Property</th>
+                  <th>Modern Logical Property Equivalent</th>
+                  <th>Logical Axis Concept</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>width</code></td>
+                  <td><code>inline-size</code></td>
+                  <td>Size along the line of text.</td>
+                </tr>
+                <tr>
+                  <td><code>height</code></td>
+                  <td><code>block-size</code></td>
+                  <td>Size perpendicular to text lines (vertical stack).</td>
+                </tr>
+                <tr>
+                  <td><code>margin-top</code> / <code>margin-bottom</code></td>
+                  <td>
+                    <code>margin-block</code> (or
+                    <code>margin-block-start / end</code>)
+                  </td>
+                  <td>Vertical spacing above and below content.</td>
+                </tr>
+                <tr>
+                  <td><code>margin-left</code> / <code>margin-right</code></td>
+                  <td>
+                    <code>margin-inline</code> (or
+                    <code>margin-inline-start / end</code>)
+                  </td>
+                  <td>Horizontal spacing before and after lines.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>padding-top</code> / <code>padding-bottom</code>
+                  </td>
+                  <td><code>padding-block</code></td>
+                  <td>Vertical internal padding.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>padding-left</code> / <code>padding-right</code>
+                  </td>
+                  <td><code>padding-inline</code></td>
+                  <td>Horizontal internal padding.</td>
+                </tr>
+                <tr>
+                  <td><code>border-left</code> / <code>border-right</code></td>
+                  <td><code>border-inline</code></td>
+                  <td>Borders on start and end text boundaries.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Production Superpower: 2-Value Logical Shorthands</h4>
+            <p>
+              In legacy CSS, setting vertical padding while leaving horizontal
+              padding alone required writing <code>padding: 16px 0;</code>. In
+              modern CSS, you write:
+            </p>
+            <p>
+              <span
+                >padding-block: 16px; /* Sets both top and bottom cleanly
+                */</span
+              ><br />
+              <span
+                >padding-inline: 24px; /* Sets both left and right cleanly
+                */</span
+              >
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Logical properties adapt automatically when text switches from
+              English to Arabic or Japanese.
+            </p>
+            <h5>
+              The Paragraph after applying property
+              <span>padding-inline: 32px; padding-block: 12px;</span>
+            </h5>
+            <p id="demo-logical">
+              Logical properties adapt automatically when text switches from
+              English to Arabic or Japanese.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 9. INLINE VS BLOCK BOX MODEL CONSTRAINTS -->
+        <section id="inline-vs-block-box">
+          <h2>9. Box Model on Inline vs. Block Elements</h2>
+          <p>
+            <strong>Def:</strong> How an element's HTML display mode impacts its
+            ability to accept box model dimensions.
+          </p>
+
+          <table border="2" width="100%">
+            <thead>
+              <tr>
+                <th>Box Model Property</th>
+                <th>
+                  Block Elements (<code>&lt;div&gt;</code>,
+                  <code>&lt;p&gt;</code>)
+                </th>
+                <th>
+                  Inline Elements (<code>&lt;span&gt;</code>,
+                  <code>&lt;a&gt;</code>)
+                </th>
+                <th>
+                  Inline-Block (<code>&lt;button&gt;</code>,
+                  <code>&lt;img&gt;</code>)
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>width</code> / <code>height</code></td>
+                <td>Fully respected.</td>
+                <td>
+                  <strong>COMPLETELY IGNORED.</strong> Width is sized strictly
+                  to inner characters.
+                </td>
+                <td>Fully respected.</td>
+              </tr>
+              <tr>
+                <td><code>padding-left</code> / <code>padding-right</code></td>
+                <td>Fully respected.</td>
+                <td>Fully respected (pushes horizontal neighbors).</td>
+                <td>Fully respected.</td>
+              </tr>
+              <tr>
+                <td><code>padding-top</code> / <code>padding-bottom</code></td>
+                <td>Fully respected.</td>
+                <td>
+                  <strong>VISUAL ONLY:</strong> Background paints, but
+                  <em>does not push line boxes up or down</em>, causing
+                  overlapping collisions with text lines above and below.
+                </td>
+                <td>Fully respected (pushes layout vertically).</td>
+              </tr>
+              <tr>
+                <td><code>margin-left</code> / <code>margin-right</code></td>
+                <td>Fully respected.</td>
+                <td>Fully respected.</td>
+                <td>Fully respected.</td>
+              </tr>
+              <tr>
+                <td><code>margin-top</code> / <code>margin-bottom</code></td>
+                <td>Fully respected.</td>
+                <td>
+                  <strong>COMPLETELY IGNORED.</strong> Has zero effect on
+                  vertical layout.
+                </td>
+                <td>Fully respected.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+    <script src="../app.js" defer></script>
+  </body>
+</html>

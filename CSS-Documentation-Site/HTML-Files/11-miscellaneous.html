@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Documentation | 11. Miscellaneous &amp; Visual FX</title>
+    <link rel="stylesheet" href="../CSS-Files/01-global.css" />
+    <link rel="stylesheet" href="../CSS-Files/02-colors.css" />
+    <link rel="stylesheet" href="../CSS-Files/03-typography.css" />
+    <link rel="stylesheet" href="../CSS-Files/04-selectors.css" />
+    <link rel="stylesheet" href="../CSS-Files/05-box-model.css" />
+    <link rel="stylesheet" href="../CSS-Files/06-display-position.css" />
+    <link rel="stylesheet" href="../CSS-Files/07-flexbox.css" />
+    <link rel="stylesheet" href="../CSS-Files/08-grid.css" />
+    <link rel="stylesheet" href="../CSS-Files/09-transistions-animation.css" />
+    <link rel="stylesheet" href="../CSS-Files/10-responsive-design.css" />
+    <link rel="stylesheet" href="../CSS-Files/11-miscellaneous.css" />
+    <link rel="stylesheet" href="../CSS-Files/12-advanced-css.css" />
+  </head>
+  <body>
+    <!-- TOP HEADER / NAVBAR -->
+    <header id="site-header">
+      <div class="header-left">
+        <button id="menu-toggle" aria-label="Toggle Navigation Menu">
+          &#9776;
+        </button>
+        <span class="site-logo">CSS.Docs</span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current"
+          >11. Miscellaneous, Backgrounds &amp; Visual FX</span
+        >
+      </div>
+      <div class="header-right">
+        <span class="doc-version">CSS3 / Modern CSS</span>
+      </div>
+    </header>
+
+    <div id="layout-container">
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <aside id="sidebar-nav">
+        <div class="sidebar-header">
+          <h2>Documentation</h2>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">01. Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a href="02-colors.html" class="nav-link">02. Colors</a>
+            </li>
+            <li class="nav-item">
+              <a href="03-typography.html" class="nav-link">03. Typography</a>
+            </li>
+            <li class="nav-item">
+              <a href="04-selectors.html" class="nav-link"
+                >04. Selectors &amp; Specificity</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="05-box-model.html" class="nav-link">05. Box Model</a>
+            </li>
+            <li class="nav-item">
+              <a href="06-display-position.html" class="nav-link"
+                >06. Display &amp; Positioning</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="07-flexbox.html" class="nav-link">07. Flexbox</a>
+            </li>
+            <li class="nav-item">
+              <a href="08-grid.html" class="nav-link">08. CSS Grid</a>
+            </li>
+            <li class="nav-item">
+              <a href="09-transistions-animation.html" class="nav-link"
+                >09. Transitions &amp; Animations</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="10-responsive-design.html" class="nav-link"
+                >10. Responsive Design</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="11-miscellaneous.html" class="nav-link"
+                >11. Miscellaneous &amp; Visual FX</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="12-advanced-css.html" class="nav-link"
+                >12. Advanced CSS &amp; Motion</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- MAIN DOCUMENTATION CONTENT -->
+      <main id="main-content">
+        <!-- PAGE OVERVIEW -->
+        <section id="doc-overview">
+          <h1>CSS Backgrounds, Shadows, UI Controls &amp; Visual FX</h1>
+          <p>
+            <strong>Module:</strong> 11. Supplementary Properties &amp; Special
+            Effects
+          </p>
+          <p>
+            <strong>Description:</strong> An exhaustive engineering guide
+            covering the CSS background suite (images, sizing, gradients,
+            attachments), shadow mechanics (box-shadow, text-shadow, inset
+            elevations), opacity vs. alpha channels, overflow handling, form
+            state pseudo-classes (:checked, :disabled), cursor controls,
+            explicit grid longhands, and glassmorphism filters.
+          </p>
+        </section>
+        <hr />
+
+        <!-- 1. THE COMPLETE BACKGROUND PROPERTY SUITE -->
+        <section id="background-suite">
+          <h2>1. The Complete background Property Suite</h2>
+          <p>
+            <strong>Def:</strong> The CSS background suite controls the graphic
+            canvas painted behind an element's content and padding area.
+          </p>
+
+          <!-- 1.1 background-image -->
+          <article id="prop-bg-image">
+            <h3>1.1 background-image (URLs &amp; Gradients)</h3>
+            <p>
+              <strong>Def:</strong> Sets one or more background images on an
+              element. Images are drawn on stacking layers: the first image
+              listed in the comma-separated list appears on top, closest to the
+              user.
+            </p>
+            <p>
+              <strong>Syntax:</strong><br />
+              <span>background-image: url("images/hero.webp");</span><br />
+              <span
+                >background-image: linear-gradient(to right, #2563eb,
+                #7c3aed);</span
+              >
+            </p>
+          </article>
+
+          <!-- 1.2 background-size -->
+          <article id="prop-bg-size">
+            <h3>1.2 background-size (cover, contain, auto)</h3>
+            <p>
+              <strong>Def:</strong> Dictates the dimensional sizing of
+              background images within the element's canvas.
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value</th>
+                  <th>Sizing Algorithm</th>
+                  <th>Production Use Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>auto</code> (Default)</td>
+                  <td>
+                    Renders the image at its natural, intrinsic image file
+                    resolution.
+                  </td>
+                  <td>Small repeating tile textures, pixel icons.</td>
+                </tr>
+                <tr>
+                  <td><code>cover</code></td>
+                  <td>
+                    Scales the image proportionally so that the background
+                    canvas is <strong>completely covered</strong>. Crops extra
+                    width or height cleanly.
+                  </td>
+                  <td>
+                    <strong>Industry Standard:</strong> Full-width hero
+                    sections, card image thumbnails.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>contain</code></td>
+                  <td>
+                    Scales the image proportionally so that the
+                    <strong>entire image fits inside</strong> the canvas without
+                    cropping. May leave empty letterbox gaps.
+                  </td>
+                  <td>
+                    Product image previews, brand logos, PDF preview slots.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Explicit Lengths (e.g., <code>100% auto</code>,
+                    <code>200px 100px</code>)
+                  </td>
+                  <td>
+                    Explicitly sets width and height. If only one value is
+                    passed, the second defaults to <code>auto</code>.
+                  </td>
+                  <td>Custom banner widths, split backgrounds.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>ASCII Diagram: background-size Comparison</h4>
+            <p>
+              <span> [ Container Box: 400px x 200px ]</span><br /><br />
+              <span>
+                cover: Stretches image to cover all edges (crops
+                top/bottom)</span
+              ><br />
+              <span>
+                +=====================================================+</span
+              ><br />
+              <span>
+                | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ IMAGE ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |</span
+              ><br />
+              <span> | (Zero empty space; fills canvas completely) |</span
+              ><br />
+              <span>
+                +=====================================================+</span
+              ><br /><br />
+              <span>
+                contain: Scales image to fit completely inside (leaves empty
+                side gaps)</span
+              ><br />
+              <span>
+                +=====================================================+</span
+              ><br />
+              <span>
+                | [Empty] | ~ ~ ~ Full Image Preserved ~ ~ ~ | [Empty]|</span
+              ><br />
+              <span>
+                +=====================================================+</span
+              >
+            </p>
+          </article>
+
+          <!-- 1.3 background-repeat -->
+          <article id="prop-bg-repeat">
+            <h3>1.3 background-repeat</h3>
+            <p>
+              <strong>Def:</strong> Controls whether a background image tiles
+              horizontally, vertically, or both if it is smaller than the
+              container.
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value</th>
+                  <th>Tiling Behavior</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>repeat</code> (Default)</td>
+                  <td>Tiles the image both horizontally and vertically.</td>
+                </tr>
+                <tr>
+                  <td><code>no-repeat</code></td>
+                  <td>
+                    Renders the image exactly once. (Almost always paired with
+                    <code>background-size: cover</code>).
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>repeat-x</code></td>
+                  <td>
+                    Tiles the image strictly horizontally along the X-axis.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>repeat-y</code></td>
+                  <td>Tiles the image strictly vertically along the Y-axis.</td>
+                </tr>
+                <tr>
+                  <td><code>space</code></td>
+                  <td>
+                    Repeats images without cropping, distributing extra space
+                    evenly between tiles.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>round</code></td>
+                  <td>
+                    Repeats images without cropping, stretching or compressing
+                    tiles so whole images fit.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 1.4 background-position -->
+          <article id="prop-bg-position">
+            <h3>1.4 background-position</h3>
+            <p>
+              <strong>Def:</strong> Sets the starting anchor coordinates of a
+              background image relative to the container edges.
+            </p>
+            <p>
+              <strong>Values:</strong> Directional keywords (<code>top</code>,
+              <code>bottom</code>, <code>left</code>, <code>right</code>,
+              <code>center</code>), percentages (<code>50% 50%</code>), or
+              lengths (<code>20px 40px</code>).
+            </p>
+            <p>
+              <strong>Code Examples:</strong><br />
+              <span
+                >background-position: center; /* Centers image horizontally and
+                vertically */</span
+              ><br />
+              <span
+                >background-position: right 20px bottom 10px; /* Offset from
+                bottom-right */</span
+              >
+            </p>
+          </article>
+
+          <!-- 1.5 background-attachment -->
+          <article id="prop-bg-attachment">
+            <h3>1.5 background-attachment (Parallax Effect)</h3>
+            <p>
+              <strong>Def:</strong> Controls whether a background image scrolls
+              with the page or remains frozen relative to the viewport window.
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value</th>
+                  <th>Scroll Behavior</th>
+                  <th>Production Effect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>scroll</code> (Default)</td>
+                  <td>
+                    The image is fixed to its element, scrolling along with the
+                    rest of the web page.
+                  </td>
+                  <td>Standard web page scrolling.</td>
+                </tr>
+                <tr>
+                  <td><code>fixed</code></td>
+                  <td>
+                    The image is locked to the
+                    <strong>browser viewport</strong>. When the user scrolls,
+                    the content glides over the frozen background.
+                  </td>
+                  <td>
+                    <strong>CSS Parallax Effect:</strong> Hero banner stays
+                    still while body content rolls over it.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>local</code></td>
+                  <td>
+                    The image scrolls with the element's actual inner scrollable
+                    content.
+                  </td>
+                  <td>
+                    Custom scrollable chatboxes and terms-of-service boxes.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 1.6 background Shorthand -->
+          <article id="prop-bg-shorthand">
+            <h3>1.6 The background Master Shorthand</h3>
+            <p>
+              <strong>The Slash Syntax Rule for Size:</strong> In the shorthand,
+              <code>background-size</code> can <em>only</em> be included
+              directly after <code>background-position</code>, separated by a
+              forward slash (<code>/</code>):
+            </p>
+            <p>
+              <strong>Syntax:</strong><br />
+              <span
+                >background: [color] [image] [position]/[size] [repeat]
+                [attachment];</span
+              >
+            </p>
+            <p>
+              <strong>Production Code Example:</strong><br />
+              <span
+                >background: #0f172a url("hero.webp") center/cover no-repeat
+                fixed;</span
+              >
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 2. CSS GRADIENTS (PROCEDURAL IMAGES) -->
+        <section id="css-gradients">
+          <h2>2. CSS Procedural Gradients</h2>
+          <p>
+            <strong>Def:</strong> Gradients are mathematical color transitions
+            treated by CSS as <strong>images</strong> (used in
+            <code>background-image</code> or <code>background</code>).
+          </p>
+
+          <!-- 2.1 Linear Gradients -->
+          <article id="grad-linear">
+            <h3>2.1 linear-gradient()</h3>
+            <p>
+              <strong>Syntax:</strong>
+              <code
+                >linear-gradient([direction | angle], color-stop1, color-stop2,
+                ...);</code
+              >
+            </p>
+            <p>
+              <strong>Directions:</strong> <code>to right</code>,
+              <code>to bottom</code>, <code>to bottom right</code>, or explicit
+              angles like <code>90deg</code>, <code>135deg</code>,
+              <code>0.25turn</code>.
+            </p>
+            <p>
+              <strong>Code Examples:</strong><br />
+              <span
+                >background-image: linear-gradient(135deg, #2563eb,
+                #9333ea);</span
+              ><br />
+              <span>/* Color stops with percentage markers */</span><br />
+              <span
+                >background-image: linear-gradient(to right, red 0%, yellow 50%,
+                green 100%);</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.2 Radial Gradients -->
+          <article id="grad-radial">
+            <h3>2.2 radial-gradient()</h3>
+            <p>
+              <strong>Def:</strong> Radiates outward from a central anchor point
+              in circular or elliptical rings.
+            </p>
+            <p>
+              <strong>Syntax:</strong>
+              <code
+                >radial-gradient([shape] at [position], color1, color2);</code
+              >
+            </p>
+            <p>
+              <strong>Code Example:</strong><br />
+              <span
+                >background-image: radial-gradient(circle at center, #3b82f6,
+                #0f172a);</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.3 Gradient Text Clip Trick -->
+          <article id="grad-text-clip">
+            <h3>2.3 Modern UI Pattern: Gradient Text Effect</h3>
+            <p>
+              Applying a gradient fill directly to typography using
+              <code>background-clip: text</code>:
+            </p>
+            <p>
+              <span>.gradient-text {</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;background-image: linear-gradient(to
+                right, #3b82f6, #ec4899);</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;-webkit-background-clip: text; /* Clips
+                background to text character glyphs */</span
+              ><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;background-clip: text;</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;color: transparent; /* Makes raw text
+                transparent so gradient shines through */</span
+              ><br />
+              <span>}</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 3. BOX-SHADOW & TEXT-SHADOW -->
+        <section id="shadow-mechanics">
+          <h2>3. Box-Shadow &amp; Text-Shadow Mechanics</h2>
+          <p>
+            <strong>Def:</strong> Adds visual drop shadows or inner glow effects
+            around an element's frame or typographic glyphs, creating spatial
+            depth and elevation.
+          </p>
+
+          <!-- 3.1 box-shadow -->
+          <article id="prop-box-shadow">
+            <h3>3.1 box-shadow Anatomy &amp; Values</h3>
+            <p><strong>Complete Syntax Order:</strong></p>
+            <p>
+              <span
+                >box-shadow: [inset] &lt;offset-x&gt; &lt;offset-y&gt;
+                &lt;blur-radius&gt; &lt;spread-radius&gt; &lt;color&gt;;</span
+              >
+            </p>
+
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value Component</th>
+                  <th>Type</th>
+                  <th>Behavior &amp; Rendering Engine</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>offset-x</code></td>
+                  <td>Length (Mandatory)</td>
+                  <td>
+                    Horizontal offset. Positive pushes shadow right; negative
+                    pulls shadow left.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>offset-y</code></td>
+                  <td>Length (Mandatory)</td>
+                  <td>
+                    Vertical offset. Positive pushes shadow down; negative pulls
+                    shadow up.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>blur-radius</code></td>
+                  <td>Length (Optional)</td>
+                  <td>
+                    Gaussian blur distance. <code>0px</code> = razor-sharp edge;
+                    larger values = soft, diffuse shadow. Cannot be negative.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>spread-radius</code></td>
+                  <td>Length (Optional)</td>
+                  <td>
+                    Expands or contracts shadow size. Positive grows shadow
+                    larger than the box; negative shrinks shadow smaller.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>color</code></td>
+                  <td>CSS Color (Optional)</td>
+                  <td>
+                    Defaults to <code>currentColor</code>. Use semi-transparent
+                    RGBA/HSLA (e.g., <code>rgba(0, 0, 0, 0.15)</code>) for
+                    realistic shadows.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>inset</code></td>
+                  <td>Keyword (Optional)</td>
+                  <td>
+                    Flips shadow inside the box, painting inward from the border
+                    edge. Used for pressed buttons and sunken inputs.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Layered Elevation Shadows (Material Design Principle)</h4>
+            <p>
+              Realistic physical shadows are composed of multiple stacked layers
+              separated by commas:
+            </p>
+            <p>
+              <span>/* High-end realistic elevation card shadow */</span><br />
+              <span
+                >box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px
+                rgba(0, 0, 0, 0.1);</span
+              >
+            </p>
+          </article>
+
+          <!-- 3.2 text-shadow -->
+          <article id="prop-text-shadow">
+            <h3>3.2 text-shadow Anatomy</h3>
+            <p>
+              <strong>Syntax:</strong>
+              <code
+                >text-shadow: &lt;offset-x&gt; &lt;offset-y&gt;
+                &lt;blur-radius&gt; &lt;color&gt;;</code
+              >
+            </p>
+            <p>
+              <strong>Note:</strong> Unlike <code>box-shadow</code>,
+              <code>text-shadow</code> does <em>not</em> support the
+              <code>spread-radius</code> or <code>inset</code> keyword.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br />
+              <span>text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 4. OPACITY VS ALPHA CHANNEL -->
+        <section id="opacity-vs-alpha">
+          <h2>4. opacity vs. Alpha Channel Transparency</h2>
+          <p>
+            <strong>The Common Developer Bug:</strong> You want a
+            semi-transparent black card background, so you declare
+            <code>opacity: 0.5;</code> on the card. Suddenly, all text,
+            headings, and images inside the card become faded and see-through!
+          </p>
+
+          <table border="2" width="100%">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th><code>opacity</code> Property</th>
+                <th>
+                  Alpha Channel (<code>rgba()</code>, <code>hsla()</code>, Hex
+                  <code>#80</code>)
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Scope of Effect</strong></td>
+                <td>
+                  Applies to the
+                  <strong>entire element AND all its child elements</strong>
+                  recursively.
+                </td>
+                <td>
+                  Applies
+                  <strong>only to that specific color property</strong> (e.g.,
+                  only background).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Can Children Override It?</strong></td>
+                <td>
+                  <strong>NO.</strong> Declaring <code>opacity: 1;</code> on a
+                  child element inside an <code>opacity: 0.5</code> parent will
+                  <em>not</em> restore full visibility.
+                </td>
+                <td>
+                  <strong>YES.</strong> Child elements remain 100% solid and
+                  fully readable.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Stacking Context</strong></td>
+                <td>
+                  Values less than <code>1</code> automatically spawn a new 3D
+                  Stacking Context.
+                </td>
+                <td>Does not spawn a stacking context.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <hr />
+
+        <!-- 5. OVERFLOW SUITE -->
+        <section id="overflow-suite">
+          <h2>5. overflow Suite (Content Spills &amp; Clipping)</h2>
+          <p>
+            <strong>Def:</strong> Dictates what happens when child content
+            exceeds the defined width or height boundaries of its parent
+            container box.
+          </p>
+
+          <table border="2" width="100%">
+            <thead>
+              <tr>
+                <th>Value</th>
+                <th>Clipping Behavior</th>
+                <th>Scrollbar Presence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>visible</code> (Default)</td>
+                <td>
+                  Content is <strong>not clipped</strong>; bleeds out over
+                  neighboring elements.
+                </td>
+                <td>Zero scrollbars.</td>
+              </tr>
+              <tr>
+                <td><code>hidden</code></td>
+                <td>
+                  Content is clipped strictly at the padding edge. Excess
+                  content is invisible.
+                </td>
+                <td>Zero scrollbars (cannot be scrolled by user).</td>
+              </tr>
+              <tr>
+                <td><code>clip</code> (Modern)</td>
+                <td>
+                  Clipped at the overflow clip margin. Like <code>hidden</code>,
+                  but disables programmatic scrolling entirely, freeing memory.
+                </td>
+                <td>Zero scrollbars.</td>
+              </tr>
+              <tr>
+                <td><code>scroll</code></td>
+                <td>Content is clipped.</td>
+                <td>
+                  <strong>Always forces scrollbars</strong>, even if the content
+                  fits without overflowing!
+                </td>
+              </tr>
+              <tr>
+                <td><code>auto</code> (Best Practice)</td>
+                <td>Content is clipped.</td>
+                <td>
+                  Scrollbars appear
+                  <strong>only when content overflows</strong>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <article id="overflow-axes">
+            <h3>5.1 Independent Axis Controls: overflow-x &amp; overflow-y</h3>
+            <p>
+              Allows independent handling per dimension (e.g., horizontal
+              carousel scrolling while preventing vertical blowout):
+            </p>
+            <p>
+              <span
+                >overflow-x: auto; /* Enables horizontal swipe scrolling
+                */</span
+              ><br />
+              <span>overflow-y: hidden; /* Clips any vertical spill */</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 6. FORM STATE PSEUDO-CLASSES -->
+        <section id="form-pseudo-classes">
+          <h2>6. Interactive Form State Pseudo-Classes</h2>
+          <p>
+            <strong>Def:</strong> Dynamic selectors that style native HTML form
+            inputs based on user state, validation conditions, and accessibility
+            toggles.
+          </p>
+
+          <table border="2" width="100%">
+            <thead>
+              <tr>
+                <th>Pseudo-Class</th>
+                <th>Triggering State</th>
+                <th>Production Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>:checked</code></td>
+                <td>A radio button, checkbox, or option is toggled active.</td>
+                <td>
+                  Custom CSS toggle switches and accordion dropdowns without
+                  JavaScript!
+                </td>
+              </tr>
+              <tr>
+                <td><code>:disabled</code></td>
+                <td>
+                  The element possesses the HTML
+                  <code>disabled</code> attribute.
+                </td>
+                <td>
+                  Dimming button opacity and setting
+                  <code>cursor: not-allowed;</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><code>:enabled</code></td>
+                <td>The element is active and ready for user input.</td>
+                <td>Standard form control defaults.</td>
+              </tr>
+              <tr>
+                <td><code>:required</code></td>
+                <td>
+                  The input has the <code>required</code> attribute declared.
+                </td>
+                <td>Adding decorative red asterisks or border hints.</td>
+              </tr>
+              <tr>
+                <td><code>:valid</code></td>
+                <td>
+                  Input content passes native browser regex validation (e.g.,
+                  valid email).
+                </td>
+                <td>Painting green confirmation borders.</td>
+              </tr>
+              <tr>
+                <td><code>:invalid</code></td>
+                <td>Input content fails validation rules.</td>
+                <td>
+                  Painting red warning borders and revealing error tooltips.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <article id="checked-toggle-pattern">
+            <h3>6.1 The Pure CSS Toggle Switch Pattern (Using :checked)</h3>
+            <p>
+              Hiding a checkbox and styling its adjacent sibling label using the
+              sibling combinator (<code>+</code>):
+            </p>
+            <p>
+              <span>/* Styles label when hidden checkbox is checked */</span
+              ><br />
+              <span>input[type="checkbox"]:checked + label {</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;background-color: #16a34a; /* Turns
+                green */</span
+              ><br />
+              <span>}</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 7. CURSOR & USER INTERACTION -->
+        <section id="cursor-interaction">
+          <h2>7. cursor &amp; user-select Properties</h2>
+          <p>
+            <strong>Def:</strong> Controls the mouse pointer icon and character
+            highlight permissions on the screen.
+          </p>
+
+          <!-- 7.1 cursor -->
+          <article id="prop-cursor">
+            <h3>7.1 Common cursor Values</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value</th>
+                  <th>Visual Cursor Icon</th>
+                  <th>Standard UI Context</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>default</code></td>
+                  <td>Standard arrow pointer.</td>
+                  <td>Unclickable UI chrome, container backgrounds.</td>
+                </tr>
+                <tr>
+                  <td><code>pointer</code></td>
+                  <td>Pointing hand.</td>
+                  <td>Clickable links, buttons, interactive cards.</td>
+                </tr>
+                <tr>
+                  <td><code>text</code></td>
+                  <td>I-beam text caret.</td>
+                  <td>Selectable text, input fields.</td>
+                </tr>
+                <tr>
+                  <td><code>not-allowed</code></td>
+                  <td>Circle with a diagonal line through it.</td>
+                  <td>Disabled buttons, blocked form actions.</td>
+                </tr>
+                <tr>
+                  <td><code>grab</code> / <code>grabbing</code></td>
+                  <td>Open hand / Closed fist.</td>
+                  <td>Draggable modal windows, interactive map canvases.</td>
+                </tr>
+                <tr>
+                  <td><code>wait</code></td>
+                  <td>Hourglass or spinning wheel.</td>
+                  <td>Blocking asynchronous background operations.</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 7.2 user-select -->
+          <article id="prop-user-select">
+            <h3>7.2 user-select Property</h3>
+            <p>
+              <strong>Def:</strong> Controls whether the user can highlight and
+              copy text with cursor drags.
+            </p>
+            <p>
+              <strong>Values:</strong> <code>auto</code>,
+              <code>none</code> (prevents text highlighting on buttons and
+              accordion headers), <code>text</code>, <code>all</code> (selects
+              entire string on single click).
+            </p>
+            <p>
+              <strong>Code Example:</strong><br />
+              <span
+                >.button { user-select: none; /* Prevents awkward blue text
+                highlight on double clicks */ }</span
+              >
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 8. EXPLICIT GRID LONGHANDS -->
+        <section id="grid-longhands">
+          <h2>8. Explicit CSS Grid Line Longhands</h2>
+          <p>
+            <strong>Def:</strong> The granular individual coordinate properties
+            that make up the <code>grid-column</code> and
+            <code>grid-row</code> shorthands.
+          </p>
+
+          <table border="2" width="100%">
+            <thead>
+              <tr>
+                <th>Longhand Property</th>
+                <th>Shorthand Equivalent</th>
+                <th>Coordinate Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>grid-column-start</code></td>
+                <td rowspan="2"><code>grid-column: start / end;</code></td>
+                <td>The vertical line where the item begins horizontally.</td>
+              </tr>
+              <tr>
+                <td><code>grid-column-end</code></td>
+                <td>The vertical line where the item stops horizontally.</td>
+              </tr>
+              <tr>
+                <td><code>grid-row-start</code></td>
+                <td rowspan="2"><code>grid-row: start / end;</code></td>
+                <td>The horizontal line where the item begins vertically.</td>
+              </tr>
+              <tr>
+                <td><code>grid-row-end</code></td>
+                <td>The horizontal line where the item stops vertically.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <hr />
+
+        <!-- 9. MODERN FILTERS & GLASSMORPHISM -->
+        <section id="filters-glassmorphism">
+          <h2>9. CSS Filters &amp; Glassmorphism (backdrop-filter)</h2>
+          <p>
+            <strong>Def:</strong> Native graphical post-processing effects
+            applied to elements or content sitting directly behind them.
+          </p>
+
+          <!-- 9.1 filter vs backdrop-filter -->
+          <article id="filter-vs-backdrop">
+            <h3>9.1 filter vs. backdrop-filter</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Rendering Target</th>
+                  <th>Production Effect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>filter</code></td>
+                  <td>
+                    Applies to the <strong>element itself</strong> and its
+                    children.
+                  </td>
+                  <td>
+                    Desaturating images (<code>grayscale(100%)</code>), blurring
+                    hero assets (<code>blur(8px)</code>).
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>backdrop-filter</code></td>
+                  <td>
+                    Applies to the
+                    <strong>area behind the element</strong> (requires element
+                    to have a semi-transparent background).
+                  </td>
+                  <td>
+                    <strong>Frosted Glassmorphism:</strong> Frosted translucent
+                    navbars (iOS navigation bar look).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Modern Frosted Glassmorphism Recipe</h4>
+            <p>
+              <span>.glass-card {</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;background-color: rgba(255, 255, 255,
+                0.2); /* Semi-transparent base */</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;backdrop-filter: blur(12px)
+                saturate(180%); /* Blurs content underneath */</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;-webkit-backdrop-filter: blur(12px)
+                saturate(180%);</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid rgba(255, 255, 255,
+                0.3);</span
+              ><br />
+              <span>}</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 10. INTERACTIVE TESTING PLAYGROUNDS (WIRED FOR CSS & JS) -->
+        <section id="interactive-playgrounds">
+          <h2>10. Interactive Visual FX Testing Laboratories</h2>
+          <p>
+            <strong>Def:</strong> Semantic testing stages configured with unique
+            IDs and control hooks for Phase 2 styling and Phase 3 JavaScript
+            controls.
+          </p>
+
+          <!-- Playground 1: Box Shadow Builder -->
+          <article id="playground-shadows">
+            <h3>Playground 1: Multi-Layer Elevation &amp; Inset Shadow Lab</h3>
+            <p>Toggle shadow elevation layers and inset modes:</p>
+
+            <!-- JS Control Hooks -->
+            <div
+              id="controls-shadow-stage"
+              class="playground-controls"
+              data-target="stage-shadow-box"
+            >
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-shadow="elevation-low"
+              >
+                Low Elevation
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-shadow="elevation-high"
+              >
+                High Elevation
+              </button>
+              <button type="button" class="ctrl-btn" data-shadow="inset-sunken">
+                Inset Sunken
+              </button>
+              <button type="button" class="ctrl-btn" data-shadow="neon-glow">
+                Neon Color Glow
+              </button>
+            </div>
+
+            <!-- CSS Stage Target -->
+            <div id="stage-shadow-wrapper" class="demo-fx-stage">
+              <div
+                id="stage-shadow-box"
+                class="shadow-target-card"
+                data-elevation="elevation-low"
+              >
+                <h4>Shadow Testing Surface</h4>
+                <p>
+                  Observe blur dispersion, spread expansions, and elevation
+                  layering.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 2: Background Sizing & Parallax Viewer -->
+          <article id="playground-bg-size">
+            <h3>Playground 2: background-size &amp; Repeat Canvas</h3>
+            <p>Test image scaling algorithms inside a fixed canvas:</p>
+
+            <!-- JS Control Hooks -->
+            <div
+              id="controls-bg-stage"
+              class="playground-controls"
+              data-target="stage-bg-canvas"
+            >
+              <button type="button" class="ctrl-btn" data-bgsize="cover">
+                size: cover
+              </button>
+              <button type="button" class="ctrl-btn" data-bgsize="contain">
+                size: contain
+              </button>
+              <button type="button" class="ctrl-btn" data-bgsize="auto">
+                size: auto (repeat)
+              </button>
+            </div>
+
+            <!-- CSS Stage Target -->
+            <div id="stage-bg-wrapper" class="demo-fx-stage">
+              <div
+                id="stage-bg-canvas"
+                class="bg-target-frame"
+                data-size="cover"
+              >
+                <span class="bg-canvas-overlay">Background Canvas Layer</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 3: Form State Pseudo-Classes & Toggles -->
+          <article id="playground-form-states">
+            <h3>Playground 3: Form State (:checked, :disabled) Sandbox</h3>
+            <p>
+              Interactive testing for pure CSS toggles and form validation
+              styles:
+            </p>
+
+            <!-- CSS Stage Target -->
+            <div id="stage-form-states" class="demo-fx-stage">
+              <div class="form-toggle-cluster">
+                <input
+                  type="checkbox"
+                  id="demo-toggle-input"
+                  class="native-hidden-checkbox"
+                />
+                <label for="demo-toggle-input" id="demo-toggle-switch">
+                  <span class="toggle-track-knob"></span>
+                </label>
+                <span class="toggle-status-label"
+                  >Pure CSS :checked Switch</span
+                >
+              </div>
+
+              <div class="form-input-cluster">
+                <input
+                  type="text"
+                  id="demo-disabled-input"
+                  value="Disabled Input Field"
+                  disabled
+                />
+                <input
+                  type="email"
+                  id="demo-required-input"
+                  placeholder="Required Email (:valid / :invalid)"
+                  required
+                />
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 4: Glassmorphism Backdrop Filter Stage -->
+          <article id="playground-glassmorphism">
+            <h3>Playground 4: Frosted Glassmorphism Lab</h3>
+            <p>Inspect backdrop-filter blur over rich background textures:</p>
+
+            <!-- JS Control Hooks -->
+            <div
+              id="controls-glass-stage"
+              class="playground-controls"
+              data-target="stage-glass-card"
+            >
+              <button type="button" class="ctrl-btn" data-blur="4px">
+                Blur: 4px
+              </button>
+              <button type="button" class="ctrl-btn" data-blur="16px">
+                Blur: 16px
+              </button>
+              <button type="button" class="ctrl-btn" data-blur="32px">
+                Blur: 32px
+              </button>
+            </div>
+
+            <!-- CSS Stage Target -->
+            <div id="stage-glass-wrapper" class="demo-glass-backdrop">
+              <div
+                id="stage-glass-card"
+                class="glass-surface-panel"
+                data-blur="16px"
+              >
+                <h4>Frosted Glass Panel</h4>
+                <p>
+                  This panel uses <code>backdrop-filter: blur(...)</code> to
+                  blur the content beneath it.
+                </p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="../app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Documentation | 09. Transitions &amp; Animations</title>
+    <link rel="stylesheet" href="../CSS-Files/01-global.css" />
+    <link rel="stylesheet" href="../CSS-Files/02-colors.css" />
+    <link rel="stylesheet" href="../CSS-Files/03-typography.css" />
+    <link rel="stylesheet" href="../CSS-Files/04-selectors.css" />
+    <link rel="stylesheet" href="../CSS-Files/05-box-model.css" />
+    <link rel="stylesheet" href="../CSS-Files/06-display-position.css" />
+    <link rel="stylesheet" href="../CSS-Files/07-flexbox.css" />
+    <link rel="stylesheet" href="../CSS-Files/08-grid.css" />
+    <link rel="stylesheet" href="../CSS-Files/09-transistions-animation.css" />
+    <link rel="stylesheet" href="../CSS-Files/10-responsive-design.css" />
+    <link rel="stylesheet" href="../CSS-Files/11-miscellaneous.css" />
+    <link rel="stylesheet" href="../CSS-Files/12-advanced-css.css" />
+  </head>
+  <body>
+    <!-- TOP HEADER / NAVBAR -->
+    <header id="site-header">
+      <div class="header-left">
+        <button id="menu-toggle" aria-label="Toggle Navigation Menu">
+          &#9776;
+        </button>
+        <span class="site-logo">CSS.Docs</span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current"
+          >09. Transitions &amp; Keyframe Animations</span
+        >
+      </div>
+      <div class="header-right">
+        <span class="doc-version">CSS3 / Modern CSS</span>
+      </div>
+    </header>
+
+    <div id="layout-container">
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <aside id="sidebar-nav">
+        <div class="sidebar-header">
+          <h2>Documentation</h2>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">01. Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a href="02-colors.html" class="nav-link">02. Colors</a>
+            </li>
+            <li class="nav-item">
+              <a href="03-typography.html" class="nav-link">03. Typography</a>
+            </li>
+            <li class="nav-item">
+              <a href="04-selectors.html" class="nav-link"
+                >04. Selectors &amp; Specificity</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="05-box-model.html" class="nav-link">05. Box Model</a>
+            </li>
+            <li class="nav-item">
+              <a href="06-display-position.html" class="nav-link"
+                >06. Display &amp; Positioning</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="07-flexbox.html" class="nav-link">07. Flexbox</a>
+            </li>
+            <li class="nav-item">
+              <a href="08-grid.html" class="nav-link">08. CSS Grid</a>
+            </li>
+            <li class="nav-item">
+              <a href="09-transistions-animation.html" class="nav-link"
+                >09. Transitions &amp; Animations</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="10-responsive-design.html" class="nav-link"
+                >10. Responsive Design</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="11-miscellaneous.html" class="nav-link"
+                >11. Miscellaneous &amp; Visual FX</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="12-advanced-css.html" class="nav-link"
+                >12. Advanced CSS &amp; Motion</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- MAIN DOCUMENTATION CONTENT -->
+      <main id="main-content">
+        <!-- PAGE OVERVIEW -->
+        <section id="doc-overview">
+          <h1>CSS Motion: Transitions, Transforms &amp; Keyframe Animations</h1>
+          <p>
+            <strong>Module:</strong> 09. Dynamic Motion &amp; GPU Hardware
+            Acceleration
+          </p>
+          <p>
+            <strong>Description:</strong> An architectural deep-dive into
+            browser rendering engines, state-to-state interpolation, and
+            continuous keyframed timelines. Master the rendering pipeline
+            (Layout, Paint, Composite), GPU-accelerated motion properties,
+            cubic-bezier timing physics, the 8 animation sub-properties, 2D/3D
+            matrix transforms, vestibular motion accessibility
+            (prefers-reduced-motion), and interactive sandbox testing
+            laboratories.
+          </p>
+        </section>
+        <hr />
+
+        <!-- 1. BROWSER RENDER PIPELINE & HARDWARE ACCELERATION -->
+        <section id="rendering-pipeline">
+          <h2>1. The Browser Rendering Pipeline &amp; 60fps Physics</h2>
+          <p>
+            <strong>Def:</strong> To render smooth 60 frames-per-second (fps)
+            web animation, the browser has exactly
+            <strong>16.6 milliseconds</strong> per frame to compute styles,
+            geometry, colors, and pixels. Understanding the three stages of the
+            browser rendering pipeline dictates whether animations run at silky
+            60fps or stutter with laggy jank.
+          </p>
+
+          <!-- 1.1 The 3 Stages -->
+          <article id="pipeline-stages">
+            <h3>1.1 The 3 Stages of the Pixel Pipeline</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Pipeline Stage</th>
+                  <th>Cost (CPU vs GPU)</th>
+                  <th>Engine Action</th>
+                  <th>Trigger Properties (High vs Low Performance)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Layout (Reflow)</strong></td>
+                  <td><strong>Extremely Expensive (CPU)</strong></td>
+                  <td>
+                    Calculates the exact geometry, position, width, and height
+                    of every element on the page. Changing one element can force
+                    the browser to recalculate the entire document tree!
+                  </td>
+                  <td>
+                    <code>width</code>, <code>height</code>,
+                    <code>margin</code>, <code>padding</code>, <code>top</code>,
+                    <code>left</code>, <code>bottom</code>, <code>right</code>,
+                    <code>border-width</code>.
+                    <strong>(NEVER ANIMATE THESE!)</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>2. Paint (Repaint)</strong></td>
+                  <td><strong>Moderate Cost (CPU)</strong></td>
+                  <td>
+                    Fills in visual pixels: colors, background gradients, drop
+                    shadows, borders, and text glyphs into memory bitmaps.
+                  </td>
+                  <td>
+                    <code>background-color</code>, <code>color</code>,
+                    <code>box-shadow</code>, <code>border-color</code>,
+                    <code>outline</code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>3. Composite</strong></td>
+                  <td><strong>Extremely Cheap (GPU-Accelerated)</strong></td>
+                  <td>
+                    Draws pre-painted visual layers directly onto screen glass
+                    via the device Graphics Processing Unit (GPU). Bypasses
+                    Layout and Paint completely!
+                  </td>
+                  <td>
+                    <strong><code>transform</code></strong> (translate, scale,
+                    rotate) and <strong><code>opacity</code></strong
+                    >. <strong>(ALWAYS ANIMATE THESE!)</strong>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>ASCII Diagram: Browser Pipeline Execution Paths</h4>
+            <p>
+              <span> [ EXPENSIVE ANIMATION: e.g., left: 100px ]</span><br />
+              <span>
+                JavaScript/CSS ==&gt; [ 1. LAYOUT (Reflow) ] ==&gt; [ 2. PAINT
+                (Repaint) ] ==&gt; [ 3. COMPOSITE ] (Janky 15fps)</span
+              ><br /><br />
+              <span>
+                [ GPU-ACCELERATED ANIMATION: e.g., transform: translateX(100px)
+                ]</span
+              ><br />
+              <span>
+                JavaScript/CSS
+                ==========================================================&gt; [
+                3. COMPOSITE ] (Silky 60fps!)</span
+              >
+            </p>
+          </article>
+
+          <!-- 1.2 will-change property -->
+          <article id="prop-will-change">
+            <h3>1.2 The will-change Property (Hardware Layer Promotion)</h3>
+            <p>
+              <strong>Def:</strong> Informs the browser ahead of time what
+              property an element is about to animate, allowing the GPU to
+              promote that element onto its own dedicated graphics compositing
+              layer before animation starts.
+            </p>
+            <p>
+              <strong>Syntax:</strong><br />
+              <span>.modal-box { will-change: transform, opacity; }</span>
+            </p>
+            <p>
+              <strong>The Memory Leak Warning:</strong> Never apply
+              <code>will-change</code> globally (e.g.,
+              <code>* { will-change: all; }</code>). Each promoted layer
+              consumes physical video RAM. Overusing it exhausts device memory,
+              crashing mobile browsers.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 2. CSS TRANSITIONS SUITE -->
+        <section id="css-transitions">
+          <h2>2. CSS Transitions Suite (State-to-State Motion)</h2>
+          <p>
+            <strong>Def:</strong> Transitions provide a mechanism to interpolate
+            values smoothly between an initial state and an end state when
+            triggered by user interaction (such as <code>:hover</code>,
+            <code>:focus</code>, <code>:active</code>) or a dynamic JavaScript
+            class change.
+          </p>
+
+          <!-- 2.1 transition-property -->
+          <article id="prop-transition-property">
+            <h3>2.1 transition-property</h3>
+            <p>
+              <strong>Def:</strong> Specifies the name(s) of the CSS properties
+              to which the transition effect should be applied.
+            </p>
+            <p><strong>Initial Value:</strong> <code>all</code></p>
+
+            <h4>Values:</h4>
+            <ul>
+              <li><code>none</code>: No properties will be transitioned.</li>
+              <li>
+                <code>all</code>:
+                <strong>Avoid in Production.</strong> Transitions every single
+                animatable property. Causes severe performance drops if
+                unexpected properties (like margin or padding) trigger unwanted
+                reflows.
+              </li>
+              <li>
+                <code>&lt;custom-ident&gt;</code>: Explicit property names
+                separated by commas (e.g., <code>transform</code>,
+                <code>opacity</code>, <code>background-color</code>).
+              </li>
+            </ul>
+            <p>
+              <strong>Code Example:</strong><br /><span
+                >transition-property: transform, opacity;</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.2 transition-duration -->
+          <article id="prop-transition-duration">
+            <h3>2.2 transition-duration</h3>
+            <p>
+              <strong>Def:</strong> Specifies the total amount of time the
+              transition takes to travel from the initial value to the final
+              value.
+            </p>
+            <p>
+              <strong>Units:</strong> Seconds (<code>s</code>) or Milliseconds
+              (<code>ms</code>). <code>1s = 1000ms</code>.
+            </p>
+            <p>
+              <strong>Initial Value:</strong> <code>0s</code> (instant switch;
+              no animation).
+            </p>
+
+            <h4>UX Timing Benchmarks</h4>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Duration</th>
+                  <th>User Experience Perception</th>
+                  <th>Recommended Production Use</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>100ms - 150ms</code></td>
+                  <td>Snappy, instantaneous feedback.</td>
+                  <td>
+                    Button click presses (<code>:active</code>), toggle switch
+                    snaps.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>200ms - 300ms</code></td>
+                  <td>Smooth, natural, human-eye comfortable.</td>
+                  <td>Standard button hovers, dropdown menus, card lifts.</td>
+                </tr>
+                <tr>
+                  <td><code>400ms - 500ms</code></td>
+                  <td>Deliberate, structural motion.</td>
+                  <td>
+                    Large off-canvas navigation sidebars, sliding modal dialogs.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>&gt; 600ms</code></td>
+                  <td>Sluggish, irritating, feels like system lag.</td>
+                  <td>
+                    Avoid for user interface controls. Reserve for slow
+                    background ambiances.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 2.3 transition-timing-function -->
+          <article id="prop-transition-timing">
+            <h3>2.3 transition-timing-function (Velocity Curves)</h3>
+            <p>
+              <strong>Def:</strong> Calculates the mathematical acceleration
+              curve of the transition, controlling how velocity changes over the
+              course of its duration.
+            </p>
+            <p><strong>Initial Value:</strong> <code>ease</code></p>
+
+            <h4>The 5 Standard Keyword Functions:</h4>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Keyword</th>
+                  <th>Equivalent cubic-bezier</th>
+                  <th>Acceleration Profile</th>
+                  <th>Best For...</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>ease</code> (Default)</td>
+                  <td><code>cubic-bezier(0.25, 0.1, 0.25, 1)</code></td>
+                  <td>
+                    Starts moderately fast, accelerates briefly, then glides to
+                    a very gentle stop.
+                  </td>
+                  <td>General UI elements, natural physical objects.</td>
+                </tr>
+                <tr>
+                  <td><code>linear</code></td>
+                  <td><code>cubic-bezier(0, 0, 1, 1)</code></td>
+                  <td>
+                    Constant, uniform speed from 0% to 100%. Completely robotic.
+                  </td>
+                  <td>
+                    Continuous spinners, color cycle fades, audio progress bars.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>ease-in</code></td>
+                  <td><code>cubic-bezier(0.42, 0, 1, 1)</code></td>
+                  <td>
+                    Starts painfully slow, then accelerates aggressively towards
+                    the end.
+                  </td>
+                  <td>
+                    Elements exiting the screen (falling rocks, closing panels).
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>ease-out</code></td>
+                  <td><code>cubic-bezier(0, 0, 0.58, 1)</code></td>
+                  <td>
+                    Starts at maximum speed immediately, then slows down
+                    smoothly to a halt.
+                  </td>
+                  <td>
+                    Elements entering the screen (modals popping in, tooltips).
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>ease-in-out</code></td>
+                  <td><code>cubic-bezier(0.42, 0, 0.58, 1)</code></td>
+                  <td>
+                    Starts slow, accelerates in the middle, and decelerates slow
+                    at the end.
+                  </td>
+                  <td>Symmetrical two-way animations, looping carousels.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>The cubic-bezier(x1, y1, x2, y2) Coordinate Math</h4>
+            <p>
+              Defines a third-order parametric Bezier curve using two coordinate
+              control points: P1 (x1, y1) and P2 (x2, y2). Time (X-axis) must be
+              strictly between <code>0.0</code> and <code>1.0</code>, while
+              Velocity (Y-axis) can exceed <code>1.0</code> or drop below
+              <code>0.0</code> to create realistic bouncy spring physics!
+            </p>
+            <p>
+              <strong>The Elastic Spring Formula:</strong><br />
+              <span
+                >transition-timing-function: cubic-bezier(0.68, -0.55, 0.265,
+                1.55); /* Bounces outside boundary! */</span
+              >
+            </p>
+
+            <h4>ASCII Diagram: Cubic-Bezier Curve Anatomy</h4>
+            <p>
+              <span> Progress (Y)</span><br />
+              <span> 1.0 | P2 (x2, y2)</span><br />
+              <span> | *=====&gt; [End: 1, 1]</span><br />
+              <span> | /</span><br />
+              <span> | P1 (x1, y1) /</span><br />
+              <span> | *======/</span><br />
+              <span> | /</span><br />
+              <span>
+                0.0
+                +---------------------------/----------------------------</span
+              ><br />
+              <span> [Start: 0, 0] 0.5 1.0 Time (X)</span><br />
+              <span>
+                (X-axis represents Time from 0 to 1; Y-axis represents Property
+                Change)</span
+              >
+            </p>
+
+            <h4>The steps() Function (Stop-Motion / Sprite Sheets)</h4>
+            <p>
+              <strong>Def:</strong> Steps split the transition into discrete,
+              instantaneous jumps instead of continuous smooth gliding.
+            </p>
+            <p>
+              <strong>Syntax:</strong>
+              <code>steps(&lt;number-of-steps&gt;, &lt;jump-term&gt;)</code>
+            </p>
+            <p>
+              <strong>Values for Jump-Term:</strong> <code>jump-start</code>,
+              <code>jump-end</code> (default), <code>jump-none</code>,
+              <code>jump-both</code>.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br />
+              <span
+                >transition-timing-function: steps(8, jump-end); /* Creates a
+                mechanical digital clock or retro 8-bit game effect */</span
+              >
+            </p>
+          </article>
+
+          <!-- 2.4 transition-delay -->
+          <article id="prop-transition-delay">
+            <h3>2.4 transition-delay (Positive vs Negative Offsets)</h3>
+            <p>
+              <strong>Def:</strong> Specifies how long the browser waits between
+              the moment the trigger occurs and the moment the transition
+              actually starts animating.
+            </p>
+
+            <h4>Positive Delay (e.g., 200ms)</h4>
+            <p>
+              The transition sits idle for 200ms, then starts animating.
+              Essential for staggering sequential animations across list items.
+            </p>
+
+            <h4>Negative Delay (e.g., -100ms)</h4>
+            <p>
+              <strong>The Pro Trick:</strong> The transition starts
+              <em>instantly without waiting</em>, but starts
+              <strong>midway through its timeline</strong> as if it had already
+              been running for 100ms!
+            </p>
+          </article>
+
+          <!-- 2.5 transition Shorthand -->
+          <article id="prop-transition-shorthand">
+            <h3>2.5 The transition Master Shorthand</h3>
+            <p><strong>Syntax Order:</strong></p>
+            <p>
+              <span
+                >transition: [property] [duration] [timing-function]
+                [delay];</span
+              >
+            </p>
+
+            <p><strong>The Two-Time Ambiguity Rule:</strong></p>
+            <ul>
+              <li>
+                If the shorthand contains only <strong>one time value</strong>,
+                the browser treats it as <strong>duration</strong>.
+              </li>
+              <li>
+                If the shorthand contains <strong>two time values</strong>, the
+                browser strictly interprets the
+                <strong>first as duration</strong> and the
+                <strong>second as delay</strong>!
+              </li>
+            </ul>
+
+            <p><strong>Multi-Property Comma Declarations:</strong></p>
+            <p>
+              <span>.card {</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;transition: transform 250ms
+                ease-out,</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;opacity
+                150ms linear 50ms,</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;box-shadow
+                300ms ease;</span
+              ><br />
+              <span>}</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 3. CSS KEYFRAME ANIMATIONS (@KEYFRAMES) -->
+        <section id="css-animations">
+          <h2>3. CSS Keyframe Animations (@keyframes &amp; Properties)</h2>
+          <p>
+            <strong>Def:</strong> Unlike transitions (which can only travel
+            between two states from A to B upon user triggers), CSS Keyframe
+            Animations allow complex, multi-stage, repeating, alternating, and
+            looping timelines that run automatically on page load without any
+            user interaction.
+          </p>
+
+          <!-- 3.1 @keyframes At-Rule -->
+          <article id="at-rule-keyframes">
+            <h3>3.1 The @keyframes At-Rule Timeline Architecture</h3>
+            <p>
+              <strong>Def:</strong> Defines the timeline milestones and visual
+              stages of the animation.
+            </p>
+
+            <h4>Syntax Using from / to Keywords:</h4>
+            <p>
+              <span>@keyframes pulse {</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;from { transform: scale(1); opacity: 1;
+                }</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;to { transform: scale(1.1); opacity:
+                0.8; }</span
+              ><br />
+              <span>}</span>
+            </p>
+
+            <h4>Syntax Using Percentage Checkpoints:</h4>
+            <p>
+              <span>@keyframes complexFlight {</span><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;0% { transform: translate(0, 0);
+                }</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;30% { transform: translate(100px,
+                -50px); }</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;70% { transform: translate(250px, 20px)
+                rotate(45deg); }</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;100% { transform: translate(400px, 0);
+                }</span
+              ><br />
+              <span>}</span>
+            </p>
+          </article>
+
+          <!-- 3.2 The 8 Animation Properties -->
+          <article id="animation-subproperties">
+            <h3>3.2 The 8 Sub-Properties of CSS Animations</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Sub-Property</th>
+                  <th>Accepted Values</th>
+                  <th>Initial Value</th>
+                  <th>Architectural Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>animation-name</code></td>
+                  <td><code>none</code> | <code>&lt;custom-ident&gt;</code></td>
+                  <td><code>none</code></td>
+                  <td>
+                    Specifies the identifier matching the
+                    <code>@keyframes</code> name to execute.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>animation-duration</code></td>
+                  <td>Time (<code>s</code>, <code>ms</code>)</td>
+                  <td><code>0s</code></td>
+                  <td>
+                    The time length one single cycle of the animation takes to
+                    complete.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>animation-timing-function</code></td>
+                  <td>
+                    <code>ease</code>, <code>linear</code>,
+                    <code>cubic-bezier()</code>, <code>steps()</code>
+                  </td>
+                  <td><code>ease</code></td>
+                  <td>
+                    Calculates acceleration between keyframe percentage
+                    milestones.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>animation-delay</code></td>
+                  <td>Time (<code>s</code>, <code>ms</code>)</td>
+                  <td><code>0s</code></td>
+                  <td>
+                    Wait time before playback begins. Supports negative delays
+                    to skip ahead.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>animation-iteration-count</code></td>
+                  <td><code>&lt;number&gt;</code> | <code>infinite</code></td>
+                  <td><code>1</code></td>
+                  <td>
+                    Number of times the animation loops.
+                    <code>infinite</code> loops forever.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>animation-direction</code></td>
+                  <td>
+                    <code>normal</code>, <code>reverse</code>,
+                    <code>alternate</code>, <code>alternate-reverse</code>
+                  </td>
+                  <td><code>normal</code></td>
+                  <td>
+                    Whether playback moves forward, backward, or bounces
+                    back-and-forth.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>animation-fill-mode</code></td>
+                  <td>
+                    <code>none</code>, <code>forwards</code>,
+                    <code>backwards</code>, <code>both</code>
+                  </td>
+                  <td><code>none</code></td>
+                  <td>
+                    Dictates what styles apply to the element
+                    <em>before</em> and <em>after</em> execution.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>animation-play-state</code></td>
+                  <td><code>running</code> | <code>paused</code></td>
+                  <td><code>running</code></td>
+                  <td>
+                    Allows pausing and resuming animation playback via CSS hover
+                    or JavaScript.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 3.3 Deep Dive: animation-fill-mode -->
+          <article id="deep-dive-fill-mode">
+            <h3>3.3 Deep Dive: animation-fill-mode (Freezing States)</h3>
+            <p>
+              <strong>The Most Common Bug in CSS Animation:</strong> An element
+              animates across the screen, and the millisecond the animation
+              finishes, it instantly snaps violently back to its starting
+              position! <code>animation-fill-mode</code> solves this.
+            </p>
+
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Value</th>
+                  <th>Before Start (During Delay Period)</th>
+                  <th>After Finish (When Complete)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>none</code> (Default)</td>
+                  <td>
+                    Shows normal CSS rules. Keyframes have no effect during
+                    delay.
+                  </td>
+                  <td>Snaps instantly back to default CSS rules.</td>
+                </tr>
+                <tr>
+                  <td><code>forwards</code></td>
+                  <td>Shows normal CSS rules.</td>
+                  <td>
+                    <strong>Freezes in place!</strong> Retains whatever styles
+                    were computed at the final keyframe (100% or to).
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>backwards</code></td>
+                  <td>
+                    <strong>Applies the 0% keyframe immediately</strong> during
+                    the delay period before playback starts!
+                  </td>
+                  <td>Snaps back to default CSS rules.</td>
+                </tr>
+                <tr>
+                  <td><code>both</code></td>
+                  <td>Applies 0% keyframe during delay.</td>
+                  <td>
+                    Retains 100% keyframe upon completion. (Combines forwards
+                    &amp; backwards).
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 3.4 animation Shorthand -->
+          <article id="prop-animation-shorthand">
+            <h3>3.4 The animation Master Shorthand</h3>
+            <p><strong>Syntax Order:</strong></p>
+            <p>
+              <span
+                >animation: [name] [duration] [timing-function] [delay]
+                [iteration-count] [direction] [fill-mode] [play-state];</span
+              >
+            </p>
+            <p>
+              <strong>Production Code Examples:</strong><br />
+              <span>/* Infinite spinning loader icon */</span><br />
+              <span>animation: spin 1s linear infinite;</span><br /><br />
+              <span>/* Bouncing badge with delay and freeze */</span><br />
+              <span
+                >animation: bounceIn 600ms cubic-bezier(0.175, 0.885, 0.32,
+                1.275) 200ms both;</span
+              >
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 4. CSS TRANSFORMS (2D & 3D HARDWARE MOTION) -->
+        <section id="css-transforms">
+          <h2>4. CSS Transforms (2D &amp; 3D Matrix Transformations)</h2>
+          <p>
+            <strong>Def:</strong> Transforms modify the coordinate space of an
+            element, altering its position, scale, rotation, and skew without
+            affecting normal document flow or causing browser reflows.
+          </p>
+
+          <!-- 4.1 2D Transform Functions -->
+          <article id="transforms-2d">
+            <h3>4.1 The 2D Transform Functions</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Function</th>
+                  <th>Arguments</th>
+                  <th>Transform Effect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>translate(x, y)</code></td>
+                  <td>Length / % (<code>50px</code>, <code>-20%</code>)</td>
+                  <td>
+                    Moves element horizontally (X) and vertically (Y).
+                    Percentages compute relative to the
+                    <em>element's own dimensions</em>, not the parent!
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>scale(x, y)</code></td>
+                  <td>Unitless number (<code>1.5</code>, <code>0.8</code>)</td>
+                  <td>
+                    Resizes element. <code>scale(2)</code> doubles size;
+                    <code>scale(0.5)</code> shrinks in half; negative numbers
+                    flip the element upside down!
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>rotate(angle)</code></td>
+                  <td>
+                    Angle (<code>45deg</code>, <code>0.5turn</code>,
+                    <code>3.14rad</code>)
+                  </td>
+                  <td>
+                    Rotates element clockwise around its transform origin.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>skew(x-angle, y-angle)</code></td>
+                  <td>Angle (<code>15deg</code>, <code>-10deg</code>)</td>
+                  <td>
+                    Shears/distorts the element along its horizontal and
+                    vertical planes.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 4.2 transform-origin -->
+          <article id="prop-transform-origin">
+            <h3>4.2 transform-origin Property</h3>
+            <p>
+              <strong>Def:</strong> Sets the anchor point around which
+              rotations, scales, and skews occur.
+            </p>
+            <p>
+              <strong>Initial Value:</strong> <code>50% 50% 0</code> (The dead
+              geometric center of the element).
+            </p>
+            <p>
+              <strong>Keywords:</strong> <code>top left</code>,
+              <code>center bottom</code>, <code>right center</code>, or exact
+              lengths like <code>10px 20px</code>.
+            </p>
+            <p>
+              <strong>Code Example:</strong><br />
+              <span
+                >transform-origin: top left; /* Door hinge rotation from
+                top-left corner */</span
+              >
+            </p>
+          </article>
+
+          <!-- 4.3 3D Transforms -->
+          <article id="transforms-3d">
+            <h3>4.3 3D Transforms: perspective, rotateX/Y &amp; preserve-3d</h3>
+            <p>
+              <strong>The 3D Scene Geometry:</strong> To render true 3D spatial
+              depth on a flat 2D monitor screen, CSS requires three cooperating
+              properties:
+            </p>
+            <ol>
+              <li>
+                <strong>perspective:</strong> Declared on the parent container.
+                Defines the distance between the user's eyeballs and the z=0
+                screen canvas. (Smaller numbers like <code>400px</code> =
+                dramatic distortion; larger numbers like <code>1200px</code> =
+                subtle real-world perspective).
+              </li>
+              <li>
+                <strong>transform-style: preserve-3d:</strong> Instructs child
+                elements to maintain their distinct 3D Z-plane positions rather
+                than being flattened onto the parent's flat 2D canvas.
+              </li>
+              <li>
+                <strong>backface-visibility: hidden:</strong> Hides the reverse
+                side of an element when it rotates 180 degrees away from the
+                user. (Essential for 3D card flips!).
+              </li>
+            </ol>
+
+            <h4>ASCII Diagram: 3D Perspective Plane</h4>
+            <p>
+              <span> User's Eye (Viewer)</span><br />
+              <span> O</span><br />
+              <span> /|\</span><br />
+              <span> [---]</span><br />
+              <span> |</span><br />
+              <span> | &lt;--- perspective: 800px (Distance to canvas)</span
+              ><br />
+              <span> v</span><br />
+              <span>
+                ==================== SCREEN GLASS (Z = 0)
+                ====================</span
+              ><br />
+              <span> | /</span><br />
+              <span> | translateZ(-200px) / rotateY(45deg)</span><br />
+              <span> v v</span><br />
+              <span> [Receded Layer] [Rotated 3D Card]</span><br />
+              <span> (Looks smaller) (Spans through Z-space)</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 5. ACCESSIBILITY: PREFERS-REDUCED-MOTION -->
+        <section id="motion-accessibility">
+          <h2>5. Motion Accessibility (prefers-reduced-motion)</h2>
+          <p>
+            <strong>Def:</strong> Vestibular disorders, epilepsy, vertigo, and
+            migraines can be triggered by sudden parallax shifts, large spinning
+            banners, and rapid pulsing flashing animations.
+          </p>
+          <p>
+            <strong>The Operating System Query:</strong> Modern OS platforms
+            (Windows, macOS, iOS, Android) provide a system toggle:
+            <em>"Reduce Motion"</em>. CSS queries this state via media queries.
+          </p>
+
+          <article id="reduced-motion-standard">
+            <h3>The Industry Standard Universal Safety Reset</h3>
+            <p>
+              Every production web application must include this reset in its
+              base styles:
+            </p>
+            <p>
+              <span>@media (prefers-reduced-motion: reduce) {</span><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;*, *::before, *::after {</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animation-duration:
+                0.01ms !important;</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animation-iteration-count:
+                1 !important;</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition-duration:
+                0.01ms !important;</span
+              ><br />
+              <span
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scroll-behavior:
+                auto !important;</span
+              ><br />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;}</span><br />
+              <span>}</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 6. INTERACTIVE TESTING PLAYGROUNDS (WIRED FOR CSS & JS) -->
+        <section id="interactive-playgrounds">
+          <h2>
+            6. Interactive Motion Laboratories (Configured for CSS &amp; JS)
+          </h2>
+          <p>
+            <strong>Def:</strong> Dedicated semantic testbeds equipped with IDs,
+            data attributes, button control hooks, and visual animation targets
+            for Phase 2 styling and Phase 3 JavaScript controls.
+          </p>
+
+          <!-- Playground 1: Timing Function Visualizer -->
+          <article id="playground-timing-curves">
+            <h3>Playground 1: Timing Function Acceleration Visualizer</h3>
+            <p>
+              Compare real-time velocity differences across standard curves and
+              custom cubic-beziers:
+            </p>
+
+            <!-- JS Control Hooks -->
+            <div
+              id="controls-timing-stage"
+              class="playground-controls"
+              data-target="stage-timing-runners"
+            >
+              <button type="button" class="ctrl-btn" data-action="run-timing">
+                Trigger Simultaneous Run
+              </button>
+              <button type="button" class="ctrl-btn" data-action="reset-timing">
+                Reset Starting Line
+              </button>
+            </div>
+
+            <!-- CSS Stage Target -->
+            <div id="stage-timing-runners" class="demo-motion-stage">
+              <div class="runner-track">
+                <span class="runner-label">linear</span>
+                <div
+                  id="runner-linear"
+                  class="runner-box"
+                  data-ease="linear"
+                ></div>
+              </div>
+              <div class="runner-track">
+                <span class="runner-label">ease</span>
+                <div id="runner-ease" class="runner-box" data-ease="ease"></div>
+              </div>
+              <div class="runner-track">
+                <span class="runner-label">ease-in</span>
+                <div
+                  id="runner-ease-in"
+                  class="runner-box"
+                  data-ease="ease-in"
+                ></div>
+              </div>
+              <div class="runner-track">
+                <span class="runner-label">ease-out</span>
+                <div
+                  id="runner-ease-out"
+                  class="runner-box"
+                  data-ease="ease-out"
+                ></div>
+              </div>
+              <div class="runner-track">
+                <span class="runner-label">ease-in-out</span>
+                <div
+                  id="runner-ease-in-out"
+                  class="runner-box"
+                  data-ease="ease-in-out"
+                ></div>
+              </div>
+              <div class="runner-track">
+                <span class="runner-label">cubic-bezier (Bounce)</span>
+                <div
+                  id="runner-bezier"
+                  class="runner-box"
+                  data-ease="bezier"
+                ></div>
+              </div>
+              <div class="runner-track">
+                <span class="runner-label">steps(5, jump-end)</span>
+                <div
+                  id="runner-steps"
+                  class="runner-box"
+                  data-ease="steps"
+                ></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 2: Keyframe Fill-Mode & Direction Lab -->
+          <article id="playground-fill-mode">
+            <h3>Playground 2: animation-fill-mode &amp; Direction Lab</h3>
+            <p>Inspect state freezing and reversal behaviors:</p>
+
+            <!-- JS Control Hooks -->
+            <div
+              id="controls-fill-mode"
+              class="playground-controls"
+              data-target="stage-fill-mode"
+            >
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-action="run-fill-demo"
+              >
+                Run Animation (3s Duration)
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="animation-direction"
+                data-val="alternate"
+              >
+                Toggle Direction: alternate
+              </button>
+            </div>
+
+            <!-- CSS Stage Target -->
+            <div id="stage-fill-mode" class="demo-motion-stage">
+              <div class="fill-demo-row">
+                <span class="fill-label">fill-mode: none (Snaps Back)</span>
+                <div id="fill-box-none" class="demo-anim-box" data-fill="none">
+                  None
+                </div>
+              </div>
+              <div class="fill-demo-row">
+                <span class="fill-label"
+                  >fill-mode: forwards (Freezes at 100%)</span
+                >
+                <div
+                  id="fill-box-forwards"
+                  class="demo-anim-box"
+                  data-fill="forwards"
+                >
+                  Forwards
+                </div>
+              </div>
+              <div class="fill-demo-row">
+                <span class="fill-label"
+                  >fill-mode: backwards (Adopts 0% during delay)</span
+                >
+                <div
+                  id="fill-box-backwards"
+                  class="demo-anim-box"
+                  data-fill="backwards"
+                >
+                  Backwards
+                </div>
+              </div>
+              <div class="fill-demo-row">
+                <span class="fill-label">fill-mode: both (Combines Both)</span>
+                <div id="fill-box-both" class="demo-anim-box" data-fill="both">
+                  Both
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 3: 3D Card Flip Laboratory -->
+          <article id="playground-card-flip">
+            <h3>Playground 3: 3D Spatial Perspective &amp; Card Flip Lab</h3>
+            <p>Test 3D rotation, perspective depth, and backface-visibility:</p>
+
+            <!-- JS Control Hooks -->
+            <div
+              id="controls-flip-stage"
+              class="playground-controls"
+              data-target="stage-flip-card"
+            >
+              <button type="button" class="ctrl-btn" data-action="toggle-flip">
+                Toggle 3D Flip (180deg)
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="perspective"
+                data-val="400px"
+              >
+                Perspective: 400px (Extreme)
+              </button>
+              <button
+                type="button"
+                class="ctrl-btn"
+                data-prop="perspective"
+                data-val="1200px"
+              >
+                Perspective: 1200px (Subtle)
+              </button>
+            </div>
+
+            <!-- CSS Stage Target -->
+            <div id="stage-flip-card" class="demo-3d-scene">
+              <div id="demo-flip-card-inner" class="flip-card-object">
+                <div class="card-face card-face-front">
+                  <h4>Front Card Surface</h4>
+                  <p>Standard Z=0 plane facing the user.</p>
+                </div>
+                <div class="card-face card-face-back">
+                  <h4>Back Card Surface</h4>
+                  <p>
+                    Rotated 180 degrees in 3D space with backface-visibility:
+                    hidden.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Playground 4: Interactive Play-State & Controller -->
+          <article id="playground-play-state">
+            <h3>Playground 4: animation-play-state Timeline Controller</h3>
+            <p>
+              Live playback controller demonstrating timeline pausing without
+              resets:
+            </p>
+
+            <!-- JS Control Hooks -->
+            <div
+              id="controls-play-state"
+              class="playground-controls"
+              data-target="demo-orbit-item"
+            >
+              <button type="button" class="ctrl-btn" data-state="running">
+                Play (running)
+              </button>
+              <button type="button" class="ctrl-btn" data-state="paused">
+                Pause (paused)
+              </button>
+            </div>
+
+            <!-- CSS Stage Target -->
+            <div id="stage-play-state" class="demo-motion-stage">
+              <div id="demo-orbit-track">
+                <div id="demo-orbit-item" class="orbiting-box">
+                  Orbiting Satellite
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="../app.js" defer></script>
+  </body>
+</html>

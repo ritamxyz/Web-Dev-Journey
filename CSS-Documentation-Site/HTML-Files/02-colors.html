@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Documentation | 02. Colors</title>
+    <link rel="stylesheet" href="../CSS-Files/01-global.css" />
+    <link rel="stylesheet" href="../CSS-Files/02-colors.css" />
+    <link rel="stylesheet" href="../CSS-Files/03-typography.css" />
+    <link rel="stylesheet" href="../CSS-Files/04-selectors.css" />
+    <link rel="stylesheet" href="../CSS-Files/05-box-model.css" />
+    <link rel="stylesheet" href="../CSS-Files/06-display-position.css" />
+    <link rel="stylesheet" href="../CSS-Files/07-flexbox.css" />
+    <link rel="stylesheet" href="../CSS-Files/08-grid.css" />
+    <link rel="stylesheet" href="../CSS-Files/09-transistions-animation.css" />
+    <link rel="stylesheet" href="../CSS-Files/10-responsive-design.css" />
+    <link rel="stylesheet" href="../CSS-Files/11-miscellaneous.css" />
+    <link rel="stylesheet" href="../CSS-Files/12-advanced-css.css" />
+  </head>
+  <body>
+    <!-- TOP HEADER / NAVBAR -->
+    <header id="site-header">
+      <div class="header-left">
+        <button id="menu-toggle" aria-label="Toggle Navigation Menu">
+          &#9776;
+        </button>
+        <span class="site-logo">CSS.Docs</span>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">02. Colors &amp; Backgrounds</span>
+      </div>
+      <div class="header-right">
+        <span class="doc-version">CSS3 / Modern CSS</span>
+      </div>
+    </header>
+
+    <div id="layout-container">
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <!-- LEFT FIXED SIDEBAR NAVIGATION -->
+      <aside id="sidebar-nav">
+        <div class="sidebar-header">
+          <h2>Documentation</h2>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">01. Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a href="02-colors.html" class="nav-link">02. Colors</a>
+            </li>
+            <li class="nav-item">
+              <a href="03-typography.html" class="nav-link">03. Typography</a>
+            </li>
+            <li class="nav-item">
+              <a href="04-selectors.html" class="nav-link"
+                >04. Selectors &amp; Specificity</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="05-box-model.html" class="nav-link">05. Box Model</a>
+            </li>
+            <li class="nav-item">
+              <a href="06-display-position.html" class="nav-link"
+                >06. Display &amp; Positioning</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="07-flexbox.html" class="nav-link">07. Flexbox</a>
+            </li>
+            <li class="nav-item">
+              <a href="08-grid.html" class="nav-link">08. CSS Grid</a>
+            </li>
+            <li class="nav-item">
+              <a href="09-transistions-animation.html" class="nav-link"
+                >09. Transitions &amp; Animations</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="10-responsive-design.html" class="nav-link"
+                >10. Responsive Design</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="11-miscellaneous.html" class="nav-link"
+                >11. Miscellaneous &amp; Visual FX</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="12-advanced-css.html" class="nav-link"
+                >12. Advanced CSS &amp; Motion</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- MAIN DOCUMENTATION CONTENT -->
+      <main id="main-content">
+        <!-- PAGE OVERVIEW -->
+        <section id="doc-overview">
+          <h1>CSS Colors &amp; Color Systems</h1>
+          <p><strong>Module:</strong> 02. Color Formats &amp; Optical Theory</p>
+          <p>
+            <strong>Description:</strong> A comprehensive reference manual
+            covering digital color models. Learn how display screens generate
+            light, how primary and secondary hues combine in additive theory,
+            how to calculate hexadecimal values manually, how human-intuitive
+            HSL and OKLCH color spaces work, and how to maintain high-contrast
+            accessibility standards in production websites.
+          </p>
+        </section>
+        <hr />
+
+        <!-- 1. CORE CSS COLOR PROPERTIES -->
+        <section id="core-properties">
+          <h2>1. Core Color Properties in CSS</h2>
+          <p>
+            <strong>Def:</strong> CSS provides several specialized properties to
+            apply color values to different layers of an HTML element.
+          </p>
+
+          <!-- 1.1 color -->
+          <article id="prop-color">
+            <h3>1.1 color Property</h3>
+            <p>
+              <strong>Def:</strong> Sets the foreground color of an element.
+              This directly controls the color of all readable text,
+              text-decoration underlines, bullet points on lists, and native SVG
+              icons set to inherit.
+            </p>
+            <p>
+              <strong>Inherited:</strong> Yes. If applied to a parent container
+              (like &lt;body&gt; or &lt;div&gt;), all child paragraphs and
+              headings inherit this text color automatically.
+            </p>
+            <p>
+              <strong>Default Value:</strong> <code>CanvasText</code> (rendered
+              as pure black by default browser stylesheets).
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Understanding foreground color properties is essential for
+              accessible web typography.
+            </p>
+            <h5>
+              The Paragraph after applying property <span>color: #2563eb;</span>
+            </h5>
+            <p id="demo-color">
+              Understanding foreground color properties is essential for
+              accessible web typography.
+            </p>
+          </article>
+
+          <!-- 1.2 background-color -->
+          <article id="prop-background-color">
+            <h3>1.2 background-color Property</h3>
+            <p>
+              <strong>Def:</strong> Fills the canvas area directly behind an
+              element's text and padding area with a solid color, extending up
+              to the inner boundary of any declared border.
+            </p>
+            <p>
+              <strong>Inherited:</strong> No. Background colors do not pass down
+              to child elements.
+            </p>
+            <p>
+              <strong>Default Value:</strong> <code>transparent</code> (the
+              background color of the parent shows through).
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Background color fills the container space behind text and inner
+              padding.
+            </p>
+            <h5>
+              The Paragraph after applying property
+              <span>background-color: #dbeafe;</span>
+            </h5>
+            <p id="demo-bg-color">
+              Background color fills the container space behind text and inner
+              padding.
+            </p>
+          </article>
+
+          <!-- 1.3 accent-color -->
+          <article id="prop-accent-color">
+            <h3>1.3 accent-color Property</h3>
+            <p>
+              <strong>Def:</strong> Applies a custom brand color directly to
+              native HTML interactive form controls (checkboxes, radio buttons,
+              range sliders, and progress bars) without having to build complex
+              custom HTML/CSS replacements.
+            </p>
+            <p>
+              <strong>Default Value:</strong> <code>auto</code> (the browser and
+              operating system determine the accent color).
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              <input type="checkbox" checked /> Standard browser accent checkbox
+            </p>
+            <h5>
+              The Paragraph after applying property
+              <span>accent-color: #16a34a;</span>
+            </h5>
+            <p id="demo-accent">
+              <input type="checkbox" checked /> Custom brand green accent
+              checkbox
+            </p>
+          </article>
+
+          <!-- 1.4 caret-color -->
+          <article id="prop-caret-color">
+            <h3>1.4 caret-color Property</h3>
+            <p>
+              <strong>Def:</strong> Controls the color of the vertical blinking
+              insertion cursor (the caret) inside text inputs, textareas, and
+              editable input fields.
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p><input type="text" value="Default caret cursor" /></p>
+            <h5>
+              The Paragraph after applying property
+              <span>caret-color: #dc2626;</span>
+            </h5>
+            <p id="demo-caret">
+              <input type="text" value="Custom red caret cursor" />
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 2. NAMED COLORS -->
+        <section id="named-colors">
+          <h2>2. Named Colors (Color Keywords)</h2>
+          <p>
+            <strong>Def:</strong> Case-insensitive, human-readable English words
+            mapped internally by browser engines to fixed RGB/Hex color
+            coordinates.
+          </p>
+          <p>
+            <strong>History &amp; Support:</strong> The original HTML 3.2 and
+            HTML 4.01 specifications recognized only 16 standard VGA colors
+            (aqua, black, blue, fuchsia, gray, green, lime, maroon, navy, olive,
+            purple, red, silver, teal, white, and yellow). Modern CSS recognizes
+            a standardized dictionary of 148 named keywords (originating from
+            X11 graphics software, including modern additions like
+            <code>rebeccapurple</code>).
+          </p>
+
+          <h3>Popular Named Colors Reference Table</h3>
+          <table border="2" width="100%">
+            <thead>
+              <tr>
+                <th>Named Keyword</th>
+                <th>Hex Value</th>
+                <th>RGB Equivalent</th>
+                <th>Visual Color Family</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>black</code></td>
+                <td>#000000</td>
+                <td>rgb(0, 0, 0)</td>
+                <td>Pure Darkness (All Lights Off)</td>
+              </tr>
+              <tr>
+                <td><code>white</code></td>
+                <td>#ffffff</td>
+                <td>rgb(255, 255, 255)</td>
+                <td>Pure Brightness (All Lights Full)</td>
+              </tr>
+              <tr>
+                <td><code>red</code></td>
+                <td>#ff0000</td>
+                <td>rgb(255, 0, 0)</td>
+                <td>Primary Red</td>
+              </tr>
+              <tr>
+                <td><code>lime</code></td>
+                <td>#00ff00</td>
+                <td>rgb(0, 255, 0)</td>
+                <td>Primary Green (Pure Light)</td>
+              </tr>
+              <tr>
+                <td><code>blue</code></td>
+                <td>#0000ff</td>
+                <td>rgb(0, 0, 255)</td>
+                <td>Primary Blue</td>
+              </tr>
+              <tr>
+                <td><code>yellow</code></td>
+                <td>#ffff00</td>
+                <td>rgb(255, 255, 0)</td>
+                <td>Secondary (Red + Green)</td>
+              </tr>
+              <tr>
+                <td><code>cyan</code> / <code>aqua</code></td>
+                <td>#00ffff</td>
+                <td>rgb(0, 255, 255)</td>
+                <td>Secondary (Green + Blue)</td>
+              </tr>
+              <tr>
+                <td><code>magenta</code> / <code>fuchsia</code></td>
+                <td>#ff00ff</td>
+                <td>rgb(255, 0, 255)</td>
+                <td>Secondary (Red + Blue)</td>
+              </tr>
+              <tr>
+                <td><code>orange</code></td>
+                <td>#ffa500</td>
+                <td>rgb(255, 165, 0)</td>
+                <td>Tertiary Warm Hue</td>
+              </tr>
+              <tr>
+                <td><code>rebeccapurple</code></td>
+                <td>#663399</td>
+                <td>rgb(102, 51, 153)</td>
+                <td>CSS Community Tribute Purple</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <article id="named-colors-evaluation">
+            <h3>When to Use Named Colors</h3>
+            <p>
+              <strong>Recommended For:</strong> Rapid prototyping, debugging
+              layout boundaries (e.g., quickly adding
+              <span>background-color: red;</span> to find a broken container),
+              and quick test scripts.
+            </p>
+            <p>
+              <strong>Avoid In Production:</strong> Real design systems require
+              fine-tuned brand tints, custom saturation curves, and
+              semi-transparent layers that 148 rigid names cannot provide.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 3. RGB & RGBA COLOR SYSTEMS -->
+        <section id="rgb-colors">
+          <h2>3. The RGB &amp; RGBA Color Model (Additive Light Theory)</h2>
+          <p>
+            <strong>Def:</strong> RGB is an
+            <strong>additive color model</strong> based on how electronic
+            display screens produce color. Every computer monitor, laptop
+            screen, and smartphone display is composed of millions of
+            microscopic square pixels. Each individual pixel contains three tiny
+            physical light sources (subpixels): a <strong>Red</strong> emitter,
+            a <strong>Green</strong> emitter, and a
+            <strong>Blue</strong> emitter.
+          </p>
+
+          <!-- 3.1 How the Math Works -->
+          <article id="rgb-math-breakdown">
+            <h3>3.1 How the Channel Scale Works (0 to 255)</h3>
+            <p>
+              Computers store each color channel using
+              <strong>1 byte (8 bits) of memory</strong>. Because 1 bit can hold
+              two states (0 or 1), 8 bits provide $2^8 = 256$ total distinct
+              brightness levels, counted from <code>0</code> up to
+              <code>255</code>:
+            </p>
+            <ul>
+              <li>
+                <strong>Level 0:</strong> The light emitter is completely
+                powered <strong>OFF</strong> (emitting 0% light photons).
+              </li>
+              <li>
+                <strong>Level 255:</strong> The light emitter is turned to
+                <strong>MAXIMUM BRIGHTNESS</strong> (emitting 100% light power).
+              </li>
+            </ul>
+            <p>
+              <strong>Total Color Spectrum:</strong> By combining 256 red steps
+              &times; 256 green steps &times; 256 blue steps, the RGB model
+              generates exactly
+              <strong>16,777,216 distinct colors</strong> (known as 24-bit True
+              Color).
+            </p>
+          </article>
+
+          <!-- 3.2 Primary Colors in RGB -->
+          <article id="rgb-primaries">
+            <h3>3.2 Primary Colors of Light</h3>
+            <p>
+              In physics and digital screens, the primary colors of light are
+              Red, Green, and Blue. A primary color is created by turning one
+              single channel to full brightness (255) and keeping the other two
+              channels completely turned off (0):
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Color Name</th>
+                  <th>CSS Code</th>
+                  <th>Red Light</th>
+                  <th>Green Light</th>
+                  <th>Blue Light</th>
+                  <th>Explanation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pure Red</td>
+                  <td><code>rgb(255, 0, 0)</code></td>
+                  <td>255 (Full)</td>
+                  <td>0 (Off)</td>
+                  <td>0 (Off)</td>
+                  <td>
+                    Only red subpixels shine; green and blue are fully dark.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Pure Green</td>
+                  <td><code>rgb(0, 255, 0)</code></td>
+                  <td>0 (Off)</td>
+                  <td>255 (Full)</td>
+                  <td>0 (Off)</td>
+                  <td>
+                    Only green subpixels shine; red and blue are fully dark.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Pure Blue</td>
+                  <td><code>rgb(0, 0, 255)</code></td>
+                  <td>0 (Off)</td>
+                  <td>0 (Off)</td>
+                  <td>255 (Full)</td>
+                  <td>
+                    Only blue subpixels shine; red and green are fully dark.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 3.3 Secondary Colors in RGB -->
+          <article id="rgb-secondaries">
+            <h3>3.3 Secondary Colors (Mixing Two Primaries at Full Power)</h3>
+            <p>
+              When you turn on two primary color channels at maximum power (255)
+              simultaneously, their light beams overlap directly on the retina
+              of your eye, producing a secondary color:
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Color Name</th>
+                  <th>CSS Code</th>
+                  <th>Light Combination Formula</th>
+                  <th>Why It Works</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Yellow</td>
+                  <td><code>rgb(255, 255, 0)</code></td>
+                  <td>Red (255) + Green (255)</td>
+                  <td>
+                    Unlike mixing paint pigments (subtractive), mixing red light
+                    and green light on a screen stimulates red and green cone
+                    cells in the human eye simultaneously. The brain interprets
+                    this equal mix of red and green light as vibrant yellow.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Cyan (Aqua / Sky)</td>
+                  <td><code>rgb(0, 255, 255)</code></td>
+                  <td>Green (255) + Blue (255)</td>
+                  <td>
+                    Combining high-frequency green light with blue light creates
+                    radiant, icy cyan.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Magenta (Fuchsia / Violet Pink)</td>
+                  <td><code>rgb(255, 0, 255)</code></td>
+                  <td>Red (255) + Blue (255)</td>
+                  <td>
+                    Combines opposite ends of the visible light spectrum (red
+                    and blue light) with zero green light.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 3.4 Black, White & Grayscale in RGB -->
+          <article id="rgb-grayscale">
+            <h3>3.4 Black, White &amp; Grayscale in Additive Light</h3>
+            <p>
+              Grayscale tones (blacks, grays, and whites) occur whenever all
+              three channels (Red, Green, Blue) share the
+              <strong>exact same numerical value</strong> (R = G = B):
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Tone Name</th>
+                  <th>CSS Code</th>
+                  <th>Channel Balance</th>
+                  <th>Visual Mechanism</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Pure Black</td>
+                  <td><code>rgb(0, 0, 0)</code></td>
+                  <td>All 0</td>
+                  <td>
+                    <strong>Zero Light:</strong> Every subpixel is completely
+                    off. The display emits no photons, leaving the screen dark.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Dark Charcoal Gray</td>
+                  <td><code>rgb(64, 64, 64)</code></td>
+                  <td>All 64 (25% power)</td>
+                  <td>All three lights shine at a low, equal 25% intensity.</td>
+                </tr>
+                <tr>
+                  <td>Medium Neutral Gray</td>
+                  <td><code>rgb(128, 128, 128)</code></td>
+                  <td>All 128 (50% power)</td>
+                  <td>
+                    Exact midpoint between pitch darkness and maximum white.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Light Silver Gray</td>
+                  <td><code>rgb(192, 192, 192)</code></td>
+                  <td>All 192 (75% power)</td>
+                  <td>All three lights shine at bright 75% power.</td>
+                </tr>
+                <tr>
+                  <td>Pure White</td>
+                  <td><code>rgb(255, 255, 255)</code></td>
+                  <td>All 255 (100% power)</td>
+                  <td>
+                    <strong>Full Light:</strong> Red, Green, and Blue light
+                    beams shine at 100% maximum power together, blending to form
+                    pure white light.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 3.5 Common Tertiary Colors -->
+          <article id="rgb-tertiaries">
+            <h3>3.5 Popular Real-World Color Formulas</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Color</th>
+                  <th>CSS RGB Formula</th>
+                  <th>Channel Breakdown</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Orange</td>
+                  <td><code>rgb(255, 165, 0)</code></td>
+                  <td>100% Red + 65% Green + 0% Blue</td>
+                </tr>
+                <tr>
+                  <td>Purple / Violet</td>
+                  <td><code>rgb(128, 0, 128)</code></td>
+                  <td>
+                    50% Red + 0% Green + 50% Blue (Half-intensity magenta)
+                  </td>
+                </tr>
+                <tr>
+                  <td>Deep Navy Blue</td>
+                  <td><code>rgb(0, 0, 128)</code></td>
+                  <td>0% Red + 0% Green + 50% Blue (Low-intensity blue)</td>
+                </tr>
+                <tr>
+                  <td>Deep Maroon</td>
+                  <td><code>rgb(128, 0, 0)</code></td>
+                  <td>50% Red + 0% Green + 0% Blue (Low-intensity red)</td>
+                </tr>
+                <tr>
+                  <td>Forest Green</td>
+                  <td><code>rgb(34, 139, 34)</code></td>
+                  <td>Moderate Red + Dominant Green + Small Blue touch</td>
+                </tr>
+                <tr>
+                  <td>Brown</td>
+                  <td><code>rgb(165, 42, 42)</code></td>
+                  <td>Moderate Red + Low Green + Low Blue</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 3.6 Percentage Scale -->
+          <article id="rgb-percentages">
+            <h3>3.6 RGB Percentage Scale</h3>
+            <p>
+              CSS also accepts percentages instead of 0–255 integers. In this
+              format, <code>0% = 0</code> and <code>100% = 255</code>:
+            </p>
+            <p>
+              <strong>e.g.</strong><br />
+              <span>rgb(100%, 0%, 0%); /* Pure Red */</span><br />
+              <span
+                >rgb(50%, 50%, 50%); /* Medium Gray (rgb(128, 128, 128))
+                */</span
+              ><br />
+              <span>rgb(100%, 100%, 0%); /* Pure Yellow */</span>
+            </p>
+          </article>
+
+          <!-- 3.7 RGBA & Opacity -->
+          <article id="rgb-rgba-alpha">
+            <h3>3.7 RGBA (Alpha Transparency Channel)</h3>
+            <p>
+              <strong>Def:</strong> RGBA adds a 4th coordinate called
+              <strong>Alpha</strong>, which controls the opacity (see-through
+              factor) of the color.
+            </p>
+            <p>
+              <strong>Alpha Scale:</strong> A decimal number between
+              <code>0.0</code> (0% opacity, completely invisible/transparent)
+              and <code>1.0</code> (100% opacity, completely solid).
+            </p>
+            <p>
+              <strong
+                >How the Browser Renders Alpha (Alpha Compositing):</strong
+              >
+              When a color has an alpha value like <code>0.5</code>, the browser
+              blends 50% of the element's color with 50% of whatever element
+              color lies directly underneath it in the document stacking
+              context.
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>Solid color without transparency blocking the canvas.</p>
+            <h5>
+              The Paragraph after applying property
+              <span>background-color: rgba(37, 99, 235, 0.25);</span>
+            </h5>
+            <p id="demo-rgba">
+              Semi-transparent blue background allowing underlying elements to
+              show through.
+            </p>
+          </article>
+
+          <!-- 3.8 Modern CSS Color 4 Syntax -->
+          <article id="rgb-modern-syntax">
+            <h3>3.8 Modern Space-Separated Syntax (CSS Color Level 4)</h3>
+            <p>
+              Modern CSS unites <code>rgb()</code> and <code>rgba()</code> into
+              a cleaner, comma-free format. The RGB values are separated by
+              spaces, and the alpha channel is appended after a forward slash
+              (<code>/</code>):
+            </p>
+            <p><strong>Syntax:</strong> <code>rgb(R G B / Alpha)</code></p>
+            <p>
+              <strong>Alpha Support:</strong> Accepts either decimals
+              (<code>0.5</code>) or direct percentages (<code>50%</code>).
+            </p>
+            <p>
+              <strong>e.g.</strong><br />
+              <span>rgb(255 0 0) /* Solid Red */</span><br />
+              <span>rgb(0 255 0 / 50%) /* 50% Transparent Green */</span><br />
+              <span>rgb(0 0 255 / 0.8) /* 80% Opaque Blue */</span>
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 4. HEXADECIMAL COLOR SYSTEM -->
+        <section id="hex-colors">
+          <h2>4. Hexadecimal Color Notation (#HEX)</h2>
+          <p>
+            <strong>Def:</strong> A compact base-16 numerical shorthand
+            representing the exact same RGB light values. It is the industry
+            standard notation used by web developers, software engineers, and
+            design platforms (Figma, Photoshop, Sketch).
+          </p>
+
+          <!-- 4.1 Base 16 Math -->
+          <article id="hex-math">
+            <h3>4.1 Understanding Base-16 Mathematics</h3>
+            <p>
+              Our everyday counting system is
+              <strong>Base-10 (Decimal)</strong>, which uses 10 symbols:
+              <code>0 1 2 3 4 5 6 7 8 9</code>.
+            </p>
+            <p>
+              <strong>Base-16 (Hexadecimal)</strong> needs 16 single symbols to
+              represent numbers. Since numerals stop at 9, it uses letters from
+              A to F:
+            </p>
+            <table border="2" width="60%">
+              <thead>
+                <tr>
+                  <th>Hex Symbol</th>
+                  <th>Decimal Number</th>
+                  <th>Hex Symbol</th>
+                  <th>Decimal Number</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>0 to 9</code></td>
+                  <td>0 to 9</td>
+                  <td><code>D</code></td>
+                  <td>13</td>
+                </tr>
+                <tr>
+                  <td><code>A</code></td>
+                  <td>10</td>
+                  <td><code>E</code></td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td><code>B</code></td>
+                  <td>11</td>
+                  <td><code>F</code></td>
+                  <td>15 (Highest single digit)</td>
+                </tr>
+                <tr>
+                  <td><code>C</code></td>
+                  <td>12</td>
+                  <td><code>10 (Hex)</code></td>
+                  <td>16 in decimal (1 &times; 16 + 0)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>How Two Hex Digits Equal One 0–255 RGB Channel:</h4>
+            <p>
+              A pair of hex digits (like <code>FF</code> or <code>80</code>)
+              represents a mathematical formula:
+              <code>(First Digit &times; 16) + (Second Digit &times; 1)</code>.
+            </p>
+            <ul>
+              <li>
+                <strong>00 in Hex:</strong> (0 &times; 16) + (0 &times; 1) =
+                <strong>0</strong> (channel completely off).
+              </li>
+              <li>
+                <strong>80 in Hex:</strong> (8 &times; 16) + (0 &times; 1) =
+                <strong>128</strong> (channel at 50% power).
+              </li>
+              <li>
+                <strong>FF in Hex:</strong> (15 &times; 16) + (15 &times; 1) =
+                240 + 15 = <strong>255</strong> (channel at 100% maximum power).
+              </li>
+            </ul>
+          </article>
+
+          <!-- 4.2 Standard Formats -->
+          <article id="hex-formats">
+            <h3>4.2 The Four Hex Formats</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Format</th>
+                  <th>Syntax Pattern</th>
+                  <th>Example</th>
+                  <th>Full Expanded Equivalent</th>
+                  <th>Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>6-Digit Hex</td>
+                  <td><code>#RRGGBB</code></td>
+                  <td><code>#ff0000</code></td>
+                  <td>rgb(255, 0, 0)</td>
+                  <td>Standard solid color format.</td>
+                </tr>
+                <tr>
+                  <td>3-Digit Shorthand</td>
+                  <td><code>#RGB</code></td>
+                  <td><code>#f00</code></td>
+                  <td>#ff0000</td>
+                  <td>
+                    Compressed shorthand. Allowed <em>only</em> when both
+                    characters in every pair are identical.
+                  </td>
+                </tr>
+                <tr>
+                  <td>8-Digit Hex (with Alpha)</td>
+                  <td><code>#RRGGBBAA</code></td>
+                  <td><code>#00000080</code></td>
+                  <td>rgba(0, 0, 0, 0.5)</td>
+                  <td>
+                    Fourth pair sets opacity (80 hex = 128 decimal = 50%
+                    opacity).
+                  </td>
+                </tr>
+                <tr>
+                  <td>4-Digit Shorthand Alpha</td>
+                  <td><code>#RGBA</code></td>
+                  <td><code>#0008</code></td>
+                  <td>#00000088</td>
+                  <td>
+                    Compressed shorthand for an RGB color with alpha channel.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <!-- 4.3 Color Map -->
+          <article id="hex-combinations">
+            <h3>4.3 Essential Hex Color Quick-Lookup Table</h3>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Color Name</th>
+                  <th>Full 6-Digit Hex</th>
+                  <th>3-Digit Shorthand</th>
+                  <th>RGB Value</th>
+                  <th>Channel Logic</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Black</td>
+                  <td><code>#000000</code></td>
+                  <td><code>#000</code></td>
+                  <td>rgb(0, 0, 0)</td>
+                  <td>Zero red, zero green, zero blue</td>
+                </tr>
+                <tr>
+                  <td>White</td>
+                  <td><code>#ffffff</code></td>
+                  <td><code>#fff</code></td>
+                  <td>rgb(255, 255, 255)</td>
+                  <td>Full red, full green, full blue</td>
+                </tr>
+                <tr>
+                  <td>Red</td>
+                  <td><code>#ff0000</code></td>
+                  <td><code>#f00</code></td>
+                  <td>rgb(255, 0, 0)</td>
+                  <td>Full red, others off</td>
+                </tr>
+                <tr>
+                  <td>Green (Lime)</td>
+                  <td><code>#00ff00</code></td>
+                  <td><code>#0f0</code></td>
+                  <td>rgb(0, 255, 0)</td>
+                  <td>Full green, others off</td>
+                </tr>
+                <tr>
+                  <td>Blue</td>
+                  <td><code>#0000ff</code></td>
+                  <td><code>#00f</code></td>
+                  <td>rgb(0, 0, 255)</td>
+                  <td>Full blue, others off</td>
+                </tr>
+                <tr>
+                  <td>Yellow</td>
+                  <td><code>#ffff00</code></td>
+                  <td><code>#ff0</code></td>
+                  <td>rgb(255, 255, 0)</td>
+                  <td>Full red + full green</td>
+                </tr>
+                <tr>
+                  <td>Cyan</td>
+                  <td><code>#00ffff</code></td>
+                  <td><code>#0ff</code></td>
+                  <td>rgb(0, 255, 255)</td>
+                  <td>Full green + full blue</td>
+                </tr>
+                <tr>
+                  <td>Magenta</td>
+                  <td><code>#ff00ff</code></td>
+                  <td><code>#f0f</code></td>
+                  <td>rgb(255, 0, 255)</td>
+                  <td>Full red + full blue</td>
+                </tr>
+                <tr>
+                  <td>Medium Gray</td>
+                  <td><code>#808080</code></td>
+                  <td>Cannot shorten</td>
+                  <td>rgb(128, 128, 128)</td>
+                  <td>Equal 50% power across all channels</td>
+                </tr>
+              </tbody>
+            </table>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Hexadecimal color notation controls screen light with base-16
+              mathematical precision.
+            </p>
+            <h5>
+              The Paragraph after applying property <span>color: #7c3aed;</span>
+            </h5>
+            <p id="demo-hex">
+              Hexadecimal color notation controls screen light with base-16
+              mathematical precision.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 5. HSL & HSLA COLOR SYSTEMS -->
+        <section id="hsl-colors">
+          <h2>5. HSL &amp; HSLA (Hue, Saturation, Lightness)</h2>
+          <p>
+            <strong>Def:</strong> A cylindrical coordinate model designed to
+            match how humans describe colors mentally, rather than how hardware
+            screens process electrical signals.
+          </p>
+          <p>
+            <strong>Why HSL is Superior for Design Systems:</strong> In RGB or
+            Hex, if a designer asks to create a slightly lighter hover state for
+            a blue button (like `#2563eb`), you have to recalculate all three
+            RGB numbers manually. In HSL, you leave Hue and Saturation untouched
+            and simply adjust the <strong>Lightness</strong> slider up or down.
+          </p>
+
+          <!-- 5.1 Three Coordinates -->
+          <article id="hsl-coordinates">
+            <h3>5.1 The Three Coordinates of HSL</h3>
+            <ul>
+              <li>
+                <strong>Hue (0deg to 360deg):</strong> The color family angle on
+                a 360-degree color circle:
+                <ul>
+                  <li><code>0°</code> (or <code>360°</code>) = Pure Red</li>
+                  <li><code>60°</code> = Pure Yellow</li>
+                  <li><code>120°</code> = Pure Green</li>
+                  <li><code>180°</code> = Pure Cyan</li>
+                  <li><code>240°</code> = Pure Blue</li>
+                  <li><code>300°</code> = Pure Magenta</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Saturation (0% to 100%):</strong> The richness or purity
+                of the color:
+                <ul>
+                  <li><code>0%</code> = No color at all; pure flat gray.</li>
+                  <li><code>50%</code> = Moderate, muted, washed-out color.</li>
+                  <li>
+                    <code>100%</code> = Maximum, full-strength, vivid neon
+                    color.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Lightness (0% to 100%):</strong> The amount of light
+                shining through the color:
+                <ul>
+                  <li>
+                    <code>0%</code> = Absolute darkness (pitch black),
+                    regardless of what Hue or Saturation you picked.
+                  </li>
+                  <li>
+                    <code>50%</code> = The pure, normal, true version of the
+                    color.
+                  </li>
+                  <li>
+                    <code>100%</code> = Maximum light (pure white), regardless
+                    of what Hue or Saturation you picked.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </article>
+
+          <!-- 5.2 Building UI Palettes with HSL -->
+          <article id="hsl-palette-creation">
+            <h3>5.2 How Frontend Engineers Build Cohesive Palettes in HSL</h3>
+            <p>
+              By fixing the Hue (e.g., <code>215deg</code> for Blue) and
+              Saturation (<code>90%</code>), you can generate an entire
+              application color scheme just by modifying Lightness:
+            </p>
+            <table border="2" width="100%">
+              <thead>
+                <tr>
+                  <th>Palette Role</th>
+                  <th>HSL Formula</th>
+                  <th>Lightness Value</th>
+                  <th>Visual Application</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Soft Background Tint</td>
+                  <td><code>hsl(215, 90%, 95%)</code></td>
+                  <td>95%</td>
+                  <td>Subtle card backgrounds, banner highlights</td>
+                </tr>
+                <tr>
+                  <td>Light Border</td>
+                  <td><code>hsl(215, 90%, 80%)</code></td>
+                  <td>80%</td>
+                  <td>Container borders, input outlines</td>
+                </tr>
+                <tr>
+                  <td>Primary Brand Button</td>
+                  <td><code>hsl(215, 90%, 50%)</code></td>
+                  <td>50%</td>
+                  <td>Main call-to-action buttons</td>
+                </tr>
+                <tr>
+                  <td>Active / Hover State</td>
+                  <td><code>hsl(215, 90%, 35%)</code></td>
+                  <td>35%</td>
+                  <td>Button hover state (15% darker)</td>
+                </tr>
+                <tr>
+                  <td>Dark Text Variant</td>
+                  <td><code>hsl(215, 90%, 15%)</code></td>
+                  <td>15%</td>
+                  <td>High-contrast text readable on white surfaces</td>
+                </tr>
+              </tbody>
+            </table>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Adjusting color lightness enables scalable design systems with
+              human-friendly coordinates.
+            </p>
+            <h5>
+              The Paragraph after applying property
+              <span>color: hsl(215, 90%, 45%);</span>
+            </h5>
+            <p id="demo-hsl">
+              Adjusting color lightness enables scalable design systems with
+              human-friendly coordinates.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 6. MODERN COLOR SPACES (OKLCH & COLOR-MIX) -->
+        <section id="modern-color-spaces">
+          <h2>6. Modern Color Spaces (CSS Color Level 4 &amp; 5)</h2>
+          <p>
+            <strong>Def:</strong> While RGB, Hex, and HSL are locked to the
+            legacy 1990s sRGB color gamut, modern CSS introduces
+            <strong>perceptually uniform wide-gamut color spaces</strong>
+            designed for modern OLED, HDR, and Retina displays.
+          </p>
+
+          <!-- 6.1 OKLCH -->
+          <article id="color-oklch">
+            <h3>6.1 OKLCH (Lightness, Chroma, Hue)</h3>
+            <p>
+              <strong>The Flaw of HSL:</strong> In HSL, both yellow (<code
+                >hsl(60, 100%, 50%)</code
+              >) and blue (<code>hsl(240, 100%, 50%)</code>) have a mathematical
+              lightness of 50%. But to human eyes, yellow appears blindingly
+              bright while blue appears very dark. HSL is not mathematically
+              calibrated to human eye biology.
+            </p>
+            <p>
+              <strong>The OKLCH Solution:</strong> OKLCH is
+              <strong>perceptually uniform</strong>. If two different hues have
+              a Lightness of <code>0.7</code> in OKLCH, they are guaranteed to
+              look equally bright to the human eye.
+            </p>
+            <p>
+              <strong>Syntax:</strong>
+              <code>oklch(Lightness Chroma Hue / Alpha)</code>
+            </p>
+            <ul>
+              <li>
+                <strong>Lightness (L):</strong> <code>0%</code> (black) to
+                <code>100%</code> (white) or decimals <code>0.0</code> to
+                <code>1.0</code>.
+              </li>
+              <li>
+                <strong>Chroma (C):</strong> <code>0</code> (gray) to
+                <code>~0.37</code> (maximum vividness). Unlike HSL saturation,
+                Chroma represents real optical saturation without artificially
+                capping values.
+              </li>
+              <li>
+                <strong>Hue (H):</strong> Angle from <code>0deg</code> to
+                <code>360deg</code> on the perceptual color circle.
+              </li>
+            </ul>
+            <p>
+              <strong>e.g.</strong><br />
+              <span
+                >color: oklch(0.65 0.25 142); /* Perceptually uniform, vivid
+                green */</span
+              >
+            </p>
+          </article>
+
+          <!-- 6.2 color-mix() -->
+          <article id="color-mix-func">
+            <h3>6.2 The Native color-mix() Function</h3>
+            <p>
+              <strong>Def:</strong> A native browser function that blends two
+              colors together inside a designated color space by specified
+              percentage amounts without needing CSS preprocessors (SASS/LESS)
+              or JavaScript math.
+            </p>
+            <p>
+              <strong>Syntax:</strong>
+              <code
+                >color-mix(in &lt;color-space&gt;, &lt;color1&gt;
+                [&lt;percentage&gt;], &lt;color2&gt; [&lt;percentage&gt;])</code
+              >
+            </p>
+            <p>
+              <strong>e.g.</strong><br />
+              <span
+                >background-color: color-mix(in srgb, #2563eb 20%, white); /*
+                20% blue mixed with 80% white */</span
+              ><br />
+              <span
+                >border-color: color-mix(in oklch, red 40%, transparent); /* 40%
+                red with 60% transparent */</span
+              >
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Native browser engine mixing two distinct color values
+              dynamically.
+            </p>
+            <h5>
+              The Paragraph after applying property
+              <span
+                >background-color: color-mix(in srgb, #2563eb 20%, white
+                80%);</span
+              >
+            </h5>
+            <p id="demo-color-mix">
+              Native browser engine mixing two distinct color values
+              dynamically.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 7. SPECIAL COLOR KEYWORDS -->
+        <section id="special-keywords">
+          <h2>7. Special System Keywords (currentColor &amp; transparent)</h2>
+          <p>
+            <strong>Def:</strong> Context-sensitive CSS keywords that resolve
+            dynamically based on the surrounding styling environment.
+          </p>
+
+          <!-- 7.1 currentColor -->
+          <article id="kw-currentcolor">
+            <h3>7.1 currentColor (The DRY Principle in CSS)</h3>
+            <p>
+              <strong>Def:</strong> A built-in keyword that acts like an
+              automatic variable, always matching the computed value of the
+              element's current <code>color</code> property.
+            </p>
+            <p>
+              <strong>Where to Use:</strong> Applying the exact same color to
+              borders, SVG icon fills, box shadows, and outlines without
+              hardcoding identical color values repeatedly.
+            </p>
+            <p>
+              <strong>e.g.</strong><br />
+              <span>color: #2563eb;</span><br />
+              <span
+                >border: 2px solid currentColor; /* Automatically paints a blue
+                border */</span
+              >
+            </p>
+            <h4>Demo</h4>
+            <h5>Normal Paragraph</h5>
+            <p>
+              Standard container border requiring hardcoded color definitions.
+            </p>
+            <h5>
+              The Paragraph after applying property
+              <span>border-color: currentColor;</span>
+            </h5>
+            <p id="demo-currentcolor">
+              Dynamic border automatically inheriting its color from the
+              foreground text.
+            </p>
+          </article>
+
+          <!-- 7.2 transparent -->
+          <article id="kw-transparent">
+            <h3>7.2 transparent</h3>
+            <p>
+              <strong>Def:</strong> Completely invisible see-through color.
+              Functionally identical to <code>rgba(0, 0, 0, 0)</code>.
+            </p>
+          </article>
+        </section>
+        <hr />
+
+        <!-- 8. ACCESSIBILITY & CONTRAST (WCAG) -->
+        <section id="accessibility-contrast">
+          <h2>8. Accessibility &amp; Contrast Guidelines (WCAG)</h2>
+          <p>
+            <strong>Def:</strong> The Web Content Accessibility Guidelines
+            (WCAG) require adequate visual luminance contrast between text
+            (foreground) and its container (background) so that visually
+            impaired, aging, or colorblind users can read comfortably under
+            varying light conditions.
+          </p>
+
+          <h3>Official WCAG Contrast Ratios</h3>
+          <table border="2" width="100%">
+            <thead>
+              <tr>
+                <th>Compliance Level</th>
+                <th>Regular Body Text (&lt; 18pt / 24px)</th>
+                <th>Large Display Text (&ge; 18pt / 24px or &ge; 14pt bold)</th>
+                <th>UI Components &amp; Form Borders</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>WCAG AA (Mandatory Legal Standard)</strong></td>
+                <td><strong>4.5 : 1</strong> minimum ratio</td>
+                <td><strong>3.0 : 1</strong> minimum ratio</td>
+                <td><strong>3.0 : 1</strong> minimum ratio</td>
+              </tr>
+              <tr>
+                <td><strong>WCAG AAA (Enhanced Standard)</strong></td>
+                <td><strong>7.0 : 1</strong> minimum ratio</td>
+                <td><strong>4.5 : 1</strong> minimum ratio</td>
+                <td>Not required</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            <strong>Formula Reference:</strong> Contrast ratios scale from
+            <code>1:1</code> (zero contrast; e.g., white text on a white
+            background) up to <code>21:1</code> (maximum optical contrast; e.g.,
+            pure black text on a pure white background).
+          </p>
+        </section>
+      </main>
+    </div>
+    <script src="../app.js" defer></script>
+  </body>
+</html>
