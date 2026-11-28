@@ -1,0 +1,613 @@
+/* Universal box-sizing model enforcement */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Base body document reset and margins */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Section divider line dimensions */
+hr {
+    margin: 32px 0;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+}
+
+/* Site header frame dimensions and padding */
+#site-header {
+    height: 60px;
+    padding: 0 24px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+/* Reset header text spans to avoid pill box padding and borders */
+#site-header span:not(.doc-version) {
+    padding: 0;
+    border: none;
+    border-radius: 0;
+}
+
+/* Header left container spacing */
+.header-left {
+    gap: 12px;
+}
+
+/* Header right container spacing */
+.header-right {
+    gap: 12px;
+}
+
+/* Mobile navigation drawer toggle button sizing */
+#menu-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+/* Header version badge sizing */
+.doc-version {
+    padding: 4px 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 9999px;
+}
+
+/* Master layout container sizing and bounds */
+#layout-container {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+}
+
+/* Sidebar navigation dimensions and padding */
+#sidebar-nav {
+    width: 280px;
+    min-width: 280px;
+    padding: 24px 16px;
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+
+/* Sidebar header container spacing */
+.sidebar-header {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+/* Sidebar navigation item margin spacing */
+.nav-item {
+    margin-bottom: 4px;
+}
+
+/* Sidebar navigation link padding and shape */
+.nav-link {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left-width: 3px;
+    border-left-style: solid;
+}
+
+/* Main documentation content boundary margins */
+#main-content {
+    max-width: 960px;
+    padding: 32px 40px 64px 40px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Documentation overview section spacing */
+#doc-overview {
+    margin-bottom: 24px;
+}
+
+/* Topic section wrapper margins */
+section {
+    margin-bottom: 40px;
+}
+
+/* Sub-topic article container margins */
+article {
+    margin-bottom: 24px;
+}
+
+/* Main page title padding and radius */
+h1 {
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+}
+
+/* Chapter section header padding and radius */
+h2 {
+    padding: 12px 18px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    border-left-width: 6px;
+    border-left-style: solid;
+}
+
+/* Heading property chip padding and shape */
+h2 > span {
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+}
+
+/* Sub-topic header padding and radius */
+h3 {
+    padding: 8px 14px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    border-left-width: 4px;
+    border-left-style: solid;
+}
+
+/* Demo title banner padding and radius */
+h4 {
+    padding: 8px 12px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+/* General h5 heading margin */
+h5 {
+    margin: 8px 0 4px 0;
+}
+
+/* Standard paragraph margin */
+p {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* Unordered and ordered content list padding */
+ul,
+ol {
+    padding-left: 24px;
+    margin-bottom: 16px;
+}
+
+/* List item vertical spacing */
+li {
+    margin-bottom: 6px;
+}
+
+/* Normal paragraph demo label padding and shape */
+h4 + h5 {
+    padding: 6px 12px;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+}
+
+/* Normal paragraph demo canvas padding and borders */
+h4 + h5 + p {
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    border-width: 1px;
+    border-style: dashed;
+    border-radius: 6px;
+}
+
+/* Applied paragraph demo label padding and shape */
+h4 + h5 + p + h5 {
+    padding: 6px 12px;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+}
+
+/* Applied paragraph demo label badge spacing */
+h4 + h5 + p + h5 > span {
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+
+/* Applied paragraph demo canvas padding and borders */
+h4 + h5 + p + h5 + p {
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+/* Inline code tag padding and shape */
+span {
+    padding: 2px 6px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+/* Monospace code block padding and shape */
+code {
+    padding: 2px 5px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+/* Data table boundaries and spacing */
+table {
+    width: 100%;
+    margin: 16px 0 24px 0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+/* Table header cell padding and borders */
+th {
+    padding: 10px 14px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+}
+
+/* Table body data cell padding and borders */
+td {
+    padding: 10px 14px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+}
+
+/* Form input dimensions and padding */
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    max-width: 380px;
+    height: 40px;
+    padding: 8px 12px;
+    margin: 4px 0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+/* Form input checkbox margin */
+input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+/* Playground control action toolbar spacing */
+.playground-controls {
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    gap: 8px;
+}
+
+/* Playground control buttons padding and shape */
+.ctrl-btn {
+    padding: 8px 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+    margin: 2px;
+}
+
+/* Interactive sandbox testing stage dimensions */
+.demo-flex-stage,
+.demo-grid-stage,
+.demo-motion-stage,
+.demo-fx-stage,
+.demo-appear-wrapper,
+.demo-clamp-stage,
+.demo-viewport-canvas,
+.demo-cq-container,
+.demo-fluid-stage,
+.demo-media-stage {
+    min-height: 180px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+}
+
+/* Interactive stage test box item dimensions */
+.demo-flex-item,
+.demo-grid-cell,
+.demo-card-item,
+.demo-align-item {
+    min-width: 80px;
+    min-height: 60px;
+    padding: 12px 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+/* Named area container padding and borders */
+.demo-area-box {
+    padding: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+/* Motion runner track dimensions and padding */
+.runner-track {
+    width: 100%;
+    height: 44px;
+    padding: 6px;
+    margin-bottom: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+}
+
+/* Motion runner animated box dimensions */
+.runner-box {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+}
+
+/* Motion runner label spacing */
+.runner-label {
+    min-width: 140px;
+    padding-right: 8px;
+}
+
+/* Keyframe fill-mode demonstration box dimensions */
+.demo-anim-box {
+    width: 100px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 6px;
+    margin: 4px 0;
+}
+
+/* Circular satellite track dimensions */
+#demo-orbit-track {
+    width: 160px;
+    height: 160px;
+    padding: 8px;
+    border-width: 2px;
+    border-style: dashed;
+    border-radius: 50%;
+    margin: 20px auto;
+}
+
+/* Orbiting satellite object dimensions */
+.orbiting-box {
+    width: 48px;
+    height: 48px;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+/* 3D card scene container dimensions */
+.demo-3d-scene {
+    width: 260px;
+    height: 160px;
+    margin: 20px auto;
+}
+
+/* 3D card rotating object dimensions */
+.flip-card-object {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* 3D card individual face padding and borders */
+.card-face {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+/* Glassmorphism background staging wrapper dimensions */
+.demo-glass-backdrop {
+    min-height: 200px;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+/* Frosted glass surface panel padding and shape */
+.glass-surface-panel {
+    max-width: 360px;
+    padding: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 12px;
+    margin: 0 auto;
+}
+
+/* Shadow elevation testing card dimensions */
+.shadow-target-card {
+    max-width: 340px;
+    min-height: 100px;
+    padding: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    margin: 16px auto;
+}
+
+/* Background image testing frame dimensions */
+.bg-target-frame {
+    width: 100%;
+    height: 220px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+}
+
+/* Background canvas badge padding and shape */
+.bg-canvas-overlay {
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+/* Pure CSS toggle switch track dimensions */
+#demo-toggle-switch {
+    width: 52px;
+    height: 28px;
+    padding: 2px;
+    border-radius: 14px;
+}
+
+/* Pure CSS toggle switch moving knob dimensions */
+.toggle-track-knob {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+/* Pure CSS toggle switch cluster spacing */
+.form-toggle-cluster {
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* Section entrance reveal demo card dimensions */
+.reveal-card-target {
+    max-width: 420px;
+    padding: 24px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+/* Horizontal swipe card dimensions and padding */
+.swipe-card-item {
+    min-width: 240px;
+    height: 160px;
+    padding: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+    margin-right: 12px;
+}
+
+/* Horizontal swipe card badge token padding and shape */
+.swipe-badge {
+    padding: 2px 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 9999px;
+    margin-bottom: 8px;
+}
+
+/* Procedural gradient demo canvas dimensions */
+.demo-gradient-canvas {
+    width: 100%;
+    height: 180px;
+    padding: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 8px;
+}
+
+/* Clip-path geometric test object dimensions */
+.clip-polygon-target {
+    width: 200px;
+    height: 160px;
+    padding: 12px;
+    margin: 16px auto;
+}
+
+/* Adaptive profile card wrapper dimensions */
+.demo-adaptive-card {
+    width: 100%;
+    padding: 16px;
+    gap: 16px;
+}
+
+/* Adaptive profile card avatar placeholder dimensions */
+.demo-avatar-placeholder {
+    width: 72px;
+    height: 72px;
+    border-width: 1px;
+    border-style: dashed;
+    border-radius: 50%;
+}
+
+/* Card call-to-action button dimensions and shape */
+.card-action-btn {
+    padding: 8px 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+    margin-top: 12px;
+}
+
+/* Responsive aspect-ratio frame box */
+.aspect-ratio-frame {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+}
+
+/* Simulated media object inside aspect ratio frame */
+.simulated-image-layer {
+    width: 100%;
+    height: 100%;
+}
+
+/* Chapter 05 Demo: border-box sizing verification */
+#demo-box-sizing {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    border-width: 6px;
+    border-style: solid;
+}
+
+/* Chapter 05 Demo: Custom internal padding clearance */
+#demo-padding {
+    padding: 16px 24px;
+}
+
+/* Chapter 05 Demo: Border width, style and radius */
+#demo-border {
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 8px;
+    padding: 14px 18px;
+}
+
+/* Chapter 05 Demo: External clearance margins */
+#demo-margin {
+    margin: 24px 0;
+    padding: 14px 18px;
+}
+
+/* Chapter 05 Demo: Outline width and outline-offset clearance */
+#demo-outline {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-offset: 4px;
+    padding: 14px 18px;
+}
+
+/* Chapter 05 Demo: Modern logical padding properties */
+#demo-logical {
+    padding-inline: 32px;
+    padding-block: 12px;
+}

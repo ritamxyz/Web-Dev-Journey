@@ -1,0 +1,268 @@
+/* Application header main axis space distribution */
+#site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Header left branding and breadcrumb inline cluster */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Header right version and tool metadata cluster */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Master application container flex alignment */
+#layout-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+/* Sidebar navigation flex column layout */
+#sidebar-nav nav {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation link internal icon and text alignment */
+.nav-link {
+    display: flex;
+    align-items: center;
+}
+
+/* Playground control action toolbar flex cluster */
+.playground-controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Playground action button centering mechanics */
+.ctrl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Playground 1: Justify-content demonstration stage */
+#stage-justify-parent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 12px;
+}
+
+/* Stage items flex sizing defaults */
+#stage-justify-parent .demo-flex-item {
+    flex: 0 0 auto;
+}
+
+/* Playground 2: Align-items demonstration stage */
+#stage-align-parent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 12px;
+    min-height: 180px;
+}
+
+/* Align items test children sizing defaults */
+#stage-align-parent .demo-flex-item {
+    flex: 1 1 120px;
+}
+
+/* Playground 3: Proportional flex growth stage */
+#stage-grow-parent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+}
+
+/* Flex-grow ratio allocations for proportional test */
+#grow-box-1 {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+
+#grow-box-2 {
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+
+#grow-box-3 {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+
+/* Playground 4: Multi-line wrapping and gap distribution stage */
+#stage-wrap-parent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+    gap: 16px;
+    width: 100%;
+}
+
+/* Card items fluid sizing inside wrapped container */
+#stage-wrap-parent .demo-card-item {
+    flex: 1 1 180px;
+}
+
+/* Sandbox Alignment Stage: Initial parent setup */
+#demo-flex-parent-align {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    min-height: 160px;
+}
+
+/* Sandbox Alignment Stage: Individual items */
+#demo-flex-item-1 {
+    flex: 1 1 auto;
+}
+
+#demo-flex-item-2 {
+    flex: 1 1 auto;
+}
+
+#demo-flex-item-3 {
+    flex: 1 1 auto;
+    align-self: flex-end;
+}
+
+/* Sandbox Proportions Stage: Initial parent setup */
+#demo-flex-parent-proportions {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 14px;
+    width: 100%;
+}
+
+/* Sandbox Proportions Stage: Proportional grow and rigid shrink settings */
+#demo-grow-box-1 {
+    flex: 1 1 0;
+}
+
+#demo-grow-box-2 {
+    flex: 2 1 0;
+}
+
+#demo-rigid-box {
+    flex: 0 0 160px;
+}
+
+/* Sandbox Wrapping Stage: Multi-line flow setup */
+#demo-flex-parent-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 14px;
+}
+
+/* Sandbox Wrapping Stage: Card items base width */
+#demo-flex-parent-wrap .demo-card-item {
+    flex: 1 1 200px;
+}
+
+/* Pure CSS toggle switch cluster alignment */
+.form-toggle-cluster {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Form input row cluster flex alignment */
+.form-input-cluster {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Motion runner track row flex alignment */
+.runner-track {
+    display: flex;
+    align-items: center;
+}
+
+/* Animation fill-mode demonstration row alignment */
+.fill-demo-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+/* Adaptive profile card vertical base stack */
+.demo-adaptive-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+/* Adaptive profile card body vertical distribution */
+.card-body-slot {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+/* Horizontal swipe touch deck layout */
+.demo-swipe-carousel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 16px;
+}
+
+/* Swipe card individual item non-shrinking flex base */
+.swipe-card-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 0 260px;
+}
+
+/* Auto-margin spacer utility to push elements to opposite edge */
+.margin-left-auto {
+    margin-left: auto;
+}
+
+.margin-right-auto {
+    margin-right: auto;
+}
+
+/* Zero min-width flex item override to prevent text truncation blowout */
+.flex-item-truncate {
+    min-width: 0;
+}

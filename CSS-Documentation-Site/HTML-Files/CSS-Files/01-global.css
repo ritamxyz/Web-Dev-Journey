@@ -1,0 +1,77 @@
+/* Universal box-sizing reset across all elements and pseudo-elements */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Document root smooth scrolling and font rendering defaults */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+}
+
+/* Base document viewport boundaries */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+}
+
+/* Responsive media asset baseline to prevent layout overflow */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Form control typography inheritance reset */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* Textarea vertical-only resize default */
+textarea {
+    resize: vertical;
+}
+
+/* Default unstyled list reset for navigation */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Table border-collapse baseline reset */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Horizontal rule border reset */
+hr {
+    border: none;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+/* Accessible reduced motion override */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

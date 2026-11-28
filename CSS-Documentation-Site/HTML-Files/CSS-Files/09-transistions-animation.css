@@ -1,0 +1,260 @@
+/* Global hardware acceleration hint for interactive elements */
+a,
+button,
+.nav-link,
+.ctrl-btn,
+.card-action-btn,
+.toggle-track-knob,
+#demo-toggle-switch {
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-property: background-color, border-color, color, transform, box-shadow, opacity;
+}
+
+/* Hyperlink hover transition curve */
+a {
+    transition-property: color, text-decoration-color;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+}
+
+/* Sidebar navigation links smooth hover sliding */
+.nav-link {
+    transition-property: background-color, color, border-color, padding-left;
+    transition-duration: 180ms;
+    transition-timing-function: ease;
+}
+
+/* Sidebar navigation active link hover indentation */
+.nav-link:hover {
+    padding-left: 16px;
+}
+
+/* Control button tactile press feedback */
+.ctrl-btn:active {
+    transform: scale(0.97);
+}
+
+/* Form input focused state transition */
+input[type="text"],
+input[type="email"] {
+    transition-property: border-color, box-shadow, background-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+/* Playground 1: Timing visualizer runner boxes baseline transition */
+.runner-box {
+    transition-property: transform;
+    transition-duration: 2.4s;
+    transform: translateX(0);
+    will-change: transform;
+}
+
+/* Playground 1: Active trigger translates runners to track finish line */
+#stage-timing-runners.is-running .runner-box {
+    transform: translateX(280px);
+}
+
+/* Playground 1: Linear timing curve */
+#runner-linear {
+    transition-timing-function: linear;
+}
+
+/* Playground 1: Ease timing curve */
+#runner-ease {
+    transition-timing-function: ease;
+}
+
+/* Playground 1: Ease-in timing curve */
+#runner-ease-in {
+    transition-timing-function: ease-in;
+}
+
+/* Playground 1: Ease-out timing curve */
+#runner-ease-out {
+    transition-timing-function: ease-out;
+}
+
+/* Playground 1: Ease-in-out timing curve */
+#runner-ease-in-out {
+    transition-timing-function: ease-in-out;
+}
+
+/* Playground 1: Custom cubic-bezier spring bounce curve */
+#runner-bezier {
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Playground 1: Stepped jump timing function */
+#runner-steps {
+    transition-timing-function: steps(5, jump-end);
+}
+
+/* Keyframe timeline for animation-fill-mode demonstration */
+@keyframes fillModeTimeline {
+    0% {
+        transform: translateX(0);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateX(180px);
+        opacity: 1;
+    }
+}
+
+/* Playground 2: Fill-mode demo boxes baseline animation properties */
+.demo-anim-box {
+    animation-duration: 2.5s;
+    animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+    animation-delay: 800ms;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    will-change: transform, opacity;
+}
+
+/* Playground 2: Active execution trigger for fill-mode animations */
+#stage-fill-mode.is-running .demo-anim-box {
+    animation-name: fillModeTimeline;
+}
+
+/* Playground 2: Fill-mode none */
+#fill-box-none {
+    animation-fill-mode: none;
+}
+
+/* Playground 2: Fill-mode forwards preserves final keyframe */
+#fill-box-forwards {
+    animation-fill-mode: forwards;
+}
+
+/* Playground 2: Fill-mode backwards adopts initial keyframe during delay */
+#fill-box-backwards {
+    animation-fill-mode: backwards;
+}
+
+/* Playground 2: Fill-mode both combines forwards and backwards */
+#fill-box-both {
+    animation-fill-mode: both;
+}
+
+/* Playground 2: Direction alternate toggle */
+#stage-fill-mode[data-direction="alternate"] .demo-anim-box {
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+/* Playground 3: 3D Card flip scene perspective */
+#stage-flip-card {
+    perspective: 800px;
+}
+
+/* Playground 3: Extreme perspective modifier */
+#stage-flip-card[data-perspective="400px"] {
+    perspective: 400px;
+}
+
+/* Playground 3: Subtle perspective modifier */
+#stage-flip-card[data-perspective="1200px"] {
+    perspective: 1200px;
+}
+
+/* Playground 3: 3D Rotating card object transitions */
+.flip-card-object {
+    transition-property: transform;
+    transition-duration: 700ms;
+    transition-timing-function: cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Playground 3: Trigger card flip on hover or active class */
+#stage-flip-card:hover .flip-card-object,
+#stage-flip-card.is-flipped .flip-card-object {
+    transform: rotateY(180deg);
+}
+
+/* Keyframe timeline for continuous satellite orbital path */
+@keyframes continuousOrbit {
+    from {
+        transform: rotate(0deg) translateX(70px) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translateX(70px) rotate(-360deg);
+    }
+}
+
+/* Playground 4: Orbiting satellite continuous animation */
+#demo-orbit-item {
+    animation-name: continuousOrbit;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    will-change: transform;
+}
+
+/* Playground 4: Playback paused state controller */
+#stage-play-state[data-state="paused"] #demo-orbit-item,
+#demo-orbit-item.is-paused {
+    animation-play-state: paused;
+}
+
+/* Pure CSS toggle switch knob glide transition */
+.toggle-track-knob {
+    transition-property: left, transform;
+    transition-duration: 220ms;
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Section entrance reveal container baseline transition */
+.reveal-card-target {
+    transition-property: opacity, transform;
+    transition-duration: 650ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* Section entrance reveal hidden initial state */
+.reveal-card-target.is-hidden {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+}
+
+/* Section entrance reveal active visible state */
+.reveal-card-target:not(.is-hidden) {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Continuous loading spinner keyframe timeline */
+@keyframes spinClockwise {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loading icon spinning animation utility */
+.animate-spin {
+    animation: spinClockwise 1s linear infinite;
+}
+
+/* Pulse fade keyframe timeline */
+@keyframes subtlePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.02);
+    }
+}
+
+/* Pulse animation utility */
+.animate-pulse {
+    animation: subtlePulse 2.5s ease-in-out infinite;
+}

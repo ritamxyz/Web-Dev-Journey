@@ -1,0 +1,521 @@
+/* Global page canvas and default text color */
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+/* Horizontal section divider lines */
+hr {
+    border-color: #e2e8f0;
+}
+
+/* Primary site header bar */
+/* Primary site header bar */
+#site-header {
+    background-color: #0f172a;
+    color: #f8fafc;
+    border-color: #1e293b;
+}
+
+/* Reset header spans so they do not inherit pink code-chip background */
+#site-header span {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/* Header brand logo mark */
+.site-logo {
+    color: #60a5fa;
+}
+
+/* Breadcrumb navigation divider */
+.breadcrumb-separator {
+    color: #64748b;
+}
+
+/* Current page breadcrumb title - high contrast crisp white */
+.breadcrumb-current {
+    color: #f8fafc;
+}
+
+/* Header version pill badge */
+.doc-version {
+    background-color: #1e293b;
+    color: #94a3b8;
+    border-color: #334155;
+}
+
+/* Mobile navigation drawer toggle button */
+#menu-toggle {
+    background-color: #1e293b;
+    color: #f8fafc;
+    border-color: #334155;
+}
+
+/* Left sidebar navigation container */
+#sidebar-nav {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+}
+
+/* Sidebar header dividing line */
+.sidebar-header {
+    border-color: #f1f5f9;
+}
+
+/* Sidebar section header title */
+.sidebar-header h2 {
+    background-color: transparent;
+    color: #64748b;
+}
+
+/* Inactive sidebar navigation links */
+.nav-link {
+    background-color: transparent;
+    color: #475569;
+}
+
+/* Active current-page navigation link */
+.nav-link.active {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    border-color: #3b82f6;
+}
+
+/* Document main title header */
+h1 {
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+/* Major topic section header */
+h2 {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    border-color: #60a5fa;
+}
+
+/* Highlighted property chip inside section headers */
+h2 > span {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fde047;
+}
+
+/* Sub-topic section header */
+h3 {
+    background-color: #e0e7ff;
+    color: #3730a3;
+    border-color: #6366f1;
+}
+
+/* Demonstration divider header */
+h4 {
+    background-color: #334155;
+    color: #f8fafc;
+}
+
+/* Normal paragraph label before property application */
+h4 + h5 {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+/* Normal paragraph demo container before property application */
+h4 + h5 + p {
+    background-color: #ffffff;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+/* Applied paragraph label after property application */
+h4 + h5 + p + h5 {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+
+/* Highlighted badge inside applied paragraph label */
+h4 + h5 + p + h5 > span {
+    background-color: #bfdbfe;
+    color: #1e3a8a;
+}
+
+/* Applied paragraph demo container after property application */
+h4 + h5 + p + h5 + p {
+    background-color: #ffffff;
+    color: #0f172a;
+    border-color: #93c5fd;
+}
+
+/* General inline code chips */
+span {
+    background-color: #fce7f3;
+    color: #be185d;
+    border-color: #fbcfe8;
+}
+
+/* Monospace code blocks and technical tokens */
+code {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    border-color: #e2e8f0;
+}
+
+/* Strong emphasized technical text */
+strong {
+    color: #0f172a;
+}
+
+/* Content anchor links */
+a {
+    color: #2563eb;
+}
+
+/* Content anchor links hover state */
+a:hover {
+    color: #1d4ed8;
+}
+
+/* Data table wrapper container */
+table {
+    background-color: #ffffff;
+    border-color: #cbd5e1;
+}
+
+/* Data table column headers */
+th {
+    background-color: #0f172a;
+    color: #f8fafc;
+    border-color: #334155;
+}
+
+/* Data table body data cells */
+td {
+    color: #334155;
+    border-color: #e2e8f0;
+}
+
+/* Standard text input fields */
+input[type="text"],
+input[type="email"] {
+    background-color: #ffffff;
+    color: #0f172a;
+    border-color: #cbd5e1;
+    caret-color: #2563eb;
+}
+
+/* Native interactive checkbox and radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: #2563eb;
+}
+
+/* Playground control action toolbar */
+.playground-controls {
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+}
+
+/* Playground control buttons */
+.ctrl-btn {
+    background-color: #ffffff;
+    color: #1e293b;
+    border-color: #cbd5e1;
+}
+
+/* Playground control buttons hover state */
+.ctrl-btn:hover {
+    background-color: #f8fafc;
+    color: #0f172a;
+    border-color: #94a3b8;
+}
+
+/* Interactive sandbox testing stages across all pages */
+.demo-flex-stage,
+.demo-grid-stage,
+.demo-motion-stage,
+.demo-fx-stage,
+.demo-appear-wrapper,
+.demo-clamp-stage,
+.demo-viewport-canvas,
+.demo-cq-container,
+.demo-fluid-stage,
+.demo-media-stage {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+/* Stage child items and test cards */
+.demo-flex-item,
+.demo-grid-cell,
+.demo-card-item,
+.demo-align-item,
+.swipe-card-item,
+.demo-content-column {
+    background-color: #ffffff;
+    color: #1e293b;
+    border-color: #e2e8f0;
+}
+
+/* Responsive simulator top navigation demo bar */
+.demo-nav-bar {
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+/* Responsive simulator brand text */
+.demo-brand {
+    color: #60a5fa;
+}
+
+/* Responsive simulator hamburger icon */
+.demo-hamburger {
+    color: #f8fafc;
+}
+
+/* Responsive simulator link items */
+.demo-nav-links {
+    color: #94a3b8;
+}
+
+/* Grid template area highlight containers */
+.demo-area-box {
+    background-color: #e0e7ff;
+    color: #3730a3;
+    border-color: #c7d2fe;
+}
+
+/* Motion runner track container */
+.runner-track {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+}
+
+/* Motion runner animated box */
+.runner-box {
+    background-color: #2563eb;
+}
+
+/* Motion runner description label */
+.runner-label {
+    color: #475569;
+}
+
+/* Animation fill-mode demo cards */
+.demo-anim-box {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* Animation fill-mode status labels */
+.fill-label {
+    color: #475569;
+}
+
+/* Animation orbit circular track */
+#demo-orbit-track {
+    border-color: #cbd5e1;
+}
+
+/* Animation orbiting satellite object */
+.orbiting-box {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* 3D card front surface */
+.card-face-front {
+    background-color: #ffffff;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+/* 3D card back surface */
+.card-face-back {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    border-color: #3b82f6;
+}
+
+/* 3D card back surface header text */
+.card-face-back h4 {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+/* Glassmorphism background staging wrapper */
+.demo-glass-backdrop {
+    background-color: #0f172a;
+}
+
+/* Frosted glass surface panel */
+.glass-surface-panel {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Frosted glass surface header text */
+.glass-surface-panel h4 {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+/* Shadow elevation testing card */
+.shadow-target-card {
+    background-color: #ffffff;
+    color: #0f172a;
+    border-color: #e2e8f0;
+}
+
+/* Background image testing frame */
+.bg-target-frame {
+    background-color: #0f172a;
+    border-color: #334155;
+}
+
+/* Background canvas indicator badge */
+.bg-canvas-overlay {
+    background-color: rgba(15, 23, 42, 0.75);
+    color: #ffffff;
+}
+
+/* Pure CSS toggle switch track */
+#demo-toggle-switch {
+    background-color: #cbd5e1;
+}
+
+/* Pure CSS toggle switch moving knob */
+.toggle-track-knob {
+    background-color: #ffffff;
+}
+
+/* Pure CSS toggle switch active state track */
+.native-hidden-checkbox:checked + #demo-toggle-switch {
+    background-color: #16a34a;
+}
+
+/* Pure CSS toggle status description */
+.toggle-status-label {
+    background-color: transparent;
+    color: #334155;
+    border-color: transparent;
+}
+
+/* Section entrance reveal demo card */
+.reveal-card-target {
+    background-color: #ffffff;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+/* Horizontal swipe card badge token */
+.swipe-badge {
+    background-color: #e0e7ff;
+    color: #3730a3;
+    border-color: #c7d2fe;
+}
+
+/* Procedural gradient demo canvas */
+.demo-gradient-canvas {
+    background-color: #0f172a;
+    border-color: #334155;
+}
+
+/* Gradient text headline container */
+.gradient-headline-target {
+    color: #ffffff;
+}
+
+/* Fluid clamp text sample */
+.clamp-active-text {
+    color: #1e3a8a;
+}
+
+/* Fluid clamp caption label */
+.clamp-caption {
+    color: #64748b;
+}
+
+/* Clip-path geometric test object */
+.clip-polygon-target {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* Clip-path inner label text */
+.clip-inner-label {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: transparent;
+}
+
+/* Card action primary buttons */
+.card-action-btn {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #1d4ed8;
+}
+
+/* Card action primary buttons hover state */
+.card-action-btn:hover {
+    background-color: #1d4ed8;
+}
+
+/* Adaptive profile card title */
+.card-title {
+    color: #0f172a;
+}
+
+/* Adaptive profile card description */
+.card-description {
+    color: #475569;
+}
+
+/* Avatar placeholder box */
+.demo-avatar-placeholder {
+    background-color: #e2e8f0;
+    color: #475569;
+    border-color: #cbd5e1;
+}
+
+/* Page 2 specific demo color targets */
+#demo-color {
+    color: #2563eb;
+}
+
+#demo-bg-color {
+    background-color: #dbeafe;
+}
+
+#demo-accent {
+    accent-color: #16a34a;
+}
+
+#demo-caret {
+    caret-color: #dc2626;
+}
+
+#demo-rgba {
+    background-color: rgba(37, 99, 235, 0.25);
+}
+
+#demo-rgb-modern {
+    color: rgb(220 38 38 / 90%);
+}
+
+#demo-hex {
+    color: #7c3aed;
+}
+
+#demo-hsl {
+    color: hsl(215, 90%, 45%);
+}
+
+#demo-color-mix {
+    background-color: color-mix(in srgb, #2563eb 20%, white 80%);
+}
+
+#demo-currentcolor {
+    color: #2563eb;
+    border-color: currentColor;
+}
